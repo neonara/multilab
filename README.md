@@ -13,7 +13,7 @@ The Multi-Lab project is a collaborative platform designed to streamline laborat
 
 ## Features
 
-- **Lab Management:** Easily create, update, and delete laboratory information, admin and client dashboard.
+- **Lab Management:** Easily create, update, and delete laboratory information, admin (upload doc) and client dashboard.
 - **Experiment Tracking:** Record and manage ongoing and completed experiments.
 - **User Authentication:** Secure user authentication and authorization system.
 - **API Integration:** Includes a robust API for testing and seamless communication with the client.
