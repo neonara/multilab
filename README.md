@@ -10,9 +10,6 @@ The Multi-Lab project is a collaborative platform designed to streamline laborat
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -42,15 +39,15 @@ Make sure you have the following installed:
 
    ```bash
    git clone https://github.com/your-username/multi-lab.git
-2. Navigate to the project directory:
+# Navigate to the project directory:
    cd multi-lab
-3. Install frontend dependencies:
+# Install frontend dependencies:
    cd frontend
    npm install
-4. Install backend dependencies:
+# Install backend dependencies:
 cd ../backend
 pipenv install
-5. Usage
+# Usage
 - Start the frontend:
 cd ../frontend
 npm start
