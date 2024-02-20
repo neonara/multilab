@@ -15,9 +15,27 @@ class AvisSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ClientsSerializer(serializers.ModelSerializer):
+    confirm_password = serializers.CharField(write_only= True)
+
     class Meta:
         model = Clients
-        fields = '__all__'
+        fields = ['email', 'password', 'confirm_password', 'fullname', 'nom_entreprise', 'numero_telephone']
+        extra_kwargs = {
+            'password': {'write_only': True},
+        }
+    def validate(self, data):
+        # Check if password matches confirm_password
+        if data['password'] != data.pop('confirm_password'):
+            raise serializers.ValidationError("Passwords do not match.")
+        # Check if email already exists
+        email = data.get('email')
+        if Clients.objects.filter(email=email).exists():
+            raise serializers.ValidationError("Email already exists.")
+        return data
+
+    def create(self, validated_data):
+        validated_data.pop('confirm_password')
+        return super().create(validated_data)
 
 class DevisSerializer(serializers.ModelSerializer):
     class Meta:
