@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer page</title>
+</head>
+<body>
+ <h1> hello {{ user.username }} your role is client</h1>
+ <h2>Reports:</h2>
+ <ul>
+     {% for report in reports %}
+         <li>
+             <strong>Title:</strong> {{ report.title }} <br>
+             <strong>Created At:</strong> {{ report.created_at }} <br>
+             <a href="{{ report.file.url }}" download>Download Report</a>
+         </li>
+     {% endfor %}
+ </ul>
+</body>
+</html>

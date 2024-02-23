@@ -1,10 +1,16 @@
 from django.db import models
-from .clients import Clients
 
+from django import forms
 class Report(models.Model):
-    client_id = models.ForeignKey(Clients, on_delete=models.CASCADE, related_name='reports')
+    CHOICES = (
+        ('1', 'Disponible'),
+        ('2', 'EN COURS'),
+       
+    )
+    
     title = models.CharField(max_length=100)
     file = models.FileField(upload_to='uploads/')
+    statut = models.CharField(max_length=10, choices=CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
     # Other fields for report details
     

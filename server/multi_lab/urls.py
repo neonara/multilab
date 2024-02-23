@@ -6,7 +6,8 @@ from .views.project import ProjectViewSet
 from .views.offres import OffresViewSet
 from .views.stageur import StagieurViewSet
 from .views.report import ReportViewSet
-from .views.client import ClientsViewSet,RegistrationView, LoginView
+from .views.client import UserLoginAPIView, UserRegisterAPIView
+
 
 #routes URLCOF
 router = DefaultRouter()
@@ -20,17 +21,12 @@ router.register(r'offre', OffresViewSet)
 # 
 router.register(r'stageur', StagieurViewSet)
 router.register(r'repport', ReportViewSet)
-client_router = DefaultRouter()
-client_router.register(r'clients', ClientsViewSet)
-
 
 urlpatterns = [
     path('', include(router.urls)),
-    #  path('register/', register),
-    # path('auth-test/', authentication_test),
-    # path('auth-details/', authentication_details),
-    #  path('token/', generate_token),
-    path('register/', RegistrationView.as_view(), name='register'),
-    path('login/', LoginView.as_view(), name='login'),
-    path('', include(client_router.urls))
+    path('register/', UserRegisterAPIView.as_view(), name='client_register'),
+    path('login/', UserLoginAPIView.as_view(), name='client_login'),
+
+   
+    
 ]
