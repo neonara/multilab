@@ -6,7 +6,7 @@ class Devi(models.Model):
         ('2', 'Physicochimie'),
        
     )
-    fullname = models.CharField(max_length=100)
+    fullname = models.CharField('nom et prénom',max_length=100)
     nom_entreprise = models.CharField(max_length=100)
     poste=models.CharField(max_length=250)
     numero_telephone=models.IntegerField()
@@ -16,3 +16,5 @@ class Devi(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.fullname
+    class Meta:
+        verbose_name_plural="List Devis Client"

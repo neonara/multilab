@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import logging
 from pathlib import Path
-
+import os
 logger = logging.getLogger(__name__)
 
 def my_function():

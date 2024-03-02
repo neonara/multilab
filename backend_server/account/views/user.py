@@ -1,8 +1,13 @@
 from django.shortcuts import render, redirect
 from ..forms import SignUpForm, LoginForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 # Create your views here.
 from account.model.report import Report
+from ..models import User
+from django.http import JsonResponse
+from rest_framework.views import APIView
+from ..serializers import LoginFormSerializer
+
 
 def index(request):
     return render(request, 'index.html')
@@ -59,3 +64,20 @@ def customer(request):
 
 def employee(request):
     return render(request,'employee.html')
+
+
+class LoginView(APIView):
+    def post(self, request):
+        serializer = LoginFormSerializer(data=request.data)
+        if serializer.is_valid():
+            username = serializer.validated_data['username']
+            password = serializer.validated_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return JsonResponse({'message': 'Login successful'}, status=status.HTTP_200_OK)
+            else:
+                return JsonResponse({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
