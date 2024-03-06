@@ -16,7 +16,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     # path('adminpage/', admin, name='adminpage'),
     path('customer/', customer, name='customer'),
-    # path('employee/', employee, name='employee'),
+    path('employee/', employee, name='employee'),
     
        path('logout/', LogoutView.as_view(next_page='login_view'),name='logout'),
 ]

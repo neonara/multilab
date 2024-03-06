@@ -63,7 +63,7 @@ def customer(request):
 
 
 def employee(request):
-    return render(request,'employee.html')
+    return render(request,'./moderator/dashboard_moderator.html')
 
 
 class LoginView(APIView):

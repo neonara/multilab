@@ -13,6 +13,7 @@ class OffreStage(models.Model):
     description=models.CharField(max_length=250)
     type_stage = models.CharField(max_length=10, choices=CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
+    # is_public = models.BooleanField(default=False)
    
     class Meta:
         verbose_name_plural="List d'offre du stage"
