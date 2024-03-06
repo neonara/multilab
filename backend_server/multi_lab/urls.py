@@ -35,9 +35,10 @@ urlpatterns = [
     path('devi/<int:pk>/delete/', DeviDeleteView.as_view(), name='devi_delete'),
     # stage routes
      path('stage_list/', OffreStageListView.as_view(), name='stage_list'),
-    path('stage_condidat_list/', stage_list_view, name='stage_condidat_list'), 
+    path('stage_condidat_list/', StagieurView.as_view(), name='stage_condidat_list'), 
     path('stage_list/<int:pk>/', OffreStageDetailView.as_view(), name='stage_detail'),
     path('stage_list/<int:pk>/delete/', OffreStageDeleteView.as_view(), name='stage_delete'),
+    path('stage/<int:pk>/update/', ofreStageUpdateView.as_view(), name='stage_update'),
     path('stage_list/create/', OffreStageCreateView.as_view(), name='stage_create'),
    
     

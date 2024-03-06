@@ -9,11 +9,14 @@ from django.db.models import Q
 class StagieurViewSet(viewsets.ModelViewSet):
     queryset = Stagieur.objects.all()
     serializer_class = StagieurSerializer
-def stage_list_view(request):
-    stageur_list = Stagieur.objects.all()
-    context = {
-        'stageur_list': stageur_list
-    }
-    return render(request, 'moderator/stage/stageList.html', context)
-
-   
+class StagieurView(ListView):
+    model = Stagieur
+    template_name = 'moderator/stage/stageursList.html'
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get('q')
+        if query:
+            queryset = queryset.filter(
+                Q(fullname__icontains=query)
+            )
+        return queryset

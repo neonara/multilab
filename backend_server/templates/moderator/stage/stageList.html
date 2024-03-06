@@ -70,9 +70,10 @@
                 </div>
                 <div class="app-header-navigation">
                     <div class="tabs">
-                        <a href="#">
-                            Overview
+                        <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Create Stage
                         </a>
+                        
                         <a href="#" class="active">
                             Payments
                         </a>
@@ -90,6 +91,7 @@
                         </a>
                     </div>
                 </div>
+               
                 <div class="app-header-actions">
                     <button class="user-profile">
                         <span>{{user.username}}</span>
@@ -189,7 +191,7 @@
                     {% csrf_token %}
                     <button type="submit">Delete</button>
                 </form>
-                <button type="button" class="btn btn-primary">Modifié</button>
+                <a href="{% url 'stage_update' stage.pk %}" class="btn btn-primary">Modifié</a>
             </div>
         </div>
     </div>
@@ -254,7 +256,68 @@
             
         </div>
     </div>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Create Stagee</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <form method="post" >
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button></form>
+                {% comment %} <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Titre du Stage</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" class="form-control" id="titre" name="titre" >
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Département</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" class="form-control" id="departement" name="departement" v>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Description</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            <input type="text" class="form-control" id="description" name="description" >
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+              <h6 class="mb-0">Type Stage</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                <select class="form-control" id="type_debis" name="type_debis">
+                    <option value="">Select Type Stage</option>
+                    <option value="1" >PFE</option>
+                    <option value="2" >Stage Mémoire</option>
+                </select>
+            </div>
+          </div> {% endcomment %}
+         
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+             
+            </div> 
+          </div>
+        </div>
+      </div>
    <!-- Bootstrap Bundle with Popper -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
    <!-- jQuery -->
