@@ -1,0 +1,34 @@
+<!-- templates/moderator/report/report_create.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Report</h2>
+<form method="post" action="" enctype="multipart/form-data" id="create-report-form">
+  {% csrf_token %}
+  <label for="client">Clienthi:</label><br>
+  <select id="client" name="client" required>
+    <option value="" disabled selected>Select a client</option>
+    {% for user in users %}
+      <option value="{{ user.id }}">{{ user.username }}</option>
+    {% endfor %}
+  </select><br><br>
+  <label for="title">Title:</label><br>
+  <input type="text" id="title" name="title" required><br><br>
+  <label for="file">Upload File:</label><br>
+  <input type="file" id="file" name="file" required accept=".pdf,.doc,.docx"><br>
+  <small>Allowed file types: .pdf, .doc, .docx</small><br><br>
+  <button type="submit">Save</button>
+</form>
+
+  <h2>Client Reports</h2>
+  {% for client, reports in client_reports.items %}
+    <h3>{{ client.username }}</h3>
+    <ul>
+      {% for report in reports %}
+        <li>{{ report.title }}</li>
+        <!-- Display other report details as needed -->
+      {% endfor %}
+    </ul>
+  {% endfor %}
+
+{% endblock %}

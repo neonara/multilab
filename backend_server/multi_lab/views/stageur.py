@@ -20,3 +20,6 @@ class StagieurView(ListView):
                 Q(fullname__icontains=query)
             )
         return queryset
+class StagieurDetailView(DetailView):
+    model = Stagieur
+    template_name ='moderator/stage/stageursList.html'

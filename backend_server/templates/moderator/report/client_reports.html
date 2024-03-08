@@ -1,0 +1,15 @@
+<!-- templates/moderator/report/report_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Client Reports</h2>
+  {% for client, reports in client_reports.items %}
+    <h3>{{ client.username }}</h3>
+    <ul>
+      {% for report in reports %}
+        <li>{{ report.title }}</li>
+        <!-- Display other report details as needed -->
+      {% endfor %}
+    </ul>
+  {% endfor %}
+{% endblock %}

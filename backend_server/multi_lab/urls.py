@@ -2,10 +2,10 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views.avi import *
 from .views.devi import *
-from .views.project import ProjectViewSet
+from .views.project import *
 from .views.offres import *
 from .views.stageur import *
-from.views.job import Offre_descriptionViewSet
+from.views.job import *
 from.views.offrestage import *
 #routes URLCOF
 router = DefaultRouter()
@@ -35,11 +35,26 @@ urlpatterns = [
     path('devi/<int:pk>/delete/', DeviDeleteView.as_view(), name='devi_delete'),
     # stage routes
      path('stage_list/', OffreStageListView.as_view(), name='stage_list'),
-    path('stage_condidat_list/', StagieurView.as_view(), name='stage_condidat_list'), 
+
     path('stage_list/<int:pk>/', OffreStageDetailView.as_view(), name='stage_detail'),
     path('stage_list/<int:pk>/delete/', OffreStageDeleteView.as_view(), name='stage_delete'),
     path('stage/<int:pk>/update/', ofreStageUpdateView.as_view(), name='stage_update'),
     path('stage_list/create/', OffreStageCreateView.as_view(), name='stage_create'),
-   
+    # stageur
+        path('stage_condidat_list/', StagieurView.as_view(), name='stage_condidat_list'), 
+        path('stage_condidat/<int:pk>/', StagieurDetailView.as_view(), name='stage_condidat_detail'), 
+   #job routes
+   path('job_list/', Offre_descriptionListView.as_view(), name='job_list'),
+   path('job_list/<int:pk>/', Offre_descriptionDetailView.as_view(), name='job_detail'),
+    path('job_list/<int:pk>/delete/', Offre_descriptionDeleteView.as_view(), name='job_delete'),
+    path('job/<int:pk>/update/', Offre_descriptionUpdateView.as_view(), name='job_update'),
+    path('job_list/create/', Offre_descriptionCreateView.as_view(), name='job_create'),
+    # project routes
+    path('project_list/', ProjectListView.as_view(), name='project_list'),
     
+    path('project_list/<int:pk>/delete/', ProjectDeleteView.as_view(), name='project_delete'),
+    path('project/<int:pk>/update/', ProjectUpdateView.as_view(), name='project_update'),
+    path('project_list/create/', ProjectCreateView.as_view(), name='project_create'),
+        path('projects/create/', ProjectViewSet.as_view({'get': 'list', 'post': 'create'}), name='project-list'),
+
 ]

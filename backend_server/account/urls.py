@@ -2,7 +2,7 @@ from django.urls import path, include
 from django.contrib import admin
 from .views.user import *
 from rest_framework.routers import DefaultRouter
-from .views.report import ReportViewSet
+from .views.report import *
 from django.contrib.auth.views import (
     LogoutView, 
 )
@@ -17,6 +17,12 @@ urlpatterns = [
     # path('adminpage/', admin, name='adminpage'),
     path('customer/', customer, name='customer'),
     path('employee/', employee, name='employee'),
-    
-       path('logout/', LogoutView.as_view(next_page='login_view'),name='logout'),
+    path('logout/', LogoutView.as_view(next_page='login_view'),name='logout'),
+    #report
+    path('report_list/', ReportListView.as_view(), name='report_list'),
+    path('report_list/<int:pk>/', ReportDetailView.as_view(), name='report_detail'),
+    path('report_list/<int:pk>/delete/', ReportDeleteView.as_view(), name='report_delete'),
+    path('report/<int:pk>/update/', ReportUpdateView.as_view(), name='report_update'),
+    path('report_list/create/', ReportCreateView.as_view(), name='report_create'),
+     path('report_list/', ClientReportListView.as_view(), name='report_list'),
 ]
