@@ -31,8 +31,8 @@ urlpatterns = [
     path('avis/<int:pk>/delete/', AvisDeleteView.as_view(), name='avis_delete'),
     # devi routes
     path('devi_list/', DeviListView.as_view(), name='devi_list'),
-    path('devi/<int:pk>/update/', DeviUpdateView.as_view(), name='devi_update'),
-    path('devi/<int:pk>/delete/', DeviDeleteView.as_view(), name='devi_delete'),
+   
+   
     # stage routes
      path('stage_list/', OffreStageListView.as_view(), name='stage_list'),
 

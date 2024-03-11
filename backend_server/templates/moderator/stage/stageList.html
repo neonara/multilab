@@ -25,42 +25,7 @@
             <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
                                                                                        class="brand-logo"><i
                     class="fas fa-anchor"></i> <span>Multi Lab</span></a></header>
-            <nav class="dashboard-nav-list"><a
-                    href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> dashboard
-            </a><a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Avis Client </a>
-                    <a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Devis Client </a>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-photo-video"></i> Offre du stage </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre du stage</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des staeurs</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-users"></i> Offre d'emploi </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre d'emploi</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des candidats</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-money-check-alt"></i> Multi Lab Report </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List des report</a>
-                                                               
-                    </div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                    class="fas fa-money-check-alt"></i> Multi Lab Projets </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                            class="dashboard-nav-dropdown-item">List des Projets</a>
-                                                           
-                </div>
-            </div>
-                
-              <div class="nav-item-divider"></div>
-              <a
-                        href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            <nav class="dashboard-nav-list">{% include 'moderator/companents/silderbar.html' %}
             </nav>
         </div>
         <div class='dashboard-app'>
@@ -116,8 +81,7 @@
         
             </div></header>
             <div class='dashboard-content'>
-                <!-- Button trigger modal -->
-<!-- Button trigger modal -->
+            
 
 
 
@@ -130,73 +94,126 @@
                                 <div class="service-section-header">
                                     <div class="search-field">
                                         <i class="ph-magnifying-glass"></i>
-                                        <input type="text" placeholder="Account number">
+                                        <input type="text" placeholder="Search"id="searchInput">
+                                        <button class="flat-button" onclick="searchStage()">
+                                            Search
+                                        </button>
                                     </div>
                                     <div class="dropdown-field">
-                                        <select>
-                                            <option>Home</option>
-                                            <option>Work</option>
+                                        <select id="status-filter" onchange="filterStage(this.value)">
+                                            <option value="">All</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="approved">Approved</option>
                                         </select>
                                         <i class="ph-caret-down"></i>
                                     </div>
-                                    <button class="flat-button">
-                                        Search
-                                    </button>
+                                    
                                 </div>
-                                <div class="mobile-only">
-                                    <button class="flat-button">
-                                        Toggle search
-                                    </button>
-                                </div>
-                                <div class="tiles">
-                                    {% for stage in object_list %}
-<article class="tile">
-    <div class="tile-header">
-        <i class="fas fa_user"></i>
-        <h3>
-            <span>Titre:</span>
-            <span>{{stage.titre}}</span>
-        </h3>
-    </div>
-   <div class="d-flex"> <span>voir plus</span>
-    <span data-bs-toggle="modal" data-bs-target="#stageModal{{stage.pk}}" class="icon-button">
-        <i class="ph-caret-right-bold"></i>
-    </span></div>
-        
-    
-</article>
+                                
+                                <div >
+                                   
+                                    <div class="table-responsive">
+                                        <table class="table align-items-center table-flush">
+                                          <thead class="thead-light">
+                                            <tr>
+                                              <th scope="col">Nom du Stage</th>
+                                              <th scope="col">Département</th>
+                                              <th scope="col">Type du stage </th>
+                                              
+                                              <th scope="col">Status</th>
+                                              <th scope="col">Created at</th>
+                                              <th scope="col">Action</th>
+                                             
+                                              <th scope="col"></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {% for stage in object_list %}
+                                            <tr class="stage-row" data-status="{{ stage.status }}">
+                                              <th scope="row">
+                                                
+                                                  <div class="media-body ">
+                                                    <span class="mb-0 text-sm">{{ stage.titre }}</span>
+                                                  </div>
+                                               
+                                              </th>
+                                              <td class=" stage-nom_entreprise" >
+                                                {{ stage.departement }}
+                                              </td>
+                                             
+                                              <td>
+                                                <span >
+                                                  {{stage.get_type_stage_display}}
+                                                </span>
+                                              </td>
+                                              <td >
+                                                {% if stage.status == 'pending' %}
+                                                    <span class="badge badge-dot mr-3 justify-content-center ">
+                                                        <i class="bg-warning"></i> Pending
+                                                    </span>
+                                                {% elif stage.status == 'approved' %}
+                                                    <span class="badge badge-dot mr-3">
+                                                        <i class="bg-success"></i> Approved
+                                                    </span>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ stage.created_at|date:"Y-m-d" }}</td>
+                                              <td>
+                                                <div class="avatar-group">
+                                                  <a  data-bs-toggle="modal" data-bs-target="#stageModal{{stage.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                    <i class="fas fa-edit"></i>  </a>
+                                                    <a href="{% url 'stage_update' stage.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                        <i class="fas fa-edit"></i>  </a>
+                                                        <a href="{% url 'stage_update' stage.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                            <i class="fas fa-edit"></i>  </a>
+                                                    {% comment %} <form method="post" action="{% url 'stage_delete' avis.pk %}" style="display:inline;">
+                                                      {% csrf_token %}
+                                                    <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <i class="fas fa-trash"> </button>  
+                                                  </form>                              {% endcomment %}
+                                                  
+                                                    
+                                                </div>
+                                              </td>
+                                              
+                                              
+                                            </tr>
+                                            <div class="modal fade" id="stageModal{{stage.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{stage.titre}}</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <ul class="list-style-type-circle">
+                                                               <li><span>Département : {{stage.departement}}</span></li> 
+                                                               <li><span>Description : {{stage.description}}</span></li> 
+                                                               <li><span>Type du stage : {{ stage.get_type_stage_display }}</span></li>
+                                            
+                                            
+                                                            </ul>
+                                                            
+                                                            
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form method="post" action="{% url 'stage_delete' stage.pk %}" style="display:inline;">
+                                                                {% csrf_token %}
+                                                                <button type="submit">Delete</button>
+                                                            </form>
+                                                            <a href="{% url 'stage_update' stage.pk %}" class="btn btn-primary">Modifié</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                          </tbody>
+                                        </table>
+                                      </div>
 
 <!-- Modal -->
-<div class="modal fade" id="stageModal{{stage.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{stage.titre}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <ul class="list-style-type-circle">
-                   <li><span>Département : {{stage.departement}}</span></li> 
-                   <li><span>Description : {{stage.description}}</span></li> 
-                   <li><span>Type du stage : {{ stage.get_type_stage_display }}</span></li>
 
 
-                </ul>
-                
-                
-                
-            </div>
-            <div class="modal-footer">
-                <form method="post" action="{% url 'stage_delete' stage.pk %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Delete</button>
-                </form>
-                <a href="{% url 'stage_update' stage.pk %}" class="btn btn-primary">Modifié</a>
-            </div>
-        </div>
-    </div>
-</div>
-{% endfor %}
 
                                    <!-- Button trigger modal -->
 
@@ -325,7 +342,50 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    <!-- Custom JS -->
    <script src="{% static './js/script_dashboard.js' %}"></script>
+   <script>
+    function searchStage() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementsByClassName("table")[0];
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByClassName("Stage-nom_entreprise")[0]; // Target the project title column by class name
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function filterStage(status) {
+        var rows = document.querySelectorAll('.stage-row');
+        
+        rows.forEach(function(row) {
+            var rowStatus = row.getAttribute('data-status');
             
+            if (status === '' || rowStatus === status) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    
+  
+  function resetSearch() {
+      var input = document.getElementById("searchInput");
+      input.value = "";
+      var rows = document.querySelectorAll('.table tbody tr');
+      rows.forEach(function(row) {
+          row.style.display = 'table-row';
+      });
+  }
+  
+</script>              
 
     
 </body>

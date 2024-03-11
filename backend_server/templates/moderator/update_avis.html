@@ -27,117 +27,78 @@
             <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
                                                                                        class="brand-logo"><i
                     class="fas fa-anchor"></i> <span>Multi Lab</span></a></header>
-            <nav class="dashboard-nav-list"><a
-                    href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> dashboard
-            </a><a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Avis Client </a>
-                    <a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Devis Client </a>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-photo-video"></i> Offre du stage </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre du stage</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des staeurs</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-users"></i> Offre d'emploi </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre d'emploi</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des candidats</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-money-check-alt"></i> Multi Lab Report </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List des report</a>
-                                                               
-                    </div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                    class="fas fa-money-check-alt"></i> Multi Lab Projets </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                            class="dashboard-nav-dropdown-item">List des Projets</a>
-                                                           
-                </div>
-            </div>
-                
-              <div class="nav-item-divider"></div>
-              <a
-                        href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            <nav class="dashboard-nav-list">
+              {% include 'moderator/companents/silderbar.html' %}
             </nav>
         </div>
         <div class='dashboard-app'>
             <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
             <div class='dashboard-content'>
                 <div class="container">
+                 
                     <h1 class="mt-5">Update Avis</h1>
+                   
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <form method="post" class="mt-3">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                      <h6 class="mb-0">Nom et Prénom</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                      <input type="text" class="form-control" id="fullname" name="fullname" value="{{ avis.fullname }}">
-                                    </div>
-                                  </div>
-                                  <hr>
-                                  <div class="row">
-                                    <div class="col-sm-3">
-                                      <h6 class="mb-0">Nom entreprise</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                      <input type="text" class="form-control" id="nom_entreprise" name="nom_entreprise" value="{{ avis.nom_entreprise }}">
-                                    </div>
-                                  </div>
-                                  <hr>
-                                  <div class="row">
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Numero telephone</h6>
-                          </div>
-                          <div class="col-sm-9 text-secondary">
-                            <input type="text" class="form-control" id="numero_telephone" name="numero_telephone" value="{{ avis.numero_telephone }}">
-                          </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                              <h6 class="mb-0">Email</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                              <input type="email" class="form-control" id="email" name="email" value="{{ avis.email }}">
-                            </div>
-                          </div>
-                          <hr>
-                          <div class="row">
-                            <div class="col-sm-3">
-                              <h6 class="mb-0">Pourquoi</h6>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                              <input type="text" class="form-control" id="pourquoi" name="pourquoi" value="{{ avis.pourquoi }}">
-                            </div>
-                          </div> <hr>
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" name="message">{{ avis.message }}</textarea>
+                          <form method="post" class="mt-5 border p-4 rounded">
+                            {% csrf_token %}
+                            <div class="mb-3 row">
+                                <label for="fullname" class="col-sm-3 col-form-label">Nom et Prénom</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control" id="fullname" name="fullname" value="{{ avis.fullname }}">
                                 </div>
-                                
-                                
-                                <div class="mb-3">
-                                    <label for="etat" class="form-label">Status</label>
-                                    <input type="text" class="form-control" id="etat" name="etat" value="{{ avis.etat }}">
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="nom_entreprise" class="col-sm-3 col-form-label">Nom entreprise</label>
+                                <div class="col-sm-9">
+                                   
+                                    <input type="text" class="form-control" id="nom_entreprise" name="nom_entreprise" value="{{ avis.nom_entreprise }}">
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                      <h6 class="mb-0">Etat</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <i class="bg-warning"></i>{{avis.etat}}
-                                    </div>
-                                  </div> <hr>
-                                <button type="submit" class="btn btn-primary">Confirm modification</button>
-                            </form>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="numero_telephone" class="col-sm-3 col-form-label">Numéro de téléphone</label>
+                                <div class="col-sm-9">
+                                   
+                                    <input type="text" class="form-control" id="numero_telephone" name="numero_telephone" value="{{ avis.numero_telephone }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                   <input type="text" class="form-control" id="email" name="email" value="{{ avis.email }}">
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="pourquoi" class="col-sm-3 col-form-label">Pourquoi</label>
+                                <div class="col-sm-9">
+                                 
+                                    <textarea class="form-control" id="pourquoi" name="pourquoi">{{ avis.pourquoi }}</textarea>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="status" class="col-sm-3 col-form-label">Status Avis</label>
+                                <div class="col-sm-9">
+                                  <select class="form-control" id="status" name="status">
+                                    <option value="">Select Type Debis</option>
+                                    <option value="pending" {% if avis.status == 'pending' %} selected {% endif %}>Pending</option>
+            <option value="approved" {% if avis.status == 'approved' %} selected {% endif %}>Approved</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
+                                <label for="etat" class="col-sm-3 col-form-label">Etat</label>
+                                <div class="col-sm-9">
+                                  <input type="text" class="form-control" id="etat" name="etat" value="{{ avis.etat }}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary">Confirmer la modification</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        
                         </div>
                     </div>
                 </div>
