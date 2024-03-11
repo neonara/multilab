@@ -37,7 +37,17 @@ class ProjectCreateView(CreateView):
     model = Project
     template_name = 'moderator/project/project_form.html'  # Name of your template for the form
     fields = '__all__'  # Fields to include in the form
-    success_url = reverse_lazy('project_list')
+    success_url = reverse_lazy('project_create')
+    
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['projects'] = Project.objects.all()  # Retrieve all projects
+        return context
+    
     
 
 
@@ -55,9 +65,9 @@ class  ProjectListView(ListView):
 
 class ProjectUpdateView(UpdateView):
     model = Project
-    template_name = 'moderator/project/update_Project.html'  # Name of your template
+    template_name = 'moderator/project/project_edit.html'  # Name of your template
     fields = '__all__'
-    success_url = reverse_lazy('project_update')
+    success_url = reverse_lazy('project_create')
     def form_valid(self, form):
         print("Form is valid.")  # Print a message when the form is valid
         return super().form_valid(form)
@@ -68,5 +78,5 @@ class ProjectUpdateView(UpdateView):
 
 class ProjectDeleteView(DeleteView):
     model = Project
-    template_name = 'moderator/project/project_list.html'  # Name of your template
-    success_url = reverse_lazy('project_list') 
+    template_name = 'moderator/project/project_form.html'  # Name of your template
+    success_url = reverse_lazy('project_create') 

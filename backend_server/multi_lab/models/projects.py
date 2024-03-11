@@ -2,9 +2,15 @@ from django.db import models
 from django.utils.html import mark_safe
 
 class Project(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('approved', 'Approved'),
+       
+    ]
     title = models.CharField('Titre Projet', max_length=100)
     image = models.ImageField(upload_to='project_images/')
     description = models.TextField()
+    status = models.CharField('Status', max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

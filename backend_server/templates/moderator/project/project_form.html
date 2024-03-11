@@ -1,18 +1,232 @@
-{% extends 'base.html' %}
+<!-- avis_list.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
+    <link rel="stylesheet" href="{% static './css/avisclient.css' %}">
+</head>
+<body>
+    <div class='dashboard'>
+        <div class="dashboard-nav">
+            <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
+                                                                                       class="brand-logo"><i
+                    class="fas fa-anchor"></i> <span>Multi Lab</span></a></header>
+                    <nav class="dashboard-nav-list">
+                        {% include 'moderator/companents/silderbar.html' %}
+                    </nav>
+        </div>
+        <div class='dashboard-app'>
+            <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
+            <div class='dashboard-content'>
+                <h2>project list</h2>
+               <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Create Project
+  </button>
+  <div class="card-header border-0 d-flex">
+   
+    <div class="input-group h-25 ">
+        <input type="text" placeholder="Search by title..." id="searchInput">
+        <button class="btn btn-primary" onclick="searchProjects()">Search</button>
+    </div>
+    <div class="form-group">
+        <label for="status-filter">Filter by Status:</label>
+        <select id="status-filter" onchange="filterProjects(this.value)">
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+        </select>
+    </div>
+</div>
 
-{% block content %}
-<h2>Create Project</h2>
-                <form method="POST" >
-                    {% csrf_token %}
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
                     <label for="title">Title:</label>
-                    <input type="text" id="title" name="title" required><br><br>
-            
+                    <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                <div class="form-group">
                     <label for="image">Image:</label>
-                    <input type="file" id="image" name="image" required><br><br>
+                    <input type="file" class="form-control-file" id="image" name="image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select class="form-control" id="status" name="status">
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+ 
+                <div class="card shadow">
+                    
+                    <div class="card-header border-0">
+                      <h3 class="mb-0">MultiLab Projets</h3>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        
+                      <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Titre Projet</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col">Action</th>
+                           
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for project in projects %}
+                          <tr class="project-row" data-status="{{ project.status }}">
+                            <th scope="row">
+                              
+                                <div class="media-body">
+                                  <span class="mb-0 ">
+                                    <img src="{{ project.image.url }}" alt="Project Image" class="mt-2" style="max-width: 100px;">
+                                  </span>
+                                </div>
+                             
+                            </th>
+                            <td class="project-title">
+                              {{project.title}}
+                            </td>
+                            <td>
+                                <button type="button"  data-bs-toggle="modal" data-bs-target="#Description{{project.pk}}">
+                                    <i class="icofont-articles"></i>
+                                  </button>
+                                  
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="Description{{project.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        
+                                        <div class="modal-body">
+                                            Description: {{project.description}}
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                            </td>
+                            
+                            <td >
+                                {% if project.status == 'pending' %}
+                                    <span class="badge badge-dot mr-3 justify-content-center ">
+                                        <i class="bg-warning"></i> Pending
+                                    </span>
+                                {% elif project.status == 'approved' %}
+                                    <span class="badge badge-dot mr-3">
+                                        <i class="bg-success"></i> Approved
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td>{{ project.created_at }}</td>
+                            <td>
+                              <div class="avatar-group">
+                               
+                                <a href="{% url 'project_update' project.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                  <i class="fas fa-edit"></i>                                </a>
+                                  <form method="post" action="{% url 'project_delete' project.pk %}" style="display:inline;">
+                                    {% csrf_token %}
+                                  <button type="submit class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson""> <i class="fas fa-trash"> </button>  
+                                </form>
+                                  
+                              </div>
+                            </td>
+                            
+                            
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+            </div>
+
             
-                    <label for="description">Description:</label><br>
-                    <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+        </div>
+    </div>
+    <script>
+        function searchProjects() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementsByClassName("table")[0];
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByClassName("project-title")[0]; // Target the project title column by class name
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function filterProjects(status) {
+            var rows = document.querySelectorAll('.project-row');
             
-                    <input type="submit" value="Create Project">
-                </form>
-{% endblock %}
+            rows.forEach(function(row) {
+                var rowStatus = row.getAttribute('data-status');
+                
+                if (status === '' || rowStatus === status) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static './js/script_dashboard.js' %}"></script>
+            
+
+    
+</body>
+</html>

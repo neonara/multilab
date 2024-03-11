@@ -1,0 +1,46 @@
+{% block content %}
+<a href="#" class="dashboard-nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+<a href="{% url 'avis_list' %}" class="dashboard-nav-item {% if request.path == '/path/to/avis_list/' %}active{% endif %}"><i class="fas fa-file-upload"></i> Avis Client </a>
+<a href="{% url 'devi_list' %}" class="dashboard-nav-item {% if request.path == '/path/to/devi_list/' %}active{% endif %}"><i class="fas fa-file-upload"></i> Devis Client </a>
+
+<div class='dashboard-nav-dropdown'>
+    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+        <i class="fas fa-photo-video"></i> Offre du stage
+    </a>
+    <div class='dashboard-nav-dropdown-menu'>
+        <a href="{% url 'stage_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/stage_list/' %}active{% endif %}">List d'offre du stage</a>
+        <a href="{% url 'stage_condidat_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/stage_condidat_list/' %}active{% endif %}">List des stageurs</a>
+    </div>
+</div>
+
+<div class='dashboard-nav-dropdown'>
+    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+        <i class="fas fa-users"></i> Offre d'emploi
+    </a>
+    <div class='dashboard-nav-dropdown-menu'>
+        <a href="{% url 'job_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/job_list/' %}active{% endif %}">List d'offre d'emploi</a>
+        <a href="#" class="dashboard-nav-dropdown-item">List des candidats</a>
+    </div>
+</div>
+
+<div class='dashboard-nav-dropdown'>
+    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+        <i class="fas fa-money-check-alt"></i> Multi Lab Report
+    </a>
+    <div class='dashboard-nav-dropdown-menu'>
+        <a href="{% url 'report_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/report_list/' %}active{% endif %}">List des report</a>
+    </div>
+</div>
+
+<div class='dashboard-nav-dropdown active'>
+    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+        <i class="fas fa-money-check-alt"></i> Multi Lab Projets
+    </a>
+    <div class='dashboard-nav-dropdown-menu'>
+        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">List des Projets</a>
+    </div>
+</div>
+
+<div class="nav-item-divider"></div>
+<a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+{% endblock %}

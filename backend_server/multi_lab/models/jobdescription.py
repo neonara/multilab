@@ -1,6 +1,11 @@
 from django.db import models
 
 class Offre_description(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+    ]
     CHOICES = (
         ('1', 'Temps plein'),
         ('2', 'Partiel'),
@@ -19,7 +24,7 @@ class Offre_description(models.Model):
     description=models.CharField(max_length=250)
     temps= models.CharField(max_length=10, choices=CHOICES)
     contrat= models.CharField(max_length=10, choices=CHOICESContrat)
-    
+    status = models.CharField('Status', max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
     
     class Meta:
