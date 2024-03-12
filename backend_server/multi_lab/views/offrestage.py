@@ -16,34 +16,19 @@ class OffreStageCreateView(CreateView):
     template_name = 'moderator/stage/stageList.html'  # Name of your template for the form
     fields = '__all__'  # Fields to include in the form
     success_url = reverse_lazy('stage_list')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['stages'] = OffreStage.objects.all()  # Retrieve all OffreStage objects
+        context['condidats'] = Stagieur.objects.all()  # Retrieve all Stagieur objects
+        return context
     
 
-class OffreStageDetailView(DetailView):
-    model = OffreStage
-    template_name = 'moderator/stage/stageList.html'
-class  OffreStageListView(ListView):
-    model = OffreStage
-    template_name = 'moderator/stage/stageList.html'
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        query = self.request.GET.get('q')
-        if query:
-            queryset = queryset.filter(
-                Q(fullname__icontains=query)
-            )
-        return queryset
-# def stage_condidat_list(request):
-#     stageur_list = Stagieur.objects.all()
-#     context = {
-#         'stageur_list': stageur_list
-#     }
-#     print(context)
-    
-#     return render(request, 'moderator/stage/stageList.html', context)
 
-class ofreStageUpdateView(UpdateView):
+
+
+class OffreStageUpdateView(UpdateView):
     model = OffreStage
-    template_name = 'moderator/stage/update_OffreStage.html'  # Name of your template
+    template_name = './moderator/stage/update_OffreStage.html'  # Name of your template
     fields = '__all__'
     success_url = reverse_lazy('stage_list')
     def form_valid(self, form):

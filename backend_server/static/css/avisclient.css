@@ -382,7 +382,51 @@ h3,
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
-
+/*  */
+.dropdown-field {
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+}
+.dropdown-field select {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border: 0;
+    border-bottom: 1px solid var(--c-gray-600);
+    background-color: transparent;
+    padding-right: 1.5rem;
+    appearance: none;
+    color: var(--c-text-tertiary);
+    width: 100%;
+}
+.dropdown-field i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.search-field {
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+}
+.search-field input {
+    width: 100%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border: 0;
+    border-bottom: 1px solid var(--c-gray-600);
+    background-color: transparent;
+    padding-left: 1.5rem;
+}
+.search-field i {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/*  */
 .btn {
     font-size: 1rem;
     font-weight: 600;

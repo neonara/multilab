@@ -12,14 +12,7 @@ class StagieurViewSet(viewsets.ModelViewSet):
 class StagieurView(ListView):
     model = Stagieur
     template_name = 'moderator/stage/stageursList.html'
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        query = self.request.GET.get('q')
-        if query:
-            queryset = queryset.filter(
-                Q(fullname__icontains=query)
-            )
-        return queryset
+    
 class StagieurDetailView(DetailView):
     model = Stagieur
     template_name ='moderator/stage/stageursList.html'
