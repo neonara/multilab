@@ -22,7 +22,7 @@
 	 line-height: 1.5;
 	 min-height: 100vh;
 	 font-family: "Be Vietnam Pro", sans-serif;
-	 background-color: var(--c-gray-200);
+	 background-color: #fff;
 	 color: var(--c-text-primary);
 	 display: flex;
 	
@@ -52,7 +52,7 @@
 	 width: 95%;
 	 max-width: 1600px;
 	 background-color: #ffff;
-	 margin-left: 209px;
+	 
 	 display: flex;
 	 flex-direction: column;
 	
@@ -79,6 +79,7 @@
  .app-header-actions {
 	 display: flex;
 	 align-items: center;
+	 margin-left: 803px;
 }
  @media (max-width: 1200px) {
 	 .app-header-actions {
@@ -108,6 +109,7 @@
 	 grid-template-columns: minmax(min-content, 175px) minmax(max-content, 1fr) minmax(min-content, 400px);
 	 column-gap: 4rem;
 	 padding-top: 2.5rem;
+	 margin-left: 60px;
 }
  @media (max-width: 1200px) {
 	 .app-body {
@@ -349,6 +351,8 @@
  .service-section > h2 {
 	 font-size: 1.5rem;
 	 margin-bottom: 1.25rem;
+	 justify-content: center;
+	 text-align: center;
 }
  .service-section-header {
 	 display: flex;

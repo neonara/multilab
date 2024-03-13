@@ -13,6 +13,3 @@ class StagieurView(ListView):
     model = Stagieur
     template_name = 'moderator/stage/stageursList.html'
     
-class StagieurDetailView(DetailView):
-    model = Stagieur
-    template_name ='moderator/stage/stageursList.html'

@@ -1,14 +1,12 @@
-<!-- job_list.html -->
+<!-- stage.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avis List</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avis List</title>
+    <title>stage List</title>
+   
     <!-- Bootstrap CSS -->
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -25,42 +23,7 @@
             <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
                                                                                        class="brand-logo"><i
                     class="fas fa-anchor"></i> <span>Multi Lab</span></a></header>
-            <nav class="dashboard-nav-list"><a
-                    href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> dashboard
-            </a><a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Avis Client </a>
-                    <a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Devis Client </a>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-photo-video"></i> Offre du stage </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre du stage</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des staeurs</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-users"></i> Offre d'emploi </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre d'emploi</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des candidats</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-money-check-alt"></i> Multi Lab Report </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List des report</a>
-                                                               
-                    </div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                    class="fas fa-money-check-alt"></i> Multi Lab Projets </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                            class="dashboard-nav-dropdown-item">List des Projets</a>
-                                                           
-                </div>
-            </div>
-                
-              <div class="nav-item-divider"></div>
-              <a
-                        href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            <nav class="dashboard-nav-list">{% include 'moderator/companents/silderbar.html' %}
             </nav>
         </div>
         <div class='dashboard-app'>
@@ -70,25 +33,11 @@
                 </div>
                 <div class="app-header-navigation">
                     <div class="tabs">
-                        <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        
+                        <a  data-bs-toggle="modal" data-bs-target="#createStage">
                             Create Stage
                         </a>
                         
-                        <a href="#" class="active">
-                            Create offre diemploi
-                        </a>
-                        <a href="#">
-                            Cards
-                        </a>
-                        <a href="#">
-                            Account
-                        </a>
-                        <a href="#">
-                            System
-                        </a>
-                        <a href="#">
-                            Business
-                        </a>
                     </div>
                 </div>
                
@@ -116,8 +65,7 @@
         
             </div></header>
             <div class='dashboard-content'>
-                <!-- Button trigger modal -->
-<!-- Button trigger modal -->
+            
 
 
 
@@ -126,78 +74,175 @@
                     <div class="app-body">
                                 <div class="app-body-main-content">
                             <section class="service-section">
-                                <h2>Offres d'emploi</h2>
+                                <h2>List d'offre d'emploi</h2>
                                 <div class="service-section-header">
-                                    <div class="search-field">
-                                        <i class="ph-magnifying-glass"></i>
-                                        <input type="text" placeholder="Account number">
-                                    </div>
+                                    
                                     <div class="dropdown-field">
-                                        <select>
-                                            <option>Home</option>
-                                            <option>Work</option>
+                                        <select id="status-filter" onchange="filterTime(this.value)">
+                                            <option value="">All</option>
+                                            <option value="1">Temps plein</option>
+                                            <option value="2">Partiel</option>
+                                        </select>
+                                        <select id="status-filter" onchange="filterStatus(this.value)">
+                                            <option value="">All</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="approved">Approved</option>
+                                        </select>
+                                         <select id="status-filter" onchange="filterContrat(this.value)">
+                                            <option value="">All</option>
+                                            <option value="CIVP">CIVP</option>
+                                            <option value="CDI">CDI</option>
+                                            <option value="CDD">CDD</option>
+                                            <option value="Karama">Karama</option>
+                                            <option value="CSC">CSC</option>
                                         </select>
                                         <i class="ph-caret-down"></i>
                                     </div>
-                                    <button class="flat-button">
-                                        Search
-                                    </button>
+                                    <div class="search-field">
+                                        <i class="ph-magnifying-glass"></i>
+                                        <input type="text" placeholder="Search"id="searchInput">
+                                        <button class="flat-button" onclick="searchStage()">
+                                            Search
+                                        </button>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
+                                    </div>
+                                    
                                 </div>
-                                <div class="mobile-only">
-                                    <button class="flat-button">
-                                        Toggle search
-                                    </button>
-                                </div>
-                                <div class="tiles">
-                                    {% for job in object_list %}
-<article class="tile">
-    <div class="tile-header">
-        <i class="fas fa_user"></i>
-        <h3>
-            <span>Titre:</span>
-            <span>{{job.titre}}</span>
-        </h3>
-    </div>
-   <div class="d-flex"> <span>voir plus</span>
-    <span data-bs-toggle="modal" data-bs-target="#jobModal{{job.pk}}" class="icon-button">
-        <i class="ph-caret-right-bold"></i>
-    </span></div>
-        
-    
-</article>
+                                
+                                <div >
+                                   
+                                    <div class="table-responsive">
+                                        <table class="table align-items-center table-flush">
+                                          <thead class="thead-light">
+                                            <tr>
+                                              <th scope="col">Nom du Post</th>
+                                              <th scope="col">Département</th>
+                                             
+                                              <th scope="col">Type d'emploi désiré</th>
+                                              <th scope="col">Type du contrat</th>
+                                              <th scope="col">Status</th>
+                                              <th scope="col">Created at</th>
+                                              <th scope="col">Action</th>
+                                             
+                                              <th scope="col"></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {% for post in posts %}
+                                            <tr class="post-row" data-status="{{ post.status }}" data-contrat="{{ post.contrat }}" data-temps="{{ post.temps }}">
+                                              <td scope="row">
+                                                
+                                                  <div class="media-body ">
+                                                    <span class="mb-0 text-sm">{{ post.titre }}</span>
+                                                  </div>
+                                               
+                                              </td>
+                                              <td>
+                                                {{ post.departement }}
+                                              </td>
+                                             
+                                             
+                                              <td>
+                                                <span >
+                                                  {{post.get_temps_display}}
+                                                </span>
+                                              </td>
+                                              <td>
+                                                <span >
+                                                  {{post.get_contrat_display}}
+                                                </span>
+                                              </td>
+                                              <td >
+                                                {% if post.status == 'pending' %}
+                                                    <span class="badge badge-dot mr-3 justify-content-center ">
+                                                        <i class="bg-warning"></i> Pending
+                                                    </span>
+                                                {% elif post.status == 'approved' %}
+                                                    <span class="badge badge-dot mr-3">
+                                                        <i class="bg-success"></i> Approved
+                                                    </span>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ post.created_at|date:"Y-m-d" }}</td>
+                                              <td>
+                                                <div class="avatar-group">
+                                                  <a  data-bs-toggle="modal" data-bs-target="#postModal{{post.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                    <i class="fas fa-edit"></i>  </a>
+                                                    <a href="{% url 'job_update' post.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                        <i class="fas fa-edit"></i>  </a>
+                                                <form method="post" action="{% url 'job_delete' post.pk %}" style="display:inline;">
+                                                      {% csrf_token %}
+                                                    <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <i class="fas fa-trash"> </button>  
+                                                  </form>                           
+                                                  
+                                                    
+                                                </div>
+                                              </td>
+                                              
+                                              
+                                            </tr>
+                                            <div class="modal fade" id="postModal{{post.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{post.titre}}</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                       
+                                                                        <div class="form-group">
+                                                                            <label><strong>Département :</strong></label>
+                                                                            <p>{{ post.departement }}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label><strong>Type d'emploi désiré :</strong></label>
+                                                                            <p>{{ post.get_temps_display }}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                          <label><strong>Type du contrat  :</strong></label>
+                                                                          <p>{{ post.get_contrat_display }}</p>
+                                                                      </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        
+                                                                        <div class="form-group">
+                                                                          <label><strong>Description :</strong></label>
+                                                                          <p>{{ post.description }}</p>
+                                                                      </div>
+                                                                      <div class="form-group">
+                                                                        <label><strong>Status:</strong></label>
+                                                                        <p>{{ post.status }}</p>
+                                                                    </div>
+                                                                        
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                        </div>
+                                                            
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <form method="post" action="{% url 'job_delete' post.pk %}" style="display:inline;">
+                                                                {% csrf_token %}
+                                                                <button type="submit">Delete</button>
+                                                            </form>
+                                                            <a href="{% url 'job_update' post.pk %}" class="btn btn-primary">Modifié</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                          </tbody>
+                                        </table>
+                                      </div>
 
 <!-- Modal -->
-<div class="modal fade" id="jobModal{{job.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{job.titre}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <ul class="list-style-type-circle">
-                   <li><span>Département : {{job.departement}}</span></li> 
-                   <li><span>Description : {{job.description}}</span></li> 
-                   <li><span>Type : {{ job.get_temps_display }}</span></li>
-                   <li><span>Type du contrat : {{ job.get_contrat_display }}</span></li>
 
 
-                </ul>
-                
-                
-                
-            </div>
-            <div class="modal-footer">
-                <form method="post" action="{% url 'job_delete' job.pk %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Delete</button>
-                </form>
-                <a href="{% url 'job_update' job.pk %}" class="btn btn-primary">Modifié</a>
-            </div>
-        </div>
-    </div>
-</div>
-{% endfor %}
 
                                    <!-- Button trigger modal -->
 
@@ -209,9 +254,9 @@
                         </div>
                         <div class="app-body-sidebar">
                             <section class="payment-section">
-                                <h2>List des stageurs</h2>
+                                <h2>List des posturs</h2>
                                 <div class="payment-section-header">
-                                    <p> Consulter la liste des stagiaires</p>
+                                    <p> Consulter la liste des condidat</p>
                                     <div>
                                         <button class="card-button mastercard">
                                             <svg width="2001" height="1237" viewBox="0 0 2001 1237" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -226,18 +271,18 @@
                                     </div>
                                 </div>
                                 <div class="payments">
-                                    {% for stagiaire in stageur_list %}
+                                    {% for stagiaire in condidats %}
                                     <div class="payment">
                                         <div class="card green">
-                                            <span>{{ stagiaire.created_at }}</span>
+                                            <span>{{ stagiaire.created_at|date:"Y-m-d" }}</span>
                                             <span>
-                                                {{ stagiaire.get_type_stage_display }}
+                                                {{ stagiaire.get_titre }}
                                             </span>
                                         </div>
                                         <div class="payment-details">
                                             <h3>{{ stagiaire.fullname }}</h3>
                                             <div>
-                                                <span>voir plus</span>
+                                                <a href="{% url 'condidat_list' %}">voir plus</a>
                                                 <button class="icon-button">
                                                     <i class="ph-caret-right-bold"></i>
                                                 </button>
@@ -257,7 +302,7 @@
             
         </div>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="createStage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -266,56 +311,58 @@
             </div>
             
             <div class="modal-body">
-                <form method="post" >
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Submit</button></form>
-                {% comment %} <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Titre du Stage</h6>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3 row">
+                        <label for="titre" class="col-sm-3 col-form-label">Nom du Stage</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="titre" name="titre">
+                        </div>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" id="titre" name="titre" >
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="departement" class="col-sm-3 col-form-label">Département</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="departement" name="departement">
+                        </div>
                     </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Département</h6>
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="description" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                      <input type="text" class="form-control" id="departement" name="departement" v>
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="type_stage" class="col-sm-3 col-form-label">Type de stage</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="type_stage" name="type_stage">
+                                <option value="">Select Type de stage</option>
+                                <option value="1">PFE</option>
+                                <option value="2">Stage Mémoire</option>
+                            </select>
+                        </div>
                     </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Description</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            <input type="text" class="form-control" id="description" name="description" >
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-sm-3">
-              <h6 class="mb-0">Type Stage</h6>
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="status" class="col-sm-3 col-form-label">Status Stage</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="status" name="status">
+                                <option value="">Select Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+                
+          </div> 
+        
             </div>
-            <div class="col-sm-9 text-secondary">
-                <select class="form-control" id="type_debis" name="type_debis">
-                    <option value="">Select Type Stage</option>
-                    <option value="1" >PFE</option>
-                    <option value="2" >Stage Mémoire</option>
-                </select>
-            </div>
-          </div> {% endcomment %}
-         
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-             
-            </div> 
+            
           </div>
         </div>
       </div>
@@ -326,7 +373,78 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    <!-- Custom JS -->
    <script src="{% static './js/script_dashboard.js' %}"></script>
+   <script>
+    function searchStage() {
+        var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementsByClassName("table")[0];
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column 
+            td2 = tr[i].getElementsByTagName("td")[1]; // Get the second column
+            if (td1 && td2) {
+                txtValue1 = td1.textContent || td1.innerText;
+                txtValue2 = td2.textContent || td2.innerText;
+                if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function filterStatus(status) {
+        var rows = document.querySelectorAll('.post-row');
+        
+        rows.forEach(function(row) {
+            var rowStatus = row.getAttribute('data-status');
             
+            if (status === '' || rowStatus === status) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    function filterContrat(contrat) {
+        var rows = document.querySelectorAll('.post-row');
+        
+        rows.forEach(function(row) {
+            var rowcontrat = row.getAttribute('data-contrat');
+            
+            if (contrat === '' || rowcontrat === contrat) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    function filterTime(temps) {
+        var rows = document.querySelectorAll('.post-row');
+        
+        rows.forEach(function(row) {
+            var rowtemps = row.getAttribute('data-temps');
+            
+            if (temps === '' || rowtemps === temps) {
+                row.style.display = 'table-row';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+    
+  
+  function resetSearch() {
+      var input = document.getElementById("searchInput");
+      input.value = "";
+      var rows = document.querySelectorAll('.table tbody tr');
+      rows.forEach(function(row) {
+          row.style.display = 'table-row';
+      });
+  }
+  
+</script>              
 
     
 </body>

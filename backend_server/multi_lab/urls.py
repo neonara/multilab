@@ -42,13 +42,14 @@ urlpatterns = [
     path('stage_list/create/', OffreStageCreateView.as_view(), name='stage_create'),
     # stageur
         path('stage_condidat_list/', StagieurView.as_view(), name='stage_condidat_list'), 
-        path('stage_condidat/<int:pk>/', StagieurDetailView.as_view(), name='stage_condidat_detail'), 
+        
    #job routes
-   path('job_list/', Offre_descriptionListView.as_view(), name='job_list'),
+   path('job_list/', Offre_descriptionCreateView.as_view(), name='job_list'),
    path('job_list/<int:pk>/', Offre_descriptionDetailView.as_view(), name='job_detail'),
     path('job_list/<int:pk>/delete/', Offre_descriptionDeleteView.as_view(), name='job_delete'),
     path('job/<int:pk>/update/', Offre_descriptionUpdateView.as_view(), name='job_update'),
-    path('job_list/create/', Offre_descriptionCreateView.as_view(), name='job_create'),
+    #condidat routes
+    path('condidat_list/', CondidatListView.as_view(), name='condidat_list'),
     # project routes
     path('project_list/', ProjectListView.as_view(), name='project_list'),
     
