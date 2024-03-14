@@ -35,9 +35,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
         return Response("Deleted Successfully", status=status.HTTP_204_NO_CONTENT)
 class ProjectCreateView(CreateView):
     model = Project
-    template_name = 'moderator/project/project_form.html'  # Name of your template for the form
+    template_name = 'moderator/project/project_list.html'  # Name of your template for the form
     fields = '__all__'  # Fields to include in the form
-    success_url = reverse_lazy('project_create')
+    success_url = reverse_lazy('project_list')
     
     def form_invalid(self, form):
         print(form.errors)
@@ -51,23 +51,13 @@ class ProjectCreateView(CreateView):
     
 
 
-class  ProjectListView(ListView):
-    model = Project
-    template_name = 'moderator/project/project_list.html'
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        query = self.request.GET.get('q')
-        if query:
-            queryset = queryset.filter(
-                Q(fullname__icontains=query)
-            )
-        return queryset  
+
 
 class ProjectUpdateView(UpdateView):
     model = Project
     template_name = 'moderator/project/project_edit.html'  # Name of your template
     fields = '__all__'
-    success_url = reverse_lazy('project_create')
+    success_url = reverse_lazy('project_list')
     def form_valid(self, form):
         print("Form is valid.")  # Print a message when the form is valid
         return super().form_valid(form)
@@ -79,4 +69,4 @@ class ProjectUpdateView(UpdateView):
 class ProjectDeleteView(DeleteView):
     model = Project
     template_name = 'moderator/project/project_form.html'  # Name of your template
-    success_url = reverse_lazy('project_create') 
+    success_url = reverse_lazy('project_list') 

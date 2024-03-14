@@ -51,11 +51,8 @@ urlpatterns = [
     #condidat routes
     path('condidat_list/', CondidatListView.as_view(), name='condidat_list'),
     # project routes
-    path('project_list/', ProjectListView.as_view(), name='project_list'),
-    
+    path('project_list/', ProjectCreateView.as_view(), name='project_list'),
     path('project_list/<int:pk>/delete/', ProjectDeleteView.as_view(), name='project_delete'),
     path('project/<int:pk>/update/', ProjectUpdateView.as_view(), name='project_update'),
-    path('project_list/create/', ProjectCreateView.as_view(), name='project_create'),
-        path('projects/create/', ProjectViewSet.as_view({'get': 'list', 'post': 'create'}), name='project-list'),
-
+   
 ]

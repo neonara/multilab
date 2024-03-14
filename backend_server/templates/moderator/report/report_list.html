@@ -1,13 +1,12 @@
+<!-- stage.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avis List</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avis List</title>
+    <title>stage List</title>
+   
     <!-- Bootstrap CSS -->
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -24,42 +23,7 @@
             <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
                                                                                        class="brand-logo"><i
                     class="fas fa-anchor"></i> <span>Multi Lab</span></a></header>
-            <nav class="dashboard-nav-list"><a
-                    href="#" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> dashboard
-            </a><a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Avis Client </a>
-                    <a
-                    href="#" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Devis Client </a>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-photo-video"></i> Offre du stage </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre du stage</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des staeurs</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-users"></i> Offre d'emploi </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List d'offre d'emploi</a><a
-                            href="#" class="dashboard-nav-dropdown-item">List des candidats</a></div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                        class="fas fa-money-check-alt"></i> Multi Lab Report </a>
-                    <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                                class="dashboard-nav-dropdown-item">List des report</a>
-                                                               
-                    </div>
-                </div>
-                <div class='dashboard-nav-dropdown'><a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i
-                    class="fas fa-money-check-alt"></i> Multi Lab Projets </a>
-                <div class='dashboard-nav-dropdown-menu'><a href="#"
-                                                            class="dashboard-nav-dropdown-item">List des Projets</a>
-                                                           
-                </div>
-            </div>
-                
-              <div class="nav-item-divider"></div>
-              <a
-                        href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            <nav class="dashboard-nav-list">{% include 'moderator/companents/silderbar.html' %}
             </nav>
         </div>
         <div class='dashboard-app'>
@@ -69,25 +33,11 @@
                 </div>
                 <div class="app-header-navigation">
                     <div class="tabs">
-                        <a  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Create Stage
+                        
+                        <a  data-bs-toggle="modal" data-bs-target="#createStage">
+                           envoyer report
                         </a>
                         
-                        <a href="#" class="active">
-                            Create offre diemploi
-                        </a>
-                        <a href="#">
-                            Cards
-                        </a>
-                        <a href="#">
-                            Account
-                        </a>
-                        <a href="#">
-                            System
-                        </a>
-                        <a href="#">
-                            Business
-                        </a>
                     </div>
                 </div>
                
@@ -115,8 +65,7 @@
         
             </div></header>
             <div class='dashboard-content'>
-                <!-- Button trigger modal -->
-<!-- Button trigger modal -->
+            
 
 
 
@@ -125,80 +74,152 @@
                     <div class="app-body">
                                 <div class="app-body-main-content">
                             <section class="service-section">
-                                <h2>Report List</h2>
+                                <h2>Offres stage</h2>
                                 <div class="service-section-header">
+                                    
+                                   
                                     <div class="search-field">
                                         <i class="ph-magnifying-glass"></i>
-                                        <input type="text" placeholder="Account number">
+                                        <input type="text" placeholder="Search"id="searchInput">
+                                        <button class="flat-button" onclick="searchStage()">
+                                            Search
+                                        </button>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
                                     </div>
-                                    <div class="dropdown-field">
-                                        <select>
-                                            <option>Home</option>
-                                            <option>Work</option>
-                                        </select>
-                                        <i class="ph-caret-down"></i>
-                                    </div>
-                                    <button class="flat-button">
-                                        Search
-                                    </button>
+                                    
                                 </div>
-                                <div class="mobile-only">
-                                    <button class="flat-button">
-                                        Toggle search
-                                    </button>
-                                </div>
-                                <div class="tiles">
-{% for report in object_list %}
-<article class="tile">
-    <div class="tile-header">
-        <i class="fas fa_user"></i>
-        <h3>
-            <span>Report :</span>
-            <span>{{report.title }}</span>
-        </h3>
-    </div>
-   <div class="d-flex"> <span>voir plus</span>
-    <span data-bs-toggle="modal" data-bs-target="#ReportModal{{report.pk}}" class="icon-button">
-        <i class="ph-caret-right-bold"></i>
-    </span></div>
-        
-    
-</article>
-
+                                
+                                <div >
+                                   
+                                    <div class="table-responsive">
+                                        <div class="card-header border-0">
+                                            <h3 class="mb-0">List Report</h3>
+                                          </div>
+                                        <table class="table align-items-center table-flush">
+                                          <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col"></th>
+                                              <th scope="col">Titre report</th>
+                                              <th scope="col">Client destinée </th>
+                                              <th scope="col">Nom Entreprise </th>
+                                              <th scope="col">Created at</th>
+                                              <th scope="col">Action</th>
+                                             
+                                              <th scope="col"></th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {% for  report in reprots %}
+                                            <tr >
+                                              <td scope="row">
+                                                <div class="transfer">
+                                                    <a href="{{ report.file.url }}"> 
+                                                    <div class="transfer-logo">
+                                                      <img src="https://png.pngtree.com/element_our/20190601/ourmid/pngtree-file-download-icon-image_1344466.jpg" />
+                                                      </div></a>
+                                                   
+                                               
+                                              </td>
+                                              <td>
+                                               
+                                                    
+                                                    <dt> {{ report.title }}</dt>
+                                                   
+                                                                                         </td>
+                                              <td>
+                                                <dd>{{ report.client.last_name }} {{ report.client.first_name }}</dd>
+                                              </td>
+                                             
+                                              <td>
+                                                <span >
+                                                    <dd>{{ report.client.nom_entreprise }}</dd>
+                                                </span>
+                                              </td>
+                                              
+                                            <td>{{ report.created_at|date:"Y-m-d" }}</td>
+                                              <td>
+                                                <div class="avatar-group">
+                                                  <a  data-bs-toggle="modal" data-bs-target="#reportModal{{report.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                    <i class="fas fa-edit"></i>  </a>
+                                                    <a href="{% url 'report_update' report.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                        <i class="fas fa-edit"></i>  </a>
+                                                        <a  class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                            <i class="fas fa-edit"></i>  </a>
+                                                    {% comment %} <form method="post" action="{% url 'report_delete' avis.pk %}" style="display:inline;">
+                                                      {% csrf_token %}
+                                                    <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <i class="fas fa-trash"> </button>  
+                                                  </form>                              {% endcomment %}
+                                                  
+                                                    
+                                                </div>
+                                              </td>
+                                              
+                                              
+                                            </tr>
+                                            <div class="modal fade" id="reportModal{{report.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div  class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{{report.titre}}</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group">
+                                                                            <label><strong>Nom et Prénom :</strong></label>
+                                                                            <p>{{ report.client.last_name }} {{ report.client.first_name }}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label><strong>Email :</strong></label>
+                                                                            <p>{{ report.client.email }}</p>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label><strong>Numéro de téléphone :</strong></label>
+                                                                            <p>{{ creport.client.numero_telephone }}</p>
+                                                                        </div>
+                                                                       
+                                                                      <div class="form-group">
+                                                                        <label><strong>Report  :</strong></label>
+                                                                        <a href="{{ report.file.url }}">{{ report.file.name }}</a>
+                                                                    </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        
+                                                                        <div class="form-group">
+                                                                            <label><strong>Nom Entreprise  :</strong></label>
+                                                                            <p> {{ report.client.nom_entreprise }}</p>
+                                                                        </div>
+                                                                     
+                                                                        
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                        </div>
+                                                            
+                                                            
+                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            {% comment %} <form method="post" action="{% url 'stage_delete' stage.pk %}" style="display:inline;">
+                                                                {% csrf_token %}
+                                                                <button type="submit">Delete</button>
+                                                            </form> {% endcomment %}
+                                                            {% comment %} <a href="{% url 'stage_update' stage.pk %}" class="btn btn-primary">Modifié</a> {% endcomment %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                          </tbody>
+                                        </table>
+                                      </div>
 
 <!-- Modal -->
-<div class="modal fade" id="ReportModal{{report.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{report.titre}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">cleint </h1>
-                <ul class="list-style-type-circle">
-                   <li><span>Nom et Prénom : {{ report.client.last_name }} {{ report.client.first_name }} </span></li> 
-                   <li><span>Nom Entreprise : {{ report.client.nom_entreprise }}</span></li> 
-                   <li><span> Report : <a href="{{ report.file.url }}">{{ report.file.name }}</a></span></li>
-                   <li><span>Type du contrat : {{ report.created_at}}</span></li>
 
 
-                </ul>
-                
-                
-                
-            </div>
-            <div class="modal-footer">
-                <form method="post" action="{% url 'report_delete' report.pk %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit">Delete</button>
-                </form>
-                <a href="{% url 'report_update' report.pk %}" class="btn btn-primary">Modifié</a>
-            </div>
-        </div>
-    </div>
-</div>
-{% endfor %}
 
                                    <!-- Button trigger modal -->
 
@@ -208,122 +229,83 @@
                             </section>
                             
                         </div>
-                        <div class="app-body-sidebar">
-                            <section class="payment-section">
-                                <h2>List des Clients</h2>
-                                <div class="payment-section-header">
-                                    <p> Consulter la liste des stagiaires</p>
-                                    <div>
-                                        <button class="card-button mastercard">
-                                            <svg width="2001" height="1237" viewBox="0 0 2001 1237" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <g id="a624784f2834e21c94a1c0c9a58bbbaa">
-                                                    <path id="7869b07bea546aa59a5ee138adbcfd5a" d="M1270.57 1104.15H729.71V132.15H1270.58L1270.57 1104.15Z" fill="currentColor"></path>
-                                                    <path id="b54e3ab4d7044a9f288082bc6b864ae6" d="M764 618.17C764 421 856.32 245.36 1000.08 132.17C891.261 46.3647 756.669 -0.204758 618.09 9.6031e-07C276.72 9.6031e-07 0 276.76 0 618.17C0 959.58 276.72 1236.34 618.09 1236.34C756.672 1236.55 891.268 1189.98 1000.09 1104.17C856.34 991 764 815.35 764 618.17Z" fill="currentColor"></path>
-                                                    <path id="67f94b4d1b83252a6619ed6e0cc0a3a1" d="M2000.25 618.17C2000.25 959.58 1723.53 1236.34 1382.16 1236.34C1243.56 1236.54 1108.95 1189.97 1000.11 1104.17C1143.91 990.98 1236.23 815.35 1236.23 618.17C1236.23 420.99 1143.91 245.36 1000.11 132.17C1108.95 46.3673 1243.56 -0.201169 1382.15 -2.24915e-05C1723.52 -2.24915e-05 2000.24 276.76 2000.24 618.17" fill="currentColor"></path>
-                                                </g>
-                                            </svg>
-                                        </button>
-                                        
-                                    </div>
-                                </div>
-                                <div class="payments">
-  <!-- Include the client_reports.html content here -->
-  
-                                  
-                                
-                                    
-                                </div>
-                               
-                            </section>
-                        </div>
+                        
                     </div>
-                    <section class="transfer-section">
-                      <div class="transfer-section-header">
-                        <h2>Report List</h2>
-                        <div class="filter-options">
-                          <p>Filter selected: more than 100 $</p>
-                          <button class="icon-button">
-                            <i class="ph-funnel"></i>
-                          </button>
-                          <button class="icon-button">
-                            <i class="ph-plus"></i>
-                          </button>
-                        </div>
-                      </div>
-                      <div class="transfers">
-                        {% for report in object_list %}
-                        
-                        <div class="transfer">
-                          <a href="{{ report.file.url }}"> 
-                          <div class="transfer-logo">
-                            <img src="https://assets.codepen.io/285131/apple.svg" />
-                            </div></a>
-                          <dl class="transfer-details">
-                            <div>
-                              <dt>Report</dt>
-                              <dd> {{ report.title }}</dd>
-                            </div>
-                            <div>
-                              <dt>Nom et Prénom</dt>
-                              <dd>{{ report.client.last_name }} {{ report.client.first_name }}</dd>
-                            </div>
-                            <div>
-                              <dt>Nom Entreprise</dt>
-                              <dd>{{ report.client.nom_entreprise }}</dd>
-                            </div>
-                          </dl>
-                          <div class="transfer-number">
-                            <button data-bs-toggle="modal" data-bs-target="#ReportupdateModal{{report.pk}}" class="icon-button" class="icon-button">
-                              <i class="ph-caret-right-bold"></i>
-                          </button>
-                          <div class="modal fade" id="ReportupdateModal{{report.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel"> {{ report.title }}</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <form method="post">
-                                        {% csrf_token %}
-                                        <div class="row">
-                                          <div class="col-sm-3">
-                                            <h6 class="mb-0">report</h6>
-                                          </div>
-                                          <div class="col-sm-9 text-secondary">
-                                            <input type="file" class="form-control" id="file" name="file" value="{{ report.file}}">
-                                          </div>
-                                        </div>
-                                        <button type="submit">Save</button>
-                                      </form>
-                                        
-                                        
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                          <button class="icon-button">
-                            <i class="ph-caret-right-bold"></i>
-                        </button>
-                          </div>
-                        </div>
-                        
-                        {% endfor %}
-                        
-                      </div>
-                    </section>
-                </div>  
-                                 
+                </div>                   
             </div>
 
             
         </div>
-        
     </div>
-    
-   
+    <div class="modal fade" id="createStage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Create report</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {% comment %} <div class="mb-3 row">
+                        <label for="titre" class="col-sm-3 col-form-label">Nom du Stage</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="titre" name="titre">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="departement" class="col-sm-3 col-form-label">Département</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="departement" name="departement">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="description" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="type_stage" class="col-sm-3 col-form-label">Type de stage</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="type_stage" name="type_stage">
+                                <option value="">Select Type de stage</option>
+                                <option value="1">PFE</option>
+                                <option value="2">Stage Mémoire</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="mb-3 row">
+                        <label for="status" class="col-sm-3 col-form-label">Status Stage</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="status" name="status">
+                                <option value="">Select Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr> 
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>{% endcomment %}
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}  <!-- Render the form fields -->
+                    <button type="submit">Submit</button>
+                </form>
+          </div> 
+        
+            </div>
+            
+          </div>
+        </div>
+      </div>
    <!-- Bootstrap Bundle with Popper -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
    <!-- jQuery -->
@@ -331,8 +313,46 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    <!-- Custom JS -->
    <script src="{% static './js/script_dashboard.js' %}"></script>
-            
+   <script>
+    function searchStage() {
+        var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementsByClassName("table")[0];
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td1 = tr[i].getElementsByTagName("td")[1]; // Get the first column (title)
+            td2 = tr[i].getElementsByTagName("td")[2];
+            td3 = tr[i].getElementsByTagName("td")[3]; // Get the first column (Nom et Prénom)
+            td4 = tr[i].getElementsByTagName("td")[4]; // Get the second column (created_at)
+            if (td1 && td2 && td3 &&td4)  {
+                txtValue1 = td1.textContent || td1.innerText;
+                txtValue2 = td2.textContent || td2.innerText;
+                txtValue3 = td3.textContent || td3.innerText;
+                txtValue4 = td4.textContent || td4.innerText;
+                if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1|| txtValue4.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    
    
+    
+  
+  function resetSearch() {
+      var input = document.getElementById("searchInput");
+      input.value = "";
+      var rows = document.querySelectorAll('.table tbody tr');
+      rows.forEach(function(row) {
+          row.style.display = 'table-row';
+      });
+  }
+  
+</script>              
+
     
 </body>
 </html>

@@ -19,7 +19,7 @@
     </a>
     <div class='dashboard-nav-dropdown-menu'>
         <a href="{% url 'job_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/job_list/' %}active{% endif %}">List d'offre d'emploi</a>
-        <a href="#" class="dashboard-nav-dropdown-item">List des candidats</a>
+        <a href="{% url 'condidat_list' %}" class="dashboard-nav-dropdown-item">List des candidats</a>
     </div>
 </div>
 
