@@ -34,8 +34,8 @@
                 <div class="app-header-navigation">
                     <div class="tabs">
                         
-                        <a  data-bs-toggle="modal" data-bs-target="#createStage">
-                            Create Stage
+                        <a  data-bs-toggle="modal" data-bs-target="#createProject">
+                          Create Project
                         </a>
                         
                     </div>
@@ -107,20 +107,19 @@
                                         <table class="table align-items-center table-flush">
                                           <thead class="thead-light">
                                             <tr>
-                                              <th scope="col">Nom du Stage</th>
-                                              <th scope="col">Département</th>
-                                              <th scope="col">Type du stage </th>
-                                              
-                                              <th scope="col">Status</th>
-                                              <th scope="col">Created at</th>
-                                              <th scope="col">Action</th>
+                                              <th scope="col">Image</th>
+                                               <th scope="col">Titre Projet</th>
+                                               <th scope="col">Description</th>
+                                               <th scope="col">Status</th>
+                                               <th scope="col">Created at</th>
+                                               <th scope="col">Action</th>
                                              
                                               <th scope="col"></th>
                                             </tr>
                                           </thead>
                                           <tbody>
-                                            {% for stage in stages %}
-                                            <tr class="stage-row" data-status="{{ stage.status }}" data-type_stage="{{ stage.type_stage }}">
+                                            {% for project in projects %}
+                                            <tr class="project-row" data-status="{{ project.status }}" >
                                               <td scope="row">
                                                 
                                                   <div class="media-body ">
