@@ -28,4 +28,7 @@ class AvisUpdateView(UpdateView):
 class AvisDeleteView(DeleteView):
     model = Avis
     template_name = './moderator/avisClient.html '  # Name of your template
-    success_url = reverse_lazy('avis_list') 
+    success_url = reverse_lazy('avis_list')
+    def form_valid(self, form):
+        messages.success(self.request, 'Avis a été supprimeé avec succès.')
+        return super().form_valid(form)

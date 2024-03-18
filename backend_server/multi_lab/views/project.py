@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib import messages
 from django.db.models import Q
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
@@ -35,13 +36,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
         return Response("Deleted Successfully", status=status.HTTP_204_NO_CONTENT)
 class ProjectCreateView(CreateView):
     model = Project
-    template_name = 'moderator/project/project_list.html'  # Name of your template for the form
+    template_name = 'moderator/project/project_form.html'  # Name of your template for the form
     fields = '__all__'  # Fields to include in the form
     success_url = reverse_lazy('project_list')
     
     def form_invalid(self, form):
         print(form.errors)
         return super().form_invalid(form)
+    def form_valid(self, form):
+        messages.success(self.request, 'Projet a été ajouteé avec succès.')
+        return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -59,7 +63,11 @@ class ProjectUpdateView(UpdateView):
     fields = '__all__'
     success_url = reverse_lazy('project_list')
     def form_valid(self, form):
-        print("Form is valid.")  # Print a message when the form is valid
+        messages.success(self.request, 'Projet a été modifié avec succès.')
+        instance = form.save(commit=False)
+        if 'image' in form.cleaned_data:  # Check if image field is present in form data
+            instance.image = form.cleaned_data['image']  # Update image field
+        instance.save()
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -69,4 +77,7 @@ class ProjectUpdateView(UpdateView):
 class ProjectDeleteView(DeleteView):
     model = Project
     template_name = 'moderator/project/project_form.html'  # Name of your template
-    success_url = reverse_lazy('project_list') 
+    success_url = reverse_lazy('project_list')
+    def form_valid(self, form):
+        messages.success(self.request, 'Projet a été supprimeé avec succès.')
+        return super().form_valid(form)

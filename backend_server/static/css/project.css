@@ -18,16 +18,7 @@
     --c-text-tertiary: var(--c-gray-500);
 }
 
- body {
-	 line-height: 1.5;
-	 min-height: 100vh;
-	 font-family: "Be Vietnam Pro", sans-serif;
-	 background-color: var(--c-gray-200);
-	 color: var(--c-text-primary);
-	 display: flex;
-	
-	 justify-content: center;
-}
+
  *, *:before, *:after {
 	 box-sizing: border-box;
 }
@@ -79,7 +70,7 @@
  .app-header-actions {
 	 display: flex;
 	 align-items: center;
-	 margin-left: 538px;
+     margin-left: 589px;
 }
  @media (max-width: 1200px) {
 	 .app-header-actions {
@@ -432,67 +423,7 @@
 	}
 }
 
- .payments {
-	 display: flex;
-	 flex-direction: column;
-	 margin-top: 1.5rem;
-}
- .payment {
-	 display: flex;
-	 align-items: center;
-}
- .payment + * {
-	 margin-top: 1rem;
-}
- .card {
-	 width: 125px;
-	 padding: 0.375rem;
-	 aspect-ratio: 1.5;
-	 flex-shrink: 0;
-	 border-radius: 6px;
-	 color: var(--c-gray-800);
-	 display: flex;
-	 flex-direction: column;
-	 justify-content: space-between;
-	 font-size: 0.75rem;
-	 font-weight: 600;
-}
- .card.green {
-	 background-color: var(--c-green-500);
-}
- .card.olive {
-	 background-color: var(--c-olive-500);
-}
- .card.gray {
-	 background-color: var(--c-gray-300);
-}
- .card span:last-child {
-	 align-self: flex-end;
-}
- .payment-details {
-	 display: flex;
-	 width: 100%;
-	 flex-direction: column;
-	 margin-left: 1.5rem;
-}
- .payment-details h3 {
-	 font-size: 1rem;
-	 color: var(--c-text-tertiary);
-}
- .payment-details div {
-	 margin-top: 0.75rem;
-	 padding-top: 0.75rem;
-	 padding-bottom: 0.75rem;
-	 border-top: 1px solid var(--c-gray-600);
-	 border-bottom: 1px solid var(--c-gray-600);
-	 display: flex;
-	 align-items: center;
-	 justify-content: space-between;
-	 flex: 1;
-}
- .payment-details div span {
-	 font-size: 1.5rem;
-}
+
  .filter-options {
 	 margin-left: 1.25rem;
 	 padding-left: 1.25rem;
