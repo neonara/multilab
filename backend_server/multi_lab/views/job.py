@@ -7,6 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from ..models.offres import Offre
+from django.contrib import messages
 class Offre_descriptionViewSet(viewsets.ModelViewSet):
     queryset = Offre_description.objects.all()
     serializer_class = Offre_descriptionSerializer
@@ -43,7 +44,7 @@ class Offre_descriptionUpdateView(UpdateView):
     fields = '__all__'
     success_url = reverse_lazy('job_list')
     def form_valid(self, form):
-        print("Form is valid.")  # Print a message when the form is valid
+        messages.success(self.request, 'Offre d emploi a été supprimeé avec succès.')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -53,4 +54,7 @@ class Offre_descriptionUpdateView(UpdateView):
 class Offre_descriptionDeleteView(DeleteView):
     model = Offre_description
     template_name = 'moderator/employee/employeeList.html'  # Name of your template
-    success_url = reverse_lazy('job_list') 
+    success_url = reverse_lazy('job_list')
+    def form_valid(self, form):
+        messages.success(self.request, 'Offre d emploi a été supprimeé avec succès.')
+        return super().form_valid(form)

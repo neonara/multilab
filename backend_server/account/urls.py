@@ -19,10 +19,10 @@ urlpatterns = [
     path('employee/', employee, name='employee'),
     path('logout/', LogoutView.as_view(next_page='login_view'),name='logout'),
     #report
-    path('report_list/', ClientReportListView.as_view(), name='report_list'),
+     path('report_list/', ClientReportListView.as_view(), name='report_list'),
    
     # path('report_list/<int:pk>/delete/', ReportDeleteView.as_view(), name='report_delete'),
-    # path('report/<int:pk>/update/', ReportUpdateView.as_view(), name='report_update'),
-    # path('report_list/create/', ReportCreateView.as_view(), name='report_create'),
+     path('report/<int:pk>/update/', ReportUpdateView.as_view(), name='report_update'),
+    path('report_list/client/', ReportCreateView.as_view(), name='report_client'),
     # path('report_list/', ClientReportListView.as_view(), name='report_list'),
 ]

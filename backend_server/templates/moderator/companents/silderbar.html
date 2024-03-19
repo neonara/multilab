@@ -29,6 +29,7 @@
     </a>
     <div class='dashboard-nav-dropdown-menu'>
         <a href="{% url 'report_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/report_list/' %}active{% endif %}">List des report</a>
+        <a href="{% url 'report_client' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/report_list/' %}active{% endif %}">List des client</a>
     </div>
 </div>
 

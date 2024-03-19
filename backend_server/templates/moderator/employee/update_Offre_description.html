@@ -34,7 +34,7 @@
             <header class='dashboard-toolbar'><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a></header>
             <div class='dashboard-content'>
                 <div class="container">
-                    <h1 class="mt-5">Update Offre d'emploi</h1>
+                    <h1 class="mt-5">Mettre à jour d'offre d'emploi</h1>
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
                             <form method="post" class="mt-3">
@@ -82,18 +82,22 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                            {{form.contrat}}
-                          </div></div>
+                          </div>
+                          <hr>
+                        </div>
                           <div class="row">
                             <div class="col-sm-3">
                               <h6 class="mb-0">Status</h6>
                             </div><div class="col-sm-9 text-secondary">
                            {{form.status}}
-                          </div></div>
+                          </div><hr>
+                        </div>
                                 
                                 
                              
                               
-                                <button type="submit" class="btn btn-primary">Confirm modification</button>
+                                <button type="submit" class="btn btn-primary">Confirm la modification</button>
+                                <a href="{% url 'job_list'  %}" class="btn btn-secondary btn-cancel">Annuler</a>
                             </form>
                         </div>
                     </div>
