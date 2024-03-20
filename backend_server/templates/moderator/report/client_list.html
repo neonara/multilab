@@ -9,6 +9,7 @@
     
     <title>client List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
     <!-- Font Awesome CDN link -->
@@ -24,6 +25,8 @@
     <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
     <link rel="stylesheet" href="{% static './css/avisclient.css' %}">
     <link rel="stylesheet" href="{% static './css/project.css' %}">
+    <link rel="stylesheet" href="{% static './css/client.css' %}">
+
 </head>
 <body>
     <div class='dashboard'>
@@ -83,7 +86,7 @@
                             <th scope="col">Nom et Prénom</th>
                             <th scope="col">Nom Entreprise</th>
                             <th scope="col">Email </th>
-                            <th scope="col">Created at</th>
+                           
                             <th scope="col">Action</th>
                            
                             <th scope="col"></th>
@@ -95,44 +98,25 @@
                             <td scope="row">
                               
                                 <div class="media-body ">
-                                  <span class="mb-0 text-sm">{{ avis.fullname }}</span>
+                                  <span class="mb-0 text-sm">{{ client.last_name }} {{ client.first_name }}</span>
                                 </div>
                              
                             </td>
-                            <td class=" avis-nom_entreprise" >
-                              {{ avis.nom_entreprise }}
-                            </td>
-                            <td>{{ avis.email }}</td>
-                            <td>
-                              <span >
-                                {{avis.etat}}
-                              </span>
-                            </td>
                             <td >
-                              {% if avis.status == 'pending' %}
-                                  <span class="badge badge-dot mr-3 justify-content-center ">
-                                      <i class="bg-warning"></i> Pending
-                                  </span>
-                              {% elif avis.status == 'approved' %}
-                                  <span class="badge badge-dot mr-3">
-                                      <i class="bg-success"></i> Approved
-                                  </span>
-                              {% endif %}
-                          </td>
-                          <td>{{ avis.created_at|date:"Y-m-d" }}</td>
+                              {{ client.nom_entreprise }}
+                            </td>
+                            <td>{{ client.email }}</td>
+                            
+                           
+                         
                             <td>
                               <div class="avatar-group">
-                                <a href="{% url 'avis_update' avis.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop{{client.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                                   </svg>   </a>
-                                  <form method="post" action="{% url 'avis_delete' avis.pk %}" style="display:inline;">
-                                    {% csrf_token %}
-                                  <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
-                                    <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
-                                  </svg> </button>  
-                                </form>                             
+                                                              
                                 
                                   
                               </div>
@@ -140,7 +124,41 @@
                             
                             
                           </tr>
-                          
+                          <div class="modal fade" id="staticBackdrop{{ client.pk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Fiche Client</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container mb-3">
+                                            <input type="text" id="searchInputModal{{ client.pk }}" class="form-control" placeholder="Search" onkeyup="searchReportsModal('{{ client.pk }}')">
+                                        </div>
+                                        <div class="container" id="reportsContainer{{ client.pk }}">
+                                            {% for report in reports %}
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">{{ report.title }}</h5>
+                                                            <p class="card-text"> <small>{{ report.created_at|date:"Y-m-d" }}</small></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a href="{{ report.file.url }}" class="btn btn-primary w-20"><i class="bi bi-card-heading"></i></a>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
                           {% endfor %}
                         </tbody>
                       </table>
@@ -152,6 +170,7 @@
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -168,7 +187,7 @@
             td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column (Nom et Prénom)
             td2 = tr[i].getElementsByTagName("td")[1];
            
-            td3 = tr[i].getElementsByTagName("td")[5]; // Get the second column (created_at)
+            td3 = tr[i].getElementsByTagName("td")[2]; // Get the second column (created_at)
             if (td1 && td2 && td3 )  {
                 txtValue1 = td1.textContent || td1.innerText;
                 txtValue2 = td2.textContent || td2.innerText;
@@ -222,7 +241,26 @@
           }
       }
   }
-    
+  function searchReportsModal(clientId) {
+    // Get the value from the search input field
+    var searchText = document.getElementById("searchInputModal" + clientId).value.toLowerCase();
+
+    // Get all report cards within the specified client modal
+    var reportCards = document.querySelectorAll("#reportsContainer" + clientId + " .row");
+
+    // Loop through each report card to check if it matches the search text
+    reportCards.forEach(function(card) {
+        var title = card.querySelector(".card-title").innerText.toLowerCase();
+        var createdAt = card.querySelector(".card-text small").innerText.toLowerCase();
+
+        // Show the card if it matches the search text, otherwise hide it
+        if (title.includes(searchText) || createdAt.includes(searchText)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
   </script>        
 
     

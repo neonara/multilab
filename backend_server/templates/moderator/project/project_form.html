@@ -170,20 +170,22 @@
                                   </button>
                                   
                                   <!-- Modal -->
-                                  <div class="modal fade" id="Description{{project.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal fade" id="Description{{ project.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body modal-dialog-scrollable" style="max-height: 400px; overflow-y: auto;">
+                                                <p>Description:<br>{{project.description}}</p>
+                                            </div>
                                         </div>
-                                        <div class="modal-body modal-dialog modal-dialog-scrollable">
-                                            Description: {{project.description}}
-                                        </div>
-                                        
-                                      </div>
                                     </div>
-                                  </div>
+                                </div>
+                                
+                                
+                                
                             </td>
                             
                             <td >
