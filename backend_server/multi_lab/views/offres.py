@@ -11,6 +11,7 @@ class OffresViewSet(viewsets.ModelViewSet):
 class  CondidatListView(ListView):
     model = Offre
     template_name = 'moderator/employee/listcondidat.html'
+    queryset = Offre.objects.order_by('-created_at')
     def get_queryset(self):
         queryset = super().get_queryset()
         query = self.request.GET.get('q')

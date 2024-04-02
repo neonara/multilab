@@ -12,6 +12,7 @@ class DeviViewSet(viewsets.ModelViewSet):
 class DeviListView(ListView):
     model = Devi
     template_name = 'moderator/devisCleint.html'
+    queryset = Devi.objects.order_by('-created_at')
     
 
   # Name of your URL pattern for listing Devi

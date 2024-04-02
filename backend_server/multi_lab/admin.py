@@ -38,9 +38,9 @@ class ProjectConfig(admin.ModelAdmin):
     
 class Offre_descriptionConfig(admin.ModelAdmin):
      
-    list_display=['titre','departement','temps','contrat','created_at']
+    list_display=['titre','departement','experience','temps','contrat','created_at']
     list_filter=['titre','contrat']
-    search_fields=('titre',) 
+    search_fields=('titre','departement') 
 class OffreStageConfig(admin.ModelAdmin):
      
     list_display=['titre','departement','type_stage','created_at']

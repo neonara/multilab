@@ -34,11 +34,13 @@ class ProjectViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         instance.delete()
         return Response("Deleted Successfully", status=status.HTTP_204_NO_CONTENT)
+# django
 class ProjectCreateView(CreateView):
     model = Project
     template_name = 'moderator/project/project_form.html'  # Name of your template for the form
     fields = '__all__'  # Fields to include in the form
     success_url = reverse_lazy('project_list')
+
     
     def form_invalid(self, form):
         print(form.errors)
@@ -49,7 +51,8 @@ class ProjectCreateView(CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['projects'] = Project.objects.all()  # Retrieve all projects
+        queryset = Project.objects.order_by('-created_at')
+        context['projects'] = queryset  # Retrieve all projects
         return context
     
     

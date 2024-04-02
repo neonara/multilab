@@ -30,7 +30,13 @@
         <div class='dashboard-app'>
             {% include 'moderator/companents/navbar.html' %}
             <div class='dashboard-content'>
-            
+                {% if messages %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
 
 
 
@@ -94,7 +100,7 @@
                                         <table class="table align-items-center table-flush">
                                           <thead class="thead-light">
                                             <tr>
-                                              <th scope="col">Nom du Stage</th>
+                                              <th scope="col">Nom du Poste</th>
                                               <th scope="col">Département</th>
                                               <th scope="col">Type du stage </th>
                                               
@@ -184,7 +190,7 @@
                                                         <div class="modal-footer">
                                                             <form method="post" action="{% url 'stage_delete' stage.pk %}" style="display:inline;">
                                                                 {% csrf_token %}
-                                                                <button type="submit">Supprimer</button>
+                                                                <button type="submit" class="btn btn-danger">Supprimer</button>
                                                             </form>
                                                             <a href="{% url 'stage_update' stage.pk %}" class="btn btn-primary">Modifié</a>
                                                         </div>
@@ -228,7 +234,7 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="mb-3 row">
-                        <label for="titre" class="col-sm-3 col-form-label">Nom du Stage</label>
+                        <label for="titre" class="col-sm-3 col-form-label">Nom du Poste</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="titre" name="titre">
                         </div>

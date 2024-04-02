@@ -25,7 +25,10 @@ class Offre_description(models.Model):
     temps= models.CharField(max_length=10, choices=CHOICES)
     contrat= models.CharField(max_length=10, choices=CHOICESContrat)
     status = models.CharField('Status', max_length=10, choices=STATUS_CHOICES, default='pending')
+    experience=models.IntegerField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.titre)
     
     class Meta:
         verbose_name_plural="List d'offre d'emploi"

@@ -11,14 +11,22 @@ from django.contrib import messages
 class Offre_descriptionViewSet(viewsets.ModelViewSet):
     queryset = Offre_description.objects.all()
     serializer_class = Offre_descriptionSerializer
+# django
 class Offre_descriptionCreateView(CreateView):
     model = Offre_description
     template_name = 'moderator/employee/employeeList.html'  # Name of your template for the form
     fields = '__all__'  # Fields to include in the form
     success_url = reverse_lazy('job_list')
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Offre d emploi a été ajouter avec succès.')
+        return super().form_valid(form)
+
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['posts'] = Offre_description.objects.all()  # Retrieve all OffreStage objects
+        queryset = Offre_description.objects.order_by('-created_at')
+        context['posts'] = queryset  # Retrieve all OffreStage objects
         context['condidats'] = Offre.objects.all()  # Retrieve all Stagieur objects
         return context
     
@@ -26,17 +34,7 @@ class Offre_descriptionCreateView(CreateView):
 class Offre_descriptionDetailView(DetailView):
     model = Offre_description
     template_name = 'moderator/employee/employeeList.html'
-class  Offre_descriptionListView(ListView):
-    model = Offre_description
-    template_name = 'moderator/employee/employeeList.html'
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        query = self.request.GET.get('q')
-        if query:
-            queryset = queryset.filter(
-                Q(fullname__icontains=query)
-            )
-        return queryset  
+
 
 class Offre_descriptionUpdateView(UpdateView):
     model = Offre_description
@@ -44,7 +42,7 @@ class Offre_descriptionUpdateView(UpdateView):
     fields = '__all__'
     success_url = reverse_lazy('job_list')
     def form_valid(self, form):
-        messages.success(self.request, 'Offre d emploi a été supprimeé avec succès.')
+        messages.success(self.request, 'Offre d emploi a été modifier avec succès.')
         return super().form_valid(form)
 
     def form_invalid(self, form):

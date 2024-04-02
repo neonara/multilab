@@ -14,7 +14,11 @@ class Stagieur(models.Model):
     email = models.EmailField(max_length=254)
     cvfile = models.FileField(upload_to='uploads/')
     created_at = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.fullname
+   
+    
+
     class Meta:
         verbose_name_plural="List du stageurs "

@@ -61,7 +61,13 @@
             </div></header>
             <div class='dashboard-content card-header'>
                 
-                
+                {% if messages %}
+          <div class="alert alert-success" role="alert">
+              {% for message in messages %}
+                  {{ message }}
+              {% endfor %}
+          </div>
+      {% endif %}
                 <div class=" border-0 d-flex ">
                         
                     <button  type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#createStage">

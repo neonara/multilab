@@ -24,9 +24,11 @@
         </div>
     </div>
     <div class="app-header-mobile">
+        <form action="/logout/" method="post">
+            {% csrf_token %}
         <button class="icon-button large">
-            <i class="fas fa-list"></i>
-        </button>
+           <a href="{% url 'logout' %}"> <i class="fas fa-list"></i></a>
+        </button></form>
     </div>
 
 </div></header>

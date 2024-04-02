@@ -6,21 +6,28 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.contrib import messages
 from ..models.stageurs import Stagieur
 class OffreStageViewSet(viewsets.ModelViewSet):
     queryset = OffreStage.objects.all()
     serializer_class = OffreStageSerializer
-    
+# django 
 class OffreStageCreateView(CreateView):
     model = OffreStage
     template_name = 'moderator/stage/stageList.html'  # Name of your template for the form
     fields = '__all__'  # Fields to include in the form
     success_url = reverse_lazy('stage_list')
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['stages'] = OffreStage.objects.all()  # Retrieve all OffreStage objects
+        queryset = OffreStage.objects.order_by('-created_at')
+        context['stages'] = queryset  # Retrieve all OffreStage objects
         context['condidats'] = Stagieur.objects.all()  # Retrieve all Stagieur objects
         return context
+    
+    def form_valid(self, form):
+        messages.success(self.request, 'Offres du Stage a été ajouter avec succès.')
+        return super().form_valid(form)
     
 
 
@@ -34,6 +41,9 @@ class OffreStageUpdateView(UpdateView):
     def form_valid(self, form):
         print("Form is valid.")  # Print a message when the form is valid
         return super().form_valid(form)
+    def form_valid(self, form):
+        messages.success(self.request, 'Offres du Stag a été modifié avec succès.')
+        return super().form_valid(form)
 
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
@@ -42,4 +52,7 @@ class OffreStageUpdateView(UpdateView):
 class OffreStageDeleteView(DeleteView):
     model = OffreStage
     template_name = 'moderator/stage/stageList.html'  # Name of your template
-    success_url = reverse_lazy('stage_list') 
+    success_url = reverse_lazy('stage_list')
+    def form_valid(self, form):
+        messages.success(self.request, 'Offres du Stag a été supprimer avec succès.')
+        return super().form_valid(form)

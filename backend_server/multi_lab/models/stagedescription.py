@@ -13,13 +13,14 @@ class OffreStage(models.Model):
     )
     
 
-    titre = models.CharField('Nom du Stage',max_length=100)
+    titre = models.CharField('Nom du Poste',max_length=100)
     departement = models.CharField('département',max_length=100)
     description=models.CharField(max_length=250)
     type_stage = models.CharField(max_length=10, choices=CHOICES)
     status = models.CharField('Status', max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
-    # is_public = models.BooleanField(default=False)
+    def __str__(self):
+        return str(self.titre)
    
     class Meta:
         verbose_name_plural="List d'offre du stage"

@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login,logout
 # Create your views here.
 from account.model.report import Report
 from ..models import User
+from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from ..serializers import LoginFormSerializer
@@ -81,3 +82,7 @@ class LoginView(APIView):
         else:
             return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return JsonResponse({'message': 'Logout successful'}, status=status.HTTP_200_OK)

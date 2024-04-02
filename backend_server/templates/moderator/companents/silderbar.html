@@ -43,5 +43,7 @@
 </div>
 
 <div class="nav-item-divider"></div>
-<a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+<form action="/logout/" method="post">
+    {% csrf_token %}
+<button type="submit" class="dashboard-nav-item border-0 bg-transparent text-white "><i class="fas fa-sign-out-alt"></i> Logout </button></form>
 {% endblock %}

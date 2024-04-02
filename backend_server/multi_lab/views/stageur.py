@@ -12,4 +12,5 @@ class StagieurViewSet(viewsets.ModelViewSet):
 class StagieurView(ListView):
     model = Stagieur
     template_name = 'moderator/stage/stageursList.html'
+    queryset = Stagieur.objects.order_by('-created_at')
     

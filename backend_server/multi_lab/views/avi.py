@@ -13,6 +13,7 @@ class AvisViewSet(viewsets.ModelViewSet):
 class AvisListView(ListView):
     model = Avis
     template_name = 'moderator/avisClient.html'
+    queryset = Avis.objects.order_by('-created_at')
     
 
   # Name of your URL pattern for listing avis
@@ -21,6 +22,7 @@ class AvisUpdateView(UpdateView):
     model = Avis
     template_name = './moderator/update_avis.html'  # Name of your template
     fields = '__all__'
+    
     success_url = reverse_lazy('avis_list')
     def form_valid(self, form):
         messages.success(self.request, 'Avis a été modifié avec succès.')

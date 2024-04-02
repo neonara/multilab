@@ -15,6 +15,8 @@ class Offre(models.Model):
     cvfile = models.FileField('CV upload',upload_to='uploads/')
     transport= models.CharField('Motorisé?',max_length=10, choices=CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.titre)
    
     class Meta:
         verbose_name_plural="List candidat"
