@@ -1,5 +1,5 @@
 {% block content %}
-<a href="#" class="dashboard-nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+<a href="{% url 'employee' %}" class="dashboard-nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
 <a href="{% url 'avis_list' %}" class="dashboard-nav-item {% if request.path == '/path/to/avis_list/' %}active{% endif %}"><i class="fas fa-file-upload"></i> Avis Client </a>
 <a href="{% url 'devi_list' %}" class="dashboard-nav-item {% if request.path == '/path/to/devi_list/' %}active{% endif %}"><i class="fas fa-file-upload"></i> Devis Client </a>
 

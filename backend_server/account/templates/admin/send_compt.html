@@ -1,10 +1,22 @@
-{%extends 'base.html'%}
 
+{%extends 'base.html'%}
+{% load static %}
 {%block content%}
-<div class="center">
-	<form method="post" class="card">
+
+
+<div class="wrapper fadeInDown">
+	<div id="formContent">
+	  <!-- Tabs Titles -->
+  
+	  <!-- Icon -->
+	  <div class="fadeIn first">
+		<img src="{% static 'images/logo VF.png' %}"  id="icon" alt="MultiLab" />
+		<h4 class="text-center">Envoyer un commentaire au client</h4>
+	  </div>
+  
+	  <!-- Login Form -->
+	  <form method="post">
 		{% csrf_token %}
-	    <h2 class="text-center">envoyer client compte</h2>
 		{% for field in form %}
 	    		{{ field.label_tag }} 
 	        	{{ field }}
@@ -12,10 +24,13 @@
 	        		<small>{{ field.errors|striptags  }}</small> 
 	        	{% endif %}
 		{% endfor %}
-		<div class="form-buttons">
-			<input type="submit" value="Send" class="btn btn-primary">
-			<a href="#"  class="btn btn-outline">Cancel</a>
-		</div>
-	</form>
+		
+		<input type="submit" class="fadeIn fourth" value="Confirmer">
+	  </form>
+  
+	  <!-- Remind Passowrd -->
+	 
+  
 	</div>
+  </div>
 {%endblock content%}
