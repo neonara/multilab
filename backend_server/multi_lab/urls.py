@@ -15,6 +15,8 @@ router.register(r'project', ProjectViewSet)
 # 
 router.register(r'devi', DeviViewSet)
 # 
+
+# 
 router.register(r'offre', OffresViewSet)
 # 
 router.register(r'stageur', StagieurViewSet)

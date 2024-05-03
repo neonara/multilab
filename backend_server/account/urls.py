@@ -11,7 +11,7 @@ router.register(r'report', ReportViewSet, basename='report')
 urlpatterns = [
      path('api/', include(router.urls)),
       path('api/login/', LoginView.as_view()),
-    path('/test', index, name= 'index'),
+    # path('/test', index, name= 'index'),
     path('', login_view, name='login_view'),
     path('register/', register, name='register'),
     # path('adminpage/', admin, name='adminpage'),

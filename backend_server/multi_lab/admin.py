@@ -3,7 +3,7 @@ from django.utils.html import format_html
 # Register your models here.
 from.models.avis import Avis
 
-from.models.devis import Devi
+from.models.devis import *
 from.models.offres import Offre
 from.models.stageurs import Stagieur
 from.models.jobdescription import Offre_description
@@ -55,6 +55,7 @@ class StagieurConfig(admin.ModelAdmin):
 admin.site.register(Avis,AvisConfig)
 
 admin.site.register(Devi,DeviConfig)
+
 admin.site.register(Offre_description,Offre_descriptionConfig)
 admin.site.register(Offre,OffreConfig)
 admin.site.register(OffreStage,OffreStageConfig)

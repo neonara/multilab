@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from.jazzmin import JAZZMIN_SETTINGS
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -40,11 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
-    'multi_lab',
     'rest_framework',
     'corsheaders',
     'admin_honeypot',
-     'login_history',
+    'login_history',
+    'multi_lab',
+    'ParametersAnalyse',
 ]
 CORS_ORIGIN_ALLOW_ALL=True
 CORS_ORIGIN_WHITELIST = (

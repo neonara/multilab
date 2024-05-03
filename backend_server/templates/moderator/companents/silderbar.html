@@ -35,13 +35,52 @@
 
 <div class='dashboard-nav-dropdown '>
     <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-        <i class="fas fa-money-check-alt"></i> Multi Lab Projets
+        <i class="fas fa-money-check-alt"></i>Multi Lab Projets
     </a>
     <div class='dashboard-nav-dropdown-menu'>
         <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">List des Projets</a>
     </div>
 </div>
-
+<div class="nav-item-divider"></div>
+<div class='dashboard-nav-dropdown '>
+    <a href="#!" class="dashboard-nav-item ">
+        <i class="fas fa-money-check-alt"></i>Multi Lab Analyse
+    </a>
+    
+    
+</div>
+<div class='dashboard-nav-dropdown '>
+    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+        <i class="fas fa-money-check-alt"></i>Produits Alimentaires
+    </a>
+    <div class='dashboard-nav-dropdown-menu'>
+        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Microbiologie </a>
+        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Physicochimie</a>
+       
+    </div>
+    
+</div>
+<div class='dashboard-nav-dropdown '>
+    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+        <i class="fas fa-money-check-alt"></i>Produits Eaux
+    </a>
+    <div class='dashboard-nav-dropdown-menu'>
+        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Microbiologie </a>
+        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Physicochimie</a>
+       
+    </div>
+</div>
+<div class='dashboard-nav-dropdown '>
+    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+        <i class="fas fa-money-check-alt"></i>Alimentation Animale
+    </a>
+    <div class='dashboard-nav-dropdown-menu'>
+        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Microbiologie </a>
+        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Physicochimie</a>
+       
+    </div> 
+        
+</div>
 <div class="nav-item-divider"></div>
 <form action="/logout/" method="post">
     {% csrf_token %}

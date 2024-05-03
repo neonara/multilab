@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from ..models.devis import Devi
-from ..serializers import DevisSerializer
+from ..models.devis import Devi 
+from ..serializers import DevisSerializer 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView
 
