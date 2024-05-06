@@ -23,5 +23,7 @@ urlpatterns = [
     path('', include('account.urls')),
     path('', include('account.passwordurls')),
     path('', include('account.sendaccount')),
-     path('api/',include('multi_lab.urls'))
+    path('api/',include('multi_lab.urls')),
+    path('',include('ParametersAnalyse.urls')),
+
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

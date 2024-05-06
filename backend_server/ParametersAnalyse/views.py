@@ -10,3 +10,5 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
 # Create your views here.
+def analyse(request):
+    return render(request,'./moderator/analyses/alimentation_animal/physicochimie/index.html')
