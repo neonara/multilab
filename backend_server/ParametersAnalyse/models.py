@@ -1,20 +1,20 @@
 from django.db import models
-
+from django.utils import timezone
 class TypeAnalysesPhysicochimiquesProduitsEaux(models.Model):
     type_analyses_physicochimiques_produits_eaux = models.CharField('Analyses Physicochimiques des Produits d Eaux ', max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyses_physicochimiques_produits_eaux
 
 class TypeAzoteKjedahl(models.Model):
     type_azote_kjedahl = models.CharField('Azote Kjeldahl', max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_azote_kjedahl
 
 class TypeDevi(models.Model):
     type_alimentation_animale = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_alimentation_animale
     
@@ -23,31 +23,31 @@ class TypeDevi(models.Model):
 
 class TypeDeviAnalyseMicrobiologieProduitsEaux(models.Model):
     type_analyse_microbiologie_produits_eaux = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyse_microbiologie_produits_eaux
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHE(models.Model):
     type_analyses_physicochimiques_produit_peche = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyses_physicochimiques_produit_peche
 
 class TypeDeviBEURRE(models.Model):
     type_beurre = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_beurre
 
 class TypeDeviFROMAGE(models.Model):
     type_fromage = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_fromage
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS(models.Model):
     type_analyses_physicochimiques_produits_laitiers = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyses_physicochimiques_produits_laitiers
     
@@ -56,13 +56,13 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS(models.Model):
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESMIEL(models.Model):
     type_analyses_physicochimiques_miel = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyses_physicochimiques_miel
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESHUILESETPRODUITSGRAS(models.Model):
     type_analyses_physicochimiques_huiles_et_produits_gras = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyses_physicochimiques_huiles_et_produits_gras
     
@@ -71,7 +71,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESHUILESETPRODUITSGRAS(models.Model):
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES(models.Model):
     type_analyses_physicochimiques_viandes_et_derives = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.type_analyses_physicochimiques_viandes_et_derives
     

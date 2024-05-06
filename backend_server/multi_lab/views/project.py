@@ -55,11 +55,6 @@ class ProjectCreateView(CreateView):
         context['projects'] = queryset  # Retrieve all projects
         return context
     
-    
-
-
-
-
 class ProjectUpdateView(UpdateView):
     model = Project
     template_name = 'moderator/project/project_edit.html'  # Name of your template
