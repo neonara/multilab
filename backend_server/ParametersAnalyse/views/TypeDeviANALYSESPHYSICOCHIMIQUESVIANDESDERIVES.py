@@ -29,7 +29,8 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         queryset = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES.objects.order_by('-created_at')
-        context['analyse'] = queryset  # Retrieve all analyse
+        context['analyse'] = queryset 
+        print("++++++++++++++++++++++++x",context) # Retrieve all analyse
         return context
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESUpdateView(UpdateView):
@@ -51,7 +52,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESUpdateView(UpdateView):
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESDeleteView(DeleteView):
     model = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES
     template_name = 'moderator/analyses/alimentation_animal/physicochimie/viandesetderives.html'  # Name of your template for the form
-    success_url = reverse_lazy('project_list')
+    success_url = reverse_lazy('viandesetderives_list')
     def form_valid(self, form):
         messages.success(self.request, 'Ce type d analyse a été supprimeé avec succès.')
         return super().form_valid(form)

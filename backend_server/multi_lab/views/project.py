@@ -52,7 +52,8 @@ class ProjectCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         queryset = Project.objects.order_by('-created_at')
-        context['projects'] = queryset  # Retrieve all projects
+        context['projects'] = queryset 
+        print("++++++++++++++++++++++++x",context['projects']) # Retrieve all projects
         return context
     
 class ProjectUpdateView(UpdateView):
