@@ -6,6 +6,7 @@ from .views.TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES import *
 from .views.produitsalimentaires import *
 from.views.physicochimiquesmiel import *
 from.views.produits_laitiers import *
+from.views.FROMAGE import *
 router = DefaultRouter()
 
 urlpatterns = [
@@ -14,19 +15,22 @@ urlpatterns = [
     path('viandesetderives_list/', TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESCreateView.as_view(), name='viandesetderives_list'),
     path('viandesetderives/<int:pk>/delete/', TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESDeleteView.as_view(), name='viandesetderives_delete'),
     path('viandesetderives/<int:pk>/update/', TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESUpdateView.as_view(), name='viandesetderives_update'),
-  #! ----------------TypeDeviAnalysesmicrobiologiquesproduitsalimentaires----------------
+  #? ----------------TypeDeviAnalysesmicrobiologiquesproduitsalimentaires----------------
     path('produitsalimentaires_list/', TypeDeviAnalysesmicrobiologiquesproduitsalimentairesCreateView.as_view(), name='produitsalimentaires_list'),
     path('produitsalimentaires/<int:pk>/delete/', TypeDeviAnalysesmicrobiologiquesproduitsalimentairesDeleteView.as_view(), name='produitsalimentaires_delete'),
     path('produitsalimentaires/<int:pk>/update/', TypeDeviAnalysesmicrobiologiquesproduitsalimentairesUpdateView.as_view(), name='produitsalimentaires_update'),
-    #! ----------------TypeDeviANALYSESPHYSICOCHIMIQUESMIEL----------------
+    #? ----------------TypeDeviANALYSESPHYSICOCHIMIQUESMIEL----------------
     path('physicochimiques_miel_list/', TypeDeviANALYSESPHYSICOCHIMIQUESMIELCreateView.as_view(), name='physicochimiques_miel_list'),
     path('physicochimiques_miel/<int:pk>/delete/', TypeDeviANALYSESPHYSICOCHIMIQUESMIELDeleteView.as_view(), name='physicochimiques_miel_delete'),
     path('physicochimiques_miel/<int:pk>/update/', TypeDeviANALYSESPHYSICOCHIMIQUESMIELUpdateView.as_view(), name='physicochimiques_miel_update'),
-    #! ----------------TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS----------------
+    #? ----------------TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS----------------
     path('produits_laitiers_list/', TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSCreateView.as_view(), name='produits_laitiers_list'),
     path('produits_laitiers/<int:pk>/delete/', TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSDeleteView.as_view(), name='produits_laitiers_delete'),
     path('produits_laitiers/<int:pk>/update/', TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSUpdateView.as_view(), name='produits_laitiers_update'),
-
+    #? ----------------TypeDeviFROMAGE----------------
+    path('type_fromage_list/', TypeDeviFROMAGECreateView.as_view(), name='type_fromage_list'),
+    path('type_fromage/<int:pk>/delete/', TypeDeviFROMAGEDeleteView.as_view(), name='type_fromage_delete'),
+    path('type_fromage/<int:pk>/update/', TypeDeviFROMAGEUpdateView.as_view(), name='type_fromage_update'),
 
 
 ]
