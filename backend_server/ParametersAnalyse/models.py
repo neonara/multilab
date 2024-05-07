@@ -71,7 +71,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESHUILESETPRODUITSGRAS(models.Model):
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES(models.Model):
     type_analyses_physicochimiques_viandes_et_derives = models.CharField(max_length=255)
-    created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyses_physicochimiques_viandes_et_derives
     
@@ -80,7 +80,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES(models.Model):
 
 class TypeDeviAnalysesmicrobiologiquesproduitsalimentaires(models.Model):
     type_analyses_microbiologiques_produits_alimentaires = models.CharField(max_length=255)
-    
+    created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.type_analyses_microbiologiques_produits_alimentaires
     

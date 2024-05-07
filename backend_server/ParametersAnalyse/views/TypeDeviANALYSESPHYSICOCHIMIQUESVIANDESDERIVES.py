@@ -35,7 +35,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESCreateView(CreateView):
 
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESUpdateView(UpdateView):
     model = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES
-    template_name = 'moderator/project/viandesetderives_edit.html'  # Name of your template
+    template_name = 'moderator/project/viandesetderives.html'  # Name of your template
     fields = '__all__'
     success_url = reverse_lazy('viandesetderives_list')
     def form_valid(self, form):
