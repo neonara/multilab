@@ -101,7 +101,7 @@
                                           <thead class="thead-light">
                                             <tr>
                                               <th scope="col">Nom du Poste</th>
-                                              <th scope="col">Département</th>
+                                              <th scope="col">Unité</th>
                                               <th scope="col">Type du stage </th>
                                               
                                               <th scope="col">Status</th>
@@ -177,7 +177,7 @@
                                                         <div class="modal-body">
                                                             <ul class="list-style-type-circle">
                                                                
-                                                               <li><span>Département : {{stage.departement}}</span></li> 
+                                                               <li><span>Unité : {{stage.departement}}</span></li> 
                                                                <li><span>Description : {{stage.description}}</span></li> 
                                                                <li><span>Type du stage : {{ stage.get_type_stage_display }}</span></li>
                                             
@@ -241,7 +241,7 @@
                     </div>
                     <hr>
                     <div class="mb-3 row">
-                        <label for="departement" class="col-sm-3 col-form-label">Département</label>
+                        <label for="departement" class="col-sm-3 col-form-label">Unité</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" id="departement" name="departement">
                         </div>

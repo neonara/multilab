@@ -21,4 +21,4 @@ class Stagieur(models.Model):
     
 
     class Meta:
-        verbose_name_plural="List du stageurs "
+        verbose_name_plural="List des Stagiaires "
