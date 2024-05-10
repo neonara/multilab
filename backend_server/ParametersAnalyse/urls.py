@@ -12,6 +12,7 @@ from.views.produit_peche import *
 from.views.produits_gras import *
 from.views.microbiologie_produits_eaux import *
 from.views.physicochimiques_produits_eaux import *
+from.views.azote_kjedahl import *
 router = DefaultRouter()
 
 urlpatterns = [
@@ -57,4 +58,10 @@ urlpatterns = [
     path('physicochimiques_produits_eaux_list/', TypeAnalysesPhysicochimiquesProduitsEauxCreateView.as_view(), name='physicochimiques_produits_eaux_list'),
     path('physicochimiques_produits_eaux/<int:pk>/delete/', TypeAnalysesPhysicochimiquesProduitsEauxDeleteView.as_view(), name='physicochimiques_produits_eaux_delete'),
     path('physicochimiques_produits_eaux/<int:pk>/update/', TypeAnalysesPhysicochimiquesProduitsEauxUpdateView.as_view(), name='physicochimiques_produits_eaux_update'),
+    #? ----------------TypeAzoteKjedahl----------------
+    path('azote_kjedahl_list/', TypeAzoteKjedahlCreateView.as_view(), name='azote_kjedahl_list'),
+    path('azote_kjedahl/<int:pk>/delete/', TypeAzoteKjedahlDeleteView.as_view(), name='azote_kjedahl_delete'),
+    path('azote_kjedahl/<int:pk>/update/', TypeAzoteKjedahlUpdateView.as_view(), name='azote_kjedahl_update'),
+
+
 ]
