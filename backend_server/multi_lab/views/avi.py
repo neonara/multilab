@@ -7,9 +7,13 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 class AvisViewSet(viewsets.ModelViewSet):
     queryset = Avis.objects.all()
     serializer_class = AvisSerializer
+#!"""""djanoooo"""""""""""
+@method_decorator(login_required(), name='dispatch')
 class AvisListView(ListView):
     model = Avis
     template_name = 'moderator/avisClient.html'
@@ -17,7 +21,7 @@ class AvisListView(ListView):
     
 
   # Name of your URL pattern for listing avis
-
+@method_decorator(login_required(), name='dispatch')
 class AvisUpdateView(UpdateView):
     model = Avis
     template_name = './moderator/update_avis.html'  # Name of your template
@@ -27,6 +31,7 @@ class AvisUpdateView(UpdateView):
     def form_valid(self, form):
         messages.success(self.request, 'Avis a été modifié avec succès.')
         return super().form_valid(form)
+@method_decorator(login_required(), name='dispatch')
 class AvisDeleteView(DeleteView):
     model = Avis
     template_name = './moderator/avisClient.html '  # Name of your template

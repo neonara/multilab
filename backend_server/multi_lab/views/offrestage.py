@@ -8,10 +8,14 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
 from ..models.stageurs import Stagieur
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+
 class OffreStageViewSet(viewsets.ModelViewSet):
     queryset = OffreStage.objects.all()
     serializer_class = OffreStageSerializer
-# django 
+#!"""""""""""""" django """"""""""""""
+@method_decorator(login_required(), name='dispatch')
 class OffreStageCreateView(CreateView):
     model = OffreStage
     template_name = 'moderator/stage/stageList.html'  # Name of your template for the form
@@ -28,11 +32,7 @@ class OffreStageCreateView(CreateView):
     def form_valid(self, form):
         messages.success(self.request, 'Offres du Stage a été ajouter avec succès.')
         return super().form_valid(form)
-    
-
-
-
-
+@method_decorator(login_required(), name='dispatch')
 class OffreStageUpdateView(UpdateView):
     model = OffreStage
     template_name = './moderator/stage/update_OffreStage.html'  # Name of your template
@@ -48,7 +48,7 @@ class OffreStageUpdateView(UpdateView):
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
         return super().form_invalid(form)
-
+@method_decorator(login_required(), name='dispatch')
 class OffreStageDeleteView(DeleteView):
     model = OffreStage
     template_name = 'moderator/stage/stageList.html'  # Name of your template

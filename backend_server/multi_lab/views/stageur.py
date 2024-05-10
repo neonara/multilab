@@ -6,9 +6,12 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 class StagieurViewSet(viewsets.ModelViewSet):
     queryset = Stagieur.objects.all()
     serializer_class = StagieurSerializer
+@method_decorator(login_required(), name='dispatch')
 class StagieurView(ListView):
     model = Stagieur
     template_name = 'moderator/stage/stageursList.html'

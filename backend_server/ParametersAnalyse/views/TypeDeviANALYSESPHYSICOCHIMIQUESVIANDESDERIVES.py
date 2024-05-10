@@ -10,10 +10,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@method_decorator(login_required(), name='dispatch')
 def analyse(request):
     return render(request,'./moderator/analyses/alimentation_animal/physicochimie/index.html')
 #! ----------------TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESSerializer----------------
+@method_decorator(login_required(), name='dispatch')
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESCreateView(CreateView):
     model = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES
     template_name = 'moderator/analyses/alimentation_animal/physicochimie/viandesetderives.html'  # Name of your template for the form
@@ -32,7 +36,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESCreateView(CreateView):
         context['analyse'] = queryset 
         print("++++++++++++++++++++++++x",context) # Retrieve all analyse
         return context
-
+@method_decorator(login_required(), name='dispatch')
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESUpdateView(UpdateView):
     model = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES
     template_name = 'moderator/analyses/alimentation_animal/physicochimie/viandesetderives.html'  # Name of your template
@@ -48,7 +52,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESUpdateView(UpdateView):
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
         return super().form_invalid(form)
-
+@method_decorator(login_required(), name='dispatch')
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESDeleteView(DeleteView):
     model = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES
     template_name = 'moderator/analyses/alimentation_animal/physicochimie/viandesetderives.html'  # Name of your template for the form

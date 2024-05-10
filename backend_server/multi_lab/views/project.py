@@ -10,6 +10,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
@@ -34,7 +36,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         instance.delete()
         return Response("Deleted Successfully", status=status.HTTP_204_NO_CONTENT)
-# django
+#!"""""""""""""" django"""""""""""""""""
+@method_decorator(login_required(), name='dispatch')
 class ProjectCreateView(CreateView):
     model = Project
     template_name = 'moderator/project/project_form.html'  # Name of your template for the form
@@ -55,7 +58,7 @@ class ProjectCreateView(CreateView):
         context['projects'] = queryset 
         print("++++++++++++++++++++++++x",context['projects']) # Retrieve all projects
         return context
-    
+@method_decorator(login_required(), name='dispatch')   
 class ProjectUpdateView(UpdateView):
     model = Project
     template_name = 'moderator/project/project_edit.html'  # Name of your template
@@ -72,7 +75,7 @@ class ProjectUpdateView(UpdateView):
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
         return super().form_invalid(form)
-
+@method_decorator(login_required(), name='dispatch')
 class ProjectDeleteView(DeleteView):
     model = Project
     template_name = 'moderator/project/project_form.html'  # Name of your template

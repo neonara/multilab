@@ -8,10 +8,13 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from ..models.offres import Offre
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 class Offre_descriptionViewSet(viewsets.ModelViewSet):
     queryset = Offre_description.objects.all()
     serializer_class = Offre_descriptionSerializer
-# django
+#! """"""""""""django"""""""""""""""""""""
+@method_decorator(login_required(), name='dispatch')
 class Offre_descriptionCreateView(CreateView):
     model = Offre_description
     template_name = 'moderator/employee/employeeList.html'  # Name of your template for the form
@@ -30,12 +33,12 @@ class Offre_descriptionCreateView(CreateView):
         context['condidats'] = Offre.objects.all()  # Retrieve all Stagieur objects
         return context
     
-
+@method_decorator(login_required(), name='dispatch')
 class Offre_descriptionDetailView(DetailView):
     model = Offre_description
     template_name = 'moderator/employee/employeeList.html'
 
-
+@method_decorator(login_required(), name='dispatch')
 class Offre_descriptionUpdateView(UpdateView):
     model = Offre_description
     template_name = 'moderator/employee/update_Offre_description.html'  # Name of your template
@@ -48,7 +51,7 @@ class Offre_descriptionUpdateView(UpdateView):
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
         return super().form_invalid(form)
-
+@method_decorator(login_required(), name='dispatch')
 class Offre_descriptionDeleteView(DeleteView):
     model = Offre_description
     template_name = 'moderator/employee/employeeList.html'  # Name of your template

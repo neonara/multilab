@@ -10,8 +10,11 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 #! ----------------Analyses de l’alimentation animale----------------
+@method_decorator(login_required(), name='dispatch')
 class TypeAalimentation_animalelCreateView(CreateView):
     model = TypeDevi
     template_name = 'moderator/analyses/produult_alimentaires/alimentation_animale.html'  # Name of your template for the form
@@ -29,7 +32,7 @@ class TypeAalimentation_animalelCreateView(CreateView):
         queryset = TypeDevi.objects.order_by('-created_at')
         context['analyse'] = queryset  # Retrieve all analyse
         return context
-
+@method_decorator(login_required(), name='dispatch')
 class Typealimentation_animaleUpdateView(UpdateView):
     model = TypeDevi
     template_name = 'moderator/analyses/produult_alimentaires/alimentation_animale.html'  # Name of your template
@@ -45,7 +48,7 @@ class Typealimentation_animaleUpdateView(UpdateView):
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
         return super().form_invalid(form)
-
+@method_decorator(login_required(), name='dispatch')
 class Typealimentation_animalelDeleteView(DeleteView):
     model = TypeDevi
     template_name = 'moderator/analyses/produult_alimentaires/alimentation_animale.html'  # Name of your template for the form
