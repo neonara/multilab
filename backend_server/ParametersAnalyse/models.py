@@ -33,7 +33,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHE(models.Model):
     def __str__(self):
         return self.type_analyses_physicochimiques_produit_peche
 
-class TypeDeviBEURRE(models.Model):
+class TypeDeviBEURRE(models.Model): 
     type_beurre = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
