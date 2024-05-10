@@ -16,21 +16,18 @@
             </span>
         </button>
         <div class="app-header-actions-buttons">
-            <button class="icon-button large">
+            <a  href="{% url 'employee' %}" class="icon-button large">
             <i class="bi bi-house"></i>
-            </button>
+            </a>
+            <form action="{% url 'logout_user' %}" method="post">
+                {% csrf_token %}
             <button class="icon-button large">
               <i class="bi bi-box-arrow-right"></i>
             </button>
+        </form>
         </div>
     </div>
-    <div class="app-header-mobile">
-        <form action="{% url 'logout_user' %}" method="post">
-            {% csrf_token %}
-        <button type="submit" class="icon-button large">
-           <i class="fas fa-list">Logout</i>
-        </button></form>
-    </div>
+    
 
 </div>
 </header>

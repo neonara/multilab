@@ -12,7 +12,7 @@ from rest_framework import status
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from ..serializers import LoginFormSerializer
-
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'index.html')
@@ -57,8 +57,8 @@ def login_view(request):
     return render(request, 'login.html', {'form': form, 'msg': msg})
 
 
-def admin(request):
-    return render(request,'admin.html')
+# def admin(request):
+#     return render(request,'admin.html')
 
 
 def customer(request):
@@ -66,7 +66,7 @@ def customer(request):
     reports = Report.objects.filter(client=user)  # Get all reports related to the user
     return render(request, './client/dashClient.html', {'reports': reports})
 
-
+@login_required()
 def employee(request):
     class Counts:
         def __init__(self, avis_count, devis_count, Offre_description_count, OffreStage_count):
@@ -83,6 +83,8 @@ def employee(request):
     )
 
     return render(request, './moderator/dashboard_moderator.html', {'counts': counts})
+
+
 
 
 

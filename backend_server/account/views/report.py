@@ -8,11 +8,14 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
-from account.models import User  
+from account.models import User
+from django.utils.decorators import method_decorator  
+from django.contrib.auth.decorators import login_required
 class ReportViewSet(viewsets.ModelViewSet):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
 # django
+@method_decorator(login_required(), name='dispatch')
 class ClientReportListView(CreateView):
     model = Report
     fields = '__all__'
@@ -27,7 +30,7 @@ class ClientReportListView(CreateView):
     def form_valid(self, form):
         messages.success(self.request, 'report a été ajouter avec succès.')
         return super().form_valid(form) 
-    
+@method_decorator(login_required(), name='dispatch')   
 class ReportCreateView(CreateView):
     model = Report
     template_name = './moderator/report/client_list.html'  # Name of your template for the form
@@ -51,7 +54,7 @@ class ReportCreateView(CreateView):
         messages.success(self.request, 'report a été ajouter avec succès.')
         return super().form_valid(form)  
     
-
+@method_decorator(login_required(), name='dispatch')
 class ReportUpdateView(UpdateView):
     model = Report
     template_name = './moderator/report/report_update.html'  # Name of your template
@@ -65,6 +68,7 @@ class ReportUpdateView(UpdateView):
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
         return super().form_invalid(form)
+@method_decorator(login_required(), name='dispatch')
 class ReportDeleteView(DeleteView):
     model = Report
     template_name = './moderator/report/report_list.html'  # Name of your template

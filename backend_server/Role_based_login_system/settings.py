@@ -138,7 +138,8 @@ TIME_ZONE = 'Africa/Tunis '
 USE_I18N = True
 
 USE_L10N = True
-
+#! login url"""
+LOGIN_URL='/account/login'
 USE_TZ = True
 # send email config
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
