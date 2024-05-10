@@ -17,7 +17,7 @@ urlpatterns = [
     # path('adminpage/', admin, name='adminpage'),
     path('customer/', customer, name='customer'),
     path('employee/', employee, name='employee'),
-    path('logout/', LogoutView.as_view(next_page='login_view'),name='logout'),
+    path('logout/', LogoutView.as_view(next_page='login_view'),name='logout_user'),
     #report
      path('report_list/', ClientReportListView.as_view(), name='report_list'),
    

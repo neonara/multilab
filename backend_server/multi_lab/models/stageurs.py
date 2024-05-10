@@ -10,9 +10,9 @@ class Stagieur(models.Model):
     fullname = models.CharField('Nom et prénom',max_length=100)
     ville=models.CharField(max_length=100)
     type_stage = models.CharField(max_length=10, choices=CHOICES)
-    numero_telephone=models.IntegerField()
+    numero_telephone=models.IntegerField('Numéro de téléphone')
     email = models.EmailField(max_length=254)
-    cvfile = models.FileField(upload_to='uploads/')
+    cvfile = models.FileField('cv upload',upload_to='uploads/')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -21,4 +21,4 @@ class Stagieur(models.Model):
     
 
     class Meta:
-        verbose_name_plural="List des Stagiaires "
+        verbose_name_plural="Liste des Stagiaires "

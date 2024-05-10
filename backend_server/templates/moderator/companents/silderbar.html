@@ -78,7 +78,7 @@
         
 </div>
 <div class="nav-item-divider"></div>
-<form action="/logout/" method="post">
+<form action="{% url 'logout_user' %}" method="post">
     {% csrf_token %}
 <button type="submit" class="dashboard-nav-item border-0 bg-transparent text-white "><i class="fas fa-sign-out-alt"></i> Logout </button></form>
 {% endblock %}

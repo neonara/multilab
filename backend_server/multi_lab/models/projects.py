@@ -3,8 +3,8 @@ from django.utils.html import mark_safe
 
 class Project(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
+        ('pending', 'Privé'),
+        ('approved', 'Publique'),
        
     ]
     title = models.CharField('Titre Projet', max_length=100)

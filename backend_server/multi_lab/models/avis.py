@@ -2,8 +2,8 @@ from django.db import models
 
 class Avis(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
+        ('pending', 'privé'),
+        ('approved', 'publique'),
     ]
     ETAT_CHOICES = [
         ('satisfait', 'Satisfait'),
@@ -25,4 +25,4 @@ class Avis(models.Model):
         return self.fullname
 
     class Meta:
-        verbose_name_plural = "List Avis Client"
+        verbose_name_plural = "Liste Avis Client"

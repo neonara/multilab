@@ -1,5 +1,6 @@
 {% block content %}
-<header class='dashboard-toolbar'> <div class="app-header">
+<header class='dashboard-toolbar'> 
+    <div class="app-header">
     <div class="app-header-logo">
        
     </div>
@@ -11,7 +12,7 @@
         <button class="user-profile">
             <span>{{user.username}}</span>
             <span>
-                <img src="https://assets.codepen.io/285131/almeria-avatar.jpeg" />
+                <img src="https://cdn-icons-png.flaticon.com/512/3541/3541871.png" />
             </span>
         </button>
         <div class="app-header-actions-buttons">
@@ -24,12 +25,14 @@
         </div>
     </div>
     <div class="app-header-mobile">
-        <form action="/logout/" method="post">
+        <form action="{% url 'logout_user' %}" method="post">
             {% csrf_token %}
-        <button class="icon-button large">
-           <i class="fas fa-list"></i>
+        <button type="submit" class="icon-button large">
+           <i class="fas fa-list">Logout</i>
         </button></form>
     </div>
 
-</div></header>
+</div>
+</header>
+
 {% endblock %}

@@ -34,3 +34,4 @@ class AvisDeleteView(DeleteView):
     def form_valid(self, form):
         messages.success(self.request, 'Avis a été supprimeé avec succès.')
         return super().form_valid(form)
+

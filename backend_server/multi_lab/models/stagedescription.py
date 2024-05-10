@@ -2,9 +2,9 @@ from django.db import models
 
 class OffreStage(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
-        ('rejected', 'Rejected'),
+        ('pending', 'Privé'),
+        ('approved', 'Publique'),
+        
     ]
     CHOICES = (
         ('1', 'PFE'),
@@ -14,7 +14,7 @@ class OffreStage(models.Model):
     
 
     titre = models.CharField('Nom du Poste',max_length=100)
-    departement = models.CharField('département',max_length=100)
+    departement = models.CharField('Unité',max_length=100)
     description=models.CharField(max_length=250)
     type_stage = models.CharField(max_length=10, choices=CHOICES)
     status = models.CharField('Status', max_length=10, choices=STATUS_CHOICES, default='pending')
@@ -23,4 +23,4 @@ class OffreStage(models.Model):
         return str(self.titre)
    
     class Meta:
-        verbose_name_plural="List d'offre du stage"
+        verbose_name_plural="Liste d'offre du stage"
