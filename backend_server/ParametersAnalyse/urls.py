@@ -13,6 +13,7 @@ from.views.produits_gras import *
 from.views.microbiologie_produits_eaux import *
 from.views.physicochimiques_produits_eaux import *
 from.views.azote_kjedahl import *
+from.views.alimentation_animale import *
 router = DefaultRouter()
 
 urlpatterns = [
@@ -62,6 +63,9 @@ urlpatterns = [
     path('azote_kjedahl_list/', TypeAzoteKjedahlCreateView.as_view(), name='azote_kjedahl_list'),
     path('azote_kjedahl/<int:pk>/delete/', TypeAzoteKjedahlDeleteView.as_view(), name='azote_kjedahl_delete'),
     path('azote_kjedahl/<int:pk>/update/', TypeAzoteKjedahlUpdateView.as_view(), name='azote_kjedahl_update'),
-
+    #? ----------------Analyses de l’alimentation animale----------------
+    path('alimentation_animale_list/', TypeAalimentation_animalelCreateView.as_view(), name='alimentation_animale_list'),
+    path('alimentation_animale/<int:pk>/delete/', Typealimentation_animalelDeleteView.as_view(), name='alimentation_animale_delete'),
+    path('alimentation_animale/<int:pk>/update/', Typealimentation_animaleUpdateView.as_view(), name='alimentation_animale_update'),
 
 ]
