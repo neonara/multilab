@@ -10,12 +10,13 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
-from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 # Create your views here.
-@method_decorator(login_required(), name='dispatch')
+
+
 def analyse(request):
-    return render(request,'./moderator/analyses/alimentation_animal/physicochimie/index.html')
+    return render(request, './moderator/analyses/alimentation_animal/physicochimie/index.html')
 #! ----------------TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESSerializer----------------
 @method_decorator(login_required(), name='dispatch')
 class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESCreateView(CreateView):
