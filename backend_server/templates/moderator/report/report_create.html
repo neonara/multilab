@@ -5,7 +5,7 @@
 <h2>Create Report</h2>
 <form method="post" action="" enctype="multipart/form-data" id="create-report-form">
   {% csrf_token %}
-  <label for="client">Clienthi:</label><br>
+  <label for="client">Client:</label><br>
   <select id="client" name="client" required>
     <option value="" disabled selected>Select a client</option>
     {% for user in users %}

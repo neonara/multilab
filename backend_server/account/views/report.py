@@ -11,6 +11,9 @@ from django.contrib import messages
 from account.models import User
 from django.utils.decorators import method_decorator  
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 class ReportViewSet(viewsets.ModelViewSet):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
@@ -28,8 +31,18 @@ class ClientReportListView(CreateView):
         return context
     success_url = reverse_lazy('report_list')
     def form_valid(self, form):
-        messages.success(self.request, 'report a été ajouter avec succès.')
+        self.object = form.save()
+        # Send email notification
+        subject = 'Nouveau Rapport Multilab'
+        context = {'report': self.object}
+        message = render_to_string('./moderator/report/new_report_email.html', context)
+        plain_message = strip_tags(message)  # Strip HTML tags for the plain message
+        from_email = 'nourderouich159@gmail.com'
+        to_email = form.cleaned_data['client'].username # Replace with the recipient email address
+        send_mail(subject, plain_message, from_email, [to_email], html_message=message)
+        messages.success(self.request, 'report a été ajouté et envoyé par email avec succès.')
         return super().form_valid(form) 
+    
 @method_decorator(login_required(), name='dispatch')   
 class ReportCreateView(CreateView):
     model = Report

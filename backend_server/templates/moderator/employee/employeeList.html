@@ -158,13 +158,14 @@
                                             <td>{{ post.created_at|date:"Y-m-d" }}</td>
                                               <td>
                                                 <div class="avatar-group">
-                                                <div style="display:inline;">  <a  data-bs-toggle="modal" data-bs-target="#postModal{{post.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                    <i class="bi bi-eye"></i>  </a></div>
-                                                    <button type="button" data-bs-target="#updateOffer{{post.pk}}"  class="avatar avatar-sm" data-toggle="tooltip" data-bs-toggle="modal" data-original-title="Ryan Tompson">
+                                                <div style="display:inline;">  <button  data-bs-toggle="modal" data-bs-target="#postModal{{post.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                    <i class="bi bi-eye"></i>  </button></div>
+                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#postUpdate{{post.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                                          </svg>   </button>
+                                                          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                                        </svg>                               </button>
+                                                       
                                                 <form method="post" action="{% url 'job_delete' post.pk %}" style="display:inline;">
                                                       {% csrf_token %}
                                                     <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
@@ -228,7 +229,7 @@
                                                                 {% csrf_token %}
                                                                 <button type="submit" class="btn btn-danger">Supprimer</button>
                                                             </form>
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -240,7 +241,87 @@
 <!-- Modal upadte-->
 
 
-
+<div class="modal fade" id="postUpdate{{post.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Mettre à jour</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="{% url 'job_update' post.pk %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                   
+                    
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><strong>Titre du Poste :</strong></label>
+                                
+                                <input type="text" name="titre" value="{{post.titre}}">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Unité :</strong></label>
+                                
+                                <input type="text" name="titre" value="{{post.departement}}">
+                            </div>
+                            <div class="form-group">
+                                <label><strong>Type d'emploi désiré :</strong></label>
+                                
+                                <select id="temps" name="temps" class="form-control">
+                                    <option value="1" {% if post.temps == '1' %} selected {% endif %}>Temps plein</option>
+                                    <option value="2" {% if post.temps == '2' %} selected {% endif %}>Partiel</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                              <label><strong>Type du contrat  :</strong></label>
+                              
+                              <select id="contrat" name="contrat" class="form-control">
+                                <option value="CIVP" {% if post.contrat == 'CIVP' %} selected {% endif %}>CIVP</option>
+                                <option value="CDI" {% if post.contrat == 'CDI' %} selected {% endif %}>CDI</option>
+                                <option value="CDD" {% if post.contrat == 'CDD' %} selected {% endif %}>CDD</option>
+                                <option value="Karama" {% if post.contrat == 'Karama' %} selected {% endif %}>Karama</option>
+                                <option value="CSC" {% if post.contrat == 'CSC' %} selected {% endif %}>CSC</option>
+                                
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label><strong>les années d'expérience  :</strong></label>
+                            
+                            <input type="number" name="titre" value="{{post.experience}}">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            
+                            <div class="form-group">
+                              <label><strong>Description :</strong></label>
+                              
+                              <textarea type="text" name="titre" value="{{post.description}}" rows="5" >{{post.description}}</textarea>
+                          </div>
+                          <div class="form-group">
+                            <label><strong>Status :</strong></label>
+                            <select id="status" name="status" class="form-control">
+                                <option value="pending" {% if post.status == 'pending' %} selected {% endif %}>Privé</option>
+                                <option value="approved" {% if post.status == 'approved' %} selected {% endif %}>Publique</option>
+                            </select>
+                        </div> 
+                            
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <button type="submit" class="btn btn-primary"> Confirmer la modification</button>
+                            </div> 
+            </div>
+            
+        </form>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
                                             {% endfor %}
                                           </tbody>
                                         </table>

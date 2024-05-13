@@ -1,0 +1,13 @@
+
+    <h1>Nouveau rapport soumis Multi Lab</h1>
+    <p>Bonjour {{ report.client.last_name }} {{ report.client.first_name }} </p>
+    <p>Un nouveau rapport a été soumis. Voici les détails :</p>
+    <ul>
+        <li><strong>Titre du rapport :</strong> {{ report.title }}</li>
+        
+        <li><strong>Créé à :</strong> {{ report.created_at }}</li>
+        <!-- Ajoutez plus de détails si nécessaire -->
+    </ul>
+    <p>Vous pouvez consulter le rapport <a href="{{ report.file.url }}">{{ report.file.name }}</a>.</p>
+
+    <p>Merci.</p>

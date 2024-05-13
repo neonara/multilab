@@ -51,6 +51,7 @@ class Offre_descriptionUpdateView(UpdateView):
     def form_invalid(self, form):
         print("Form is invalid.")  # Print a message when the form is invalid
         return super().form_invalid(form)
+    
 @method_decorator(login_required(), name='dispatch')
 class Offre_descriptionDeleteView(DeleteView):
     model = Offre_description
