@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>offer List</title>
+    <title>Multi lab</title>
    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
@@ -55,7 +55,7 @@
                     <div class="app-body">
                                 <div class="app-body-main-content">
                             <section class="service-section">
-                                <h2>List d'offre d'emploi</h2>
+                                <h2>Liste d'offre d'emploi</h2>
                                 <div class="service-section-header">
                                     <div class="dropdown-field">
                                         <select  id="entriesPerPage" onchange="changeEntriesPerPage(this)">
@@ -147,11 +147,11 @@
                                               <td >
                                                 {% if post.status == 'pending' %}
                                                     <span class="badge badge-dot mr-3 justify-content-center ">
-                                                        <i class="bg-warning"></i> Pending
+                                                        <i class="bg-warning"></i> Privé
                                                     </span>
                                                 {% elif post.status == 'approved' %}
                                                     <span class="badge badge-dot mr-3">
-                                                        <i class="bg-success"></i> Approved
+                                                        <i class="bg-success"></i> Publique
                                                     </span>
                                                 {% endif %}
                                             </td>
@@ -160,11 +160,11 @@
                                                 <div class="avatar-group">
                                                 <div style="display:inline;">  <a  data-bs-toggle="modal" data-bs-target="#postModal{{post.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
                                                     <i class="bi bi-eye"></i>  </a></div>
-                                                    <a href="{% url 'job_update' post.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                    <button type="button" data-bs-target="#updateOffer{{post.pk}}"  class="avatar avatar-sm" data-toggle="tooltip" data-bs-toggle="modal" data-original-title="Ryan Tompson">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                                          </svg>   </a>
+                                                          </svg>   </button>
                                                 <form method="post" action="{% url 'job_delete' post.pk %}" style="display:inline;">
                                                       {% csrf_token %}
                                                     <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
@@ -191,7 +191,7 @@
                                                                     <div class="col-md-6">
                                                                        
                                                                         <div class="form-group">
-                                                                            <label><strong>Département :</strong></label>
+                                                                            <label><strong>Unité :</strong></label>
                                                                             <p>{{ post.departement }}</p>
                                                                         </div>
                                                                         <div class="form-group">
@@ -213,10 +213,7 @@
                                                                           <label><strong>Description :</strong></label>
                                                                           <p>{{ post.description }}</p>
                                                                       </div>
-                                                                      <div class="form-group">
-                                                                        <label><strong>Status:</strong></label>
-                                                                        <p>{{ post.status }}</p>
-                                                                    </div>
+                                                                      
                                                                         
                                                                         
                                                                     </div>
@@ -231,11 +228,19 @@
                                                                 {% csrf_token %}
                                                                 <button type="submit" class="btn btn-danger">Supprimer</button>
                                                             </form>
-                                                            <a href="{% url 'job_update' post.pk %}" class="btn btn-primary">Modifié</a>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                          
+                                             <!-- Button to trigger the modal -->
+
+
+<!-- Modal upadte-->
+
+
+
                                             {% endfor %}
                                           </tbody>
                                         </table>

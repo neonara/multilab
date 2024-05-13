@@ -80,11 +80,11 @@
                           <tr>
                             <th scope="col">Nom et Prénom</th>
                             <th scope="col">Nom Entreprise</th>
+                            <th scope="col">Numéro de téléphone</th>
                             <th scope="col">Email </th>
-                            <th scope="col">Type devis</th>
                             <th scope="col">Parametre Analyes</th>
                             
-                            <th scope="col">Created at</th>
+                            <th scope="col">Créé à</th>
                            
                            
                             <th scope="col"></th>
@@ -103,15 +103,12 @@
                             <td>
                               {{devi.nom_entreprise }}
                             </td>
+                            <td>{{devi.numero_telephone }}</td>
                             <td>{{devi.email }}</td>
-                            <td>
-                              <span>
-                                 {{devi.type_debis}}
-                              </span>
-                            </td>
+                           
                             <td>
                               <span >
-                               {{devi.parametre_analyes}}
+                               {{devi.type_debis}}
                               </span>
                             </td>
                             <td>{{ devi.created_at|date:"Y-m-d" }}</td>
@@ -124,11 +121,11 @@
                             {% comment %} delet all the action {% endcomment %}
                             
                           </tr>
-                          <div class="modal fade" id="staticBackdrop{{devi.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal fade  modal-xl " id="staticBackdrop{{devi.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="staticBackdropLabel">Devis Client details</h5>
+                                  <h5 class="modal-title" id="staticBackdropLabel">Devis Client détails "{{devi.fullname}}"</h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -136,46 +133,134 @@
                                       <div class="row">
                                           <div class="col-md-6">
                                               <div class="form-group">
-                                                  <label><strong>Nom et Prénom :</strong></label>
-                                                  <p>{{ devi.fullname }}</p>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label><strong>Nom d'Entreprise :</strong></label>
-                                                  <p>{{ devi.nom_entreprise }}</p>
-                                              </div>
-                                              <div class="form-group">
-                                                  <label><strong>Email :</strong></label>
-                                                  <p>{{ devi.email }}</p>
-                                              </div>
-                                          </div>
-                                          <div class="col-md-6">
-                                              <div class="form-group">
-                                                  <label><strong>Poste :</strong></label>
+                                                  <label><strong>Poste description :</strong></label>
                                                   <p>{{ devi.poste }}</p>
                                               </div>
+                                              {% if devi.type_Analysesmicrobiologiquesproduitsalimentaires %}
                                               <div class="form-group">
-                                                  <label><strong>Numéro de téléphone :</strong></label>
-                                                  <p>{{ devi.numero_telephone }}</p>
+                                                  <label><strong>Analyses microbiologiques des produits alimentaires  :</strong></label>
+                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
                                               </div>
+                                              {% endif %}
+                                              {% if devi.type_ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES  %}
                                               <div class="form-group">
-                                                  <label><strong>Type de Devis :</strong></label>
-                                                  <p>{{ devi.get_type_debis_display }}</p>
+                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DES VIANDES ET DERIVES  :</strong></label>
+                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
                                               </div>
+                                              {% endif %}
+                                              {% if devi.type_ALYSESPHYSICOCHIMIQUESPRODUITSPECHE  %}
+                                              <div class="form-group">
+                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DES PRODUITS DE LA PECHE :</strong></label>
+                                                  {% for item in devi.type_ALYSESPHYSICOCHIMIQUESPRODUITSPECHE.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
+                                              {% if  devi.type_AnalyseMicrobiologieProduitsEaux  %}
+                                              <div class="form-group">
+                                                  <label><strong>Analyse Microbiologie des Produits d’Eaux :</strong></label>
+                                                  {% for item in devi.type_AnalyseMicrobiologieProduitsEaux.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
                                           </div>
+                                          <div class="col-md-6">
+                                            {% if devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS  %}
+                                              <div class="form-group">
+                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES HUILES ET PRODUITS GRAS  :</strong></label>
+                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
+                                              {% if devi.type_ANALYSESPHYSICOCHIMIQUESMIEL  %}
+                                              <div class="form-group">
+                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DU MIEL  :</strong></label>
+                                                  <h6>Quantité nécessaire par échantillon : 500g </h6>
+                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESMIEL.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
+                                              {% if devi.type_YSESPHYSICOCHIMIQUESPRODUITSLAITIERS  %}
+                                              <div class="form-group">
+                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DES PRODUITS LAITIERS (LAIT)  :</strong></label>
+                                                  {% for item in devi.type_YSESPHYSICOCHIMIQUESPRODUITSLAITIERS.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
+                                             
+                                                  <div class="row">
+                                                    <div class="col-8 col-sm-6">
+                                                      {% if devi.type_FROMAGE  %}
+                                              <div class="form-group">
+                                                  <label><strong>FROMAGE :</strong></label>
+                                                  {% for item in devi.type_FROMAGE.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
+                                                    </div>
+                                                    <div class="col-4 col-sm-6">
+                                                      {% if devi.type_BEURRE  %}
+                                                      <div class="form-group">
+                                                          <label><strong>BEURRE  :</strong></label>
+                                                          {% for item in devi.type_BEURRE.all %}
+                                                          <li>{{ item }}</li>
+                                                          {% endfor %}
+                                                      </div>
+                                                      {% endif %}
+                                                    </div>
+                                                  </div>
+                                                  {% if  devi.type_Analyses_Physicochimiques_Produits_Eaux  %}
+                                              <div class="form-group">
+                                                  <label><strong>Analyses Physicochimiques des Produits d’Eaux  :</strong></label>
+                                                  {% for item in devi.type_Analyses_Physicochimiques_Produits_Eaux.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
+                                              {% if  devi.type_azote_kjedahl  %}
+                                              <div class="form-group">
+                                                  <label><strong>Azote Kjeldahl  :</strong></label>
+                                                  {% for item in devi.type_azote_kjedahl.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
+                                              </div>
+                                              {% endif %}
+                                                </div>
+                                          
+                                          </div>
+                                          
+                                          
                                       </div>
+                                      
                                       <div class="row">
                                           <div class="col-md-12">
+                                            {% if  devi.type_Alimentation_Animale  %}
                                               <div class="form-group">
-                                                  <label><strong>Parametres d' Analyes :</strong></label>
-                                                  <p>{{ devi.parametre_analyes }}</p>
+                                                  <label><strong>Analyses de l’alimentation animale :</strong></label>
+                                                  {% for item in devi.type_Alimentation_Animale.all %}
+                                                  <li>{{ item }}</li>
+                                                  {% endfor %}
                                               </div>
+                                              {% endif %}
                                           </div>
                                       </div>
-                                  </div>
+                                      
                               </div>
                               
                               
-                                
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                              
+                              </div>
                               </div>
                             </div>
                           </div>

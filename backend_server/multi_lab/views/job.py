@@ -41,7 +41,7 @@ class Offre_descriptionDetailView(DetailView):
 @method_decorator(login_required(), name='dispatch')
 class Offre_descriptionUpdateView(UpdateView):
     model = Offre_description
-    template_name = 'moderator/employee/update_Offre_description.html'  # Name of your template
+    template_name = 'moderator/employee/employeeList.html'  # Name of your template
     fields = '__all__'
     success_url = reverse_lazy('job_list')
     def form_valid(self, form):

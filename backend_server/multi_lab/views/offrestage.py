@@ -35,7 +35,7 @@ class OffreStageCreateView(CreateView):
 @method_decorator(login_required(), name='dispatch')
 class OffreStageUpdateView(UpdateView):
     model = OffreStage
-    template_name = './moderator/stage/update_OffreStage.html'  # Name of your template
+    template_name = 'moderator/stage/stageList.html'  # Name of your template
     fields = '__all__'
     success_url = reverse_lazy('stage_list')
     def form_valid(self, form):
