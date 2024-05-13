@@ -40,9 +40,8 @@ urlpatterns = [
     path('type_fromage/<int:pk>/update/', TypeDeviFROMAGEUpdateView.as_view(), name='type_fromage_update'),
      #? ----------------TypeDeviBEURRE----------------
     path('produits_beurre_list/', TypeDeviBEURRECreateView.as_view(), name='produits_beurre_list'),
-    path('produits_beurre/<int:pk>/delete/', TypeDeviBEURREUpdateView.as_view(), name='produits_beurre_delete'),
+    path('produits_beurre/<int:pk>/delete/', TypeDeviBEURREDeleteView.as_view(), name='produits_beurre_delete'),
     path('produits_beurre/<int:pk>/update/', TypeDeviBEURREUpdateView.as_view(), name='produits_beurre_update'),
-    path('type_fromage/<int:pk>/update/', TypeDeviFROMAGEUpdateView.as_view(), name='type_fromage_update'),
      #? ----------------TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHE----------------
     path('produit_peche_list/', TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHECreateView.as_view(), name='produit_peche_list'),
     path('produit_peche/<int:pk>/delete/', TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHEDeleteView.as_view(), name='produit_peche_delete'),
