@@ -24,13 +24,15 @@ class AvisListView(ListView):
 @method_decorator(login_required(), name='dispatch')
 class AvisUpdateView(UpdateView):
     model = Avis
-    template_name = './moderator/update_avis.html'  # Name of your template
+    template_name = 'moderator/avisClient.html'  # Name of your template
     fields = '__all__'
-    
     success_url = reverse_lazy('avis_list')
     def form_valid(self, form):
         messages.success(self.request, 'Avis a été modifié avec succès.')
         return super().form_valid(form)
+    def form_invalid(self, form):
+        print("Form is invalid.")  # Print a message when the form is invalid
+        return super().form_invalid(form)
 @method_decorator(login_required(), name='dispatch')
 class AvisDeleteView(DeleteView):
     model = Avis

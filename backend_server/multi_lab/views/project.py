@@ -61,7 +61,7 @@ class ProjectCreateView(CreateView):
 @method_decorator(login_required(), name='dispatch')   
 class ProjectUpdateView(UpdateView):
     model = Project
-    template_name = 'moderator/project/project_edit.html'  # Name of your template
+    template_name = 'moderator/project/project_form.html'  # Name of your template
     fields = '__all__'
     success_url = reverse_lazy('project_list')
     def form_valid(self, form):

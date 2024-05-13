@@ -14,6 +14,8 @@
     <!-- Font Awesome CDN link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
     <link rel="stylesheet" href="{% static './css/deviclient.css' %}">
     <link rel="stylesheet" href="{% static './css/avisclient.css' %}">
@@ -172,36 +174,7 @@
                                                     <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <i class="fas fa-trash"> </button>  
                                                   </form>                              {% endcomment %}
                                                   
-                                                  <div class="modal fade" id="updateReport{{report.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                      <div class="modal-content">
-                                                        <div class="modal-header">
-                                                          <h1 class="modal-title fs-5" id="exampleModalLabel">Mettre à jour</h1>
-                                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form method="post" action="{% url 'alimentation_animale_update' indx.pk %}" enctype="multipart/form-data">
-                                                                {% csrf_token %}
-                                                                <div class="form-group">
-                                                                    <label for="client">client cible:</label>
-                                                                    <select id="type_stage" name="type_stage" class="form-control">
-                                                                        <option value="1" {% if stage.type_stage == '1' %} selected {% endif %}>PFE</option>
-                                                                        <option value="2" {% if stage.type_stage == '2' %} selected {% endif %}>Stage Mémoire</option>
-                                                                    </select>
-                                                                    <select name="client" id="id_client" class="form-select ">
-                                                                        {% for user in clients %}
-                                                                            <option value="{{ user.id }}">{{ user.username }}</option>
-                                                                        {% endfor %}
-                                                                    </select>
-                                                                </div>
-                                                                
-                                                                <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i>  Ajouter </button>
-                                                            </form>
-                                                        </div>
-                                                        
-                                                      </div>
-                                                    </div>
-                                                  </div>
+                                                  
                                                 </div>
                                               </td>
                                               
@@ -263,6 +236,61 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="modal fade" id="updateReport{{report.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Mettre à jour</h1>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="post" action="{% url 'report_update' report.pk %}" enctype="multipart/form-data">
+                                                            {% csrf_token %}
+                                                            <div class="mb-3 row">
+                                                                <label for="client" class="col-sm-2">Client cible :</label>
+                                                                
+                                                                <div class="col-sm-10">
+                                                                    <span><strong>{{ report.client.last_name }} {{ report.client.first_name }}</strong></span>
+                                                                    <div class="mb-3 d-flex ">
+                                                                       
+                                                                        <div class="col-sm-10">
+                                                                            <select name="client" id="id_client" class="form-select">
+                                                                                {% for user in clients %}
+                                                                                    {% if user.id == report.client.id %}
+                                                                                        <option value="{{ user.id }}" selected>{{ user.username }}</option>
+                                                                                    {% else %}
+                                                                                        <option value="{{ user.id }}">{{ user.username }}</option>
+                                                                                    {% endif %}
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                         </div> 
+                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="title" class="col-sm-2 col-form-label">Titre du rapport :</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" class="form-control" id="title" name="title" value="{{ report.title }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3 row">
+                                                                <label for="file" class="col-sm-2 col-form-label">Rapport :</label>
+                                                                <div class="col-sm-10">
+                                                                  <span class="col-sm-2">  {{report.file}}<span>
+                                                                    <input type="file" class="form-control" id="file" name="file">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                            <button type="submit" class="btn btn-primary"><div class="col-sm-12">Confirmer la modification </button>
+                                                            </div>
+                                                        </form>
+                                                        
+                                                        
+                                                    </div>
+                                                    
+                                                  </div>
+                                                </div>
+                                              </div>
                                             {% endfor %}
                                           </tbody>
                                         </table>
@@ -297,24 +325,18 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Création du rapport</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="mb-3 d-flex ">
-                           <div>
-                      
-                            <input type="text" class="form-control" id="clientSearchInput" onkeyup="searchClients()" placeholder="Rechercher...">
-                           </div> 
-                            <div>
-                                <select name="client" id="id_client" class="form-select ">
-                                    {% for user in clients %}
-                                        <option value="{{ user.id }}">{{ user.username }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div> 
+                        <div class="mb-3">
+                            <select name="client" id="id_client" class="form-select">
+                                <option value="....">........</option>
+                                {% for user in clients %}
+                                    <option value="{{ user.id }}">{{ user.username }} - {{ user.last_name }} {{ user.first_name }}</option>
+                                {% endfor %}
+                            </select>
+                            
                         </div>
-                        
                         <div class="mb-3">
                             <label for="id_title" class="form-label">Title:</label>
                             {{ form.title }}
@@ -323,13 +345,17 @@
                             <label for="id_file" class="form-label">Upload Report:</label>
                             {{ form.file }}
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Include jQuery -->
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
    <!-- Bootstrap Bundle with Popper -->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
    <!-- jQuery -->
@@ -338,6 +364,7 @@
    <!-- Custom JS -->
    <script src="{% static './js/script_dashboard.js' %}"></script>
    <script>
+   
     function searchStage() {
         var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
         input = document.getElementById("searchInput");
@@ -391,27 +418,18 @@
         }
     }
 }
-function searchClient() {
-    function searchClients() {
-        var input, filter, select, option, i, txtValue;
-        input = document.getElementById("clientSearchInput");
-        filter = input.value.toUpperCase();
-        select = document.getElementById("id_client");
-        option = select.getElementsByTagName("option");
-        for (i = 0; i < option.length; i++) {
-            txtValue = option[i].textContent || option[i].innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                option[i].style.display = "";
-            } else {
-                option[i].style.display = "none";
-            }
-        }
-    }
-}    
-function selectClient(username) {
-    document.getElementById("clientSearchInput").value = username;
-    document.getElementById("clientSearchResults").innerHTML = ""; // Clear search results
+
+function initializeSelect2() {
+    $('#id_client').select2({
+        placeholder: 'Search for a client...',
+        allowClear: true // optional, adds a clear button
+    });
 }
+
+// Call the function when the document is ready
+$(document).ready(function() {
+    initializeSelect2();
+});
 </script>              
 
     

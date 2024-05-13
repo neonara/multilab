@@ -76,8 +76,8 @@
                 <div class="form-group">
                     <label for="status">Status:</label>
                     <select class="form-control" id="status" name="status">
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
+                        <option value="pending">Privé</option>
+                        <option value="approved">Publique</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i>  Ajouter </button>
@@ -92,7 +92,7 @@
                   <div class="card-header border-0 d-flex ">
                     
                     <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createProject">
-                      Create Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
+                      Ajouter un Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
                         <path d="M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4"/>
                       </svg>
@@ -121,7 +121,7 @@
                   </div>
                   <div class="search-field">
                     <i class="bi bi-search"></i>
-                    <input type="text" placeholder="Rechercher par titre ou date"id="searchInput">
+                    <input type="text" placeholder="Rechercher par Titer ou Date de Création"id="searchInput">
                     <button class="flat-button" onclick="searchProjects()">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
@@ -191,11 +191,11 @@
                             <td >
                                 {% if project.status == 'pending' %}
                                     <span class="badge badge-dot mr-3 justify-content-center ">
-                                        <i class="bg-warning"></i> Pending
+                                        <i class="bg-warning"></i> Privé
                                     </span>
                                 {% elif project.status == 'approved' %}
                                     <span class="badge badge-dot mr-3">
-                                        <i class="bg-success"></i> Approved
+                                        <i class="bg-success"></i> Publique
                                     </span>
                                 {% endif %}
                             </td>
@@ -203,11 +203,11 @@
                             <td>
                               <div class="avatar-group">
                                
-                                <a href="{% url 'project_update' project.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateProject{{project.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                  </svg>                               </a>
+                                  </svg>                               </button>
                                   <form method="post" action="{% url 'project_delete' project.pk %}" style="display:inline;">
                                     {% csrf_token %}
                                   <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
@@ -220,6 +220,46 @@
                             
                             
                           </tr>
+                          <div class="modal fade" id="updateProject{{project.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Mettre à jour Projet</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                     <form method="post" action="{% url 'project_update' project.pk %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        
+                                        <div class="form-group">
+                                          <label for="title">Nom du projet:</label>
+                                          <input type="text" class="form-control" id="title" name="title" value="{{ project.title }}">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="image">Image:</label>
+                                        <input type="file" class="form-control-file" id="updateImage" name="image" accept="image/*" onchange="previewImage(this)">
+                                        <img id="updatePreviewImage" src="{{ project.image.url }}" alt="Project Image" class="mt-2" style="max-width: 150px;">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="description">Description:</label>
+                                      <textarea class="form-control" id="description" name="description" rows="3" required>{{ project.description }}</textarea>                          </div>
+                                    </div>
+                                  <div class="form-group">
+                                    <label for="status">Status proje :</label>
+                                    <select class="form-control" id="status" name="status">
+                                      <option value="">Select Type Debis</option>
+                                      <option value="pending" {% if project.status == 'pending' %} selected {% endif %}>Privé</option>
+                                      <option value="approved" {% if project.status == 'approved' %} selected {% endif %}>Publique</option>
+                                  </select>                                </div>
+                                        
+                                  <div class="form-group">
+                                        <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i>  Confirmer la modification </button>
+                                  </div></form> 
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
                           {% endfor %}
                         </tbody>
                       </table>
@@ -288,7 +328,17 @@
             }
         }
     }
-    
+    function previewImage(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function(e) {
+              $('#updatePreviewImage').attr('src', e.target.result);
+          }
+
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
     </script>
     
     <!-- Bootstrap Bundle with Popper -->

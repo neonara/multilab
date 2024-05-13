@@ -131,11 +131,11 @@
                           <td>{{ avis.created_at|date:"Y-m-d" }}</td>
                             <td>
                               <div class="avatar-group">
-                                <a href="{% url 'avis_update' avis.pk %}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateAvis{{avis.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                  </svg>   </a>
+                                  </svg>   </button>
                                   <form method="post" action="{% url 'avis_delete' avis.pk %}" style="display:inline;">
                                     {% csrf_token %}
                                   <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
@@ -149,6 +149,53 @@
                             
                             
                           </tr>
+                          <div class="modal fade" id="updateAvis{{avis.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Mettre à jour Avis</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{% url 'avis_update' avis.pk %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="fullname">Nom et Prénom:</label>
+                                            <input type="text" class="form-control" id="fullname" name="fullname" value="{{ avis.fullname }}">
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="nom_entreprise">Nom de l'entreprise:</label>
+                                            <input type="text" class="form-control" id="nom_entreprise" name="nom_entreprise" value="{{ avis.nom_entreprise }}">
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="numero_telephone">Numéro de téléphone:</label>
+                                            <input type="number" class="form-control" id="numero_telephone" name="numero_telephone" value="{{ avis.numero_telephone }}">
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="email">Email:</label>
+                                            <input type="text" class="form-control" id="email" name="email" value="{{ avis.email }}"/>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="pourquoi">Pourquoi:</label>
+                                            <textarea class="form-control" id="pourquoi" name="pourquoi">{{ avis.pourquoi }}</textarea>
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="fullname">Status d'Avis:</label>
+                                            <select class="form-control" id="status" name="status">
+                                              <option value="">Select Type Debis</option>
+                                              <option value="pending" {% if avis.status == 'pending' %} selected {% endif %}>Privé</option>
+                                              <option value="approved" {% if avis.status == 'approved' %} selected {% endif %}>Publique</option>
+                                          </select> 
+                                        </div>
+                                         
+                                        <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i>  Confirmer la modification </button>
+                                          
+                                      </form>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
                           {% endfor %}
                         </tbody>
                       </table>
@@ -163,7 +210,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    <!-- Custom JS -->
     <script src="{% static './js/script_dashboard.js' %}"></script>
     <script>
       function searchAvis() {
