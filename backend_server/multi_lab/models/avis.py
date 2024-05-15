@@ -11,12 +11,12 @@ class Avis(models.Model):
     ]
 
     fullname = models.CharField('nom et prénom', max_length=100)
-    nom_entreprise = models.CharField(max_length=100)
+    nom_entreprise = models.CharField('Nom d entreprise', max_length=100)
     
     
-    numero_telephone = models.IntegerField()
+    numero_telephone = models.IntegerField('Numéro de téléphone')
     email = models.EmailField(max_length=254)
-    etat = models.CharField('Etat du client', max_length=15, choices=ETAT_CHOICES, default='satisfait')
+    etat = models.CharField('FeedBack client', max_length=15, choices=ETAT_CHOICES, default='satisfait')
     pourquoi = models.CharField(max_length=250)
     status = models.CharField('Status', max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)

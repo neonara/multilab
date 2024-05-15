@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include(router.urls)),
    
     path('avis_list/', AvisListView.as_view(), name='avis_list'),
+    path('avis_create/', AvisCreateView.as_view(), name='avis_create'),
     path('avis/<int:pk>/update/', AvisUpdateView.as_view(), name='avis_update'),
     path('avis/<int:pk>/delete/', AvisDeleteView.as_view(), name='avis_delete'),
    

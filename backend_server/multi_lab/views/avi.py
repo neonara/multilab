@@ -19,8 +19,19 @@ class AvisListView(ListView):
     template_name = 'moderator/avisClient.html'
     queryset = Avis.objects.order_by('-created_at')
     
-
-  # Name of your URL pattern for listing avis
+@method_decorator(login_required(), name='dispatch')
+class AvisCreateView(CreateView):
+    model = Avis
+    template_name = 'client/dashClient.html'  # Name of your template for the form
+    fields = '__all__'  # Fields to include in the form
+    success_url = reverse_lazy('customer')
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+    def form_valid(self, form):
+        messages.success(self.request, 'Votre avis a été envoyé avec succès.')
+        return super().form_valid(form)
+ 
 @method_decorator(login_required(), name='dispatch')
 class AvisUpdateView(UpdateView):
     model = Avis
