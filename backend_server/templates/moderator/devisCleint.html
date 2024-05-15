@@ -5,9 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devis List</title>
+    <title>Dashboard Multi lab</title> <!-- Bootstrap CDN link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
     <!-- Font Awesome CDN link -->
@@ -19,261 +18,316 @@
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
-    <link rel="stylesheet" href="{% static './css/avisclient.css' %}">
     <link rel="stylesheet" href="{% static './css/project.css' %}">
+    <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './vendor/fontawesome-free/css/all.min.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
 </head>
 <body>
   
-    <div class='dashboard'>
-      
-        <div class="dashboard-nav">
-            <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
-                                                                                       class="brand-logo"><i
-                    class="fas fa-anchor"></i> <span>Multi Lab</span></a></header>
-            <nav class="dashboard-nav-list"> {% include 'moderator/companents/silderbar.html' %}
-            </nav>
-        </div>
-        <div class='dashboard-app'>
-          
-          {% include 'moderator/companents/navbar.html' %}
-            <div class='dashboard-content'>
-             
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    {% include 'moderator/companents/silderbar.html' %}
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            {% include 'moderator/companents/navbar.html' %}
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+              
+                <!-- Page Heading -->
+                
                 <div class="card shadow">
-                    <div class="card-header border-0">
-                      <h3 class="mb-0">Devis client</h3>
-                    </div>
-                    <div class="service-section-header">
-                    
-                      <div class="dropdown-field">
-                        <select  id="entriesPerPage" onchange="changeEntriesPerPage(this)">
-                          <option> Entries per page</option>
-                          <option value="5">5</option>
-                          <option value="10">10</option>
-                          <option value="20">20</option>
-                      </select>
-                      <i class="bi bi-caret-down"></i> </div>
-                      <div class="dropdown-field">
-                        <select id="type_debis-filter" onchange="filterDevi(this.value)">
-                          <option value="">Tous</option>
-                          <option value="microbiologie">Microbiologie</option>
-                        <option value="physicochimie">ApproPhysicochimieved</option>
-                        <option value="Alimentation_Animale">Alimentation Animale</option>
-                        </select>
-                        <i class="bi bi-caret-down"></i>
-                    </div>
-                    <div class="search-field">
-                      <i class="bi bi-search"></i>
-                      <input type="text" placeholder="Rechercher "id="searchInput">
-                      <button class="flat-button" onclick="searchDevis()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                        </svg>
-                      </button>
-                      <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
+                  <div class="card-header border-0">
+                    <h3 class="mb-0">Devis client</h3>
                   </div>
-                    </div>
-                    <div class="table-responsive">
-                      <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                          <tr>
-                            <th scope="col">Nom et Prénom</th>
-                            <th scope="col">Nom Entreprise</th>
-                            <th scope="col">Numéro de téléphone</th>
-                            <th scope="col">Email </th>
-                            <th scope="col">Parametre Analyes</th>
+                  <div class="service-section-header">
+                  
+                    <div class="dropdown-field">
+                      <select  id="entriesPerPage" onchange="changeEntriesPerPage(this)">
+                        <option> Entries per page</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                    </select>
+                    <i class="bi bi-caret-down"></i> </div>
+                    <div class="dropdown-field">
+                      <select id="type_debis-filter" onchange="filterDevi(this.value)">
+                        <option value="">Tous</option>
+                        <option value="microbiologie">Microbiologie</option>
+                      <option value="physicochimie">ApproPhysicochimieved</option>
+                      <option value="Alimentation_Animale">Alimentation Animale</option>
+                      </select>
+                      <i class="bi bi-caret-down"></i>
+                  </div>
+                  <div class="search-field">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Rechercher "id="searchInput">
+                    <button class="flat-button" onclick="searchDevis()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                      </svg>
+                    </button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
+                </div>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Nom et Prénom</th>
+                          <th scope="col">Nom Entreprise</th>
+                          <th scope="col">Numéro de téléphone</th>
+                          <th scope="col">Email </th>
+                          <th scope="col">Parametre Analyes</th>
+                          
+                          <th scope="col">Créé à</th>
+                         
+                         
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for devi in object_list %}
+                        <tr class="devi-row" data-status="{{ devi.type_debis }}">
+                          <td scope="row">
                             
-                            <th scope="col">Créé à</th>
-                           
-                           
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for devi in object_list %}
-                          <tr class="devi-row" data-status="{{ devi.type_debis }}">
-                            <td scope="row">
-                              
-                                <div class="media-body">
-                                  <span class="mb-0 text-sm"><b>{{devi.fullname }}</b></span>
-                                </div>
-                             
-                            </td>
-                            <td>
-                              {{devi.nom_entreprise }}
-                            </td>
-                            <td>{{devi.numero_telephone }}</td>
-                            <td>{{devi.email }}</td>
-                           
-                            <td>
-                              <span >
-                               {{devi.type_debis}}
-                              </span>
-                            </td>
-                            <td>{{ devi.created_at|date:"Y-m-d" }}</td>
-                            <td>
-                              <div class="avatar-group">
-                                <a data-bs-toggle="modal" data-bs-target="#staticBackdrop{{devi.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                  <i class="bi bi-eye"></i>   </a>
+                              <div class="media-body">
+                                <span class="mb-0 text-sm"><b>{{devi.fullname }}</b></span>
                               </div>
-                            </td>
-                            {% comment %} delet all the action {% endcomment %}
-                            
-                          </tr>
-                          <div class="modal fade  modal-xl " id="staticBackdrop{{devi.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="staticBackdropLabel">Devis Client détails "{{devi.fullname}}"</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                  <div class="container">
-                                      <div class="row">
-                                          <div class="col-md-6">
-                                              <div class="form-group">
-                                                  <label><strong>Poste description :</strong></label>
-                                                  <p>{{ devi.poste }}</p>
-                                              </div>
-                                              {% if devi.type_Analysesmicrobiologiquesproduitsalimentaires %}
-                                              <div class="form-group">
-                                                  <label><strong>Analyses microbiologiques des produits alimentaires  :</strong></label>
-                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                              {% if devi.type_ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES  %}
-                                              <div class="form-group">
-                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DES VIANDES ET DERIVES  :</strong></label>
-                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                              {% if devi.type_ALYSESPHYSICOCHIMIQUESPRODUITSPECHE  %}
-                                              <div class="form-group">
-                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DES PRODUITS DE LA PECHE :</strong></label>
-                                                  {% for item in devi.type_ALYSESPHYSICOCHIMIQUESPRODUITSPECHE.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                              {% if  devi.type_AnalyseMicrobiologieProduitsEaux  %}
-                                              <div class="form-group">
-                                                  <label><strong>Analyse Microbiologie des Produits d’Eaux :</strong></label>
-                                                  {% for item in devi.type_AnalyseMicrobiologieProduitsEaux.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                          </div>
-                                          <div class="col-md-6">
-                                            {% if devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS  %}
-                                              <div class="form-group">
-                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES HUILES ET PRODUITS GRAS  :</strong></label>
-                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                              {% if devi.type_ANALYSESPHYSICOCHIMIQUESMIEL  %}
-                                              <div class="form-group">
-                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DU MIEL  :</strong></label>
-                                                  <h6>Quantité nécessaire par échantillon : 500g </h6>
-                                                  {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESMIEL.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                              {% if devi.type_YSESPHYSICOCHIMIQUESPRODUITSLAITIERS  %}
-                                              <div class="form-group">
-                                                  <label><strong>ANALYSES PHYSICOCHIMIQUES DES PRODUITS LAITIERS (LAIT)  :</strong></label>
-                                                  {% for item in devi.type_YSESPHYSICOCHIMIQUESPRODUITSLAITIERS.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                             
-                                                  <div class="row">
-                                                    <div class="col-8 col-sm-6">
-                                                      {% if devi.type_FROMAGE  %}
-                                              <div class="form-group">
-                                                  <label><strong>FROMAGE :</strong></label>
-                                                  {% for item in devi.type_FROMAGE.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                                    </div>
-                                                    <div class="col-4 col-sm-6">
-                                                      {% if devi.type_BEURRE  %}
-                                                      <div class="form-group">
-                                                          <label><strong>BEURRE  :</strong></label>
-                                                          {% for item in devi.type_BEURRE.all %}
-                                                          <li>{{ item }}</li>
-                                                          {% endfor %}
-                                                      </div>
-                                                      {% endif %}
-                                                    </div>
+                           
+                          </td>
+                          <td>
+                            {{devi.nom_entreprise }}
+                          </td>
+                          <td>{{devi.numero_telephone }}</td>
+                          <td>{{devi.email }}</td>
+                         
+                          <td>
+                            <span >
+                             {{devi.type_debis}}
+                            </span>
+                          </td>
+                          <td>{{ devi.created_at|date:"Y-m-d" }}</td>
+                          <td>
+                            <div class="avatar-group">
+                              <a data-bs-toggle="modal" data-bs-target="#staticBackdrop{{devi.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                <i class="bi bi-eye"></i>   </a>
+                            </div>
+                          </td>
+                          {% comment %} delet all the action {% endcomment %}
+                          
+                        </tr>
+                        <div class="modal fade  modal-xl " id="staticBackdrop{{devi.pk}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Devis Client détails "{{devi.fullname}}"</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label><strong>Poste description :</strong></label>
+                                                <p>{{ devi.poste }}</p>
+                                            </div>
+                                            {% if devi.type_Analysesmicrobiologiquesproduitsalimentaires %}
+                                            <div class="form-group">
+                                                <label><strong>Analyses microbiologiques des produits alimentaires  :</strong></label>
+                                                {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            {% if devi.type_ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES  %}
+                                            <div class="form-group">
+                                                <label><strong>ANALYSES PHYSICOCHIMIQUES DES VIANDES ET DERIVES  :</strong></label>
+                                                {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            {% if devi.type_ALYSESPHYSICOCHIMIQUESPRODUITSPECHE  %}
+                                            <div class="form-group">
+                                                <label><strong>ANALYSES PHYSICOCHIMIQUES DES PRODUITS DE LA PECHE :</strong></label>
+                                                {% for item in devi.type_ALYSESPHYSICOCHIMIQUESPRODUITSPECHE.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            {% if  devi.type_AnalyseMicrobiologieProduitsEaux  %}
+                                            <div class="form-group">
+                                                <label><strong>Analyse Microbiologie des Produits d’Eaux :</strong></label>
+                                                {% for item in devi.type_AnalyseMicrobiologieProduitsEaux.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-6">
+                                          {% if devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS  %}
+                                            <div class="form-group">
+                                                <label><strong>ANALYSES PHYSICOCHIMIQUES HUILES ET PRODUITS GRAS  :</strong></label>
+                                                {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESHUILESETSGRAS.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            {% if devi.type_ANALYSESPHYSICOCHIMIQUESMIEL  %}
+                                            <div class="form-group">
+                                                <label><strong>ANALYSES PHYSICOCHIMIQUES DU MIEL  :</strong></label>
+                                                <h6>Quantité nécessaire par échantillon : 500g </h6>
+                                                {% for item in devi.type_ANALYSESPHYSICOCHIMIQUESMIEL.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            {% if devi.type_YSESPHYSICOCHIMIQUESPRODUITSLAITIERS  %}
+                                            <div class="form-group">
+                                                <label><strong>ANALYSES PHYSICOCHIMIQUES DES PRODUITS LAITIERS (LAIT)  :</strong></label>
+                                                {% for item in devi.type_YSESPHYSICOCHIMIQUESPRODUITSLAITIERS.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                           
+                                                <div class="row">
+                                                  <div class="col-8 col-sm-6">
+                                                    {% if devi.type_FROMAGE  %}
+                                            <div class="form-group">
+                                                <label><strong>FROMAGE :</strong></label>
+                                                {% for item in devi.type_FROMAGE.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
                                                   </div>
-                                                  {% if  devi.type_Analyses_Physicochimiques_Produits_Eaux  %}
-                                              <div class="form-group">
-                                                  <label><strong>Analyses Physicochimiques des Produits d’Eaux  :</strong></label>
-                                                  {% for item in devi.type_Analyses_Physicochimiques_Produits_Eaux.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
-                                              {% if  devi.type_azote_kjedahl  %}
-                                              <div class="form-group">
-                                                  <label><strong>Azote Kjeldahl  :</strong></label>
-                                                  {% for item in devi.type_azote_kjedahl.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
-                                              </div>
-                                              {% endif %}
+                                                  <div class="col-4 col-sm-6">
+                                                    {% if devi.type_BEURRE  %}
+                                                    <div class="form-group">
+                                                        <label><strong>BEURRE  :</strong></label>
+                                                        {% for item in devi.type_BEURRE.all %}
+                                                        <li>{{ item }}</li>
+                                                        {% endfor %}
+                                                    </div>
+                                                    {% endif %}
+                                                  </div>
                                                 </div>
-                                          
-                                          </div>
-                                          
-                                          
-                                      </div>
-                                      
-                                      <div class="row">
-                                          <div class="col-md-12">
-                                            {% if  devi.type_Alimentation_Animale  %}
-                                              <div class="form-group">
-                                                  <label><strong>Analyses de l’alimentation animale :</strong></label>
-                                                  {% for item in devi.type_Alimentation_Animale.all %}
-                                                  <li>{{ item }}</li>
-                                                  {% endfor %}
+                                                {% if  devi.type_Analyses_Physicochimiques_Produits_Eaux  %}
+                                            <div class="form-group">
+                                                <label><strong>Analyses Physicochimiques des Produits d’Eaux  :</strong></label>
+                                                {% for item in devi.type_Analyses_Physicochimiques_Produits_Eaux.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                            {% if  devi.type_azote_kjedahl  %}
+                                            <div class="form-group">
+                                                <label><strong>Azote Kjeldahl  :</strong></label>
+                                                {% for item in devi.type_azote_kjedahl.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
                                               </div>
-                                              {% endif %}
-                                          </div>
-                                      </div>
-                                      
-                              </div>
-                              
-                              
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                              
-                              </div>
-                              </div>
+                                        
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          {% if  devi.type_Alimentation_Animale  %}
+                                            <div class="form-group">
+                                                <label><strong>Analyses de l’alimentation animale :</strong></label>
+                                                {% for item in devi.type_Alimentation_Animale.all %}
+                                                <li>{{ item }}</li>
+                                                {% endfor %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                            
+                            
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            
+                            </div>
                             </div>
                           </div>
-                          
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
-            </div>
+                        </div>
+                        
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+          </div>
+              
+              
+              
+            <!-- /.container-fluid -->
 
-            
         </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    {% comment %} <span>Copyright &copy; Your Website 2020</span> {% endcomment %}
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
     </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/clientdash.js' %}"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Custom JS -->
+<script src="{% static './js/script_dashboard.js' %}"></script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

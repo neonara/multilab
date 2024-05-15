@@ -7,9 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Multi Lab</title>
+    <title>Dashboard Multi lab</title> <!-- Bootstrap CDN link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
     <!-- Font Awesome CDN link -->
@@ -21,153 +20,200 @@
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
-    <link rel="stylesheet" href="{% static './css/avisclient.css' %}">
     <link rel="stylesheet" href="{% static './css/project.css' %}">
-    <link rel="stylesheet" href="{% static './css/client.css' %}">
+    <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './vendor/fontawesome-free/css/all.min.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
 
 </head>
 <body>
-    <div class='dashboard'>
-        <div class="dashboard-nav">
-            <header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#"
-                                                                                       class="brand-logo"><i
-                    class="fas fa-anchor"></i> <span>Multi Lab</span></a></header>
-            <nav class="dashboard-nav-list"> {% include 'moderator/companents/silderbar.html' %}
-            </nav>
-        </div>
-       
-        <div class='dashboard-app'>
-          {% if messages %}
-          <div class="alert alert-success" role="alert">
-              {% for message in messages %}
-                  {{ message }}
-              {% endfor %}
-          </div>
-      {% endif %}
-      {% include 'moderator/companents/navbar.html' %}
-            <div class='dashboard-content'>
-             
-            
-                <div class="card shadow">
-                    <div class="card-header border-0">
-                      <h3 class="mb-0"> Liste du Client </h3>
-                    </div>
-                    <div class="service-section-header">
-                    
-                      <div class="dropdown-field">
-                        <select  id="entriesPerPage" onchange="changeEntriesPerPage(this)">
-                          <option> Entries per page</option>
-                          <option value="5">5</option>
-                          <option value="10">10</option>
-                          <option value="20">20</option>
-                      </select>
-                      <i class="bi bi-caret-down"></i> </div>
-                      
-                    <div class="search-field">
-                      <i class="bi bi-search"></i>
-                      <input type="text" placeholder="Rechercher "id="searchInput">
-                      <button class="flat-button" onclick="searchAvis()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                        </svg>
-                      </button>
-                      <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
-                  </div>
-                    </div>
-                    <div class="card-header border-0 justify-content-center ">
-                     
-                    </div>
-                    <div class="table-responsive">
-                      <table class="table align-items-center table-flush">
-                        <thead class="thead-light">
-                          <tr>
-                            <th scope="col">Nom et Prénom</th>
-                            <th scope="col">Nom Entreprise</th>
-                            <th scope="col">Email </th>
-                           
-                            <th scope="col">Action</th>
-                           
-                            <th scope="col"></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            {% for client, reports in client_reports.items %}
-                          <tr >
-                            <td scope="row">
-                              
-                                <div class="media-body ">
-                                  <span class="mb-0 text-sm">{{ client.last_name }} {{ client.first_name }}</span>
-                                </div>
-                             
-                            </td>
-                            <td >
-                              {{ client.nom_entreprise }}
-                            </td>
-                            <td>{{ client.email }}</td>
-                            
-                           
-                         
-                            <td>
-                              <div class="avatar-group">
-                                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop{{client.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                  </svg>   </button>
-                                                              
-                                
-                                  
-                              </div>
-                            </td>
-                            
-                            
-                          </tr>
-                          <div class="modal fade" id="staticBackdrop{{ client.pk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Fiche Client</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="container mb-3">
-                                            <input type="text" id="searchInputModal{{ client.pk }}" class="form-control" placeholder="Search" onkeyup="searchReportsModal('{{ client.pk }}')">
-                                        </div>
-                                        <div class="container" id="reportsContainer{{ client.pk }}">
-                                            {% for report in reports %}
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <h5 class="card-title">{{ report.title }}</h5>
-                                                            <p class="card-text"> <small>{{ report.created_at|date:"Y-m-d" }}</small></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <a href="{{ report.file.url }}" class="btn btn-primary w-20"><i class="bi bi-card-heading"></i></a>
-                                                </div>
-                                            </div>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                        
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
-            </div>
+  <div id="wrapper">
 
-            
+    <!-- Sidebar -->
+    {% include 'moderator/companents/silderbar.html' %}
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            {% include 'moderator/companents/navbar.html' %}
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+             
+                <!-- Page Heading -->
+                
+                <div class="card shadow">
+                  <div class="card-header border-0">
+                    <h3 class="mb-0"> Liste du Client </h3>
+                  </div>
+                  <div class="service-section-header">
+                  
+                    <div class="dropdown-field">
+                      <select  id="entriesPerPage" onchange="changeEntriesPerPage(this)">
+                        <option> Entries per page</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                    </select>
+                    <i class="bi bi-caret-down"></i> </div>
+                    
+                  <div class="search-field">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Rechercher "id="searchInput">
+                    <button class="flat-button" onclick="searchAvis()">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                      </svg>
+                    </button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
+                </div>
+                  </div>
+                  <div class="card-header border-0 justify-content-center ">
+                   
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Nom et Prénom</th>
+                          <th scope="col">Nom Entreprise</th>
+                          <th scope="col">Email </th>
+                         
+                          <th scope="col">Action</th>
+                         
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {% for client, reports in client_reports.items %}
+                        <tr >
+                          <td scope="row">
+                            
+                              <div class="media-body ">
+                                <span class="mb-0 text-sm">{{ client.last_name }} {{ client.first_name }}</span>
+                              </div>
+                           
+                          </td>
+                          <td >
+                            {{ client.nom_entreprise }}
+                          </td>
+                          <td>{{ client.email }}</td>
+                          
+                         
+                       
+                          <td>
+                            <div class="avatar-group">
+                              <button data-bs-toggle="modal" data-bs-target="#staticBackdrop{{client.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                </svg>   </button>
+                                                            
+                              
+                                
+                            </div>
+                          </td>
+                          
+                          
+                        </tr>
+                        <div class="modal fade" id="staticBackdrop{{ client.pk }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="staticBackdropLabel">Fiche Client</h5>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="container mb-3">
+                                          <input type="text" id="searchInputModal{{ client.pk }}" class="form-control" placeholder="Search" onkeyup="searchReportsModal('{{ client.pk }}')">
+                                      </div>
+                                      <div class="container" id="reportsContainer{{ client.pk }}">
+                                          {% for report in reports %}
+                                          <div class="row mb-3">
+                                              <div class="col-md-6">
+                                                  <div class="card">
+                                                      <div class="card-body">
+                                                          <h5 class="card-title">{{ report.title }}</h5>
+                                                          <p class="card-text"> <small>{{ report.created_at|date:"Y-m-d" }}</small></p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <a href="{{ report.file.url }}" class="btn btn-primary w-20"><i class="bi bi-card-heading"></i></a>
+                                              </div>
+                                          </div>
+                                          {% endfor %}
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                      
+                      
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+          </div>
+              
+              
+              
+            <!-- /.container-fluid -->
+
         </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    {% comment %} <span>Copyright &copy; Your Website 2020</span> {% endcomment %}
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
     </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/clientdash.js' %}"></script>
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Custom JS -->
+<script src="{% static './js/script_dashboard.js' %}"></script>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

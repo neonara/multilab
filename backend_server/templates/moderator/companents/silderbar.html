@@ -1,87 +1,6 @@
 {% load static %}
 {% block content %}
-{% comment %} <a href="{% url 'employee' %}" class="dashboard-nav-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-<a href="{% url 'avis_list' %}" class="dashboard-nav-item {% if request.path == '/path/to/avis_list/' %}active{% endif %}"><i class="fas fa-file-upload"></i> Avis Client </a>
-<a href="{% url 'devi_list' %}" class="dashboard-nav-item {% if request.path == '/path/to/devi_list/' %}active{% endif %}"><i class="fas fa-file-upload"></i> Devis Client </a>
 
-<div class='dashboard-nav-dropdown'>
-    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-        <i class="fas fa-photo-video"></i> Offre du stage
-    </a>
-    <div class='dashboard-nav-dropdown-menu'>
-        <a href="{% url 'stage_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/stage_list/' %}active{% endif %}">List d'offre du stage</a>
-        <a href="{% url 'stage_condidat_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/stage_condidat_list/' %}active{% endif %}">List des Stagiaires</a>
-    </div>
-</div>
-
-<div class='dashboard-nav-dropdown'>
-    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-        <i class="fas fa-users"></i> Offre d'emploi
-    </a>
-    <div class='dashboard-nav-dropdown-menu'>
-        <a href="{% url 'job_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/job_list/' %}active{% endif %}">List d'offre d'emploi</a>
-        <a href="{% url 'condidat_list' %}" class="dashboard-nav-dropdown-item">List des candidats</a>
-    </div>
-</div>
-
-<div class='dashboard-nav-dropdown'>
-    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-        <i class="fas fa-money-check-alt"></i> Multi Lab Report
-    </a>
-    <div class='dashboard-nav-dropdown-menu'>
-        <a href="{% url 'report_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/report_list/' %}active{% endif %}">List des report</a>
-        <a href="{% url 'report_client' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/report_list/' %}active{% endif %}">List des client</a>
-    </div>
-</div>
-
-<div class='dashboard-nav-dropdown '>
-    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-        <i class="fas fa-money-check-alt"></i>Multi Lab Projets
-    </a>
-    <div class='dashboard-nav-dropdown-menu'>
-        <a href="{% url 'project_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">List des Projets</a>
-    </div>
-</div>
-<div class="nav-item-divider"></div>
-<div class='dashboard-nav-dropdown '>
-    <a href="#!" class="dashboard-nav-item ">
-        <i class="fas fa-money-check-alt"></i>Multi Lab Analyse
-    </a>
-    
-    
-</div>
-<div class='dashboard-nav-dropdown '>
-    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-        <i class="fas fa-money-check-alt"></i>Produits Alimentaires
-    </a>
-    <div class='dashboard-nav-dropdown-menu'>
-        <a href="{% url 'produitsalimentaires_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Microbiologie </a>
-        <a href="{% url 'analyse' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/analyse/' %}active{% endif %}">Physicochimie</a>
-       
-    </div>
-    
-</div>
-<div class='dashboard-nav-dropdown '>
-    <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
-        <i class="fas fa-money-check-alt"></i>Produits Eaux
-    </a>
-    <div class='dashboard-nav-dropdown-menu'>
-        <a href="{% url 'microbiologie_produits_eaux_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/microbiologie_produits_eaux_list/' %}active{% endif %}">Microbiologie </a>
-        <a href="{% url 'physicochimiques_produits_eaux_list' %}" class="dashboard-nav-dropdown-item {% if request.path == '/path/to/project_list/' %}active{% endif %}">Physicochimie</a>
-       
-    </div>
-</div>
-<div class='dashboard-nav-dropdown '>
-    <a  href="{% url 'alimentation_animale_list' %}"  class="dashboard-nav-item ">
-        <i class="fas fa-money-check-alt"></i>Alimentation Animale
-    </a>
-   
-        
-</div>
-<div class="nav-item-divider"></div>
-<form action="{% url 'logout_user' %}" method="post">
-    {% csrf_token %}
-<button type="submit" class="dashboard-nav-item border-0 bg-transparent text-white "><i class="fas fa-sign-out-alt"></i> Logout </button></form> {% endcomment %}
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -137,7 +56,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-briefcase"></i>
             <span>Offre d'emploi</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -170,40 +89,61 @@
     </li>
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item active">
+    <div class="sidebar-heading">
+        Multi Lab Projets
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'project_list' %}">
+            <i class="fas fa-file-upload"></i>
+            <span>Liste des Projets</span></a>
+    </li>
+    
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Multi Lab Analyse
+    </div>
+    <li class="nav-item ">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
             aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Produits Alimentaires</span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+        <div id="collapsePages" class="collapse " aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item active" href="blank.html">Blank Page</a>
+                
+                <a class="collapse-item" href="{% url 'produitsalimentaires_list' %}">Microbiologie</a>
+                <a class="collapse-item" href="{% url 'analyse' %}">Physicochimie</a>
+                
             </div>
         </div>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Produits Eaux</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                
+                <a class="collapse-item" href="{% url 'microbiologie_produits_eaux_list' %}">Microbiologie</a>
+                <a class="collapse-item" href="{% url 'physicochimiques_produits_eaux_list' %}">Physicochimie</a>
+                
+            </div>
+        </div>
+    </li>
+   
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{% url 'alimentation_animale_list' %}">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Alimentation Animale</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li>
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
