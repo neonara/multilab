@@ -163,53 +163,57 @@
                           
                           
                         </tr>
-                        <div class="modal fade" id="updateAvis{{avis.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="updateAvis{{ avis.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Mettre à jour Avis</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Mettre à jour Avis</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <form id="updateAvisForm{{ avis.pk }}" method="post" action="{% url 'avis_update' avis.pk %}" enctype="multipart/form-data">
+                                          {% csrf_token %}
+                      
+                                          <!-- Error messages container -->
+                                          <div id="form-errors-{{ avis.pk }}" class="alert alert-danger" style="display: none;"></div>
+                      
+                                          <div class="form-group">
+                                              <label for="fullname">Nom et Prénom:</label>
+                                              <input type="text" class="form-control" id="fullname" name="fullname" value="{{ avis.fullname }}">
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="nom_entreprise">Nom de l'entreprise:</label>
+                                              <input type="text" class="form-control" id="nom_entreprise" name="nom_entreprise" value="{{ avis.nom_entreprise }}">
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="numero_telephone">Numéro de téléphone:</label>
+                                              <input type="number" class="form-control" id="numero_telephone" name="numero_telephone" value="{{ avis.numero_telephone }}">
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="email">Email:</label>
+                                              <input type="email" class="form-control" id="email" name="email" value="{{ avis.email }}">
+                                          </div>
+                                          <div class="form-group">
+                                              <label for="pourquoi">Pourquoi:</label>
+                                              <textarea class="form-control" id="pourquoi" name="pourquoi">{{ avis.pourquoi }}</textarea>
+                                          </div>
+                                          <input name="etat" value={{avis.etat}} type='hidden'>
+                                          <div class="form-group">
+                                              <label for="status">Status d'Avis:</label>
+                                              <select class="form-control" id="status" name="status">
+                                                  <option value="">Select Status</option>
+                                                  <option value="pending" {% if avis.status == 'pending' %} selected {% endif %}>Privé</option>
+                                                  <option value="approved" {% if avis.status == 'approved' %} selected {% endif %}>Publique</option>
+                                              </select>
+                                          </div>
+                                          <button type="submit" class="btn btn-primary">
+                                              <i class="bi bi-plus-circle"></i> Confirmer la modification
+                                          </button>
+                                      </form>
+                                  </div>
                               </div>
-                              <div class="modal-body">
-                                  <form method="post" action="{% url 'avis_update' avis.pk %}" enctype="multipart/form-data">
-                                      {% csrf_token %}
-                                      <div class="form-group">
-                                          <label for="fullname">Nom et Prénom:</label>
-                                          <input type="text" class="form-control" id="fullname" name="fullname" value="{{ avis.fullname }}">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="nom_entreprise">Nom de l'entreprise:</label>
-                                          <input type="text" class="form-control" id="nom_entreprise" name="nom_entreprise" value="{{ avis.nom_entreprise }}">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="numero_telephone">Numéro de téléphone:</label>
-                                          <input type="number" class="form-control" id="numero_telephone" name="numero_telephone" value="{{ avis.numero_telephone }}">
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="email">Email:</label>
-                                          <input type="text" class="form-control" id="email" name="email" value="{{ avis.email }}"/>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="pourquoi">Pourquoi:</label>
-                                          <textarea class="form-control" id="pourquoi" name="pourquoi">{{ avis.pourquoi }}</textarea>
-                                        </div>
-                                        <div class="form-group">
-                                          <label for="fullname">Status d'Avis:</label>
-                                          <select class="form-control" id="status" name="status">
-                                            <option value="">Select Type Debis</option>
-                                            <option value="pending" {% if avis.status == 'pending' %} selected {% endif %}>Privé</option>
-                                            <option value="approved" {% if avis.status == 'approved' %} selected {% endif %}>Publique</option>
-                                        </select> 
-                                      </div>
-                                       
-                                      <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i>  Confirmer la modification </button>
-                                        
-                                    </form>
-                              </div>
-                              
-                            </div>
                           </div>
-                        </div>
+                      </div>
                         {% endfor %}
                       </tbody>
                     </table>
@@ -326,7 +330,7 @@
           }
       }
   }
-    
+
   </script>        
 
     

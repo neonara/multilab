@@ -31,7 +31,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         queryset = TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS.objects.order_by('-created_at')
         context['analyse'] = queryset 
-        print("++++++++++++++++++++++++x",context) # Retrieve all analyse
+         # Retrieve all analyse
         return context
 @method_decorator(login_required(), name='dispatch')
 class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSUpdateView(UpdateView):
@@ -47,7 +47,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSUpdateView(UpdateView):
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        print("Form is invalid.")  # Print a message when the form is invalid
+        print(form.errors.as_json())  # Print a message when the form is invalid
         return super().form_invalid(form)
 @method_decorator(login_required(), name='dispatch')
 class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSDeleteView(DeleteView):

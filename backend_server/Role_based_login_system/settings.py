@@ -26,15 +26,15 @@ SECRET_KEY = 'b_z73j80aa!3h9s+%ui*ii*bl%(cdw*w-tpukpqngcr7+!_dtw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+WHITENOISE_SKIP_MISSING = True
 ALLOWED_HOSTS = []
-
+WHITENOISE_AUTOREFRESH = True  # Enable auto-refresh for development
+WHITENOISE_INDEX_FILE = True
 
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
-    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,9 +46,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'admin_honeypot',
     'login_history',
-    'multi_lab',
-    'ParametersAnalyse',
+    'multi_lab.apps.MultiLabConfig',  # Changed this line
+    'ParametersAnalyse.apps.ParametersanalyseConfig',
 ]
+
 CORS_ORIGIN_ALLOW_ALL=True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
@@ -61,6 +62,8 @@ REST_FRAMEWORK = {
     ],
 }
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -93,6 +96,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Role_based_login_system.wsgi.application'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 
 # Database
@@ -128,12 +134,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
 LANGUAGE_CODE = 'fr'
 
-TIME_ZONE = 'Africa/Tunis '
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -155,6 +162,7 @@ EMAIL_HOST_PASSWORD = 'gmby dkdj wlmo nojv'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTH_USER_MODEL = 'account.User'
 JAZZMIN_SETTINGS=JAZZMIN_SETTINGS

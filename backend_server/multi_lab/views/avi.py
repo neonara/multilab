@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 class AvisViewSet(viewsets.ModelViewSet):
     queryset = Avis.objects.all()
     serializer_class = AvisSerializer
@@ -30,19 +31,23 @@ class AvisCreateView(CreateView):
         return super().form_invalid(form)
     def form_valid(self, form):
         messages.success(self.request, 'Votre avis a été envoyé avec succès.')
+        
         return super().form_valid(form)
  
 @method_decorator(login_required(), name='dispatch')
 class AvisUpdateView(UpdateView):
     model = Avis
-    template_name = 'moderator/avisClient.html'  # Name of your template
+    template_name = 'moderator/avisClient.html'
     fields = '__all__'
     success_url = reverse_lazy('avis_list')
+
     def form_valid(self, form):
         messages.success(self.request, 'Avis a été modifié avec succès.')
         return super().form_valid(form)
+
     def form_invalid(self, form):
-        print("Form is invalid.")  # Print a message when the form is invalid
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'success': False, 'errors': form.errors}, status=400)
         return super().form_invalid(form)
 @method_decorator(login_required(), name='dispatch')
 class AvisDeleteView(DeleteView):
