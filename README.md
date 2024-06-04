@@ -1,6 +1,6 @@
 # Multi-Lab Project
 
-The Multi-Lab project is a collaborative platform designed to streamline laboratory management and communication. It leverages the power of React for the frontend, Django for the backend, and utilizes SQLite as the database. The project aims to provide an efficient and user-friendly interface for managing multiple laboratories and their associated activities.
+The Multi-Lab project is a collaborative platform designed to streamline laboratory management and communication. It leverages the power of React for the frontend, Django for the backend, and utilizes postgerSQL as the database. The project aims to provide an efficient and user-friendly interface for managing multiple laboratories and their associated activities.
 
 ## Table of Contents
 
