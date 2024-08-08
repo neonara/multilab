@@ -50,7 +50,7 @@ pipenv install
 # Usage
 - Start the frontend:
 cd ../frontend
-npm start
+npm run dev
 - Start the backend:
   cd ../backend
 pipenv run python manage.py runserver
