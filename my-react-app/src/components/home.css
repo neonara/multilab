@@ -1,0 +1,152 @@
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    width: Fill (1,320px);
+    height: Hug (274px);
+    gap: 152px;
+  }
+  
+  .text-section {
+    max-width: 701px;
+    height: 273px;
+    border-radius: 8px;
+
+  }
+  
+  .text-section h1 {
+    font-size: 2rem;
+    color: #0050A0; /* Adjust to match the blue color in the image */
+  }
+  
+  .text-section p {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  .cta-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0050A0; /* Adjust to match the blue color in the image */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .image-section .lab-image {
+    max-width: 467px;
+    height: 274px;
+    border-radius: 16px; /* Optional: Adjust border radius as in the image */
+  }
+  .values-section {
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .values-section h2 {
+    font-size: 2rem;
+    color: #0050A0;
+  }
+  
+  .values-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+  }
+  
+  .value-item {
+    width: 20%;
+    text-align: center;
+  }
+  
+  .value-item img {
+    width: 80px; /* Adjust size as necessary */
+    margin-bottom: 20px;
+  }
+  
+  .value-item h3 {
+    font-size: 1.5rem;
+    color: #0050A0;
+  }
+  
+  .value-item p {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  .scroll-to-top {
+    font-size: x-large;
+
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: #0050A0;
+    border: 2px solid #0050A0; /* Outline */
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+ 
+  
+  
+  .scroll-to-top.show {
+    display: block;
+    opacity: 1;
+  }
+  .card-img-top{
+    width: 420px;
+height: 246px;
+top: 859.16px;
+left: 450px;
+gap: 0px;
+border-radius: 17px 17px 0px 0px;
+opacity: 0px;
+
+  }
+  
+  .scroll-to-top:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    background-color: #0050A0; /* Fill background on hover */
+    color: white;
+  }
+  .card {
+    width: 420px;
+    height: 495px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 16px 40px 0px rgba(154, 170, 207, 0.2);
+    border-radius: 17px;
+  }
+  .card h5{
+    color: #0050A0;
+  }
+  .home-container h2 {
+    color: #0050A0;
+    font-weight: bold;
+  }
+  .quality-recognition {
+    text-align: center;
+    padding: 30px;
+    background-color: #f0f0f0; /* Replace with your desired background color */
+  }
+  
+  .logo-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  
+  .logo-container img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
