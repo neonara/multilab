@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Additional CSS */
+.swiper-wrapper {
+
+  height: max-content !important;
+  padding-bottom: 64px !important;
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+  position: relative;
+}
+.swiper-pagination-bullet {
+  background: #666975;
+  transition: ease-in-out 300ms;
+  width: 200%;
+}
+.swiper-pagination-bullet-active {
+  background: #666975 !important;
+  width: 200%;
+}
+.swiper-pagination-bullet {
+  background-color: #ccc;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #EBDCCD; /* marron color */
+}

@@ -1,29 +1,52 @@
-import React from "react";
 import "../App.css";
+import logo from "../assets/logo VF.png";
 
 function Footer() {
   return (
-    <footer className="bg-light text-dark py-4 mt-auto">
-      <div className="container">
+    <footer className="text-dark py-4 mt-auto">
+      <div className="container-f">
         <div className="row">
           <div className="col-md-4 mb-3">
-            <h5>MULTILAB S.A.</h5>
+            <img
+              src={logo}
+              alt="Multilab Logo"
+              className="d-inline-block align-center"
+            />
             <p>Laboratoire d'analyse agroalimentaire et environnement.</p>
             <p><strong>Nous sommes ouverts :</strong></p>
             <p>Du lundi au vendredi de 08h00 à 17h00</p>
             <p>Samedi de 08h00 à 13h00</p>
           </div>
+
+          {/* Menu en trois colonnes */}
           <div className="col-md-4 mb-3">
             <h5>Menu</h5>
-            <ul className="list-unstyled">
-              <li><a href="/" className="text-dark">Accueil</a></li>
-              <li><a href="#" className="text-dark">A propos</a></li>
-              <li><a href="product" className="text-dark">Prestation</a></li>
-              <li><a href="#" className="text-dark">Carrière</a></li>
-              <li><a href="#" className="text-dark">Accès client</a></li>
-              <li><a href="#" className="text-dark">Contact</a></li>
-            </ul>
+            <div className="menu-container">
+              <div className="menu-column">
+                <ul className="list-unstyled">
+                  <li><a href="/" className="text-dark">Accueil</a></li>
+                  <li><a href="apropos" className="text-dark">A propos</a></li>
+                  <li><a href="product" className="text-dark">Prestation</a></li>
+
+                </ul>
+              </div>
+              <div className="menu-column">
+                <ul className="list-unstyled">
+                <li><a href="#" className="text-dark">Carrière</a></li>
+                <li><a href="Formation" className="text-dark">Accès client</a></li>
+
+                  <li><a href="contact" className="text-dark">Contact</a></li>
+
+                </ul>
+              </div>
+              <div className="menu-column">
+                <ul className="list-unstyled">
+                
+                </ul>
+              </div>
+            </div>
           </div>
+
           <div className="col-md-4 mb-3">
             <h5>Contact</h5>
             <p><i className="bi bi-telephone-fill"></i> (+216) 71 941 436 / 22 344 976</p>

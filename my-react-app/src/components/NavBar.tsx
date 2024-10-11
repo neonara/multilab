@@ -1,30 +1,26 @@
 import { useState } from "react";
-import "../App.css";
+import { useTranslation } from "react-i18next"; // Import translation hook
 import logo from "../assets/logo.png";
 import {
   MDBDropdown,
   MDBDropdownToggle,
   MDBDropdownMenu,
   MDBDropdownItem,
-} from 'mdb-react-ui-kit';
+} from "mdb-react-ui-kit";
 
-interface NavBarProps {
-  navItems: { name: string; subItems?: string[] }[];
-}
-
-function NavBar({ navItems }: NavBarProps) {
-  const [selectedIndex, setSelectedIndex] = useState(-1);
+function NavBar() {
+  const { t, i18n } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState("English");
 
   const handleLanguageChange = (language: string) => {
     setSelectedLanguage(language);
-    // Add logic to handle language change, e.g., updating the app's locale
+    i18n.changeLanguage(language); // Change language across the entire app
   };
 
   return (
-    <nav className="navbar navbar-expand-md navbar-light bg-white shadow">
+    <nav className="navbar navbar-expand-md navbar-light bg-white shadow ">
       <div className="container-fluid d-flex align-items-center">
-        <a className="navbar-brand d-flex align-items-center" href="#">
+        <a className="navbar-brand d-flex align-items-center" href="/">
           <img
             src={logo}
             alt="Multilab Logo"
@@ -44,103 +40,84 @@ function NavBar({ navItems }: NavBarProps) {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarSupportedContent"
-        >
+        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
           <ul className="navbar-nav">
-            {navItems.map((item, index) => (
-              <li
-                key={item.name}
-                className={`nav-item ${item.subItems ? "dropdown" : ""}`}
-                onClick={() => setSelectedIndex(index)}
-              >
-                {item.subItems ? (
-                  <>
-                    <a
-                      className={`nav-link dropdown-toggle ${
-                        selectedIndex === index ? "fw-bold" : ""
-                      }`}
-                      href="#"
-                      id={`navbarDropdown${index}`}
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{
-                        color: selectedIndex === index ? "#0056b3" : "#000000",
-                        fontSize: "16px",
-                      }}
-                    >
-                      {item.name}
-                    </a>
-                    <ul
-                      className="dropdown-menu"
-                      aria-labelledby={`navbarDropdown${index}`}
-                    >
-                      {item.subItems.map((subItem) => (
-                        <li key={subItem}>
-                          <a className="dropdown-item" href="#">
-                            {subItem}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <a
-                    className={`nav-link ${
-                      selectedIndex === index ? "fw-bold" : ""
-                    }`}
-                    href="#"
-                    style={{
-                      color: selectedIndex === index ? "#0056b3" : "#000000",
-                      fontSize: "16px",
-                    }}
-                  >
-                    {item.name}
-                  </a>
-                )}
-              </li>
-            ))}
- <li className="nav-item">
+            <li className="nav-item">
+              <a className="nav-link" href="/">
+                {t("Accueil")} {/* Translated Home */}
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/apropos">
+                {t("À propos")} {/* Translated About */}
+              </a>
+            </li>
+
+            {/* Prestations Dropdown */}
+            <li className="nav-item">
               <MDBDropdown>
-                <MDBDropdownToggle tag='a' className='nav-link dropdown-toggle'>
-                  Prestations
+                <MDBDropdownToggle tag="a" className="nav-link dropdown-toggle">
+                  {t("Prestations")}
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem link>analyses</MDBDropdownItem>
-                  <MDBDropdownItem link>Assistance et audit</MDBDropdownItem>
-                  <MDBDropdownItem link>Formations</MDBDropdownItem>
+                  <MDBDropdownItem link href="/analyse">
+                    {t("Analyses")}
+                  </MDBDropdownItem>
+                  <MDBDropdownItem link href="/assistance">
+                    {t("Assistance et audit")}
+                  </MDBDropdownItem>
+                  <MDBDropdownItem link href="/formation">
+                    {t("Formations")}
+                  </MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </li>
-            {/* Language Selector with Icons */}
+
+            {/* Carrière Dropdown */}
+            <li className="nav-item">
+              <MDBDropdown>
+                <MDBDropdownToggle tag="a" className="nav-link dropdown-toggle">
+                  {t("Carrière")}
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem link href="/poste ">
+                    {t("Les offres d'emploi")}
+                  </MDBDropdownItem>
+                  <MDBDropdownItem link href="/condidature">
+                    {t("Candidatures spontanées")}
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link" href="/login">
+                {t("Accès client")} {/* Translated Client Access */}
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className  ="nav-link" href="/contact">
+                {t("Contact")} {/* Translated Contact */}
+              </a>
+            </li>
+
+            {/* Language Selector */}
             <li className="nav-item ms-3">
               <MDBDropdown>
-                <MDBDropdownToggle tag='a' className='nav-link dropdown-toggle'>
+                <MDBDropdownToggle tag="a" className="nav-link dropdown-toggle">
                   <i className="bi bi-globe"></i> {selectedLanguage}
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem link onClick={() => handleLanguageChange("En")}>
+                  <MDBDropdownItem link onClick={() => handleLanguageChange("en")}>
                     <i className="bi bi-flag-us"></i> English
                   </MDBDropdownItem>
-                  <MDBDropdownItem link onClick={() => handleLanguageChange("Fr")}>
-                    <i className="bi bi-flag-fr"></i> French
+                  <MDBDropdownItem link onClick={() => handleLanguageChange("fr")}>
+                    <i className="bi bi-flag-fr"></i> Français
                   </MDBDropdownItem>
-                  {/* Add more language options with icons here */}
                 </MDBDropdownMenu>
               </MDBDropdown>
             </li>
-
-            {/* MDB Dropdown Example */}
-           
           </ul>
-
-          <form className="d-flex ms-3">
-            <button className="btn btn-outline-secondary" type="submit">
-              <i className="bi bi-search"></i>
-            </button>
-          </form>
         </div>
       </div>
     </nav>
@@ -148,3 +125,4 @@ function NavBar({ navItems }: NavBarProps) {
 }
 
 export default NavBar;
+

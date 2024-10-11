@@ -1,0 +1,272 @@
+/* Global animation class */
+.animation-class {
+  opacity: 0;
+  transform: translateX(-100px); /* Default slide in from left */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* When the element is in view */
+.in-view {
+  opacity: 1;
+  transform: translateX(0); /* Moves to its original position */
+}
+
+/* If image is on the right, slide from right */
+.image-right {
+  transform: translateX(100px); /* Initially slide from right */
+}
+
+.image-right.in-view {
+  transform: translateX(0); /* Moves to original position */
+}
+
+
+/* Container to hold text and image in a row */
+.containers {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 20px;
+  margin-left: 30px;
+  flex-wrap: nowrap; /* Ensure flex items do not wrap to the next line */
+}
+
+/* Flex alignment for text */
+.text-left {
+  flex: 1;
+  padding: 20px;
+  min-width: 0; /* Prevent text from pushing image down */
+  width: 709.88px;
+height: 316px;
+top: 748px;
+gap: 0px;
+opacity: 0px;
+margin-left: 20px;
+
+}
+
+/* Image styling */
+.image-right {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  width: 444px;
+  height: 316px;
+  border-radius: 17px;
+  object-fit: cover;
+}
+.p{
+  width: 709.88px;
+height: 250px;
+top: 66px;
+gap: 0px;
+opacity: 0px;
+text-align: left;
+margin-left: 20px;
+
+}
+.test{
+  width: 542px;
+height: 34px;
+gap: 0px;
+opacity: 0px;
+font-family: 'Inter';
+font-size: 35px;
+font-weight: 700;
+line-height: 42.36px;
+text-align: left;
+color: rgba(1, 61, 143, 1);
+
+}
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.background-image {
+  width: 100%;
+  height: auto;
+}
+
+.text-container {
+  position: absolute;
+  bottom: 20px; /* Adjust positioning as needed */
+  left: 60px;
+  color: white; /* Adjust text color if needed */
+}
+
+.line1 {
+  font-size: 60px; /* Adjust font size to match the "MULTILAB s.a" style */
+  font-weight: bold;
+  color: white;
+}
+
+.line2 {
+  
+  font-size: 90px; /* Adjust to match size */
+  font-weight: bold;
+  font-family: 'Inter';
+  color: transparent; /* Make the inside of the text transparent */
+  -webkit-text-stroke: 1px white; /* White outline */
+  text-transform: uppercase; /* Ensure all caps */
+}
+
+.custom-formation-button {
+  background-color: #00a2e8; /* Darker blue on hover */
+
+  margin-left: 600px;
+  width: 173px;
+  height: Fixed 44px;
+  top: 2462px;
+  left: 641px;
+  padding: 8px 16px 8px 16px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-formation-button:hover {
+ 
+  background-color: white; /* Darker blue on hover */
+  color: #00a2e8;
+  border: 1px solid;
+  border-radius: 8px;
+  
+}
+/*    2    and    4 */ 
+/* Global animation class */
+.animation-class-r {
+  opacity: 0;
+  transform: translateX(-100px); /* Default slide in from left */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* When the element is in view */
+.in-view {
+  opacity: 1;
+  transform: translateX(0); /* Moves to its original position */
+}
+
+/* If image is on the right, slide from right */
+.image-left {
+  transform: translateX(-100px); /* Initially slide from right */
+}
+
+
+.image-left.in-view {
+  transform: translateX(0); /* Moves to original position */
+}
+.text-right.in-view{
+  transform: translateX(0); /* Initially slide from right */
+
+}
+
+/* Container to hold text and image in a row */
+
+
+/* Flex alignment for text */
+.text-right {
+  flex: 1;
+  padding: 20px;
+  min-width: 0; /* Prevent text from pushing image down */
+  width: 709.88px;
+height: 316px;
+top: 748px;
+gap: 0px;
+opacity: 0px;
+margin-left: 20px;
+transform: translateX(100px); /* Initially slide from right */
+
+}
+
+/* Image styling */
+.image-left {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  width: 444px;
+  height: 316px;
+  border-radius: 17px;
+  object-fit: cover;
+}
+.p{
+  width: 709.88px;
+height: 250px;
+top: 66px;
+gap: 0px;
+opacity: 0px;
+text-align: left;
+margin-left: 20px;
+
+}
+.test{
+  width: 542px;
+height: 34px;
+gap: 0px;
+opacity: 0px;
+font-family: 'Inter';
+font-size: 35px;
+font-weight: 700;
+line-height: 42.36px;
+text-align: left;
+color: rgba(1, 61, 143, 1);
+
+}
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.background-image {
+  width: 100%;
+  height: auto;
+}
+
+.text-container {
+  position: absolute;
+  bottom: 20px; /* Adjust positioning as needed */
+  left: 60px;
+  color: white; /* Adjust text color if needed */
+}
+
+.line1 {
+  font-size: 60px; /* Adjust font size to match the "MULTILAB s.a" style */
+  font-weight: bold;
+  color: white;
+}
+
+.line2 {
+  
+  font-size: 90px; /* Adjust to match size */
+  font-weight: bold;
+  font-family: 'Inter';
+  color: transparent; /* Make the inside of the text transparent */
+  -webkit-text-stroke: 1px white; /* White outline */
+  text-transform: uppercase; /* Ensure all caps */
+}
+
+.custom-formation-button {
+  margin-left: 600px;
+  width: 173px;
+  height: Fixed 44px;
+  top: 2462px;
+  left: 641px;
+  padding: 8px 16px 8px 16px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.custom-formation-button:hover {
+  background-color: white;
+  color: #00a2e8;
+  border:rgba(0, 160, 216, 1);
+  
+}

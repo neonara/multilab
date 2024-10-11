@@ -1,0 +1,36 @@
+
+.image-container-test {
+  position: relative;
+  display: inline-block;
+    background-color: #09367380;
+    
+  }
+  
+  .background-image {
+    width: 100%;
+  height: auto;
+    top : 86px;
+
+
+  }
+  
+  .text-container {
+    position: absolute;
+    bottom: 20px; /* Adjust positioning as needed */
+    left: 60px;
+    color: white; /* Adjust text color if needed */
+  }
+  
+  .line1 {
+    font-size: 60px; /* Adjust font size to match the "MULTILAB s.a" style */
+    font-weight: bold;
+    color: white;
+  }
+  
+  .line2 {
+    
+    font-size: 90px; /* Adjust to match size */
+    color: transparent; /* Make the inside of the text transparent */
+    -webkit-text-stroke: 1px white; /* White outline */
+    text-transform: uppercase; /* Ensure all caps */
+  }

@@ -1,0 +1,403 @@
+
+ .apropos-container {
+    width: Fixed (1,320px);
+    height: Hug (352px);
+    top: 724px;
+    gap: 80px;
+    opacity: 0px;
+    padding-left: 18px;
+
+  }
+  /* apropos css*/
+  .banner-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .banner-image {
+    width: 100%;
+    border-radius: 10px; /* Optional: if you want rounded corners */
+  }
+  
+  .banner-text {
+    position: absolute;
+    bottom: -20px; /* Move part of the text outside the image */
+    left: 20px;
+    background-color: #0070C0;
+    color: white;
+    font-size: 2rem;
+    border-radius: 5px;
+    transform: translateY(30%); /* Moves the text 50% down */
+      font-family: 'Inter';
+    /* Optional styling to adjust for responsive */
+    width: 280px;
+    height: 51px;
+    z-index: 1;
+  }
+/*      */
+  
+  
+  .apropos-content {
+    width: 1320px;
+    height: 436px;
+    top: 640px;
+    left: 60px;
+    gap: 0px;
+    opacity: 0px;
+    padding-left: 18px;
+    
+  }
+  .apropos-content h1{
+font-family: Inter;
+font-size: 35px;
+font-weight: 700;
+line-height: 42.36px;
+text-align: left;
+color: rgba(1, 61, 143, 1);
+  }
+ 
+  
+  .apropos-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .apropos-image {
+    width: 555px;
+height: 352px;
+gap: 0px;
+border-radius: 17px ;
+opacity: 0px;
+
+   
+  }
+  
+  .apropos-text {
+    max-width: 40%;
+    text-align: left;
+
+    
+  }
+  .apropos-text p{
+    margin-top: 40px;
+    width: 100%;
+    height: 30px;
+    font-family: 'Inter';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 29.05px;
+    text-align: left;
+    color: rgba(0, 160, 216, 1);
+  }
+  .par-text p{
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    margin-left: 60px;
+    text-align: left;
+
+  }
+  
+  .apropos-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 150px;
+    margin: 0 auto;
+    align-items: flex-start;
+
+  }
+  .icons{
+    text-align: left;
+    margin-left: 60px;
+
+  }
+  
+  .apropos-icons i {
+    font-size: 2rem;
+    color: #0050A0; /* Adjust to your primary color */
+    text-align: left;
+
+  }
+  .Accreditation h1 {
+    width: 1320px;
+    height: 34px;
+    gap: 0px;
+    opacity: 0px;
+    font-family: Inter;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 42.36px;
+    text-align: left;
+    color: rgba(1, 61, 143, 1);
+    margin-top: 40px;
+    margin-bottom: 32px;
+        
+  }
+   
+ .Accreditation p {
+  width:Fixed (1,320px);
+  font-family: "Roboto";
+  font-size: 20px;
+  size: 18px;
+  font-weight: 400;
+  line-height: 26.82px;
+  text-align: justify;
+  
+  
+  }
+  .dark-background {
+    
+    padding: 5px; /* Adjust padding as needed */
+    font-weight: bold;
+
+  }
+  .Accreditation{
+    margin-top: 80px;
+    padding-left: 16px;
+  }
+  
+  .accreditation-text {
+    color: #ffffff; /* Match the background color */
+    margin-bottom: 10px;
+  }
+  
+  .accreditation-text .dark-background {
+    display: inline-block; /* Ensure text remains inline */
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .paragraph {
+    margin-left: 60px;
+    margin-top: 60px;
+    
+  }
+  
+  .image {
+    width: 10px; /* Adjust width as needed */
+    
+  }
+  .paragraph h1{
+    font-size: 24px;
+    font-weight: bold;
+    color: #0050A0;
+
+  }
+  
+  
+  .card-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  
+  
+  .card.active {
+    background-color: #f0f0f0;
+  }
+  
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cardd p{
+color:#00A0D8;
+margin-top:  10px;
+
+  }
+  
+  .cardd {
+    width: 100%; /* Adjust width as needed */
+    height: 284px; /* Adjust height as needed */
+    border: 1px ;
+    margin: 0 10px;
+    text-align: center;
+    scroll-snap-align: center;
+    box-shadow: 0px 16px 40px 0px #9AAACF33;
+    
+
+  }
+  .cardd img{
+
+    width: 300px; /* Makes the image take up the card width */
+    height: 192px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1); /* Adds a border under the image */
+    border-radius: 10px 10px 0 0; /* Rounds the top corners of the image */
+  }
+ 
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .navigation-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  .card-carousel-section {
+    margin-top: 50px;
+  }
+  
+  .card-carousel-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  /* test imgs */
+  .apropos-container {
+    text-align: center;
+    padding: 2rem;
+    margin-left: 5px;
+  }
+  
+  
+  .title {
+    color: rgba(1, 61, 143, 1);
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 5px;
+  }
+  
+  .description {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  
+  .carousel {
+    position: relative;
+    background-color: white;
+  }
+  
+  .cards-container {
+
+display: flex;
+    justify-content: center;
+    gap: 1rem;
+    overflow: hidden;
+    width: 100%; /* Adjust this to control the width of the visible cards */
+    margin-bottom: 1rem;
+  }
+  
+  .card {
+    width: 100%;
+    overflow: hidden; /* Ensures content stays within the card */
+
+    height: 100%;
+    gap: 0px;
+    opacity: 0px;
+    box-shadow: 40px  rgba(154, 170, 207, 0.2);
+    border-radius: 17px 17px 0px 0px;
+background-color: white;  }
+  
+  .card img {
+    width: 100%;
+    height: 192px;
+    gap: 0px;
+    opacity: 0px;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1); /* Adds a border under the image */
+    border-radius: 10px 10px 0 0; /* Rounds the top corners of the image */
+
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #0070C0;
+    padding: 1rem 0;
+  }
+  
+  /* Arrow buttons container */
+  .arrow-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .arrow-button {
+    background: rgba(0, 160, 216, 1);
+  
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: white;
+    width: 51.55px;
+height: 50px;
+top: 50px;
+left: 119.1px;
+gap: 0px;
+opacity: 0px;
+ position: -180 deg;
+
+  }
+  
+  .arrow-button .svg-inline--fa {
+    font-size: 20px;
+    
+  }
+  /* recherche and developement*/ 
+  .research-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-left: 18px;
+    width: 1320px;
+    height: 284px;
+    margin-top: 15px;
+  }
+  
+  .research-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    max-width: 1200px;
+  }
+  
+  .text-content {
+    flex: 1;
+  }
+  
+  .research-title {
+    font-size: 2rem;
+    color: #0050A0; /* Custom color for title */
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .research-description {
+    font-size: 1.1rem;
+    color: #333; /* Text color */
+    line-height: 1.6;
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .image-content {
+    flex: 1;
+  }
+  
+  .lab-image {
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    height: 284px;
+  }
+  

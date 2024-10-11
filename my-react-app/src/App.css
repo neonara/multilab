@@ -1,70 +1,165 @@
+body, html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.container-f {
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  padding-left: 40px;
+  width: 100%;
+}
+
+/* Footer styles */
 footer {
-  background-color: #d4d4d40f; /* Light grey background */
+  background-color: rgba(204, 204, 204, 0.8); /* Light grey background */
   color: #343a40; /* Dark grey text */
-  width: Fixed (1,320px);
-  height: Hug (210px);
-  top: 49px;
-  left: 60px;
-  gap: 152px;
+  width: 100%; /* Full width */
+  padding-left: 20px ;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer h5 {
   font-weight: bold;
-  color: #104681; /* Example blue color, replace with exact shade */
+  color: #104681; /* Example blue color */
 }
 
 footer p, footer li, footer a {
-  margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  color: #343a40; /* Default dark grey text */
+  color: #343a40;
 }
 
 footer a {
-  color: #007bff; /* Example blue color for links */
+  color: #007bff;
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #0056b3; /* Darker blue for hover effect */
+  color: #0056b3;
+  text-decoration: underline;
 }
 
 footer ul {
   padding-left: 0;
+  list-style-type: none;
 }
 
-footer .list-unstyled a {
-  color: #007bff; /* Example blue color for menu links */
+/* Grille et alignement */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-/* Add this to your App.css or any relevant CSS file */
-/* Base styles for navbar items */
+footer .col-md-4 {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+}
+
+footer img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 305px;
+  height: 55px;
+}
+
+/* Menu en trois colonnes */
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.menu-column {
+  flex: 1;
+  min-width: 120px;
+}
+
+.menu-column ul {
+  list-style: none;
+}
+
+.menu-column li {
+  margin-bottom: 10px;
+}
+
+.menu-column a {
+  text-decoration: none;
+  color: #000;
+}
+
+.menu-column a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  footer {
+    text-align: center;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .col-md-4 {
+    max-width: 100%;
+  }
+
+  .menu-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  footer p, footer li, footer a {
+    font-size: 0.8rem;
+  }
+
+  footer img {
+    width: 200px;
+  }
+}
+
+/* Styles for navbar items */
 .navbar-nav .nav-link {
   color: #000000;
   font-size: 16px;
   position: relative;
-  transition: color 0.3s ease; /* Smooth color transition */
+  transition: color 0.3s ease;
 }
 
 /* Pseudo-element for the expanding line */
 .navbar-nav .nav-link::after {
   content: '';
   position: absolute;
-  width: 0; /* Start with no width */
-  height: 2px; /* Line thickness */
+  width: 0;
+  height: 2px;
   bottom: 0;
-  left: 50%; /* Start from the center */
-  background-color: #0056b3; /* Line color */
-  transition: width 0.4s ease, left 0.4s ease; /* Smooth expanding effect */
+  left: 50%;
+  background-color: #0056b3;
+  transition: width 0.4s ease, left 0.4s ease;
 }
 
 /* Hover effect to expand the line */
 .navbar-nav .nav-link:hover::after {
-  width: 100%; /* Expand the line to full width */
-  left: 0; /* Move the line's start position to the left */
+  width: 100%;
+  left: 0;
 }
 
-/* Optional: Change text color on hover */
 .navbar-nav .nav-link:hover {
   color: #0056b3;
   font-weight: 700;
+}
+.navbar{
+  padding-left: 40px;
 }
