@@ -1,67 +1,67 @@
 import card from "../home/assets/card1.png";
 import tt from "../home/assets/tt.png";
 import phy from "../home/assets/phy.png";
-import img4 from "../home/assets/Rectangle 3898.png"
-import img6 from "../home/assets/Rectangle 3900.png"
-import img5 from "../home/assets/img5.png"
-import './Home.css'; 
+import img4 from "../home/assets/Rectangle 3898.png";
+import img6 from "../home/assets/Rectangle 3900.png";
+import img5 from "../home/assets/img5.png";
+import "./Home.css";
 
 function AnalysesCard() {
-
-const analyses = [
+  const analyses = [
     {
-      title: 'Microbiologie des Produits Alimentaires',
+      title: "Microbiologie des Produits Alimentaires",
       image: card, // Replace with your image path
-      link: '/param-danalyse',
+      link: "/param-danalyse",
     },
     {
-      title: 'Microbiologie des Eaux',
+      title: "Microbiologie des Eaux",
       image: tt, // Replace with your image path
-      link: '/Physicochimiques',
+      link: "/Physicochimiques",
     },
     {
-      title: 'Physicochimies des Produits Alimentaires',
+      title: "Physicochimies des Produits Alimentaires",
       image: phy, // Replace with your image path
-      link: '/parametre',
+      link: "/parametre",
     },
     {
-      title: 'Physicochimie des aliments pour animaux',
+      title: "Physicochimie des aliments pour animaux",
       image: img4, // Replace with your image path
-      link: '/physicochimie-aliments-animaux',
+      link: "/physicochimie-aliments-animaux",
     },
     {
-      title: 'Physicochimie des Eaux',
+      title: "Physicochimie des Eaux",
       image: img5, // Replace with your image path
-      link: '/physicochimie-eaux',
+      link: "/physicochimie-eaux",
     },
     {
-      title: 'Microbiologie des produits cosmétiques et d’hygiène',
+      title: "Microbiologie des produits cosmétiques et d’hygiène",
       image: img6, // Replace with your image path
-      link: '/microbiologie-cosmetiques-hygiene',
+      link: "/microbiologie-cosmetiques-hygiene",
     },
   ];
 
   return (
+    <div className="analysis-grid">
+      {analyses.map((analysis, index) => (
+        <div key={index} className="analysis-card">
+          <div className="image-wrapper">
+            <img
+              src={analysis.image}
+              alt={analysis.title}
+              className="analysis-image"
+            />
+          </div>
 
-
-  <div className="analysis-grid">
-  {analyses.map((analysis, index) => (
-    <div key={index} className="analysis-card">
-        <div className="image-wrapper">
-
-      <img src={analysis.image} alt={analysis.title} className="analysis-image" />
-      </div>
-
-      <div className="analysis-content">
-        <h3 className="analysis-title">{analysis.title}</h3>
-        <a href={analysis.link} className="analysis-link">
-          En savoir plus &rarr;
-        </a>
-      </div>
+          <div className="analysis-content">
+            <h3 className="analysis-title">{analysis.title}</h3>
+            <a href={analysis.link} className="analysis-link">
+              En savoir plus &rarr;
+            </a>
+          </div>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
-);
+  );
 }
 
 export default AnalysesCard;

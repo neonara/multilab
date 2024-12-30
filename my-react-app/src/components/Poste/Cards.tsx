@@ -1,6 +1,6 @@
 // components/Card.tsx
-import React from 'react';
-import './Poste.css'; 
+import React from "react";
+import "./Poste.css";
 
 interface CardProps {
   title: string;
@@ -9,7 +9,12 @@ interface CardProps {
   description: string;
 }
 
-const Card: React.FC<CardProps> = ({ title, contractType, experience, description }) => {
+const Card: React.FC<CardProps> = ({
+  title,
+  contractType,
+  experience,
+  description,
+}) => {
   return (
     <div className="card">
       <div className="card-header">

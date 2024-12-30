@@ -1,4 +1,3 @@
-
 export default function FormationCard({ formation }) {
   const isLevelNotFound = !formation.levels?.[0] || !formation.levels?.[1];
   return (

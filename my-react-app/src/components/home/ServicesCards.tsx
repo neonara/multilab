@@ -1,5 +1,5 @@
-import React from 'react';
-import './home.css';
+import React from "react";
+import "./home.css";
 
 interface ServiceCardProps {
   imageSrc: string;
@@ -9,7 +9,13 @@ interface ServiceCardProps {
   link: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ imageSrc, logoSrc, title, description, link }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({
+  imageSrc,
+  logoSrc,
+  title,
+  description,
+  link,
+}) => {
   return (
     <div className="card-container">
       {/* Top Image */}
@@ -24,10 +30,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ imageSrc, logoSrc, title, des
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
         <p className="card-description">{description}</p>
-        <a href={link} className="card-link">En savoir plus</a>
+        <a href={link} className="card-link">
+          En savoir plus
+        </a>
       </div>
     </div>
   );
-}
+};
 
 export default ServiceCard;

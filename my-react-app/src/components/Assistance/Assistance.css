@@ -20,7 +20,6 @@
   transform: translateX(0); /* Moves to original position */
 }
 
-
 /* Container to hold text and image in a row */
 .containers {
   display: flex;
@@ -38,12 +37,11 @@
   padding: 20px;
   min-width: 0; /* Prevent text from pushing image down */
   width: 709.88px;
-height: 316px;
-top: 748px;
-gap: 0px;
-opacity: 0px;
-margin-left: 20px;
-
+  height: 316px;
+  top: 748px;
+  gap: 0px;
+  opacity: 0px;
+  margin-left: 20px;
 }
 
 /* Image styling */
@@ -54,31 +52,27 @@ margin-left: 20px;
   border-radius: 17px;
   object-fit: cover;
 }
-.p{
+.p {
   width: 709.88px;
-height: 250px;
-top: 66px;
-gap: 0px;
-opacity: 0px;
-text-align: left;
-margin-left: 20px;
-
+  height: 250px;
+  top: 66px;
+  gap: 0px;
+  opacity: 0px;
+  text-align: left;
+  margin-left: 20px;
 }
-.test{
+.test {
   width: 542px;
-height: 34px;
-gap: 0px;
-opacity: 0px;
-font-family: 'Inter';
-font-size: 35px;
-font-weight: 700;
-line-height: 42.36px;
-text-align: left;
-color: rgba(1, 61, 143, 1);
-
+  height: 34px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: "Inter";
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 42.36px;
+  text-align: left;
+  color: rgba(1, 61, 143, 1);
 }
-
-
 
 .image-container {
   position: relative;
@@ -104,10 +98,9 @@ color: rgba(1, 61, 143, 1);
 }
 
 .line2 {
-  
   font-size: 90px; /* Adjust to match size */
   font-weight: bold;
-  font-family: 'Inter';
+  font-family: "Inter";
   color: transparent; /* Make the inside of the text transparent */
   -webkit-text-stroke: 1px white; /* White outline */
   text-transform: uppercase; /* Ensure all caps */
@@ -125,19 +118,17 @@ color: rgba(1, 61, 143, 1);
   gap: 10px;
   border-radius: 8px;
   opacity: 0px;
-  
+
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-formation-button:hover {
- 
   background-color: white; /* Darker blue on hover */
   color: #00a2e8;
   border: 1px solid;
   border-radius: 8px;
-  
 }
-/*    2    and    4 */ 
+/*    2    and    4 */
 /* Global animation class */
 .animation-class-r {
   opacity: 0;
@@ -156,17 +147,14 @@ color: rgba(1, 61, 143, 1);
   transform: translateX(-100px); /* Initially slide from right */
 }
 
-
 .image-left.in-view {
   transform: translateX(0); /* Moves to original position */
 }
-.text-right.in-view{
+.text-right.in-view {
   transform: translateX(0); /* Initially slide from right */
-
 }
 
 /* Container to hold text and image in a row */
-
 
 /* Flex alignment for text */
 .text-right {
@@ -174,13 +162,12 @@ color: rgba(1, 61, 143, 1);
   padding: 20px;
   min-width: 0; /* Prevent text from pushing image down */
   width: 709.88px;
-height: 316px;
-top: 748px;
-gap: 0px;
-opacity: 0px;
-margin-left: 20px;
-transform: translateX(100px); /* Initially slide from right */
-
+  height: 316px;
+  top: 748px;
+  gap: 0px;
+  opacity: 0px;
+  margin-left: 20px;
+  transform: translateX(100px); /* Initially slide from right */
 }
 
 /* Image styling */
@@ -191,31 +178,27 @@ transform: translateX(100px); /* Initially slide from right */
   border-radius: 17px;
   object-fit: cover;
 }
-.p{
+.p {
   width: 709.88px;
-height: 250px;
-top: 66px;
-gap: 0px;
-opacity: 0px;
-text-align: left;
-margin-left: 20px;
-
+  height: 250px;
+  top: 66px;
+  gap: 0px;
+  opacity: 0px;
+  text-align: left;
+  margin-left: 20px;
 }
-.test{
+.test {
   width: 542px;
-height: 34px;
-gap: 0px;
-opacity: 0px;
-font-family: 'Inter';
-font-size: 35px;
-font-weight: 700;
-line-height: 42.36px;
-text-align: left;
-color: rgba(1, 61, 143, 1);
-
+  height: 34px;
+  gap: 0px;
+  opacity: 0px;
+  font-family: "Inter";
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 42.36px;
+  text-align: left;
+  color: rgba(1, 61, 143, 1);
 }
-
-
 
 .image-container {
   position: relative;
@@ -241,10 +224,9 @@ color: rgba(1, 61, 143, 1);
 }
 
 .line2 {
-  
   font-size: 90px; /* Adjust to match size */
   font-weight: bold;
-  font-family: 'Inter';
+  font-family: "Inter";
   color: transparent; /* Make the inside of the text transparent */
   -webkit-text-stroke: 1px white; /* White outline */
   text-transform: uppercase; /* Ensure all caps */
@@ -260,13 +242,12 @@ color: rgba(1, 61, 143, 1);
   gap: 10px;
   border-radius: 8px;
   opacity: 0px;
-  
+
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-formation-button:hover {
   background-color: white;
   color: #00a2e8;
-  border:rgba(0, 160, 216, 1);
-  
+  border: rgba(0, 160, 216, 1);
 }

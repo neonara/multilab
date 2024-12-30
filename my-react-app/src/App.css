@@ -1,4 +1,9 @@
-body, html {
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+body,
+html {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -17,7 +22,7 @@ footer {
   background-color: rgba(204, 204, 204, 0.8); /* Light grey background */
   color: #343a40; /* Dark grey text */
   width: 100%; /* Full width */
-  padding-left: 20px ;
+  padding-left: 20px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -27,7 +32,9 @@ footer h5 {
   color: #104681; /* Example blue color */
 }
 
-footer p, footer li, footer a {
+footer p,
+footer li,
+footer a {
   font-size: 0.9rem;
   color: #343a40;
 }
@@ -121,7 +128,9 @@ footer img {
 }
 
 @media (max-width: 576px) {
-  footer p, footer li, footer a {
+  footer p,
+  footer li,
+  footer a {
     font-size: 0.8rem;
   }
 
@@ -140,7 +149,7 @@ footer img {
 
 /* Pseudo-element for the expanding line */
 .navbar-nav .nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 2px;
@@ -160,6 +169,7 @@ footer img {
   color: #0056b3;
   font-weight: 700;
 }
-.navbar{
+.navbar {
   padding-left: 40px;
+  height: 70px;
 }

@@ -1,54 +1,50 @@
 .formation-container {
-   
 }
-.a3{
-    padding: 20px;
-    background-color: #00a2e8; /* Blue background color */
-    color: white;
-    text-align: center;
-    font-weight: 1208px;
-    margin-left: 100px;
-    margin-right: 100px;
-    border-radius: 17px;
-    margin-top: 50px;
+.a3 {
+  padding: 20px;
+  background-color: #00a2e8; /* Blue background color */
+  color: white;
+  text-align: center;
+  font-weight: 1208px;
+  margin-left: 100px;
+  margin-right: 100px;
+  border-radius: 17px;
+  margin-top: 50px;
 }
 
 .themes-grid3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
 }
 
-
-
-
 .theme-image {
-    width: 200px;
-    height: 197px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-    transition: transform 0.3s ease-in-out; /* Smooth animation */
+  width: 200px;
+  height: 197px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease-in-out; /* Smooth animation */
 }
 
 .theme-image:hover {
-    transform: scale(1.1); /* Scale up on hover */
+  transform: scale(1.1); /* Scale up on hover */
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .theme {
-    animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* 
@@ -81,164 +77,148 @@ opacity: 0px;
 
 } */
 .formation-container {
-    padding: 20px;
-    text-align: center;
-    background-color: white ;
-    
+  padding: 20px;
+  text-align: center;
+  background-color: white;
 }
 
 /* Custom Formation Section */
 .custom-formation-container {
-    width: 1320px;
-height: 148px;
-gap: 0px;
-border-radius: 17px 0px 0px 0px;
-opacity: 0px;
-
+  width: 1320px;
+  height: 148px;
+  gap: 0px;
+  border-radius: 17px 0px 0px 0px;
+  opacity: 0px;
 }
 
 .custom-formation-heading {
-    font-size: 1.8em;
-    margin-bottom: 20px;
+  font-size: 1.8em;
+  margin-bottom: 20px;
 }
 
 .custom-formation-button {
-    padding: 12px 24px;
-    background-color: #00a2e8;
-    color: white;
-    
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 12px 24px;
+  background-color: #00a2e8;
+  color: white;
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .custom-formation-button:hover {
-    background-color: white;
-    color: #00a2e8;
-    border:rgba(0, 160, 216, 1);
-    
+  background-color: white;
+  color: #00a2e8;
+  border: rgba(0, 160, 216, 1);
 }
 .pedagogical-methods {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-  }
-  
-  .pedagogical-methods div {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .pedagogical-methods img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .pedagogical-methods h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .pedagogical-methods p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  /* formation.css */
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.pedagogical-methods div {
+  text-align: center;
+  padding: 20px;
+}
+
+.pedagogical-methods img {
+  width: 100px;
+  height: 100px;
+}
+
+.pedagogical-methods h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.pedagogical-methods p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+/* formation.css */
 
 /* formation.css */
 
 .formation-containers {
-    display: flex;
-    align-items: flex-start;
-    padding: 20px;
-    width: 1204px;
-    height: 475px;
-    gap: 20px; /* Adds space between the two cards */
-    margin-left: 114px;
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  width: 1204px;
+  height: 475px;
+  gap: 20px; /* Adds space between the two cards */
+  margin-left: 114px;
 }
 
 .formation-card {
-    background-color: #ffffff52;
-    background: #CCCCCC40;
-margin-left: 10px;
-    padding: 5px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 594px;
-    text-align: center;
-    flex: 1; /* Allows the cards to take up equal space */
-    top: 994px;
-    gap: 64px;
+  background-color: #ffffff52;
+  background: #cccccc40;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 594px;
+  text-align: center;
+  flex: 1; /* Allows the cards to take up equal space */
+  top: 994px;
+  gap: 64px;
 }
 
 .formation-image {
-    width: 100%;
+  width: 100%;
 
-    height: 203px;
-    object-fit: cover; /* Ensures the image covers the area without distortion */
+  height: 203px;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
 }
 
 .formation-card h3 {
-    color: #007bff;
-    font-size: 1.2em;
-    margin-bottom: 10px;
+  color: #007bff;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 .formation-card p {
-    font-size: 1em;
-    color: #333;
-    line-height: 1.5;
-    margin: 0;
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+      margin: 0;
 }
 
-
-
-
-
-
-
-
-
-
 .image-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .background-image {
-    width: 1320px;
-    height: 600px;
-    gap: 0px;
-    opacity: 0px;
-    margin-left: 30px;
-    margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
 
-  }
-  
+.background-image {
+  width: 1320px;
+  height: 600px;
+  gap: 0px;
+  opacity: 0px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
 
 .text-container {
-    position: absolute;
-    bottom: 20px; /* Adjust positioning as needed */
-    left: 35px;
-    color: white; /* Adjust text color if needed */
-  }
-  
-  .line1 {
-    font-size: 60px; /* Adjust font size to match the "MULTILAB s.a" style */
-    font-weight: bold;
-    color: white;
-  }
-  
-  .line2 {
-    
-    font-size: 90px; /* Adjust to match size */
-    font-weight: bold;
-    font-family: 'Inter';
-    color: transparent; /* Make the inside of the text transparent */
-    -webkit-text-stroke: 1px white; /* White outline */
-    text-transform: uppercase; /* Ensure all caps */
-  }
-  
+  position: absolute;
+  bottom: 20px; /* Adjust positioning as needed */
+  left: 35px;
+  color: white; /* Adjust text color if needed */
+}
+
+.line1 {
+  font-size: 60px; /* Adjust font size to match the "MULTILAB s.a" style */
+  font-weight: bold;
+  color: white;
+}
+
+.line2 {
+  font-size: 90px; /* Adjust to match size */
+  font-weight: bold;
+  font-family: "Inter";
+  color: transparent; /* Make the inside of the text transparent */
+  -webkit-text-stroke: 1px white; /* White outline */
+  text-transform: uppercase; /* Ensure all caps */
+}

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import './Article.css'; // You can add the styles to your CSS file
-import test from "../home/assets/2654.png"
-import test1 from "../home/assets/Actualité 1.jpg"
+import React, { useState } from "react";
+import "./Article.css"; // You can add the styles to your CSS file
+import test from "../home/assets/2654.png";
+import test1 from "../home/assets/Actualité 1.jpg";
 
 const Article: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState('path-to-large-image1');
+  const [selectedImage, setSelectedImage] = useState("path-to-large-image1");
 
   return (
     <div className="article-container">
@@ -19,14 +19,18 @@ const Article: React.FC = () => {
         <img
           src={test}
           alt="Thumbnail 1"
-          className={`thumbnail ${selectedImage === 'path-to-large-image1' ? 'active' : ''}`}
+          className={`thumbnail ${
+            selectedImage === "path-to-large-image1" ? "active" : ""
+          }`}
           onClick={() => setSelectedImage(test)}
         />
         <img
           src={test1}
           alt="Thumbnail 2"
-          className={`thumbnail ${selectedImage === 'path-to-large-image2' ? 'active' : ''}`}
-          onClick={() => setSelectedImage('path-to-large-image2')}
+          className={`thumbnail ${
+            selectedImage === "path-to-large-image2" ? "active" : ""
+          }`}
+          onClick={() => setSelectedImage("path-to-large-image2")}
         />
       </div>
     </div>
