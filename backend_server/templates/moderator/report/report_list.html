@@ -302,26 +302,42 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'report_client' %}">
                         {% csrf_token %}
+                        
                         <div class="mb-3">
+                            <label for="id_client" class="form-label">Client :</label>
                             <select name="client" id="id_client" class="form-select">
-                                <option value="....">........</option>
+                                <option value="">Sélectionnez un client</option>
                                 {% for user in clients %}
                                     <option value="{{ user.id }}">{{ user.username }} - {{ user.last_name }} {{ user.first_name }}</option>
                                 {% endfor %}
                             </select>
-                            
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_title" class="form-label">Titre:</label>
+                            <input type="text" class="form-control" id="id_title" name="title" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="id_description" class="form-label">Description :</label>
+                            <textarea class="form-control" id="id_description" name="description" rows="4" required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="id_title" class="form-label">Title:</label>
-                            {{ form.title }}
+                            <label for="id_status" class="form-label">Status :</label>
+                            <select class="form-select" id="id_status" name="status" required>
+                               
+                                <option value="pending" selected>En attente</option>
+                               
+                            </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="id_file" class="form-label">Upload Report:</label>
-                            {{ form.file }}
+                        
+    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
                         </div>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
                 </div>
             </div>

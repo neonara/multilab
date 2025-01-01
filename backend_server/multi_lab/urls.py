@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views.avi import *
-from .views.devi import *
+
 from .views.project import *
 from .views.offres import *
 from .views.stageur import *
@@ -13,7 +13,7 @@ router.register(r'avis', AvisViewSet)
 # 
 router.register(r'project', ProjectViewSet)
 # 
-router.register(r'devi', DeviViewSet)
+
 # 
 
 # 
@@ -33,8 +33,7 @@ urlpatterns = [
     path('avis/<int:pk>/update/', AvisUpdateView.as_view(), name='avis_update'),
     path('avis/<int:pk>/delete/', AvisDeleteView.as_view(), name='avis_delete'),
    
-    #? devi routes
-    path('devi_list/', DeviListView.as_view(), name='devi_list'),
+  
    
    
     #? stage routes

@@ -1,10 +1,7 @@
 from rest_framework import serializers
-from.model.report import Report
+
 from .models import User
-class ReportSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Report
-        fields = '__all__'
+
 class LoginFormSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(style={'input_type': 'password'})

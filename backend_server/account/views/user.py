@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login,logout
 from account.model.report import Report
 from ..models import User
 from multi_lab.models.avis import Avis
-from multi_lab.models.devis import Devi
+
 from multi_lab.models.jobdescription import Offre_description
 from multi_lab.models.stagedescription import OffreStage
 from rest_framework import status
@@ -69,15 +69,15 @@ def customer(request):
 @login_required()
 def employee(request):
     class Counts:
-        def __init__(self, avis_count, devis_count, Offre_description_count, OffreStage_count):
+        def __init__(self, avis_count, Offre_description_count, OffreStage_count):
             self.avis_count = avis_count
-            self.devis_count = devis_count
+           
             self.Offre_description_count = Offre_description_count
             self.OffreStage_count = OffreStage_count
 
     counts = Counts(
         avis_count=Avis.objects.count(),
-        devis_count=Devi.objects.count(),
+       
         Offre_description_count=Offre_description.objects.count(),
         OffreStage_count=OffreStage.objects.count()
     )

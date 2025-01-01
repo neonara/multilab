@@ -54,6 +54,7 @@ CORS_ORIGIN_ALLOW_ALL=True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
 )
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -149,13 +150,20 @@ USE_L10N = True
 LOGIN_URL='/account/login'
 USE_TZ = True
 # send email config
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587  # or your email port
-EMAIL_USE_TLS = True  # or False if not using TLS
-EMAIL_HOST_USER = 'nourderouich159@gmail.com'
-EMAIL_HOST_PASSWORD = 'gmby dkdj wlmo nojv'
-
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_HOST = 'ssl0.ovh.net'
+EMAIL_HOST_USER = 'hello@biopilates.fr'
+EMAIL_HOST_PASSWORD = 'brandandcom2024*'
+EMAIL_PORT = 587
+EMAIL_USE_SSL = False
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'hello@biopilates.fr'
+EMAIL_USE_LOCALTIME = True
+# GOOGLE_CLIENT_ID = '84824279187-i984iquv2b83e4gf9b5jort0p770v21g.apps.googleusercontent.com'
+# GOOGLE_CLIENT_SECRET = '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'
+# SOCIAL_AUTH_PASSWORD = 'efzmefjfeqffsjm'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

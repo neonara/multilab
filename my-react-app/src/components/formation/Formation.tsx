@@ -1,4 +1,4 @@
-import "./formation.css"; // Create a CSS file to style your page
+import "./Formation.css" // Create a CSS file to style your page
 import im from "./assets/1.jpg";
 import Sciences from "./assets/2.jpg";
 import Sécurité from "./assets/3.jpg";

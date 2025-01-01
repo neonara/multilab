@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import User
-from.model.report import Report
+from.model.report import Report ,ReportFile
 # Register your models here.
 class UserConfig(admin.ModelAdmin):
     change_form_template = "admin/userpassword.html"
@@ -10,14 +10,17 @@ class UserConfig(admin.ModelAdmin):
     list_filter=['is_client','is_moderator','nom_entreprise']
     search_fields=('first_name',)
 
-class RaportConfig(admin.ModelAdmin):
-   
+
+class ReportAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'status', 'client', 'created_at', 'display_files','description')
     
-    list_display=['title','client','file','created_at']
-    list_filter=['title','client']
-    search_fields=('title','client')  
+    # Custom method to display associated files
+    def display_files(self, obj):
+        return ', '.join([file.file.name for file in obj.files.all()])
+    display_files.short_description = 'Files'
 
 
 
 admin.site.register(User,UserConfig)
-admin.site.register(Report,RaportConfig)
+admin.site.register(Report, ReportAdmin)
+admin.site.register(ReportFile)
