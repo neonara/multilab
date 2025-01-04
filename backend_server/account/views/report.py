@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
-from ..model.report import Report , ReportFile
-from ..rapportSerilizers import ReportSerializer ,ReportFileSerializer
+from ..model.report import Report, ReportFile
+from ..rapportSerilizers import ReportSerializer, ReportFileSerializer
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib import messages
 from account.models import User
-from django.utils.decorators import method_decorator  
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -20,17 +20,23 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
+from django.core.exceptions import ValidationError
+from django.http import HttpResponse,JsonResponse
 
 class ReportViewSet(ModelViewSet):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
-   
+
+
 class ReportListView(APIView):
     def get(self, request):
         reports = Report.objects.all()
         serializer = ReportSerializer(reports, many=True)
         return Response(serializer.data)
+
+
 class ReportDetailView(APIView):
+    
     def get(self, request, pk):
         report = get_object_or_404(Report, pk=pk)
         serializer = ReportSerializer(report)
@@ -51,6 +57,7 @@ class ReportDetailView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class ReportFileView(APIView):
     def post(self, request, report_id):
         report = get_object_or_404(Report, pk=report_id)
@@ -60,18 +67,22 @@ class ReportFileView(APIView):
             return Response(file_serializer.data, status=status.HTTP_201_CREATED)
         return Response(file_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 # django
+
+
 @method_decorator(login_required(), name='dispatch')
 class ClientReportListView(CreateView):
     model = Report
     fields = '__all__'
     template_name = './moderator/report/report_list.html'
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         queryset = Report.objects.order_by('-created_at')
-        context['reports'] =queryset  # Retrieve all OffreStage objects
+        context['reports'] = queryset  # Retrieve all OffreStage objects
         context['clients'] = User.objects.all()
         return context
     success_url = reverse_lazy('report_list')
+
     def form_valid(self, form):
         self.object = form.save()
         subject = 'Nouveau Rapport Multilab'
@@ -79,8 +90,8 @@ class ClientReportListView(CreateView):
         template_path = './moderator/report/new_report_email.html'
         html_message = render_to_string(template_path, context)
         plain_message = strip_tags(html_message)
-        from_email = 'hello@biopilates.fr'
-        to_email = form.cleaned_data['client'].email
+        from_email = 'nour.d@neonara.digital'
+        to_email = form.cleaned_data['client'].username
 
         import logging
         logger = logging.getLogger('django.mail')
@@ -96,25 +107,30 @@ class ClientReportListView(CreateView):
                 fail_silently=False
             )
             logger.debug(f"Email sending result: {result}")
-            messages.success(self.request, 'Report added and email sent successfully.')
+            messages.success(
+                self.request, 'Le commandement a été ajouté avec succès. Email envoyé avec succès.')
             print(f"Sending email to: {to_email}")
 
         except Exception as e:
             logger.error(f"Email sending failed: {str(e)}")
-            messages.error(self.request, f'Report added, but email failed: {str(e)}')
+            messages.error(
+                self.request, f'Report added, but email failed: {str(e)}')
 
         return super().form_valid(form)
 
-    
-@method_decorator(login_required(), name='dispatch')   
+
+@method_decorator(login_required(), name='dispatch')
 class ReportCreateView(CreateView):
     model = Report
-    template_name = './moderator/report/client_list.html'  # Name of your template for the form
+    # Name of your template for the form
+    template_name = './moderator/report/client_list.html'
     fields = '__all__'  # Fields to include in the form
     queryset = Report.objects.order_by('-created_at')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['clients'] = User.objects.all()  # Adjust the queryset as needed
+        # Adjust the queryset as needed
+        context['clients'] = User.objects.all()
         return context
 
     def get_context_data(self, **kwargs):
@@ -127,32 +143,106 @@ class ReportCreateView(CreateView):
         return context
 
     success_url = reverse_lazy('report_list')
+
     def form_valid(self, form):
         messages.success(self.request, 'report a été ajouter avec succès.')
-        return super().form_valid(form) 
+        return super().form_valid(form)
+
     def form_invalid(self, form):
         print("Form errors:", form.errors)  # Debugging
-        return super().form_invalid(form) 
-    
+        return super().form_invalid(form)
+
+
+# views.py
 @method_decorator(login_required(), name='dispatch')
 class ReportUpdateView(UpdateView):
     model = Report
-    template_name = './moderator/report/report_update.html'  # Name of your template
-    fields = '__all__'
+    template_name = './moderator/report/client_list.html'
+    fields = ['client', 'title', 'description', 'status']
     success_url = reverse_lazy('report_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['clients'] = User.objects.all()  
+        context['existing_files'] = self.object.files.all()
+
+        context['remaining_slots'] = 3 - self.object.files.count()  # Calculate how many more files can be uploaded
+        return context
+
+
     def form_valid(self, form):
-        messages.success(self.request, 'report a été modifié avec succès.')
-        return super().form_valid(form)
-    
+        response = super().form_valid(form)
+
+        # Handle file uploads
+        files = self.request.FILES.getlist('report_files')  # Get the files from the form
+        current_files_count = self.object.files.count()  # Get the current number of files associated with the report
+        remaining_slots = 3 - current_files_count  # Calculate how many more files can be uploaded
+
+        # Check if the user is trying to upload more than the allowed files
+        if len(files) > remaining_slots:
+            messages.error(self.request, f'You can only upload up to {remaining_slots} more files.')
+            return self.form_invalid(form)
+
+        # Save the uploaded files
+        for file in files:
+            ReportFile.objects.create(
+                report_related=self.object,
+                file=file
+            )
+
+        messages.success(self.request, 'Report updated successfully.')
+        return response
 
     def form_invalid(self, form):
-        print(form.errors.as_json()) # Print a message when the form is invalid
+        print(form.errors.as_json())  # Debugging
         return super().form_invalid(form)
+
+
+# Update the template to handle multiple files
+
+
 @method_decorator(login_required(), name='dispatch')
 class ReportDeleteView(DeleteView):
     model = Report
     template_name = './moderator/report/report_list.html'  # Name of your template
     success_url = reverse_lazy('report_list')
+
     def form_valid(self, form):
         messages.success(self.request, 'report a été supprimer avec succès.')
         return super().form_valid(form)
+    
+
+
+class UploadFileView(CreateView):
+    def post(self, request, report_id):
+        report = get_object_or_404(Report, pk=report_id)
+        if 'file' in request.FILES:
+            file = request.FILES['file']
+            report_file = ReportFile(report_related=report, file=file)
+            try:
+                report_file.full_clean()
+                report_file.save()
+                return JsonResponse({'message': 'File uploaded successfully'}, status=201)
+            except ValidationError as e:
+                return JsonResponse({'error': e.message_dict}, status=400)
+        return JsonResponse({'error': 'No file uploaded'}, status=400)
+class DeleteFileView(UpdateView):
+    def post(self, request, file_id):
+        file = get_object_or_404(ReportFile, pk=file_id)
+        report_id = file.report_related.id
+        file.delete()
+        return JsonResponse({'message': 'File deleted successfully', 'report_id': report_id}, status=200)
+class UpdateFileView(DeleteView):
+    def post(self, request, file_id):
+        file = get_object_or_404(ReportFile, pk=file_id)
+        if 'file' in request.FILES:
+            new_file = request.FILES['file']
+            file.file = new_file
+            try:
+                file.full_clean()
+                file.save()
+                return JsonResponse({'message': 'File updated successfully'}, status=200)
+            except ValidationError as e:
+                return JsonResponse({'error': e.message_dict}, status=400)
+        return JsonResponse({'error': 'No file uploaded'}, status=400)
+

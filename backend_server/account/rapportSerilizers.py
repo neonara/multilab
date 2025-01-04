@@ -23,4 +23,22 @@ class ReportSerializer(serializers.ModelSerializer):
             'files': {'required': False},
             
         }
+        def create(self, validated_data):
+            files_data = validated_data.pop('files', [])
+            report = Report.objects.create(**validated_data)
+            for file_data in files_data:
+                ReportFile.objects.create(report_related=report, **file_data)
+            return report
+
+    def update(self, instance, validated_data):
+        files_data = validated_data.pop('files', [])
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        # Handle file updates if needed (e.g., adding or removing files)
+        for file_data in files_data:
+            ReportFile.objects.create(report_related=instance, **file_data)
+        return instance
+
     

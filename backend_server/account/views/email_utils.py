@@ -4,7 +4,7 @@ from django.utils.html import strip_tags
 import logging
 
 logger = logging.getLogger(__name__)
-def send_email(subject, template_path, context, recipient_list, from_email='noreply@example.com'):
+def send_email(subject, template_path, context, recipient_list, from_email='nour.d@neonara.digital'):
    
     try:
         # Render the email content

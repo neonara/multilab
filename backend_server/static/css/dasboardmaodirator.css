@@ -19,6 +19,11 @@ html {
 nav {
     display: block;
 }
+.modal-dialog {
+    max-width: 800px; /* or adjust as needed */
+    width: 100%;
+}
+
 
 body {
     margin: 0;

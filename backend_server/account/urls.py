@@ -1,10 +1,11 @@
 from django.urls import path, include
 from django.contrib import admin
+from . import views
 from .views.user import *
 from rest_framework.routers import DefaultRouter
 from .views.report import (ReportViewSet,
     ClientReportListView, ReportCreateView,
-    ReportUpdateView, ReportDeleteView, ReportFileView
+    ReportUpdateView, ReportDeleteView, ReportFileView, UploadFileView, DeleteFileView, UpdateFileView,
 )
 from django.contrib.auth.views import (
     LogoutView, 
@@ -29,4 +30,7 @@ urlpatterns = [
     path('report/<int:pk>/update/', ReportUpdateView.as_view(), name='report_update'),
     path('report_list/client/', ClientReportListView.as_view(), name='report_client'),
     # path('report_list/', ClientReportListView.as_view(), name='report_list'),
+    path('report/<int:report_id>/upload/', UploadFileView.as_view(), name='upload_file'),
+    path('file/<int:file_id>/delete/', DeleteFileView.as_view(), name='delete_file'),
+    path('file/<int:file_id>/update/', UpdateFileView.as_view(), name='update_file'),
 ]

@@ -1,13 +1,16 @@
-from django.test import TestCase
+import smtplib
 
-# Create your tests here.
-from django.http import HttpResponse
-from .utils.email_utils import send_email
-
-def test_send_email(request):
-    subject = 'Test Email'
-    template_path = './moderator/report/test_email.html'
-    context = {'report': 'Test report'}
-    recipient_list = ['nour.d@neonara.digital']
-    send_email(subject, template_path, context, recipient_list)
-    return HttpResponse("Test email sent.")
+try:
+    server = smtplib.SMTP('ssl0.ovh.net', 587)
+    server.set_debuglevel(1)  # Enable debugging
+    server.starttls()
+    server.login('nour.d@neonara.digital', 's,5LVz(9F')
+    server.sendmail(
+        'nour.d@neonara.digital',
+        'nourderouich159@gmail.com',
+        'Subject: Test Email\n\nThis is a test email from Django.'
+    )
+    print("Email sent successfully!")
+    server.quit()
+except Exception as e:
+    print("Failed to send email:", str(e))

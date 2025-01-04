@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-from.jazzmin import JAZZMIN_SETTINGS
+from .jazzmin import JAZZMIN_SETTINGS
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'ParametersAnalyse.apps.ParametersanalyseConfig',
 ]
 
-CORS_ORIGIN_ALLOW_ALL=True
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:8000',
 )
@@ -74,7 +74,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'Role_based_login_system.urls'
@@ -82,15 +82,14 @@ ROOT_URLCONF = 'Role_based_login_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                 'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -98,8 +97,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Role_based_login_system.wsgi.application'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
 
 
 # Database
@@ -135,9 +132,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 LANGUAGE_CODE = 'fr'
 
@@ -147,20 +146,21 @@ USE_I18N = True
 
 USE_L10N = True
 #! login url"""
-LOGIN_URL='/account/login'
+LOGIN_URL = '/account/login'
 USE_TZ = True
 # send email config
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'ssl0.ovh.net'
-EMAIL_HOST_USER = 'hello@biopilates.fr'
-EMAIL_HOST_PASSWORD = 'brandandcom2024*'
-EMAIL_PORT = 587
-EMAIL_USE_SSL = False
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'hello@biopilates.fr'
-EMAIL_USE_LOCALTIME = True
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False  # Disable TLS
+EMAIL_USE_SSL = True   # Enable SSL
+
+EMAIL_HOST_USER = 'nour.d@neonara.digital'
+EMAIL_HOST_PASSWORD = 's,5LVz(9F'
+DEFAULT_FROM_EMAIL = 'nour.d@neonara.digital'
+
 # GOOGLE_CLIENT_ID = '84824279187-i984iquv2b83e4gf9b5jort0p770v21g.apps.googleusercontent.com'
 # GOOGLE_CLIENT_SECRET = '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'
 # SOCIAL_AUTH_PASSWORD = 'efzmefjfeqffsjm'
@@ -173,4 +173,4 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 AUTH_USER_MODEL = 'account.User'
-JAZZMIN_SETTINGS=JAZZMIN_SETTINGS
+JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
