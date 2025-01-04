@@ -91,7 +91,7 @@
                                 <select id="status-filter" onchange="filterStage(this.value)">
                                     <option value="">Tous</option>
                                     <option value="pending">Privé</option>
-                                    <option value="approved">Publique</option>
+                                    <option value="approved">Publié</option>
                                 </select>
                                 <i class="bi bi-caret-down"></i>
                             </div>
@@ -249,7 +249,7 @@
                                                                     <label for="status"><strong>Status du stages :</strong></label>
                                                                     <select id="status" name="status" class="form-control">
                                                                         <option value="pending" {% if stage.status == 'pending' %} selected {% endif %}>Privé</option>
-                                                                        <option value="approved" {% if stage.status == 'approved' %} selected {% endif %}>Publique</option>
+                                                                        <option value="approved" {% if stage.status == 'approved' %} selected {% endif %}>Publié</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -336,7 +336,7 @@
                     <select class="form-control" id="status" name="status">
                         <option value="">Select Status</option>
                         <option value="pending">Privé</option>
-                        <option value="approved">Publique</option>
+                        <option value="approved">Publié</option>
                     </select>
                     
                 </div>

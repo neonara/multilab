@@ -4,7 +4,7 @@ from django.utils.html import mark_safe
 class Project(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Privé'),
-        ('approved', 'Publique'),
+        ('approved', 'Publié'),
        
     ]
     title = models.CharField('Titre Projet', max_length=100)

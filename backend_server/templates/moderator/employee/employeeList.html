@@ -87,7 +87,7 @@
                                 <select id="status-filter" onchange="filterStatus(this.value)">
                                     <option value="">Tous</option>
                                     <option value="pending">Privé</option>
-                                    <option value="approved">Publique</option>
+                                    <option value="approved">Publié</option>
                                 </select> <i class="bi bi-caret-down"></i></div>
                                 <div class="dropdown-field">
                                  <select id="status-filter" onchange="filterContrat(this.value)">
@@ -315,7 +315,7 @@
                     <label><strong>Status :</strong></label>
                     <select id="status" name="status" class="form-control">
                         <option value="pending" {% if post.status == 'pending' %} selected {% endif %}>Privé</option>
-                        <option value="approved" {% if post.status == 'approved' %} selected {% endif %}>Publique</option>
+                        <option value="approved" {% if post.status == 'approved' %} selected {% endif %}>Publié</option>
                     </select>
                 </div> 
                     
@@ -450,7 +450,7 @@
                             <select class="form-control" id="status" name="status">
                                 <option value="">Select Status</option>
                                 <option value="pending">Privé</option>
-                                <option value="approved">Publique</option>
+                                <option value="approved">Publié</option>
                             </select>
                         </div>
                     </div>

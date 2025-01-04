@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=254)),
                 ('etat', models.CharField(choices=[('satisfait', 'Satisfait'), ('non_satisfait', 'Non Satisfait')], default='satisfait', max_length=15, verbose_name='FeedBack client')),
                 ('pourquoi', models.CharField(max_length=250)),
-                ('status', models.CharField(choices=[('pending', 'privé'), ('approved', 'publique')], default='pending', max_length=10, verbose_name='Status')),
+                ('status', models.CharField(choices=[('pending', 'privé'), ('approved', 'Publié')], default='pending', max_length=10, verbose_name='Status')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],
             options={
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('description', models.CharField(max_length=250)),
                 ('temps', models.CharField(choices=[('1', 'Temps plein'), ('2', 'Partiel')], max_length=10, verbose_name='Type d emploi désiré')),
                 ('contrat', models.CharField(choices=[('CIVP', 'CIVP'), ('CDI', 'CDI'), ('CDD', 'CDD'), ('Karama', 'Karama'), ('CSC', 'CSC')], max_length=10, verbose_name='Type d emploi désiré')),
-                ('status', models.CharField(choices=[('pending', 'Privé'), ('approved', 'Publique')], default='pending', max_length=10, verbose_name='Status')),
+                ('status', models.CharField(choices=[('pending', 'Privé'), ('approved', 'Publié')], default='pending', max_length=10, verbose_name='Status')),
                 ('experience', models.IntegerField(blank=True, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
             ],

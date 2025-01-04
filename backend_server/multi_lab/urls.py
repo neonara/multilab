@@ -7,13 +7,17 @@ from .views.offres import *
 from .views.stageur import *
 from.views.job import *
 from.views.offrestage import *
+from.views.PersationViews import (
+    PersationListView, PersationDetailView, PersationCreateView,
+    PersationUpdateView, PersationDeleteView, PersationViewSet
+)
 #routes URLCOF
 router = DefaultRouter()
 router.register(r'avis', AvisViewSet)
 # 
 router.register(r'project', ProjectViewSet)
 # 
-
+router.register(r'persations', PersationViewSet)
 # 
 
 # 
@@ -57,5 +61,11 @@ urlpatterns = [
     path('project_list/', ProjectCreateView.as_view(), name='project_list'),
     path('project_list/<int:pk>/delete/', ProjectDeleteView.as_view(), name='project_delete'),
     path('project/<int:pk>/update/', ProjectUpdateView.as_view(), name='project_update'),
+    # prestation routes
+    path('persation_list', PersationListView.as_view(), name='persation_list'),
+    path('persation/<int:pk>/detail/', PersationDetailView.as_view(), name='persation_detail'),
+    path('create_persation/', PersationCreateView.as_view(), name='persation_create'),
+    path('persation/<int:pk>/update/', PersationUpdateView.as_view(), name='persation_update'),
+    path('persation/<int:pk>/delete/', PersationDeleteView.as_view(), name='persation_delete'),
    
 ]

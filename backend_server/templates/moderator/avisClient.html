@@ -79,7 +79,7 @@
                       <select id="status-filter" onchange="filterAvis(this.value)">
                         <option value="">Tous</option>
                         <option value="pending">Privé</option>
-                        <option value="approved">Publique</option>
+                        <option value="approved">Publié</option>
                       </select>
                       <i class="bi bi-caret-down"></i>
                   </div>
@@ -203,7 +203,7 @@
                                               <select class="form-control" id="status" name="status">
                                                   <option value="">Select Status</option>
                                                   <option value="pending" {% if avis.status == 'pending' %} selected {% endif %}>Privé</option>
-                                                  <option value="approved" {% if avis.status == 'approved' %} selected {% endif %}>Publique</option>
+                                                  <option value="approved" {% if avis.status == 'approved' %} selected {% endif %}>Publié</option>
                                               </select>
                                           </div>
                                           <button type="submit" class="btn btn-primary">
