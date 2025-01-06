@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Apropos.css";
+import "./apropos.css";
 import aprop from "../apropos/asssets/apropos1.png";
 import lab from "../apropos/asssets/lab.png";
 import { FaLock, FaCheckCircle } from "react-icons/fa";

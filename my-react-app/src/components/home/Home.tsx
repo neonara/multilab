@@ -17,7 +17,7 @@ import bg from "../home/assets/7534029.jpg";
 import log from "../home/assets/log.png";
 import AnalysesCard from "./AnalysesCard";
 
-import "./Home.css";
+import "./home.css"
 import ServicesCards from "./ServicesCards";
 import VideoSection from "./Video";
 function HomePage() {

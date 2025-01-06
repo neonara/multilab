@@ -4,7 +4,7 @@ import phy from "../home/assets/phy.png";
 import img4 from "../home/assets/Rectangle 3898.png";
 import img6 from "../home/assets/Rectangle 3900.png";
 import img5 from "../home/assets/img5.png";
-import "./Home.css";
+import "./home.css"
 
 function AnalysesCard() {
   const analyses = [
