@@ -145,6 +145,7 @@ footer img {
   font-size: 16px;
   position: relative;
   transition: color 0.3s ease;
+  text-decoration: none; /* Ensure no default underline */
 }
 
 /* Pseudo-element for the expanding line */
@@ -153,7 +154,7 @@ footer img {
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: 0;
+  bottom: 0px; /* Adjusted to match the custom underline */
   left: 50%;
   background-color: #0056b3;
   transition: width 0.4s ease, left 0.4s ease;
@@ -169,23 +170,37 @@ footer img {
   color: #0056b3;
   font-weight: 700;
 }
+
+/* Active nav item */
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+  left: 0;
+}
+
+.navbar-nav .nav-link.active {
+  color: #0056b3;
+  font-weight: 500;
+}
+.nav-link{
+  cursor: pointer;
+}
+
 .navbar {
   padding-left: 40px;
   height: 70px;
 }
 
-.custom-underline {
+/* .custom-underline {
   position: relative;
   text-decoration: none;
-}
+} */
 
-.custom-underline::after {
+/* .custom-underline::after {
   content: "";
   position: absolute;
   width: 100%;
-  height: 1px; /* Thickness of the underline */
-  background-color: rgba(0, 0, 70, 0.5); /* Color of the underline */
+  height: 2px; 
+  background-color: #0056b3; 
   left: 0;
-  bottom: -2px; /* Distance from the text */
-}
-
+  bottom: 0px;
+} */

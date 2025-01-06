@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next"; // Import translation hook
 import logo from "../assets/logo.png";
+import { IoIosArrowDown } from "react-icons/io";
 import "../App.css";
 import {
   MDBDropdown,
@@ -8,6 +9,11 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem,
 } from "mdb-react-ui-kit";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@radix-ui/react-popover";
 
 function NavBar() {
   const { t, i18n } = useTranslation();
@@ -16,6 +22,10 @@ function NavBar() {
   const handleLanguageChange = (language: string) => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language); // Change language across the entire app
+  };
+
+  const getNavLinkClass = (path: string) => {
+    return window.location.pathname === path ? "nav-link active" : "nav-link";
   };
 
   return (
@@ -47,17 +57,12 @@ function NavBar() {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a
-                className={`nav-link ${
-                  window.location.pathname === "/" ? "custom-underline" : ""
-                }`}
-                href="/"
-              >
+              <a className={getNavLinkClass("/")} href="/">
                 {t("Accueil")} {/* Translated Home */}
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/apropos">
+              <a className={getNavLinkClass("/apropos")} href="/apropos">
                 {t("À propos")} {/* Translated About */}
               </a>
             </li>
@@ -100,12 +105,12 @@ function NavBar() {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="/login">
+              <a className={getNavLinkClass("/login")} href="/login">
                 {t("Accès client")} {/* Translated Client Access */}
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contact">
+              <a className={getNavLinkClass("/contact")} href="/contact">
                 {t("Contact")} {/* Translated Contact */}
               </a>
             </li>
