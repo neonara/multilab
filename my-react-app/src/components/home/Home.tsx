@@ -13,11 +13,10 @@ import logo3 from "../home/assets/3.png";
 import event1 from "../home/assets/WhatsApp Image 2024-04-04 at 1.21.41 PM.jpeg";
 import event2 from "../home/assets/Actualité 1.jpg";
 import event3 from "../home/assets/event 27.png";
-import bg from "../home/assets/7534029.jpg";
 import log from "../home/assets/log.png";
 import AnalysesCard from "./AnalysesCard";
 
-import "./Home.css";
+import "./home.css";
 import ServicesCards from "./ServicesCards";
 import VideoSection from "./Video";
 function HomePage() {
@@ -190,70 +189,12 @@ function HomePage() {
       <div className="reconnaissance">
         <h2>Notre reconnaissance qualité</h2>
 
-        <div
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            padding: "20px",
-            borderRadius: "10px",
-            margin: "20px auto",
-            marginRight: "20px",
-            maxWidth: "1500px",
-            height: "308px",
-          }}
-        >
-          <div
-            style={{
-              padding: "20px",
-              borderRadius: "15px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <div style={{ flex: "1 1 60%", padding: "10px" }}>
-              <h3
-                style={{
-                  color: "#003A79",
-                  fontSize: "24px",
-                  marginBottom: "10px",
-                }}
-              >
-                Nos accréditations
-              </h3>
-              <p style={{ color: "#003A79", fontSize: "18px" }}>
-                Depuis 2012, <strong>MULTILAB s.a</strong> est accrédité par le{" "}
-                <strong>TUNAC</strong> en microbiologie alimentaire,
-                microbiologie des eaux et physicochimie des aliments. Nous avons
-                élargi notre champ d'accréditation, passant de 6 à 28 méthodes
-                d'analyse.
-              </p>
-              <button
-                style={{
-                  alignContent: "left",
-                  backgroundColor: "transparent",
-                  color: "#003A79",
-                  padding: "10px 20px",
-                  borderRadius: "5px",
-                  fontSize: "16px",
-                  marginTop: "20px",
-                  cursor: "pointer",
-                }}
-              >
-                En apprendre plus
-              </button>
-            </div>
+        <div className="reconnaissance-grid">
+          {/* paragraph */}
+          <div style={{ flex: "1 1 60%" }}>
+            <h3 className="reconnaissance-title">Nos accréditations</h3>
 
-            <div
-              style={{
-                flex: "1 1 30%",
-                textAlign: "center",
-                padding: "10px",
-                height: "208px",
-              }}
-            >
+            <div className="reconnaissance-img-mobile">
               <img
                 src={log}
                 alt="TUNAC Accreditation"
@@ -261,9 +202,51 @@ function HomePage() {
                   maxWidth: "100%",
                   borderRadius: "10px",
                   height: "225px",
+                  objectFit: "cover",
                 }}
               />
             </div>
+
+            <p style={{ fontSize: "18px", textAlign: "justify" }}>
+              Depuis 2012, le laboratoire est{" "}
+              <strong>accrédité ISO/IEC 17025</strong> par le TUNAC.
+              <div>
+                L’accréditation de <strong>MULTILAB s.a</strong> couvre les
+                domaines de la microbiologie alimentaire, microbiologie des eaux
+                et Physicochimie des aliments avec une extension régulière et
+                Continue du champs d’accréditation.
+              </div>
+            </p>
+
+            <button
+              style={{
+                alignContent: "left",
+                backgroundColor: "transparent",
+                fontWeight: "bold",
+                color: "#013D8F",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                border: "1px solid #013D8F",
+                fontSize: "16px",
+                cursor: "pointer",
+              }}
+            >
+              En apprendre plus
+            </button>
+          </div>
+
+          {/* img */}
+          <div className="reconnaissance-img-desk">
+            <img
+              src={log}
+              alt="TUNAC Accreditation"
+              style={{
+                maxWidth: "100%",
+                borderRadius: "10px",
+                height: "225px",
+                objectFit: "cover",
+              }}
+            />
           </div>
         </div>
       </div>
