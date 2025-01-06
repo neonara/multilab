@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next"; // Import translation hook
 import logo from "../assets/logo.png";
+import "../App.css";
 import {
   MDBDropdown,
   MDBDropdownToggle,
@@ -40,10 +41,18 @@ function NavBar() {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <div
+          className="collapse navbar-collapse justify-content-end"
+          id="navbarSupportedContent"
+        >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <a
+                className={`nav-link ${
+                  window.location.pathname === "/" ? "custom-underline" : ""
+                }`}
+                href="/"
+              >
                 {t("Accueil")} {/* Translated Home */}
               </a>
             </li>
@@ -56,7 +65,7 @@ function NavBar() {
             {/* Prestations Dropdown */}
             <li className="nav-item">
               <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="nav-link dropdown-toggle">
+                <MDBDropdownToggle tag="a" className="nav-link">
                   {t("Prestations")}
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
@@ -76,7 +85,7 @@ function NavBar() {
             {/* Carrière Dropdown */}
             <li className="nav-item">
               <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="nav-link dropdown-toggle">
+                <MDBDropdownToggle tag="a" className="nav-link">
                   {t("Carrière")}
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
@@ -96,7 +105,7 @@ function NavBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className  ="nav-link" href="/contact">
+              <a className="nav-link" href="/contact">
                 {t("Contact")} {/* Translated Contact */}
               </a>
             </li>
@@ -104,14 +113,20 @@ function NavBar() {
             {/* Language Selector */}
             <li className="nav-item ms-3">
               <MDBDropdown>
-                <MDBDropdownToggle tag="a" className="nav-link dropdown-toggle">
+                <MDBDropdownToggle tag="a" className="nav-link">
                   <i className="bi bi-globe"></i> {selectedLanguage}
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem link onClick={() => handleLanguageChange("en")}>
+                  <MDBDropdownItem
+                    link
+                    onClick={() => handleLanguageChange("en")}
+                  >
                     <i className="bi bi-flag-us"></i> English
                   </MDBDropdownItem>
-                  <MDBDropdownItem link onClick={() => handleLanguageChange("fr")}>
+                  <MDBDropdownItem
+                    link
+                    onClick={() => handleLanguageChange("fr")}
+                  >
                     <i className="bi bi-flag-fr"></i> Français
                   </MDBDropdownItem>
                 </MDBDropdownMenu>
@@ -125,4 +140,3 @@ function NavBar() {
 }
 
 export default NavBar;
-

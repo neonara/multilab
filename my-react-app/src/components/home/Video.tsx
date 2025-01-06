@@ -30,7 +30,7 @@ const VideoSection: React.FC = () => {
           playsInline // allows playback inline on mobile devices
         />
       </div>
-      <div className="values-section-vid">
+      <div className="values-section-vid ">
         <div className="values-grid-vid">
           <div className="vid-item-one">
             <img src={undervid} alt="Fiabilité" />

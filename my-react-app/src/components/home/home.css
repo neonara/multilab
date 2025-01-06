@@ -1,3 +1,10 @@
+.toppp{
+  padding: 0 20px;
+}
+
+.section-container{
+  margin: 0 -20px;
+}
 .home-container {
   display: flex;
   flex-direction: column; /* Stack elements vertically on mobile */
@@ -6,6 +13,7 @@
   padding: 20px; /* Add some padding */
   color: black; /* White text */
   border-radius: 15px; /* Rounded corners */
+  gap: 60px;
 }
 
 .list-image-none {
@@ -31,10 +39,11 @@
 .text-section p {
   font-size: 1rem; /* Normal text size */
   line-height: 1.5; /* Improve readability */
-  text-align: left;
+  text-align: justify;
 }
 .top-paragraph {
   color: #00a0d8;
+  font-weight: bold;
 }
 .cta-button {
   justify-content: left;
@@ -56,7 +65,9 @@
 .image-section .lab-image {
   width: 100%; /* Responsive image width */
   max-width: 600px; /* Limit max width */
-  height: auto; /* Maintain aspect ratio */
+  min-width: 350px;
+  height: 490px; /* Maintain aspect ratio */
+  object-fit: cover;
   border-radius: 15px; /* Rounded corners */
 }
 @media (min-width: 768px) {
@@ -65,7 +76,7 @@
   }
 
   .text-section {
-    flex: 2; /* Allow text section to take available space */
+    flex: 1.5; /* Allow text section to take available space */
     margin-right: 20px; /* Space between text and image */
   }
 
@@ -613,7 +624,7 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  height: auto;
+  height: 560px;
 }
 .values-section-vid {
   position: right;
@@ -630,7 +641,7 @@
 }
 .video {
   width: 100%;
-  height: auto;
+  height: 560px;
 }
 
 .play-button {

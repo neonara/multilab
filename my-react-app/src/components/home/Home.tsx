@@ -36,15 +36,23 @@ function HomePage() {
         <div className="text-section">
           <h1>Qui sommes nous ?</h1>
           <p>
-            MULTILAB s.a, laboratoire Tunisien accrédité{" "}
+            <strong>MULTILAB s.a</strong>, laboratoire Tunisien accrédité{" "}
             <strong>ISO/IEC 17025</strong>, est spécialisé dans l'analyse
-            agroalimentaire, l'alimentation animale et les eaux. Nous offrons
-            des services d'analyses microbiologiques et physicochimiques pour
-            garantir la sécurité sanitaire et la qualité des produits. Nos
-            experts fournissent un accompagnement de proximité avec des
-            solutions adaptées, incluant la traçabilité, les audits qualité, et
-            des conseils en hygiène, assurant ainsi la réactivité et la
-            fiabilité.
+            agroalimentaire, l'alimentation animale, les eaux et les produits
+            d’hygiène et de cosmétique.
+          </p>
+          <p>
+            Nous proposons des services d'analyses microbiologiques et
+            physicochimiques visant à garantir la sécurité sanitaire et la
+            qualité de vos produits. Notre équipe d'experts vous accompagne de
+            manière personnalisée en vous offrant des solutions sur mesure,
+            telles que la traçabilité, les audits qualité et des conseils en
+            hygiène. Grâce à notre réactivité et notre fiabilité, nous vous
+            aidons à assurer la conformité de vos processus et à renforcer la
+            confiance de vos clients. Grâce à sa plateforme analytique de plus
+            de 1400 m² située à la Soukra Gouvernorat de l’ARIANA, ses hautes
+            technologies et son savoir-faire, <strong>MULTILAB s.a</strong>{" "}
+            répond à tous vos projets.
           </p>
           <p className="top-paragraph">
             « Bien plus qu’un laboratoire agroalimentaire, un véritable
@@ -57,6 +65,7 @@ function HomePage() {
           <img src={home1} alt="Laboratory" className="lab-image" />
         </div>
       </div>
+
       <div className="values-section">
         <h2 className="">Nos valeurs</h2>
         <div className="values-grid">
@@ -88,9 +97,6 @@ function HomePage() {
           </div>
         </div>
       </div>
-
-      <div></div>
-      <div></div>
 
       <section className="prestations-section">
         <h2 className="home-title">Nos prestations</h2>
@@ -195,7 +201,6 @@ function HomePage() {
             marginRight: "20px",
             maxWidth: "1500px",
             height: "308px",
-            textAlign: "center",
           }}
         >
           <div
@@ -240,6 +245,7 @@ function HomePage() {
                 En apprendre plus
               </button>
             </div>
+
             <div
               style={{
                 flex: "1 1 30%",
@@ -261,6 +267,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+
       <section className="projects-section">
         <h2 className="projects-title">Actualités et événements</h2>
         <p className="projects-subtitle">
