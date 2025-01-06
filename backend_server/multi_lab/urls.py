@@ -11,6 +11,8 @@ from.views.PersationViews import (
     PersationListView, PersationDetailView, PersationCreateView,
     PersationUpdateView, PersationDeleteView, PersationViewSet
 )
+from.views.Event import (EventViewSet,EventArticleViewSet,EventCreateView,EventUpdateView,EventDeleteView,
+              EventListView,EventDetailView,ArticleCreateView,ArticleUpdateView,ArticleDeleteView)
 #routes URLCOF
 router = DefaultRouter()
 router.register(r'avis', AvisViewSet)
@@ -19,7 +21,8 @@ router.register(r'project', ProjectViewSet)
 # 
 router.register(r'persations', PersationViewSet)
 # 
-
+router.register(r'events', EventViewSet)
+router.register(r'event-articles', EventArticleViewSet)
 # 
 router.register(r'offre', OffresViewSet)
 # 
@@ -67,5 +70,16 @@ urlpatterns = [
     path('create_persation/', PersationCreateView.as_view(), name='persation_create'),
     path('persation/<int:pk>/update/', PersationUpdateView.as_view(), name='persation_update'),
     path('persation/<int:pk>/delete/', PersationDeleteView.as_view(), name='persation_delete'),
+    # event routes
+    path('events/', EventListView.as_view(), name='event_list'),
+    path('events/<int:pk>/', EventDetailView.as_view(), name='event_detail'),
+    path('events/create/', EventCreateView.as_view(), name='event_create'),
+    path('events/<int:pk>/update/', EventUpdateView.as_view(), name='event_update'),
+    path('events/<int:pk>/delete/', EventDeleteView.as_view(), name='event_delete'),
+    # event article routes
+    path('events/<int:event_pk>/articles/add/', ArticleCreateView.as_view(), name='article-create'),
+    path('events/<int:event_pk>/articles/<int:pk>/edit/', ArticleUpdateView.as_view(), name='article-update'),
+    path('events/<int:event_pk>/articles/<int:pk>/delete/', ArticleDeleteView.as_view(), name='article-delete'),
+
    
 ]

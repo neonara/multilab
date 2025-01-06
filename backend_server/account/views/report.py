@@ -21,7 +21,8 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from django.core.exceptions import ValidationError
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse, JsonResponse
+
 
 class ReportViewSet(ModelViewSet):
     queryset = Report.objects.all()
@@ -36,7 +37,7 @@ class ReportListView(APIView):
 
 
 class ReportDetailView(APIView):
-    
+
     def get(self, request, pk):
         report = get_object_or_404(Report, pk=pk)
         serializer = ReportSerializer(report)
@@ -163,24 +164,28 @@ class ReportUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['clients'] = User.objects.all()  
+        context['clients'] = User.objects.all()
         context['existing_files'] = self.object.files.all()
 
-        context['remaining_slots'] = 3 - self.object.files.count()  # Calculate how many more files can be uploaded
+        # Calculate how many more files can be uploaded
+        context['remaining_slots'] = 3 - self.object.files.count()
         return context
-
 
     def form_valid(self, form):
         response = super().form_valid(form)
 
         # Handle file uploads
-        files = self.request.FILES.getlist('report_files')  # Get the files from the form
-        current_files_count = self.object.files.count()  # Get the current number of files associated with the report
-        remaining_slots = 3 - current_files_count  # Calculate how many more files can be uploaded
+        files = self.request.FILES.getlist(
+            'report_files')  # Get the files from the form
+        # Get the current number of files associated with the report
+        current_files_count = self.object.files.count()
+        # Calculate how many more files can be uploaded
+        remaining_slots = 3 - current_files_count
 
         # Check if the user is trying to upload more than the allowed files
         if len(files) > remaining_slots:
-            messages.error(self.request, f'You can only upload up to {remaining_slots} more files.')
+            messages.error(self.request, f'You can only upload up to {
+                           remaining_slots} more files.')
             return self.form_invalid(form)
 
         # Save the uploaded files
@@ -210,7 +215,6 @@ class ReportDeleteView(DeleteView):
     def form_valid(self, form):
         messages.success(self.request, 'report a été supprimer avec succès.')
         return super().form_valid(form)
-    
 
 
 class UploadFileView(CreateView):
@@ -226,12 +230,16 @@ class UploadFileView(CreateView):
             except ValidationError as e:
                 return JsonResponse({'error': e.message_dict}, status=400)
         return JsonResponse({'error': 'No file uploaded'}, status=400)
+
+
 class DeleteFileView(UpdateView):
     def post(self, request, file_id):
         file = get_object_or_404(ReportFile, pk=file_id)
         report_id = file.report_related.id
         file.delete()
         return JsonResponse({'message': 'File deleted successfully', 'report_id': report_id}, status=200)
+
+
 class UpdateFileView(DeleteView):
     def post(self, request, file_id):
         file = get_object_or_404(ReportFile, pk=file_id)
@@ -245,4 +253,3 @@ class UpdateFileView(DeleteView):
             except ValidationError as e:
                 return JsonResponse({'error': e.message_dict}, status=400)
         return JsonResponse({'error': 'No file uploaded'}, status=400)
-
