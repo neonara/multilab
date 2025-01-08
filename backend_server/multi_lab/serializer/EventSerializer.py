@@ -23,4 +23,5 @@ class EventSerializer(serializers.ModelSerializer):
                   'status', 'created_at', 'updated_at', 'articles']
         extra_kwargs = {
             'image': {'required': False},
+            'articles': {'required': False},  # Make articles read-only by default.
         }

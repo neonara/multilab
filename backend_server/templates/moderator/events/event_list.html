@@ -1,0 +1,874 @@
+<!-- stage.html -->
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Multi lab</title> <!-- Bootstrap CDN link -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static './css/project.css' %}">
+    <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './vendor/fontawesome-free/css/all.min.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
+    
+
+</head>
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        {% include 'moderator/companents/silderbar.html' %}
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                {% include 'moderator/companents/navbar.html' %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    {% if messages %}
+                    <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <!-- <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% for persation in persations %}
+                        <div class="col">
+                            <div class="card h-100">
+                                {% if persation.image %}
+                                    <img src="{{ persation.image.url }}" class="card-img-top" alt="{{ persation.title }}">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ persation.title }}</h5>
+                                    <p class="card-text">{{ persation.description|truncatewords:30 }}</p>
+                                    <span class="badge bg-{% if persation.status == 'published' %}success{% elif persation.status == 'draft' %}warning{% else %}secondary{% endif %}">
+                                        {{ persation.status }}
+                                    </span>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="{% url 'persation_detail' persation.pk %}" class="btn btn-info btn-sm">View</a>
+                                    <a href="{% url 'persation_update' persation.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{% url 'persation_delete' persation.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col">
+                            <p>No persations available.</p>
+                        </div>
+                    {% endfor %}
+                </div> -->
+                    <!-- Page Heading -->
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Liste des Events</h3>
+
+                      </div>
+                      <button  type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#createStage">
+                       Ajouter <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
+                        <path d="M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4"/>
+                      </svg>
+                    </button>
+                    <div class="card shadow">
+                        <div class="app-body-main-content">
+                    <section class="service-section">
+                       
+                        <div class="service-section-header">
+                            <div class="dropdown-field">
+                                <select  id="entriesPerPage" onchange="changeEntriesPerPage(this)">
+                                  <option> Entries per page</option>
+                                  <option value="5">5</option>
+                                  <option value="10">10</option>
+                                  <option value="20">20</option>
+                              </select>
+                              <i class="bi bi-caret-down"></i> </div>
+                           
+                            <div class="search-field">
+                                <i class="bi bi-search"></i>
+                                <input type="text" placeholder="Rechercher"id="searchInput">
+                                <button class="flat-button" onclick="searchStage()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                      </svg>
+                                </button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
+                            </div>
+                            
+                        </div>
+                        
+                        <div >
+                           
+                            <div class="table-responsive">
+                                
+                                <table class="table align-items-center table-flush">
+                                  <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col"></th>
+                                      <th scope="col">Titre </th>
+                                      <th scope="col">Status </th>
+                                     <th scope="col">Date d'évent</th>
+                                      <th scope="col">Crée le</th>
+                                      <th scope="col">Action</th>
+                                     
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for event in events %}
+                                    <tr >
+                                      <td scope="row">
+                                        <div class="transfer">
+                                            
+                                            <div class="transfer-logo">
+                                                {% if event.image %}
+                                                <img src="{{ event.image.url }}" alt="{{ event.title }}"/>
+                                            {% endif %}
+                                              </div>
+                                           
+                                       
+                                      </td>
+                                      <td>
+                                       
+                                            
+                                            <dt> {{ event.title }}</dt>
+                                           
+                                                                                 </td>
+                                      <td>
+                                       {{ event.description }}
+                                      </td>
+                                     
+                                      <td>
+                                        <span class="badge bg-{% if event.status == 'published' %}success{% elif event.status == 'draft' %}warning{% else %}secondary{% endif %}">
+                                            {{ event.status }}
+                                        </span>
+                                      </td>
+                                      
+                                    <td>{{ event.created_at|date:"Y-m-d" }}</td>
+                                    <td>
+                                        <div class="avatar-group">
+                                           
+                                          <!-- View button -->
+                                          <button data-bs-toggle="modal" data-bs-target="#eventModal{{event.pk}}" class="avatar avatar-sm">
+                                            <i class="bi bi-eye"></i>
+                                          </button>
+                                          
+                                          <!-- Edit button -->
+                                          <button type="button" data-bs-toggle="modal" data-bs-target="#updateevent{{event.pk}}" class="avatar avatar-sm">
+                                            <i class="bi bi-pencil-square"></i>
+                                          </button>
+                                          
+                                          <!-- Single delete button -->
+                                          <form method="post" action="{% url 'event_delete' event.pk %}" style="display:inline;">
+                                            {% csrf_token %}
+                                            <button type="submit" class="avatar avatar-sm">
+                                              <i class="fas fa-trash"></i>
+                                            </button>
+                                          </form>
+                                        </div>
+                                      </td>
+                                      
+                                      
+                                    </tr>
+                                  <!-- Modal Structure -->
+                                  <div class="modal fade" id="eventModal{{event.pk}}" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header bg-light">
+                                                <h1 class="modal-title text-xl font-semibold" id="modalTitle">
+                                                    <i class="fas fa-file-alt me-2"></i>{{ event.title }}
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                
+                                            <!-- Modal Body -->
+                                            <div class="modal-body p-4">
+                                                <div class="container-fluid">
+                                                    <!-- Event Details Section -->
+                                                    <div class="row">
+                                                        <!-- Image Section -->
+                                                        <div class="col-md-6 mb-4">
+                                                            <div class="card h-100">
+                                                                <div class="card-header bg-light">
+                                                                    <h5 class="card-title mb-0">
+                                                                        <i class="fas fa-image me-2"></i>Image
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="card-body text-center">
+                                                                    {% if event.image %}
+                                                                        <img src="{{ event.image.url }}" 
+                                                                             alt="{{ event.title }}" 
+                                                                             class="img-fluid rounded shadow-sm"
+                                                                             style="max-height: 300px; object-fit: contain;">
+                                                                    {% else %}
+                                                                        <div class="text-muted py-5">
+                                                                            <i class="fas fa-image fa-3x mb-3"></i>
+                                                                            <p>Aucune image disponible</p>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                    <span>{{event.date_event}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                
+                                                        <!-- Details Section -->
+                                                        <div class="col-md-6">
+                                                            <div class="card h-100">
+                                                                <div class="card-header bg-light">
+                                                                    <h5 class="card-title mb-0">
+                                                                        <i class="fas fa-info-circle me-2"></i>Détails
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <!-- Event details content remains the same -->
+                                                                    {{ event.description }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <!-- Articles Section -->
+                                                    <div class="row mt-4">
+                                                        <div class="col-12">
+                                                            <div class="card">
+                                                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                                                    <h5 class="card-title mb-0">
+                                                                        <i class="fas fa-newspaper me-2"></i>Articles
+                                                                    </h5>
+                                                                    {% if not event.articles.all %}
+                                                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createArticle{{event.pk}}">
+                                                                        <i class="fas fa-plus me-2"></i>Nouvel Article
+                                                                    </button>
+                                                                {% endif %}
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    {% if event.articles.all %}
+                                                                        <div class="row">
+                                                                            {% for article in event.articles.all %}
+                                                                                <div class="col-md-12 mb-3">
+                                                                                    <div class="card">
+                                                                                        <div class="card-body">
+                                                                                            <div class="row">
+                                                                                                <!-- Article Images -->
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class=" gap-2">
+                                                                                                        {% if article.image1 %}
+                                                                                                            <img src="{{ article.image1.url }}" alt="Image 1" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                                                                                                        {% endif %}
+                                                                                                        {% if article.image2 %}
+                                                                                                            <img src="{{ article.image2.url }}" alt="Image 2" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                                                                                                        {% endif %}
+                                                                                                        {% if article.image3 %}
+                                                                                                            <img src="{{ article.image3.url }}" alt="Image 3" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                                                                                                        {% endif %}
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
+                                                                                                <!-- Article Description -->
+                                                                                                <div class="col-md-6">
+                                                                                                    <p class="mb-2">{{ article.description }}</p>
+                                                                                                    <small class="text-muted">
+                                                                                                        Créé le {{ article.created_at|date:"d/m/Y H:i" }}
+                                                                                                    </small>
+                                                                                                </div>
+                                
+                                                                                                <!-- Article Actions -->
+                                                                                                <div class="col-md-2">
+                                                                                                    <div class="btn-group-vertical">
+                                                                                                       
+                                                                                                        <form method="post" action="{% url 'article_delete' event.pk article.pk %}" class="d-inline">
+
+                                                                                                            {% csrf_token %}
+                                                                                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                                                                                <i class="fas fa-trash"></i>
+                                                                                                            </button>
+                                                                                                        </form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                              
+                                                                            {% endfor %}
+                                                                        </div>
+                                                                    {% else %}
+                                                                        <div class="text-center text-muted py-4">
+                                                                            <i class="fas fa-newspaper fa-3x mb-3"></i>
+                                                                            <p>Aucun article n'a été créé pour cet événement</p>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                
+                                            <!-- Modal Footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- irir -->
+                                <div class="modal fade" id="updateevent{{event.pk}}" tabindex="-1" aria-labelledby="updateModalLabel{{event.pk}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content shadow">
+                                            <!-- Header -->
+                                            <div class="modal-header bg-primary text-white rounded-top">
+                                                <h5 class="modal-title">
+                                                    <i class="fas fa-edit me-2"></i> Mettre à jour {{ event.title }}
+                                                </h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                
+                                            <!-- Body -->
+                                            <div class="modal-body p-4">
+                                                <form method="post" action="{% url 'event_update' event.pk %}" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <!-- Left Section -->
+                                                        <div class="col-md-6">
+                                                            <h6 class="text-uppercase text-muted mb-3">Informations principales</h6>
+                                                            
+                                                            <!-- Title -->
+                                                            <div class="mb-3">
+                                                                <label for="title" class="form-label">
+                                                                    <i class="fas fa-heading me-1"></i> Titre :
+                                                                </label>
+                                                                <input type="text" class="form-control" id="id_title" name="title" 
+                                                                       value="{{ event.title }}" required>
+                                                            </div>
+                                
+                                                            <!-- Description -->
+                                                            <div class="mb-3">
+                                                                <label for="id_description" class="form-label">
+                                                                    <i class="fas fa-align-left me-1"></i> Description :
+                                                                </label>
+                                                                <textarea class="form-control" id="description" name="description" 
+                                                                          rows="4" required>{{ event.description }}</textarea>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="date_event" class="form-label ">Date Evente</label>
+                                                                <input type="date" class="form-control" id="date_event" name="date_event"  value="{{ event.date_event }}" 
+                                                                      >
+                                                               
+                                                            </div>
+                                                            <!-- Status -->
+                                                            <div class="mb-3">
+                                                                <label for="id_status" class="form-label">
+                                                                    <i class="fas fa-tag me-1"></i> Statut :
+                                                                </label>
+                                                                <select class="form-select" id="id_status" name="status" required>
+                                                                    <option value="draft" {% if event.status == 'draft' %}selected{% endif %}>Brouillon</option>
+                                                                    <option value="pending" {% if event.status == 'pending' %}selected{% endif %}>En attente</option>
+                                                                    <option value="published" {% if event.status == 'published' %}selected{% endif %}>Publié</option>
+                                                                    <option value="archived" {% if event.status == 'archived' %}selected{% endif %}>Archivé</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                
+                                                        <!-- Right Section -->
+                                                        <div class="col-md-6">
+                                                            <h6 class="text-uppercase text-muted mb-3">Image</h6>
+                                                            
+                                                            <!-- Current Image Preview -->
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Image actuelle :</label>
+                                                                {% if event.image %}
+                                                                    <div class="current-image-container border rounded p-2 text-center">
+                                                                        <img src="{{ event.image.url }}" alt="Current image" 
+                                                                             class="img-fluid mb-2" style="max-height: 150px;">
+                                                                        <p class="small text-muted mb-0">Image actuelle</p>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <p class="text-muted">Aucune image</p>
+                                                                {% endif %}
+                                                            </div>
+                                
+                                                            <!-- New Image Upload -->
+                                                            <div class="mb-3">
+                                                                <label for="id_image" class="form-label">
+                                                                    <i class="fas fa-upload me-1"></i> Nouvelle image :
+                                                                </label>
+                                                                <input type="file" class="form-control" id="id_image" name="image" 
+                                                                       accept="image/*">
+                                                                <div class="form-text">Laissez vide pour conserver l'image actuelle</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <!-- Footer -->
+                                                    <div class="modal-footer border-top mt-4">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                            <i class="fas fa-times me-2"></i> Annuler
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fas fa-save me-2"></i> Sauvegarder
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                {% if event.articles.all %}
+                                                {% for article in event.articles.all %}
+                                                <form method="post" action="{% url 'article_update' event.pk article.pk %}" enctype="multipart/form-data">                                                                                    {% csrf_token %}
+                                                                                    
+                                                    <div class="mb-4">
+                                                        <label for="id_description_{{article.pk}}" class="form-label required-field">Description</label>
+                                                        <textarea class="form-control" id="id_description_{{article.pk}}" 
+                                                                  name="description" rows="4" required>{{ article.description }}</textarea>
+                                                    </div>
+                                
+                                                    <div class="mb-4">
+                                                        <label for="id_image1_{{article.pk}}" class="form-label required-field">Image Principale</label>
+                                                        <input type="file" class="form-control" id="id_image1_{{article.pk}}" 
+                                                               name="image1" accept="image/*" onchange="previewImage(this, 'preview1_update_{{article.pk}}')">
+                                                        <div class="mt-2 d-flex align-items-center">
+                                                            <img src="{{ article.image1.url }}" id="preview1_update_{{article.pk}}" 
+                                                                 class="img-thumbnail me-2" style="max-width: 100px; height: 100px; object-fit: cover;">
+                                                            <small class="text-muted">Image actuelle. Sélectionnez une nouvelle image pour la modifier.</small>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <div class="mb-4">
+                                                        <label for="id_image2_{{article.pk}}" class="form-label">Image 2 (optionnelle)</label>
+                                                        <input type="file" class="form-control" id="id_image2_{{article.pk}}" 
+                                                               name="image2" accept="image/*" onchange="previewImage(this, 'preview2_update_{{article.pk}}')">
+                                                        {% if article.image2 %}
+                                                            <div class="mt-2 d-flex align-items-center">
+                                                                <img src="{{ article.image2.url }}" id="preview2_update_{{article.pk}}" 
+                                                                     class="img-thumbnail me-2" style="max-width: 100px; height: 100px; object-fit: cover;">
+                                                                <small class="text-muted">Image actuelle. Sélectionnez une nouvelle image pour la modifier.</small>
+                                                            </div>
+                                                        {% else %}
+                                                            <img id="preview2_update_{{article.pk}}" class="mt-2" style="display: none; max-width: 100px;">
+                                                        {% endif %}
+                                                    </div>
+                                
+                                                    <div class="mb-4">
+                                                        <label for="id_image3_{{article.pk}}" class="form-label">Image 3 (optionnelle)</label>
+                                                        <input type="file" class="form-control" id="id_image3_{{article.pk}}" 
+                                                               name="image3" accept="image/*" onchange="previewImage(this, 'preview3_update_{{article.pk}}')">
+                                                        {% if article.image3 %}
+                                                            <div class="mt-2 d-flex align-items-center">
+                                                                <img src="{{ article.image3.url }}" id="preview3_update_{{article.pk}}" 
+                                                                     class="img-thumbnail me-2" style="max-width: 100px; height: 100px; object-fit: cover;">
+                                                                <small class="text-muted">Image actuelle. Sélectionnez une nouvelle image pour la modifier.</small>
+                                                            </div>
+                                                        {% else %}
+                                                            <img id="preview3_update_{{article.pk}}" class="mt-2" style="display: none; max-width: 100px;">
+                                                        {% endif %}
+                                                    </div>
+                                
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fas fa-save me-2"></i>Enregistrer les modifications
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Add this modal outside the table, with your other modals -->
+<div class="modal fade" id="createArticle{{event.pk}}" tabindex="-1" aria-labelledby="createArticleLabel{{event.pk}}" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createArticleLabel{{event.pk}}">Créer un article pour {{event.title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="post" action="{% url 'article_create' event.pk %}" enctype="multipart/form-data">
+            {% csrf_token %}
+           
+            <div class="mb-4">
+              <label for="id_description_{{event.pk}}" class="form-label required-field">Description</label>
+              <textarea class="form-control" id="id_description_{{event.pk}}" name="description" 
+                        rows="4" required placeholder="Décrivez votre article..."></textarea>
+            </div>
+  
+            <div class="mb-4">
+              <label for="id_image1_{{event.pk}}" class="form-label required-field">Image Principale</label>
+              <div class="image-upload-container">
+              <input type="file" class="form-control" id="id_image1_{{event.pk}}" 
+                     name="image1" accept="image/*" required onchange="previewImage2(this, 'preview1_{{event.pk}}')">
+              <img id="preview1_{{event.pk}}" class="mt-2" style="display: none; max-width: 200px;">
+              </div>
+
+            </div>
+  
+            <div class="mb-4">
+              <label for="id_image2_{{event.pk}}" class="form-label">Image 2 (optionnelle)</label>
+              <div class="image-upload-container">
+              <input type="file" class="form-control" id="id_image2_{{event.pk}}" 
+                     name="image2" accept="image/*" onchange="previewImage2(this, 'preview2_{{event.pk}}')">
+              <img id="preview2_{{event.pk}}" class="mt-2" style="display: none; max-width: 200px;">
+              </div>
+            </div>
+  
+            <div class="mb-4">
+              <label for="id_image3_{{event.pk}}" class="form-label">Image 3 (optionnelle)</label>
+              <div class="image-upload-container">
+              <input type="file" class="form-control" id="id_image3_{{event.pk}}" 
+                     name="image3" accept="image/*" onchange="previewImage2(this, 'preview3_{{event.pk}}')">
+              <img id="preview3_{{event.pk}}" class="mt-2" style="display: none; max-width: 200px;">
+              </div>
+            </div>
+  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary">Créer l'article</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+                                <!-- Update Article Modal -->
+
+                                    {% endfor %}
+                                  </tbody>
+                                </table>
+                              </div>
+
+<!-- Modal -->
+
+
+
+                           <!-- Button trigger modal -->
+
+
+                        </div>
+                     
+                    </section>
+                    
+                </div>
+                
+            </div>
+        </div>                   
+    </div>
+                  
+    <div class="modal fade" id="createStage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Créer une nouvelle event</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'event_create' %}">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <label for="id_title" class="form-label required-field">Titre</label>
+                            <input type="text" class="form-control" id="title" name="title" required
+                                   placeholder="Entrez le titre de la event">
+                            <div class="form-text">Le titre doit être concis et descriptif</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="date_event" class="form-label required-field">Date Evente</label>
+                            <input type="date" class="form-control" id="date_event" name="date_event" 
+                                  >
+                           
+                        </div>
+        
+                        
+                        <div class="mb-4">
+                            <label for="description" class="form-label required-field">Description</label>
+                            <textarea class="form-control" id="id_description" name="description" 
+                                      rows="4" required placeholder="Décrivez votre event..."></textarea>
+                          
+                        </div>
+                        <!-- <div class="mb-4">
+                            <label for="id_image" class="form-label">Image</label>
+                            <i class="fas fa-cloud-upload-alt mb-2"></i>
+                            <input type="file" class="form-control shadow-lg border-primary rounded-3 p-3 focus:outline-none focus:ring-2 focus:ring-primary" id="id_image" name="image" accept="image/*">
+
+                              
+                                <p class="mb-0">Drag and drop an image here or click to select one</p>
+                           
+                            <img id="imagePreview" class="preview-image" alt="Preview" style="display: none; max-width: 200px; margin-top: 10px;">
+                            
+                        </div> -->
+                        <div class="mb-4">
+                            <label for="id_image" class="form-label">Image</label>
+                            <div class="image-upload-container">
+                                <input type="file" class="form-control" id="id_image" name="image" 
+                                       accept="image/*" onchange="previewImage(this)">
+                                <small class="form-text text-muted">Sélectionnez une image pour l'event (optionnel)</small>
+                                <div class="image-preview-wrapper mt-3">
+                                    <img id="imagePreview" src="" alt="Aperçu de l'image" 
+                                         style="display: none; max-width: 200px; height: auto; border-radius: 8px;">
+                                </div>
+                            </div>
+                        </div>
+                      
+                <div class="mb-4">
+                    <label for="id_status" class="form-label required-field">Status</label>
+                    <select class="form-select" id="id_status" name="status" required>
+                        <option value="" disabled>Sélectionnez un status</option>
+                       
+                        <option value="archived" selected>En attente</option>
+                        <option value="published">Publié</option>
+                    
+                    </select>
+                </div>
+                        
+    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+                  
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        {% comment %} <span>Copyright &copy; Your Website 2020</span> {% endcomment %}
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/clientdash.js' %}"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static './js/script_dashboard.js' %}"></script>
+    <!-- Include jQuery -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+   <!-- Bootstrap Bundle with Popper -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+   <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   <!-- Custom JS -->
+   <script src="{% static './js/script_dashboard.js' %}"></script>
+   <script>
+   
+    function searchStage() {
+        var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementsByClassName("table")[0];
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td1 = tr[i].getElementsByTagName("td")[1]; // Get the first column (title)
+            td2 = tr[i].getElementsByTagName("td")[2];
+            td3 = tr[i].getElementsByTagName("td")[3]; // Get the first column (Nom et Prénom)
+            td4 = tr[i].getElementsByTagName("td")[4]; // Get the second column (created_at)
+            if (td1 && td2 && td3 &&td4)  {
+                txtValue1 = td1.textContent || td1.innerText;
+                txtValue2 = td2.textContent || td2.innerText;
+                txtValue3 = td3.textContent || td3.innerText;
+                txtValue4 = td4.textContent || td4.innerText;
+                if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1|| txtValue4.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    
+   
+    
+  
+  function resetSearch() {
+      var input = document.getElementById("searchInput");
+      input.value = "";
+      var rows = document.querySelectorAll('.table tbody tr');
+      rows.forEach(function(row) {
+          row.style.display = 'table-row';
+      });
+  }
+  function changeEntriesPerPage(select) {
+    var table = document.querySelector('.table');
+    var rows = table.querySelectorAll('tbody tr');
+
+    // Hide all rows
+    rows.forEach(function(row) {
+        row.style.display = 'none';
+    });
+
+    // Show only selected number of rows
+    var selectedValue = parseInt(select.value);
+    for (var i = 0; i < selectedValue; i++) {
+        if (rows[i]) {
+            rows[i].style.display = 'table-row';
+        }
+    }
+}
+
+function initializeSelect2() {
+    $('#id_client').select2({
+        placeholder: 'Search for a client...',
+        allowClear: true // optional, adds a clear button
+    });
+}
+
+// Call the function when the document is ready
+$(document).ready(function() {
+    initializeSelect2();
+});
+
+// File input change event
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('id_image');
+    const imagePreview = document.getElementById('imagePreview');
+    
+    fileInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                imagePreview.src = event.target.result;
+                imagePreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+function previewImage(input) {
+    const imagePreview = document.getElementById('imagePreview');
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        imagePreview.src = '';
+        imagePreview.style.display = 'none';
+    }
+}
+function previewImage2(input, previewId) {
+    const preview = document.getElementById(previewId);
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.src = '';
+        preview.style.display = 'none';
+    }
+}
+
+
+
+</script>              
+<style>
+    .image-upload-container {
+        border: 2px dashed #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+    }
+    
+    .image-upload-container:hover {
+        border-color: #0d6efd;
+    }
+    
+    .required-field::after {
+        content: " *";
+        color: red;
+    }
+    .required-field::after {
+    content: " *";
+    color: red;
+}
+
+
+.preview-image {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+    </style>
+    
+</body>
+</html>

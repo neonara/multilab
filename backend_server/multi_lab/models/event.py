@@ -3,15 +3,15 @@ from django.utils.html import mark_safe
 
 class Event(models.Model):
     STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
-        ('archived', 'Archived'),
+       
+        ('published', 'Publié'),
+        ('archived', 'Privé'),
     )
     
     title = models.CharField(max_length=200)
     description = models.TextField()
     date_event = models.DateTimeField()
-    image = models.ImageField(upload_to='events/')
+    image = models.ImageField(upload_to='events/', blank=True, null=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

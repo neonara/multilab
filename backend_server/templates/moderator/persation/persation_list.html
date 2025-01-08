@@ -152,8 +152,9 @@
                                         <div class="transfer">
                                             
                                             <div class="transfer-logo">
+                                            {% if persation.image  %}
                                               <img src="{{ persation.image.url }}" alt="{{ persation.title }}"/>
-                                              </div>
+                                              {% endif %}  </div>
                                            
                                        
                                       </td>
@@ -432,49 +433,45 @@
                 <div class="modal-body">
                     <form method="post" enctype="multipart/form-data" action="{% url 'persation_create' %}">
                         {% csrf_token %}
-                        
                         <div class="mb-4">
                             <label for="id_title" class="form-label required-field">Titre</label>
-                            <input type="text" class="form-control" id="id_title" name="title" required
-                                   placeholder="Entrez le titre de la persation">
-                            <div class="form-text">Le titre doit être concis et descriptif</div>
+                            <input type="text" class="form-control shadow-sm border-light" id="id_title" name="title" required placeholder="Entrez le titre de la persation">
                         </div>
-        
-                        
+                    
                         <div class="mb-4">
                             <label for="id_description" class="form-label required-field">Description</label>
-                            <textarea class="form-control" id="id_description" name="description" 
-                                      rows="4" required placeholder="Décrivez votre persation..."></textarea>
-                            <div class="form-text">Une description détaillée de votre persation</div>
+                            <textarea class="form-control shadow-sm border-light" id="id_description" name="description" rows="4" required placeholder="Décrivez votre persation..."></textarea>
                         </div>
+                    
                         <div class="mb-4">
                             <label for="id_image" class="form-label">Image</label>
-                            <div class="custom-file-upload" id="dropZone">
+                            <div class="image-upload-container">
                                 <input type="file" class="form-control" id="id_image" name="image" 
-                                       accept="image/*" style="display: none;">
-                                <i class="fas fa-cloud-upload-alt mb-2"></i>
-                                <p class="mb-0">Glissez une image ici ou cliquez pour sélectionner</p>
+                                       accept="image/*" onchange="previewImage(this)">
+                                <small class="form-text text-muted">Sélectionnez une image pour l'event (optionnel)</small>
+                                <div class="image-preview-wrapper mt-3">
+                                    <img id="imagePreview" src="" alt="Aperçu de l'image" 
+                                         style="display: none; max-width: 200px; height: auto; border-radius: 8px;">
+                                </div>
                             </div>
-                            <img id="imagePreview" class="preview-image" alt="Preview">
                         </div>
-                      
-                <div class="mb-4">
-                    <label for="id_status" class="form-label required-field">Status</label>
-                    <select class="form-select" id="id_status" name="status" required>
-                        <option value="" disabled>Sélectionnez un status</option>
-                       
-                        <option value="archived" selected>En attente</option>
-                        <option value="published">Publié</option>
                     
-                    </select>
-                </div>
-                        
-    
-                        <div class="modal-footer">
+                        <div class="mb-4">
+                            <label for="id_status" class="form-label required-field">Statut</label>
+                            <select class="form-select shadow-sm border-light" id="id_status" name="status" required>
+                                <option value="archived">En attente</option>
+                                <option value="published">Publié</option>
+                            </select>
+                        </div>
+                    
+                        <div class="modal-footer d-flex justify-content-between">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
+                    
+                    
+                    
                 </div>
             </div>
         </div>
@@ -602,65 +599,60 @@ $(document).ready(function() {
     initializeSelect2();
 });
 
-document.getElementById('id_image').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            const preview = document.getElementById('imagePreview');
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                }
-                reader.readAsDataURL(file);
-            }
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('id_image');
+    const imagePreview = document.getElementById('imagePreview');
+    
+    fileInput.addEventListener('change', function (e) {
+        const file = e.target.files[0];
 
-        // Drag and drop functionality
-        const dropZone = document.getElementById('dropZone');
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                imagePreview.src = event.target.result;
+                imagePreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+function previewImage(input) {
+    const imagePreview = document.getElementById('imagePreview');
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
         
-        dropZone.addEventListener('click', () => {
-            document.getElementById('id_image').click();
-        });
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        imagePreview.src = '';
+        imagePreview.style.display = 'none';
+    }
+}
 
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, preventDefaults, false);
-        });
-
-        function preventDefaults (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-
-        ['dragenter', 'dragover'].forEach(eventName => {
-            dropZone.addEventListener(eventName, highlight, false);
-        });
-
-        ['dragleave', 'drop'].forEach(eventName => {
-            dropZone.addEventListener(eventName, unhighlight, false);
-        });
-
-        function highlight(e) {
-            dropZone.classList.add('border-primary');
-        }
-
-        function unhighlight(e) {
-            dropZone.classList.remove('border-primary');
-        }
-
-        dropZone.addEventListener('drop', handleDrop, false);
-
-        function handleDrop(e) {
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            document.getElementById('id_image').files = files;
-            
-            // Trigger change event to show preview
-            const event = new Event('change');
-            document.getElementById('id_image').dispatchEvent(event);
-        }
 </script>              
 
+<style>
+    .image-upload-container {
+        border: 2px dashed #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+    }
     
+    .image-upload-container:hover {
+        border-color: #0d6efd;
+    }
+    
+    .required-field::after {
+        content: " *";
+        color: red;
+    }
+    </style>
 </body>
 </html>
