@@ -34,6 +34,9 @@ function HomePage() {
       <div className="home-container">
         <div className="text-section">
           <h1>Qui sommes nous ?</h1>
+          <div className="img-mobile">
+            <img src={home1} alt="Laboratory" className="lab-image" />
+          </div>
           <p>
             <strong>MULTILAB s.a</strong>, laboratoire Tunisien accrédité{" "}
             <strong>ISO/IEC 17025</strong>, est spécialisé dans l'analyse
