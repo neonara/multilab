@@ -2,9 +2,10 @@
   --blue: #013d8f;
   --light-blue: #00a0d8;
 }
-
 p {
   font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -14,6 +15,8 @@ h4,
 h5,
 h6 {
   font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .toppp {
@@ -105,37 +108,55 @@ h6 {
   padding: 20px; /* Add some padding to the section */
 }
 
-.values-section h2 {
-  font-size: 2rem;
-  color: var(--blue);
-  text-align: left; /* Center align the header */
-}
-
 .values-grid {
   display: flex;
   justify-content: space-around;
+  gap: 8px;
+  align-items: start;
   margin-top: 30px;
-  flex-wrap: wrap; /* Allow items to wrap in larger screens */
+  /* flex-wrap: wrap;  */
 }
 
 .value-item {
   width: 20%; /* Default width for larger screens */
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 16px;
   min-width: 200px; /* Minimum width for each item */
 }
 
-.value-item img {
-  margin-bottom: 20px;
-  background-color: var(--blue); /* Dark blue background */
+.value-item .img-container {
+  background-color: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 90px;
   height: 90px;
   border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.value-item img {
+  width: auto; /* Adjust this size according to the logo size */
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.value-item:hover img {
+  transform: scale(1.3);
 }
 
 .value-item h3 {
-  font-size: 1.5rem;
+  font-size: 25px;
+  font-weight: bold;
   color: #0050a0;
+}
+
+.value-item p {
+  font-size: 16px;
 }
 
 .scroll-to-top {
@@ -241,13 +262,13 @@ h6 {
   top: 1197px;
 }
 
-.home-title {
-  font-size: 2rem;
+.home-title,
+.values-section h1 {
+  font-size: 35px;
   font-weight: bold;
   color: #1c3b94;
   margin-bottom: 20px;
   text-align: left;
-  margin-left: 20px;
 }
 
 .home-description {
@@ -322,14 +343,13 @@ h6 {
 }
 /*       Nos prestations css*/
 .prestations-section {
-  margin-left: 20px;
+  margin: 20px;
   background-color: white;
   text-align: center;
-  margin-right: 20px;
 }
 
 .prestations-section h2 {
-  color: #0056b3;
+  color: var(--blue);
   font-size: 2rem;
   margin-bottom: 20px;
   text-align: left;
@@ -343,7 +363,9 @@ h6 {
 
 .prestations-grid {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
 }
 
 .prestation-item {
@@ -515,6 +537,7 @@ h6 {
 .project-link:hover {
   text-decoration: underline;
 }
+
 /*  servicesCards*/
 .card-container {
   display: flex;
@@ -885,14 +908,22 @@ h6 {
     margin-right: 10px; /* Add some space between items */
   }
 
-  .values-section h2 {
+  .values-section h1,
+  .prestations-section h2 {
     text-align: left;
-    font-size: 1.5rem; /* Adjust header size for mobile */
+    font-size: 20px; /* Adjust header size for mobile */
+  }
+
+  .value-item p {
+    font-size: 14px;
+  }
+
+  .prestations-section p {
+    font-size: 16px;
   }
 
   .projects-cards,
   .values-grid {
-    flex-direction: column;
     gap: 10px;
   }
   .values-section-vid {

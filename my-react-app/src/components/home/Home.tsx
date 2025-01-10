@@ -1,15 +1,15 @@
 import home1 from "../home/assets/home 1.png";
-import fiabilite from "../home/assets/Fiabilité.png";
-import expertise from "../home/assets/Expertise.png";
+import expertise from "@/assets/icons/icon-expertise.svg";
+import fiabilite from "@/assets/icons/icon-fiabilité.svg";
 
-import reactivite from "../home/assets/Réactivité.png";
-import proximite from "../home/assets/Proximité.png";
+import reactivite from "@/assets/icons/icon-réactivité.svg";
+import proximite from "@/assets/icons/icon-proximité.svg";
 import first from "../home/assets/first.png";
 import second from "../home/assets/second.png";
 import third from "../home/assets/third.png";
-import logo1 from "../home/assets/2.png";
-import logo2 from "../home/assets/1.png";
-import logo3 from "../home/assets/3.png";
+import logo1 from "@/assets/icons/icon-analyses.svg";
+import logo2 from "@/assets/icons/icon-formation.svg";
+import logo3 from "@/assets/icons/icon-assistance.svg";
 import event1 from "../home/assets/WhatsApp Image 2024-04-04 at 1.21.41 PM.jpeg";
 import event2 from "../home/assets/Actualité 1.jpg";
 import event3 from "../home/assets/event 27.png";
@@ -69,28 +69,40 @@ function HomePage() {
       </div>
 
       <div className="values-section">
-        <h2 className="">Nos valeurs</h2>
+        <h1 className="">Nos valeurs</h1>
         <div className="values-grid">
           <div className="value-item">
-            <img src={fiabilite} alt="Fiabilité" />
+            <div className="img-container">
+              <img src={fiabilite} alt="Fiabilité" />
+            </div>
             <h3>Fiabilité</h3>
             <p>
               Accrédité <strong>ISO/IEC 17025</strong> pour une qualité
               supérieure
             </p>
           </div>
+
           <div className="value-item">
-            <img src={expertise} alt="Expertise" />
+            <div className="img-container">
+              <img src={expertise} alt="Expertise" />
+            </div>
+
             <h3>Expertise</h3>
             <p>Des spécialistes qualifiés pour des analyses précises.</p>
           </div>
+
           <div className="value-item">
-            <img src={reactivite} alt="Réactivité" />
+            <div className="img-container">
+              <img src={reactivite} alt="Réactivité" />
+            </div>
             <h3>Réactivité</h3>
             <p>Résultats rapides et délais optimisés.</p>
           </div>
+
           <div className="value-item">
-            <img src={proximite} alt="Proximité" />
+            <div className="img-container">
+              <img src={proximite} alt="Proximité" />
+            </div>
             <h3>Proximité</h3>
             <p>
               Présent sur tout le territoire tunisien pour un service
@@ -132,37 +144,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Content Section */}
-      {/* <section className="prestations-section">
-     
-      <div className="prestations-grid">
-        <div className="prestation-item">
-          <img src={first} alt="Prestation 1" className="prestation-image" />
-          <div className="prestation-details">
-            <img src={logo1} alt="Logo 1" className="prestation-logo" /> 
-            <h3>Analyses</h3>
-            <p>MULTILAB s.a fournit des solutions innovantes et écologiques pour les enjeux de sécurité alimentaire et environnementale.</p>
-          </div>
-        </div>
-        <div className="prestation-item">
-          <img src={second} alt="Prestation 2" className="prestation-image" />
-          <div className="prestation-details">
-            <img src="path/to/logo2.png" alt="Logo 2" className="prestation-logo" /> 
-            <h3>Formation</h3>
-            <p>MULTILAB s.a propose des formations actualisées et pertinentes en analyse, sécurité alimentaire, hygiène et qualité.</p>
-          </div>
-        </div>
-        <div className="prestation-item">
-          <img src={third} alt="Prestation 3" className="prestation-image" />
-          <div className="prestation-details">
-            <img src="path/to/logo3.png" alt="Logo 3" className="prestation-logo" /> 
-            <h3>Assistance et Audit</h3>
-            <p>MULTILAB s.a accompagne ses clients de manière personnalisée pour assurer la qualité et la sécurité des aliments.</p>
-          </div>
-        </div>
-      </div>
-    </section> */}
 
       <div className="home-containers-analyse">
         <h2 className="home-title">Nos analyses</h2>
