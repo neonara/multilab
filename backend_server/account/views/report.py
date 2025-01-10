@@ -241,15 +241,19 @@ class DeleteFileView(UpdateView):
 
 
 class UpdateFileView(DeleteView):
+    success_url = reverse_lazy('report_list')
     def post(self, request, file_id):
-        file = get_object_or_404(ReportFile, pk=file_id)
-        if 'file' in request.FILES:
-            new_file = request.FILES['file']
-            file.file = new_file
-            try:
-                file.full_clean()
-                file.save()
-                return JsonResponse({'message': 'File updated successfully'}, status=200)
-            except ValidationError as e:
-                return JsonResponse({'error': e.message_dict}, status=400)
-        return JsonResponse({'error': 'No file uploaded'}, status=400)
+            file = get_object_or_404(ReportFile, pk=file_id)
+            if 'file' in request.FILES:
+                new_file = request.FILES['file']
+                file.file = new_file
+                try:
+                    file.full_clean()
+                    file.save()
+                    messages.success(request, 'File updated successfully')
+                    return redirect(self.success_url)
+                except ValidationError as e:
+                    messages.error(request, 'Error updating file: {}'.format(e))
+                    return redirect(self.success_url)
+            messages.error(request, 'No file uploaded')
+            return redirect(self.success_url)

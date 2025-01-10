@@ -19,6 +19,11 @@ html {
 nav {
     display: block;
 }
+.modal-dialog {
+    max-width: 800px; /* or adjust as needed */
+    width: 100%;
+}
+
 
 body {
     margin: 0;
@@ -482,3 +487,153 @@ h1, .h1 {
     color: #007bff; /* Change user icon color here */
     font-size: 30px;
 }
+/* Container for the drag and drop functionality */
+.dropzone-container {
+    border: 2px dashed #ddd;
+    padding: 30px;
+    text-align: center;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.dropzone-container:hover {
+    background-color: #e6f7ff;
+    border-color: #3399ff;
+}
+
+/* Button styles for upload */
+#uploadButton {
+    background-color: #3399ff;
+    color: white;
+    font-size: 16px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+#uploadButton:hover {
+    background-color: #1a80d2;
+}
+
+/* Image preview styles */
+#imagePreview {
+    max-height: 300px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    #uploadButton {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+
+    #imagePreview {
+        max-height: 200px;
+    }
+}
+
+/* Additional styling for the dashboard */
+    .form-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: #344767;
+      margin-bottom: 0.5rem;
+    }
+    
+    .required-field:after {
+      content: "*";
+      color: #dc3545;
+      margin-left: 4px;
+    }
+    
+    .form-control, .form-select {
+      border: 1px solid #e9ecef;
+      padding: 0.75rem;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: #5e72e4;
+      box-shadow: 0 0 0 0.2rem rgba(94,114,228,0.1);
+    }
+    
+    .form-control::placeholder {
+      color: #adb5bd;
+    }
+    
+    .custom-file-input {
+      position: relative;
+      padding: 1rem;
+      background: #f8f9fa;
+      border: 2px dashed #dee2e6;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    
+    .btn-primary {
+      background: #5e72e4;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background: #4355c7;
+      transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+      background: #f8f9fa;
+      color: #344767;
+      border: 1px solid #dee2e6;
+    }
+    
+    .btn-secondary:hover {
+      background: #e9ecef;
+    }
+    
+    .modal-footer {
+      border-top: none;
+      padding-top: 2rem;
+      gap: 1rem;
+    }
+    .image-upload-container {
+        border: 2px dashed #ddd;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+    }
+    
+    .image-upload-container:hover {
+        border-color: #0d6efd;
+    }
+    
+    .required-field::after {
+        content: " *";
+        color: red;
+    }

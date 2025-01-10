@@ -2,7 +2,7 @@ from django.db import models
 from account.models import User
 
 from django.core.exceptions import ValidationError
-
+import os
 
 class Report(models.Model):
     STATUS_CHOICES = [
@@ -39,8 +39,15 @@ class ReportFile(models.Model):
     report_related = models.ForeignKey(
         Report, on_delete=models.CASCADE, related_name='files')
     file = models.FileField(upload_to='reports_pdf/')
+    original_name = models.CharField(max_length=255, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.original_name and self.file:
+            self.original_name = self.file.name  # Save the original file name
+        super().save(*args, **kwargs)
+
 
     def clean(self):
         """Ensure no more than 3 files are associated with a single report."""
@@ -49,6 +56,9 @@ class ReportFile(models.Model):
 
     def __str__(self):
         return f"Fichier pour {self.report_related.title}"
+    @property
+    def filename(self):
+        return self.original_name or os.path.basename(self.file.name)
 
     class Meta:
         verbose_name = "Fichier de Rapport"
