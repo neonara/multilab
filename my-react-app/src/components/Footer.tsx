@@ -63,9 +63,6 @@ function Footer() {
                   </li>
                 </ul>
               </div>
-              <div className="menu-column">
-                <ul className="list-unstyled"></ul>
-              </div>
             </div>
           </div>
 

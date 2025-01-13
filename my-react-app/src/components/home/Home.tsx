@@ -1,40 +1,89 @@
 import home1 from "../home/assets/home 1.png";
-import fiabilite from "../home/assets/Fiabilité.png";
-import expertise from "../home/assets/Expertise.png";
+import expertise from "@/assets/icons/icon-expertise.svg";
+import fiabilite from "@/assets/icons/icon-fiabilité.svg";
 
-import reactivite from "../home/assets/Réactivité.png";
-import proximite from "../home/assets/Proximité.png";
+import reactivite from "@/assets/icons/icon-réactivité.svg";
+import proximite from "@/assets/icons/icon-proximité.svg";
 import first from "../home/assets/first.png";
 import second from "../home/assets/second.png";
 import third from "../home/assets/third.png";
-import logo1 from "../home/assets/2.png";
-import logo2 from "../home/assets/1.png";
-import logo3 from "../home/assets/3.png";
+import logo1 from "@/assets/icons/icon-analyses.svg";
+import logo2 from "@/assets/icons/icon-formation.svg";
+import logo3 from "@/assets/icons/icon-assistance.svg";
 import event1 from "../home/assets/WhatsApp Image 2024-04-04 at 1.21.41 PM.jpeg";
 import event2 from "../home/assets/Actualité 1.jpg";
 import event3 from "../home/assets/event 27.png";
-import bg from "../home/assets/7534029.jpg";
+import calendarIcon from "@/assets/icons/icon-calendar.svg";
 import log from "../home/assets/log.png";
 import AnalysesCard from "./AnalysesCard";
 
-import "./home.css"
+
+import "./home.css";
+
 import ServicesCards from "./ServicesCards";
 import VideoSection from "./Video";
+import StatsSection from "./StatsSection";
 function HomePage() {
+  const services = [
+    {
+      imageSrc: first,
+      logoSrc: logo1,
+      title: "Analyses",
+      description:
+        "<strong>MULTILAB s.a</strong> propose une large gamme d’analyses précises et fiables pour répondre aux enjeux de la sécurité alimentaire, de la qualité des produits et de la protection de l'environnement.",
+      link: "analyse",
+    },
+    {
+      imageSrc: second,
+      logoSrc: logo2,
+      title: "Formation",
+      description:
+        "<strong>MULTILAB s.a</strong>  propose des formations actualisées et pertinentes en analyse, sécurité alimentaire, hygiène et qualité et selon le besoin des clients",
+      link: "formation",
+    },
+    {
+      imageSrc: third,
+      logoSrc: logo3,
+      title: "Assistance et Audit",
+      description:
+        "<strong>MULTILAB s.a</strong> accompagne ses clients de manière personnalisée pour assurer la qualité et la sécurité de leurs produits.",
+      link: "Assistance",
+    },
+  ];
+
+  const projects = [
+    {
+      imgSrc: event1,
+      date: "17/01/2024",
+      description:
+        "Le maintien de l'accréditation ISO/IEC 17025 des laboratoires de Microbiologie et de Physicochimie de MULTILAB s.a",
+      link: "/link-to-project1",
+    },
+    {
+      imgSrc: event2,
+      date: "21/02/2024",
+      description:
+        "Participation active de MULTILAB s.a à la première journée de l'Association Tunisienne de l'Aviculture (TPA)",
+      link: "/link-to-project2",
+    },
+    {
+      imgSrc: event3,
+      date: "27/02/2024",
+      description:
+        'Evènement :Thème "Risques des Mycotoxines dans l\'alimentation animale".',
+      link: "/link-to-project3",
+    },
+  ];
   return (
     <div className="toppp">
       <VideoSection />
 
-      {/* Hero Section */}
-      {/* <div className="container-fluid bg-light text-center py-5">
-        <h1 className="display-4">Welcome to Multilab</h1>
-        <p className="lead">We provide the best agro-food and environmental analysis.</p>
-        <button className="btn btn-primary btn-lg">Learn More</button>
-      </div> */}
-
       <div className="home-container">
         <div className="text-section">
           <h1>Qui sommes nous ?</h1>
+          <div className="img-mobile">
+            <img src={home1} alt="Laboratory" className="lab-image" />
+          </div>
           <p>
             <strong>MULTILAB s.a</strong>, laboratoire Tunisien accrédité{" "}
             <strong>ISO/IEC 17025</strong>, est spécialisé dans l'analyse
@@ -67,28 +116,40 @@ function HomePage() {
       </div>
 
       <div className="values-section">
-        <h2 className="">Nos valeurs</h2>
+        <h1 className="">Nos valeurs</h1>
         <div className="values-grid">
           <div className="value-item">
-            <img src={fiabilite} alt="Fiabilité" />
+            <div className="img-container">
+              <img src={fiabilite} alt="Fiabilité" />
+            </div>
             <h3>Fiabilité</h3>
             <p>
               Accrédité <strong>ISO/IEC 17025</strong> pour une qualité
               supérieure
             </p>
           </div>
+
           <div className="value-item">
-            <img src={expertise} alt="Expertise" />
+            <div className="img-container">
+              <img src={expertise} alt="Expertise" />
+            </div>
+
             <h3>Expertise</h3>
             <p>Des spécialistes qualifiés pour des analyses précises.</p>
           </div>
+
           <div className="value-item">
-            <img src={reactivite} alt="Réactivité" />
+            <div className="img-container">
+              <img src={reactivite} alt="Réactivité" />
+            </div>
             <h3>Réactivité</h3>
             <p>Résultats rapides et délais optimisés.</p>
           </div>
+
           <div className="value-item">
-            <img src={proximite} alt="Proximité" />
+            <div className="img-container">
+              <img src={proximite} alt="Proximité" />
+            </div>
             <h3>Proximité</h3>
             <p>
               Présent sur tout le territoire tunisien pour un service
@@ -104,75 +165,32 @@ function HomePage() {
           Nous vous offrons une gamme complète de services sur-mesure pour
           répondre à tous vos besoins{" "}
         </p>
-        <div className="services-section">
-          <div className="prestations-grid">
+
+        <div className="prestations-grid">
+          {services.map((service, index) => (
             <ServicesCards
-              imageSrc={first}
-              logoSrc={logo1}
-              title="Analyses"
-              description="MULTILAB s.a fournit des solutions innovantes et écologiques pour les enjeux de sécurité alimentaire et environnementale."
-              link="analyse"
+              key={index}
+              imageSrc={service.imageSrc}
+              logoSrc={service.logoSrc}
+              title={service.title}
+              description={service.description}
+              link={service.link}
             />
-            <ServicesCards
-              imageSrc={second}
-              logoSrc={logo2}
-              title="Formation"
-              description="MULTILAB s.a propose des formations actualisées et pertinentes en analyse, sécurité alimentaire, hygiène et qualité."
-              link="formation"
-            />
-            <ServicesCards
-              imageSrc={third}
-              logoSrc={logo3}
-              title="Assistance et Audit"
-              description="MULTILAB s.a accompagne ses clients de manière personnalisée pour assurer la qualité et la sécurité des aliments."
-              link="Assistance"
-            />
-          </div>
+          ))}
         </div>
       </section>
-
-      {/* Content Section */}
-      {/* <section className="prestations-section">
-     
-      <div className="prestations-grid">
-        <div className="prestation-item">
-          <img src={first} alt="Prestation 1" className="prestation-image" />
-          <div className="prestation-details">
-            <img src={logo1} alt="Logo 1" className="prestation-logo" /> 
-            <h3>Analyses</h3>
-            <p>MULTILAB s.a fournit des solutions innovantes et écologiques pour les enjeux de sécurité alimentaire et environnementale.</p>
-          </div>
-        </div>
-        <div className="prestation-item">
-          <img src={second} alt="Prestation 2" className="prestation-image" />
-          <div className="prestation-details">
-            <img src="path/to/logo2.png" alt="Logo 2" className="prestation-logo" /> 
-            <h3>Formation</h3>
-            <p>MULTILAB s.a propose des formations actualisées et pertinentes en analyse, sécurité alimentaire, hygiène et qualité.</p>
-          </div>
-        </div>
-        <div className="prestation-item">
-          <img src={third} alt="Prestation 3" className="prestation-image" />
-          <div className="prestation-details">
-            <img src="path/to/logo3.png" alt="Logo 3" className="prestation-logo" /> 
-            <h3>Assistance et Audit</h3>
-            <p>MULTILAB s.a accompagne ses clients de manière personnalisée pour assurer la qualité et la sécurité des aliments.</p>
-          </div>
-        </div>
-      </div>
-    </section> */}
 
       <div className="home-containers-analyse">
         <h2 className="home-title">Nos analyses</h2>
         <p className="home-description">
-          Le laboratoire MULTILAB s.a développe une gamme d'analyses complète et
-          diversifiée, utilisant des technologies modernes et des méthodes
-          avancées pour répondre aux besoins variés de ses clients.
+          Le laboratoire propose une gamme complète et diversifiée d'analyses,
+          en s'appuyant sur des technologies modernes et des méthodes avancées
+          pour répondre aux besoins variés de ses clients.
         </p>
         <AnalysesCard />
       </div>
 
-      <div className="stats-section">
+      {/* <div className="stats-section">
         <div className="stats-item">
           <h2>+500</h2>
           <p>Clients</p>
@@ -185,75 +203,19 @@ function HomePage() {
           <h2>+25 ans</h2>
           <p>d'expérience</p>
         </div>
-      </div>
+      </div> */}
+
+      <StatsSection />
 
       <div className="reconnaissance">
         <h2>Notre reconnaissance qualité</h2>
 
-        <div
-          style={{
-            backgroundImage: `url(${bg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            padding: "20px",
-            borderRadius: "10px",
-            margin: "20px auto",
-            marginRight: "20px",
-            maxWidth: "1500px",
-            height: "308px",
-          }}
-        >
-          <div
-            style={{
-              padding: "20px",
-              borderRadius: "15px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            <div style={{ flex: "1 1 60%", padding: "10px" }}>
-              <h3
-                style={{
-                  color: "#003A79",
-                  fontSize: "24px",
-                  marginBottom: "10px",
-                }}
-              >
-                Nos accréditations
-              </h3>
-              <p style={{ color: "#003A79", fontSize: "18px" }}>
-                Depuis 2012, <strong>MULTILAB s.a</strong> est accrédité par le{" "}
-                <strong>TUNAC</strong> en microbiologie alimentaire,
-                microbiologie des eaux et physicochimie des aliments. Nous avons
-                élargi notre champ d'accréditation, passant de 6 à 28 méthodes
-                d'analyse.
-              </p>
-              <button
-                style={{
-                  alignContent: "left",
-                  backgroundColor: "transparent",
-                  color: "#003A79",
-                  padding: "10px 20px",
-                  borderRadius: "5px",
-                  fontSize: "16px",
-                  marginTop: "20px",
-                  cursor: "pointer",
-                }}
-              >
-                En apprendre plus
-              </button>
-            </div>
+        <div className="reconnaissance-grid">
+          {/* paragraph */}
+          <div style={{ flex: "1 1 60%" }}>
+            <h3 className="reconnaissance-title">Nos accréditations</h3>
 
-            <div
-              style={{
-                flex: "1 1 30%",
-                textAlign: "center",
-                padding: "10px",
-                height: "208px",
-              }}
-            >
+            <div className="reconnaissance-img-mobile">
               <img
                 src={log}
                 alt="TUNAC Accreditation"
@@ -261,9 +223,51 @@ function HomePage() {
                   maxWidth: "100%",
                   borderRadius: "10px",
                   height: "225px",
+                  objectFit: "cover",
                 }}
               />
             </div>
+
+            <p style={{ fontSize: "18px", textAlign: "justify" }}>
+              Depuis 2012, le laboratoire est{" "}
+              <strong>accrédité ISO/IEC 17025</strong> par le TUNAC.
+              <div>
+                L’accréditation de <strong>MULTILAB s.a</strong> couvre les
+                domaines de la microbiologie alimentaire, microbiologie des eaux
+                et Physicochimie des aliments avec une extension régulière et
+                Continue du champs d’accréditation.
+              </div>
+            </p>
+
+            <button
+              style={{
+                alignContent: "left",
+                backgroundColor: "transparent",
+                fontWeight: "bold",
+                color: "#013D8F",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                border: "1px solid #013D8F",
+                fontSize: "16px",
+                cursor: "pointer",
+              }}
+            >
+              En apprendre plus
+            </button>
+          </div>
+
+          {/* img */}
+          <div className="reconnaissance-img-desk">
+            <img
+              src={log}
+              alt="TUNAC Accreditation"
+              style={{
+                maxWidth: "100%",
+                borderRadius: "10px",
+                height: "225px",
+                objectFit: "cover",
+              }}
+            />
           </div>
         </div>
       </div>
@@ -275,48 +279,27 @@ function HomePage() {
         </p>
 
         <div className="projects-cards">
-          <div className="project-card">
-            <div className="project-image-wrapper">
-              <img src={event1} alt="Project 1" className="project-image" />
+          {projects.map((project, index) => (
+            <div className="project-card" key={index}>
+              <img
+                src={project.imgSrc}
+                alt={`Project ${index + 1}`}
+                className="project-image"
+              />
               <div className="project-info">
-                <div className="project-date">17/01/2024</div>
-                <p className="project-description">
-                  Le maintien de l'accréditation ISO/IEC 17025 des laboratoires
-                  de Microbiologie et de Physicochimie de MULTILAB s.a
-                </p>
-                <a href="/link-to-project1" className="project-link">
-                  Lire la suite
-                </a>
+                <div className="project-content">
+                  <div className="project-date">
+                    <img src={calendarIcon} alt="Calendar Icon" />{" "}
+                    {project.date}
+                  </div>
+                  <p className="project-description">{project.description}</p>
+                  <a href={project.link} className="project-link">
+                    Lire la suite
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="project-card">
-            <img src={event2} alt="Project 2" className="project-image" />
-            <div className="project-info">
-              <div className="project-date">21/02/2024</div>
-              <p className="project-description">
-                Participation active de MULTILAB s.a à la première journée de
-                l'Association Tunisienne de l'Aviculture (TPA)
-              </p>
-              <a href="/link-to-project2" className="project-link">
-                Lire la suite
-              </a>
-            </div>
-          </div>
-
-          <div className="project-card">
-            <img src={event3} alt="Project 3" className="project-image" />
-            <div className="project-info">
-              <div className="project-date">27/02/2024</div>
-              <p className="project-description">
-                Evènement :Thème "Risques des Mycotoxines dans l'alimentation
-                animale"
-              </p>
-              <a href="/link-to-project3" className="project-link">
-                Lire la suite
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
       {/* Testimonials Section */}

@@ -29,7 +29,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       {/* Paragraph */}
       <div className="card-content">
         <h3 className="card-title">{title}</h3>
-        <p className="card-description">{description}</p>
+        <h5
+          className="card-description"
+          dangerouslySetInnerHTML={{
+            __html: description,
+          }}
+        ></h5>
         <a href={link} className="card-link">
           En savoir plus
         </a>
