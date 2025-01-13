@@ -4,6 +4,7 @@ import phy from "../home/assets/phy.png";
 import img4 from "../home/assets/Rectangle 3898.png";
 import img6 from "../home/assets/Rectangle 3900.png";
 import img5 from "../home/assets/img5.png";
+import { GoChevronRight } from "react-icons/go";
 import "./Home.css";
 
 function AnalysesCard() {
@@ -55,7 +56,7 @@ function AnalysesCard() {
           <div className="analysis-content">
             <h3 className="analysis-title">{analysis.title}</h3>
             <a href={analysis.link} className="analysis-link">
-              En savoir plus &rarr;
+              En savoir plus <GoChevronRight className="icon" />
             </a>
           </div>
         </div>

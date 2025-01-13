@@ -6,6 +6,8 @@ p {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
+  font-size: 1rem;
+  line-height: 1.5; /* Improve readability */
 }
 
 h1,
@@ -17,6 +19,32 @@ h6 {
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5rem; /* Large header */
+}
+
+h2 {
+  font-size: 2rem; /* Medium header */
+}
+
+h3 {
+  font-size: 1.75rem; /* Smaller header */
+}
+
+h4 {
+  font-size: 1.5rem; /* Smaller header */
+}
+
+h5 {
+  font-size: 1.25rem; /* Smaller header */
+}
+
+h6 {
+  font-size: 1rem; /* Smallest header */
 }
 
 .toppp {
@@ -110,6 +138,7 @@ h6 {
 
 .values-grid {
   display: flex;
+  overflow-x: auto;
   justify-content: space-around;
   gap: 8px;
   align-items: start;
@@ -166,24 +195,31 @@ h6 {
   right: 20px;
   width: 50px;
   height: 50px;
-  background-color: transparent;
-  color: #0050a0;
-  border: 2px solid #0050a0; /* Outline */
+  color: white;
+  background-color: var(--blue);
+
+  border: none;
   border-radius: 50%;
   cursor: pointer;
   z-index: 1000;
   display: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease-in-out;
+}
+
+.scroll-to-top .icon {
+  margin-bottom: 4px;
+  font-size: 32px;
 }
 
 .scroll-to-top.show {
+  transition: all 0.2s ease-in-out;
   display: block;
   opacity: 1;
 }
 
 .scroll-to-top:hover {
   transform: translateY(-3px); /* Slight lift on hover */
-  background-color: #0050a0; /* Fill background on hover */
+  background-color: var(--light-blue); /* Fill background on hover */
   color: white;
 }
 .card-img-top {
@@ -255,10 +291,7 @@ h6 {
 .home-containers-analyse {
   width: 100%;
   padding: 20px;
-  padding-right: 20px;
-  margin-left: 20px;
   height: Hug (664px);
-  text-align: center;
   top: 1197px;
 }
 
@@ -272,16 +305,12 @@ h6 {
 }
 
 .home-description {
-  font-size: 1rem;
-  color: #555;
+  font-size: 20px;
   margin-bottom: 40px;
-  text-align: left;
-  margin-left: 20px;
 }
 .home-description-prestation {
   color: var(--light-blue);
-  text-align: left;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   font-size: 24px;
   font-family: "Inter";
   font-weight: 400;
@@ -289,57 +318,78 @@ h6 {
 }
 
 .analysis-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 20px;
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 -20px;
+  margin-top: -20px;
+  padding: 30px 20px;
+  gap: 60px;
 }
 
 .analysis-card {
   background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
   text-decoration: none; /* Prevent underline */
+  text-align: center;
   width: 300px;
+  min-width: 180px;
   height: 300px;
-  gap: 0px;
   opacity: 1;
-  position: relative;
 }
 
 .analysis-card:hover {
   transform: translateY(-5px);
 }
 .image-wrapper {
-  text-decoration: none; /* Prevent underline */
+  height: 190px;
+  border-bottom: 5px solid var(--light-blue); /* Blue line under the image */
 }
 
 .analysis-image {
   width: 100%;
-  height: 200px;
-  border-bottom: 4px solid var(--light-blue); /* Blue line under the image */
+  height: 100%;
+  object-fit: cover;
 }
 
 .analysis-content {
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  padding: 14px 38px;
+  flex-grow: 1;
+  height: 100px;
 }
 
 .analysis-title {
   color: var(--light-blue);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .analysis-link {
-  color: #1c3b94;
-  font-weight: bold;
+  color: var(--blue);
+  font-size: 1rem;
   text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.analysis-link .icon {
+  margin-top: 2px;
+  font-size: 24px;
 }
 
 .analysis-link:hover {
-  text-decoration: underline;
+  color: var(--light-blue);
 }
 /*       Nos prestations css*/
 .prestations-section {
@@ -363,9 +413,13 @@ h6 {
 
 .prestations-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
+  overflow-x: auto;
+  margin: 0 -20px;
+  margin-top: -20px;
+  padding: 30px 20px;
+  gap: 28px;
+  justify-content: space-between;
+  align-items: start;
 }
 
 .prestation-item {
@@ -406,25 +460,19 @@ h6 {
 
 /*        nos projets */
 .projects-section {
+  width: 100%;
   margin-top: 50px;
-  margin-right: 20px;
   padding: 20px;
-  max-width: 1320px;
   gap: 24px;
-  margin-top: 20px;
-  margin-left: 20px;
 }
 .projects-section p {
   color: var(--light-blue);
   text-align: left;
-  font-family: "Inter";
   font-size: "35px";
 }
 .projects-section h2 {
-  color: var(--blue);
-  font-family: "Inter";
-  font-size: "35px";
   text-align: left;
+  font-weight: bold;
 }
 
 .projects-title {
@@ -442,10 +490,12 @@ h6 {
 }
 
 .projects-cards {
+  width: 100%;
   display: flex;
-  gap: 20px;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  padding: 30px 16px;
+  gap: 24px;
+  justify-content: space-around;
 }
 
 .project-card {
@@ -453,11 +503,12 @@ h6 {
   border-radius: 10px;
   overflow: hidden;
   color: #fff;
-  width: 100%;
-  max-width: 32%;
+  width: 420px;
+  min-width: 320px;
+  height: 470px;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
   margin-bottom: 20px;
 }
 
@@ -495,11 +546,16 @@ h6 {
   left: 0;
   z-index: 1; /* The image stays behind the gradient */
 }
+
 .project-info {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 15px;
+  height: 70%;
+  padding: 25px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0.8),
@@ -510,21 +566,44 @@ h6 {
   color: white; /* Ensuring the text remains readable */
 }
 
+.project-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 65%;
+}
+
 .project-date {
-  background-color: #007bff;
+  background-color: var(--light-blue);
   color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 2px;
   font-size: 0.9rem;
   margin-bottom: 10px;
-  display: inline-block;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-weight: bold;
+  width: fit-content;
+  padding-right: 20px;
 }
+
+.project-date img {
+  margin-right: 6px;
+}
+
 .project-info p {
   color: white;
 }
+
+.project-description,
+.project-link {
+  margin-left: 30px;
+}
+
 .project-description {
   font-size: 1rem;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .project-link {
@@ -544,20 +623,25 @@ h6 {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 410px;
+  box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.1);
+  width: 420px;
+  min-width: 290px;
+  height: 511px;
+  min-height: 320px;
   background-color: white;
-  transition: box-shadow 0.3s ease;
-  justify-content: space-between;
-  margin-top: 20px;
+  transition: box-shadow 0.3s ease-in-out;
+  justify-content: start;
 }
 
 .card-container:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-image {
   width: 100%;
+  height: 246px;
+  object-fit: cover;
+  object-position: bottom;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
@@ -578,42 +662,53 @@ h6 {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  margin-top: -50px;
+  margin-top: -70px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .card-logos {
-  width: 118px;
-  height: 118px;
+  width: 100%;
+  height: 100%;
 }
 
 .card-content {
+  position: relative;
   text-align: center;
-  margin-top: 20px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 8px;
+  justify-content: start;
+  flex-direction: column;
+  padding: 20px;
 }
 
-.card-title {
-  font-size: 1.2rem;
-  color: #003366;
+.card-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--blue);
 }
 
 .card-description {
-  font-size: 1rem;
+  font-size: 18px;
+  text-align: center;
+  font-weight: normal;
   color: #666666;
-  margin-top: 10px;
-  margin-left: 18px;
-  margin-right: 18px;
 }
 
 .card-link {
-  color: #00aaff;
+  font-size: 20px;
+  color: var(--light-blue);
+  flex-grow: 1;
   text-decoration: none;
-  margin-top: 10px;
   display: inline-block;
+  transition: color 0.3s ease-in-out;
+  position: absolute;
+  bottom: 20px;
 }
 
 .card-link:hover {
-  text-decoration: underline;
+  color: var(--blue);
 }
 
 /*      video    css    */
@@ -863,7 +958,7 @@ h6 {
 
 .stats-item p {
   font-size: 1.2rem;
-  margin-top: 0.5rem;
+  margin: 0;
 }
 
 /* desktop */
@@ -897,9 +992,8 @@ h6 {
 
 /* mobile */
 @media (max-width: 768px) {
-  .values-grid {
-    overflow-x: auto; /* Enable horizontal scrolling */
-    display: flex; /* Flex layout for horizontal scroll */
+  .toppp {
+    padding: 0 6px;
   }
 
   .value-item {
@@ -908,8 +1002,10 @@ h6 {
     margin-right: 10px; /* Add some space between items */
   }
 
+  .home-title,
   .values-section h1,
-  .prestations-section h2 {
+  .prestations-section h2,
+  .projects-title {
     text-align: left;
     font-size: 20px; /* Adjust header size for mobile */
   }
@@ -918,13 +1014,15 @@ h6 {
     font-size: 14px;
   }
 
-  .prestations-section p {
+  .home-description,
+  .prestations-section p,
+  .projects-subtitle {
     font-size: 16px;
   }
 
   .projects-cards,
   .values-grid {
-    gap: 10px;
+    gap: 16px;
   }
   .values-section-vid {
     margin-top: -50px;
@@ -963,15 +1061,72 @@ h6 {
     object-position: right; /* Show the right part of the image */
     border-radius: 15px; /* Rounded corners */
   }
-  .cards-container {
+  .card-container {
+    min-width: 190px;
     flex-direction: column;
+    height: 320px;
+  }
+
+  .card-image {
+    height: 100px;
+  }
+
+  .card-content {
+    padding: 10px;
+  }
+
+  .card-content h3 {
+    font-size: 16px;
+  }
+
+  .card-description {
+    font-size: 12px;
+  }
+
+  .card-link {
+    font-size: 13px;
+    bottom: 10px;
+  }
+
+  .card-logo-containers {
+    margin-top: -30px;
+    width: 50px;
+    height: 50px;
   }
 
   .card {
     margin-bottom: 20px;
   }
 
+  .analysis-grid {
+    flex-wrap: nowrap;
+    /* min-width: 180px; */
+    gap: 20px;
+  }
+
+  .analysis-card {
+    height: 220px;
+  }
+  .image-wrapper {
+    height: 140px;
+  }
+
+  .analysis-content {
+    padding: 10px;
+    height: 80px;
+  }
+
+  .analysis-title {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .analysis-link {
+    font-size: 13px;
+  }
+
   .reconnaissance {
+    margin-top: 48px;
     padding: 0px;
   }
 
@@ -1000,7 +1155,51 @@ h6 {
     /* width: 50%; */
     left: 50px;
   }
+
+  .stats-section {
+    padding: 24px 10px;
+    margin: 0 -6px;
+    border-radius: 0;
+  }
+  .stats-item {
+    margin: 0 10px;
+  }
+
+  .stats-item h2 {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .stats-item p {
+    font-size: 16px;
+  }
+
+  .projects-cards {
+    gap: 20px;
+    padding: 0;
+  }
+
+  .project-card {
+    min-width: 280px;
+    max-height: 320px;
+  }
+
+  .project-info {
+    padding: 14px;
+  }
+
+  .project-content {
+    height: 75%;
+  }
+
+  .project-date,
+  .project-description,
+  .project-link {
+    font-size: 14px;
+    margin-left: 0;
+  }
 }
+
 @media (max-width: 600px) {
   .hero-content h1 {
     font-size: 14px;

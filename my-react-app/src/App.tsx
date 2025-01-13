@@ -54,7 +54,7 @@ function App() {
         onClick={scrollToTop}
       >
         {/* <FontAwesomeIcon icon={faArrowUp} /> */}
-        <IoIosArrowUp className="m-auto" />
+        <IoIosArrowUp className="icon" />
       </button>
       <BrowserRouter>
         <Routes>
