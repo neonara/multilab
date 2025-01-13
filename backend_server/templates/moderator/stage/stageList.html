@@ -29,6 +29,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
+    <link rel="stylesheet" href="{% static './css/stage.css' %}">
 </head>
 <body>
     <div id="wrapper">
@@ -61,8 +62,12 @@
                     <div class="card shadow">
                         
                         <div class="app-body-main-content">
+                            <div class="card-header border-0">
+                                <h3 class="mb-0">Liste des Offres de Stage</h3>
+        
+                              </div>
                     <section class="service-section">
-                        <h2>Offres stage</h2>
+                      
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createStage">
                             Ajouter un Stage <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
                                 <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
@@ -157,22 +162,30 @@
                                     </td>
                                     <td>{{ stage.created_at|date:"Y-m-d" }}</td>
                                       <td>
-                                        <div class="avatar-group">
-                                        <div style="display:inline;">
-                                            <a data-bs-toggle="modal" data-bs-target="#stageModal{{stage.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                <i class="bi bi-eye"></i> </a>
-                                        </div>  
-                                            <button data-bs-target="#updateStage{{stage.pk}}"  class="avatar avatar-sm" data-toggle="tooltip" data-bs-toggle="modal" data-original-title="Ryan Tompson">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                                  </svg>   </button>
+                                        <div class="action-buttons1 d-flex">
+                                      
+                                            <button data-bs-toggle="modal" data-bs-target="#stageModal{{stage.pk}}" class="action-btn view-btn" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg></button>
+                                     
+                                            <button data-bs-target="#updateStage{{stage.pk}}"  class="action-btn edit-btn" data-toggle="tooltip" data-bs-toggle="modal" data-original-title="Ryan Tompson">
+                                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M18.5 2.50001C18.8978 2.10219 19.4374 1.87869 20 1.87869C20.5626 1.87869 21.1022 2.10219 21.5 2.50001C21.8978 2.89784 22.1213 3.4374 22.1213 4.00001C22.1213 4.56262 21.8978 5.10219 21.5 5.50001L12 15L8 16L9 12L18.5 2.50001Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg> </button>
                                                
-                                           <form method="post" action="{% url 'stage_delete' stage.pk %}" style="display:inline;">
+                                           <form method="post" action="{% url 'stage_delete' stage.pk %}"  class="action-btn delete-btn" style="display:inline;">
                                               {% csrf_token %}
-                                            <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
-                                                <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
-                                              </svg> </button>  
+                                              <button type="submit" class="action-btn delete-btn" title="Delete" onclick="return confirm('Are you sure you want to delete this item?');">
+                                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M10 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M14 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
                                           </form>                             
                                           
                                             
@@ -181,89 +194,143 @@
                                       
                                       
                                     </tr>
-                                    <div class="modal fade" id="stageModal{{stage.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{stage.titre}}</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal fade" id="stageModal{{stage.pk}}" tabindex="-1" aria-labelledby="stageModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content border-0 shadow-lg">
+                                                <!-- Header with gradient background -->
+                                                <div class="modal-header border-0 bg-gradient-primary text-white py-4" 
+                                                     style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
+                                                    <div class="d-flex flex-column">
+                                                        <h5 class="modal-title fs-4 fw-bold mb-1" id="stageModalLabel">{{stage.titre}}</h5>
+                                                        <span class="text-white-50">{{stage.departement}}</span>
+                                                    </div>
+                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <ul class="list-style-type-circle">
-                                                       
-                                                       <li><span>Unité : {{stage.departement}}</span></li> 
-                                                       <li><span>Description : {{stage.description}}</span></li> 
-                                                       <li><span>Type du stage : {{ stage.get_type_stage_display }}</span></li>
                                     
+                                                <!-- Body with custom styling -->
+                                                <div class="modal-body p-4">
+                                                    <div class="d-flex align-items-center mb-4 p-3 bg-light rounded-3">
+                                                        <span class="badge rounded-pill px-3 py-2 me-2"
+                                                              style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
+                                                            {{ stage.get_type_stage_display }}
+                                                        </span>
+                                                        <span class="text-muted">Type de stage</span>
+                                                    </div>
                                     
-                                                    </ul>
-                                                    
-                                                    
-                                                    
+                                                    <div class="description-section">
+                                                        <h6 class="text-uppercase text-muted mb-3 small fw-bold">Description</h6>
+                                                        <p class="mb-0 text-dark">{{stage.description}}</p>
+                                                    </div>
                                                 </div>
-                                                <div class="modal-footer">
+                                    
+                                                <!-- Footer with improved delete button -->
+                                                <div class="modal-footer border-0 pt-0">
+                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
                                                     <form method="post" action="{% url 'stage_delete' stage.pk %}" style="display:inline;">
                                                         {% csrf_token %}
-                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                        <button type="submit" class="btn btn-danger d-flex align-items-center">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash me-2" viewBox="0 0 16 16">
+                                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                                            </svg>
+                                                            Supprimer
+                                                        </button>
                                                     </form>
-                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="updateStage{{stage.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="updateStage{{stage.pk}}" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h1 class="modal-title fs-5" id="exampleModalLabel">Mettre à jour</h1>
-                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="post" action="{% url 'stage_update' stage.pk %}" enctype="multipart/form-data">
-                                                    {% csrf_token %}
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="titre"><strong>NOM DU POSTE :</strong></label>
-                                                                    <input type="text" id="titre" name="titre" class="form-control" value="{{ stage.titre }}">
+                                            <div class="modal-content border-0 shadow-lg">
+                                                <!-- Stylish Header -->
+                                                <div class="modal-header border-0 bg-gradient-primary text-white py-4"
+                                                     style="background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);">
+                                                    <div class="d-flex align-items-center">
+                                                        <i class="bi bi-pencil-square fs-4 me-2"></i>
+                                                        <h5 class="modal-title fs-4 fw-bold m-0">Mettre à jour le stage</h5>
+                                                    </div>
+                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                    
+                                                <!-- Form Body -->
+                                                <div class="modal-body p-4">
+                                                    <form method="post" action="{% url 'stage_update' stage.pk %}" enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                        
+                                                        <!-- Main Form Fields -->
+                                                        <div class="container-fluid px-0">
+                                                            <div class="row g-4">
+                                                                <!-- Left Column -->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="form-label text-uppercase small fw-bold text-muted mb-2">
+                                                                            Nom du poste
+                                                                        </label>
+                                                                        <input type="text" id="titre" name="titre" 
+                                                                               class="form-control form-control-lg border-0 bg-light" 
+                                                                               value="{{ stage.titre }}">
+                                                                    </div>
+                                    
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="form-label text-uppercase small fw-bold text-muted mb-2">
+                                                                            Unité
+                                                                        </label>
+                                                                        <input type="text" id="departement" name="departement" 
+                                                                               class="form-control form-control-lg border-0 bg-light" 
+                                                                               value="{{ stage.departement }}">
+                                                                    </div>
+                                    
+                                                                    <div class="form-group">
+                                                                        <label class="form-label text-uppercase small fw-bold text-muted mb-2">
+                                                                            Description du poste
+                                                                        </label>
+                                                                        <textarea id="description" name="description" 
+                                                                                  class="form-control form-control-lg border-0 bg-light" 
+                                                                                  rows="4">{{ stage.description }}</textarea>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="departement"><strong>Unité :</strong></label>
-                                                                    <input type="text" id="departement" name="departement" class="form-control" value="{{ stage.departement }}">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="description"><strong>Description du poste :</strong></label>
-                                                                    <textarea id="description" name="description" class="form-control">{{ stage.description }}</textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="type_stage"><strong>Type de stages :</strong></label>
-                                                                    <select id="type_stage" name="type_stage" class="form-control">
-                                                                        <option value="1" {% if stage.type_stage == '1' %} selected {% endif %}>PFE</option>
-                                                                        <option value="2" {% if stage.type_stage == '2' %} selected {% endif %}>Stage Mémoire</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="status"><strong>Status du stages :</strong></label>
-                                                                    <select id="status" name="status" class="form-control">
-                                                                        <option value="pending" {% if stage.status == 'pending' %} selected {% endif %}>Privé</option>
-                                                                        <option value="approved" {% if stage.status == 'approved' %} selected {% endif %}>Publié</option>
-                                                                    </select>
+                                    
+                                                                <!-- Right Column -->
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="form-label text-uppercase small fw-bold text-muted mb-2">
+                                                                            Type de stage
+                                                                        </label>
+                                                                        <select id="type_stage" name="type_stage" 
+                                                                                class="form-select form-select-lg border-0 bg-light">
+                                                                            <option value="1" {% if stage.type_stage == '1' %} selected {% endif %}>PFE</option>
+                                                                            <option value="2" {% if stage.type_stage == '2' %} selected {% endif %}>Stage Mémoire</option>
+                                                                        </select>
+                                                                    </div>
+                                    
+                                                                    <div class="form-group mb-3">
+                                                                        <label class="form-label text-uppercase small fw-bold text-muted mb-2">
+                                                                            Statut du stage
+                                                                        </label>
+                                                                        <select id="status" name="status" 
+                                                                                class="form-select form-select-lg border-0 bg-light">
+                                                                            <option value="pending" {% if stage.status == 'pending' %} selected {% endif %}>Privé</option>
+                                                                            <option value="approved" {% if stage.status == 'approved' %} selected {% endif %}>Publié</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </hr>
-                                                    <button type="submit" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Confirmer la modification</button>
-                                                </form>
-                                                
+                                    
+                                                        <!-- Submit Button -->
+                                                        <div class="d-flex justify-content-end mt-4 pt-3 border-top">
+                                                            <button type="button" class="btn btn-light me-2" data-bs-dismiss="modal">Annuler</button>
+                                                            <button type="submit" class="btn btn-primary d-flex align-items-center px-4">
+                                                                <i class="bi bi-check2-circle me-2"></i>
+                                                                Confirmer
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
-                                            
-                                          </div>
                                         </div>
-                                      </div>
+                                    </div>
                                     {% endfor %}
                                   </tbody>
                                 </table>
@@ -277,7 +344,24 @@
 
 
                         </div>
-                     
+                      <!-- Add this right after the table -->
+                <div class="pagination-container mt-4">
+                    <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                        <a class="page-link" href="#" id="prevPage" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#" id="currentPage">1</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#" id="nextPage" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                    </nav>
+                </div>
                     </section>
                     
                 </div>
@@ -315,7 +399,8 @@
             <div class="mb-3 row">
                 <label for="description" class="col-sm-3 col-form-label">Description</label>
                 <div class="col-sm-9">
-                    <textarea class="form-control" id="description" name="description"></textarea>
+                    <textarea class="form-control shadow-sm border-light" id="description" name="description" rows="4" required placeholder="Décrivez votre persation..."></textarea>
+
                 </div>
             </div>
             <hr>
@@ -348,7 +433,7 @@
   </div> 
 
     </div></div>
-                  
+               
                   
                   
                 <!-- /.container-fluid -->
@@ -401,84 +486,8 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    <!-- Custom JS -->
    <script src="{% static './js/script_dashboard.js' %}"></script>
-   <script>
-    function searchStage() {
-        var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementsByClassName("table")[0];
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column (Nom et Prénom)
-            td2 = tr[i].getElementsByTagName("td")[1]; // Get the second column (Nom Entreprise)
-            td3 = tr[i].getElementsByTagName("td")[4];
-            if (td1 && td2 &&td3) {
-                txtValue1 = td1.textContent || td1.innerText;
-                txtValue2 = td2.textContent || td2.innerText;
-                txtValue3 = td3.textContent || td3.innerText;
-                if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function filterStage(status) {
-        var rows = document.querySelectorAll('.stage-row');
+   <script src="{% static './js/stage.js' %}"></script>
         
-        rows.forEach(function(row) {
-            var rowStatus = row.getAttribute('data-status');
-            
-            if (status === '' || rowStatus === status) {
-                row.style.display = 'table-row';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-    function filterTypeStage(type_stage) {
-        var rows = document.querySelectorAll('.stage-row');
-        
-        rows.forEach(function(row) {
-            var rowtype_stage = row.getAttribute('data-type_stage');
-            
-            if (type_stage === '' || rowtype_stage === type_stage) {
-                row.style.display = 'table-row';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-    
-  
-  function resetSearch() {
-      var input = document.getElementById("searchInput");
-      input.value = "";
-      var rows = document.querySelectorAll('.table tbody tr');
-      rows.forEach(function(row) {
-          row.style.display = 'table-row';
-      });
-  }
-  function changeEntriesPerPage(select) {
-    var table = document.querySelector('.table');
-    var rows = table.querySelectorAll('tbody tr');
-
-    // Hide all rows
-    rows.forEach(function(row) {
-        row.style.display = 'none';
-    });
-
-    // Show only selected number of rows
-    var selectedValue = parseInt(select.value);
-    for (var i = 0; i < selectedValue; i++) {
-        if (rows[i]) {
-            rows[i].style.display = 'table-row';
-        }
-    }
-}
-  
-</script>              
 
     
 </body>
