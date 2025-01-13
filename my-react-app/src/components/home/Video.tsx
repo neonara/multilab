@@ -1,7 +1,7 @@
 import React from "react";
 import "./home.css";
 import vid from "@/assets/Multilab-hero.mp4";
-import undervid from "./assets/under-vid1.jpeg";
+import undervid from "@/assets/undervid1.jpg";
 import undervid2 from "./assets/under-vid2.jpeg";
 import undervid3 from "./assets/under-vid3.jpeg";
 

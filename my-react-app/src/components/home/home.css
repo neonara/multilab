@@ -101,6 +101,8 @@ h6 {
 .top-paragraph {
   color: var(--light-blue);
   font-weight: bold;
+
+  margin-bottom: 24px;
 }
 .cta-button {
   justify-content: left;
@@ -131,7 +133,7 @@ h6 {
 }
 
 .values-section {
-  margin-top: 20px;
+  margin-top: 12px;
   text-align: center;
   padding: 20px; /* Add some padding to the section */
 }
@@ -140,7 +142,7 @@ h6 {
   display: flex;
   overflow-x: auto;
   justify-content: space-around;
-  gap: 8px;
+  gap: 12px;
   align-items: start;
   margin-top: 30px;
   /* flex-wrap: wrap;  */
@@ -168,10 +170,10 @@ h6 {
   border-radius: 50%;
 }
 
-.value-item img {
+.img-container img {
   width: auto; /* Adjust this size according to the logo size */
   height: auto;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-in-out;
 }
 
 .value-item:hover img {
@@ -181,7 +183,7 @@ h6 {
 .value-item h3 {
   font-size: 25px;
   font-weight: bold;
-  color: #0050a0;
+  color: var(--blue);
 }
 
 .value-item p {
@@ -312,9 +314,7 @@ h6 {
   color: var(--light-blue);
   margin-bottom: 20px;
   font-size: 24px;
-  font-family: "Inter";
   font-weight: 400;
-  line-height: 29.05px;
 }
 
 .analysis-grid {
@@ -594,6 +594,7 @@ h6 {
 
 .project-info p {
   color: white;
+  font-weight: 600;
 }
 
 .project-description,
@@ -889,7 +890,6 @@ h6 {
   color: var(--blue);
   font-weight: bold;
   font-size: "35px";
-  line-height: 42px;
 }
 
 .reconnaissance-grid {
@@ -935,6 +935,24 @@ h6 {
   min-width: 250px;
 }
 
+.reconnaissance-button {
+  align-content: left;
+  background-color: transparent;
+  font-weight: bold;
+  color: #013d8f;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #013d8f;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.reconnaissance-button:hover {
+  background-color: #013d8f;
+  color: white;
+}
+
 .stats-section {
   display: flex;
   justify-content: space-around;
@@ -969,7 +987,6 @@ h6 {
 
   .text-section {
     flex: 1.5; /* Allow text section to take available space */
-    margin-right: 20px; /* Space between text and image */
   }
 
   .image-section {
@@ -998,7 +1015,7 @@ h6 {
 
   .value-item {
     flex: 0 0 auto; /* Prevent flex items from shrinking */
-    width: 150px; /* Set a fixed width for smaller screens */
+    width: 140px; /* Set a fixed width for smaller screens */
     margin-right: 10px; /* Add some space between items */
   }
 
@@ -1008,6 +1025,11 @@ h6 {
   .projects-title {
     text-align: left;
     font-size: 20px; /* Adjust header size for mobile */
+  }
+
+  .value-item h3 {
+    font-size: 18px;
+    margin: 0;
   }
 
   .value-item p {
@@ -1024,6 +1046,17 @@ h6 {
   .values-grid {
     gap: 16px;
   }
+
+  .value-item .img-container {
+    width: 64px;
+    height: 64px;
+  }
+
+  .img-container img {
+    width: 32px;
+    height: 32px;
+  }
+
   .values-section-vid {
     margin-top: -50px;
   }
@@ -1036,6 +1069,11 @@ h6 {
     width: 90px;
     height: 90px;
   }
+
+  .top-paragraph {
+    text-align: left;
+  }
+
   .vid-item-one img {
     width: 100px;
     height: 100px;
@@ -1185,11 +1223,11 @@ h6 {
   }
 
   .project-info {
-    padding: 14px;
+    padding: 16px;
   }
 
   .project-content {
-    height: 75%;
+    height: 80%;
   }
 
   .project-date,
@@ -1197,6 +1235,7 @@ h6 {
   .project-link {
     font-size: 14px;
     margin-left: 0;
+    margin-bottom: 6px;
   }
 }
 
