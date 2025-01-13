@@ -1,78 +1,124 @@
-function searchStage() {
+function searchProjects() {
     var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
     table = document.getElementsByClassName("table")[0];
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-        td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column (Nom et Prénom)
-        td2 = tr[i].getElementsByTagName("td")[1]; // Get the second column (Nom Entreprise)
-        td3 = tr[i].getElementsByTagName("td")[4];
-        if (td1 && td2 &&td3) {
+        td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column (title))
+        td2 = tr[i].getElementsByTagName("td")[3]; // Get the second column (created_at)
+        if (td1 && td2) {
             txtValue1 = td1.textContent || td1.innerText;
             txtValue2 = td2.textContent || td2.innerText;
-            txtValue3 = td3.textContent || td3.innerText;
-            if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
+            if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
             }
         }
     }
-}
-function filterStage(status) {
-    var rows = document.querySelectorAll('.stage-row');
-    
+  }
+  function filterProjects(status) {
+      var rows = document.querySelectorAll('.project-row');
+      
+      rows.forEach(function(row) {
+          var rowStatus = row.getAttribute('data-status');
+          
+          if (status === '' || rowStatus === status) {
+              row.style.display = 'table-row';
+          } else {
+              row.style.display = 'none';
+          }
+      });
+  }
+  function resetSearch() {
+    var input = document.getElementById("searchInput");
+    input.value = "";
+    var rows = document.querySelectorAll('.table tbody tr');
     rows.forEach(function(row) {
-        var rowStatus = row.getAttribute('data-status');
-        
-        if (status === '' || rowStatus === status) {
-            row.style.display = 'table-row';
-        } else {
-            row.style.display = 'none';
-        }
+        row.style.display = 'table-row';
     });
 }
-function filterTypeStage(type_stage) {
-    var rows = document.querySelectorAll('.stage-row');
-    
-    rows.forEach(function(row) {
-        var rowtype_stage = row.getAttribute('data-type_stage');
-        
-        if (type_stage === '' || rowtype_stage === type_stage) {
-            row.style.display = 'table-row';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-}
+function changeEntriesPerPage(select) {
+  var table = document.querySelector('.table');
+  var rows = table.querySelectorAll('tbody tr');
 
-
-function resetSearch() {
-  var input = document.getElementById("searchInput");
-  input.value = "";
-  var rows = document.querySelectorAll('.table tbody tr');
+  // Hide all rows
   rows.forEach(function(row) {
-      row.style.display = 'table-row';
+      row.style.display = 'none';
   });
-}  function changeEntriesPerPage(select) {
-    var table = document.querySelector('.table');
-    var rows = table.querySelectorAll('tbody tr');
 
-    // Hide all rows
-    rows.forEach(function(row) {
-        row.style.display = 'none';
+  // Show only selected number of rows
+  var selectedValue = parseInt(select.value);
+  for (var i = 0; i < selectedValue; i++) {
+      if (rows[i]) {
+          rows[i].style.display = 'table-row';
+      }
+  }
+}
+function previewImage(input) {
+if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        $('#updatePreviewImage').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+}
+}
+// 
+function previewImage(input) {
+    const imagePreview = document.getElementById('imagePreview');
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        imagePreview.src = '';
+        imagePreview.style.display = 'none';
+    }
+    }
+    //   imlage
+document.addEventListener('DOMContentLoaded', function() {
+    // Get modal elements
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    
+    // Add click event to event images
+    document.querySelectorAll('.transfer-logo img').forEach(img => {
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        }
     });
-
-    // Show only selected number of rows
-    var selectedValue = parseInt(select.value);
-    for (var i = 0; i < selectedValue; i++) {
-        if (rows[i]) {
-            rows[i].style.display = 'table-row';
+    
+    // Close modal when clicking X
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
     }
-}
-
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            modal.style.display = "none";
+        }
+    });
+    });
 
 // Global variables for pagination
 let currentPage = 1;

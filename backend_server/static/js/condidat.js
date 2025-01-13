@@ -5,14 +5,12 @@ function searchStage() {
     table = document.getElementsByClassName("table")[0];
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
-        td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column (Nom et Prénom)
-        td2 = tr[i].getElementsByTagName("td")[1]; // Get the second column (Nom Entreprise)
-        td3 = tr[i].getElementsByTagName("td")[4];
-        if (td1 && td2 &&td3) {
+        td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column (title)
+        td2 = tr[i].getElementsByTagName("td")[4]; // Get the second column (created_at)
+        if (td1 && td2) {
             txtValue1 = td1.textContent || td1.innerText;
             txtValue2 = td2.textContent || td2.innerText;
-            txtValue3 = td3.textContent || td3.innerText;
-            if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1 || txtValue3.toUpperCase().indexOf(filter) > -1) {
+            if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";
@@ -20,26 +18,14 @@ function searchStage() {
         }
     }
 }
-function filterStage(status) {
-    var rows = document.querySelectorAll('.stage-row');
+
+function filterTypeStage(transport) {
+    var rows = document.querySelectorAll('.condidat-row');
     
     rows.forEach(function(row) {
-        var rowStatus = row.getAttribute('data-status');
+        var rowtransport = row.getAttribute('data-transport');
         
-        if (status === '' || rowStatus === status) {
-            row.style.display = 'table-row';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-}
-function filterTypeStage(type_stage) {
-    var rows = document.querySelectorAll('.stage-row');
-    
-    rows.forEach(function(row) {
-        var rowtype_stage = row.getAttribute('data-type_stage');
-        
-        if (type_stage === '' || rowtype_stage === type_stage) {
+        if (transport === '' || rowtransport === transport) {
             row.style.display = 'table-row';
         } else {
             row.style.display = 'none';
@@ -55,24 +41,24 @@ function resetSearch() {
   rows.forEach(function(row) {
       row.style.display = 'table-row';
   });
-}  function changeEntriesPerPage(select) {
-    var table = document.querySelector('.table');
-    var rows = table.querySelectorAll('tbody tr');
+}
+function changeEntriesPerPage(select) {
+var table = document.querySelector('.table');
+var rows = table.querySelectorAll('tbody tr');
 
-    // Hide all rows
-    rows.forEach(function(row) {
-        row.style.display = 'none';
-    });
+// Hide all rows
+rows.forEach(function(row) {
+    row.style.display = 'none';
+});
 
-    // Show only selected number of rows
-    var selectedValue = parseInt(select.value);
-    for (var i = 0; i < selectedValue; i++) {
-        if (rows[i]) {
-            rows[i].style.display = 'table-row';
-        }
+// Show only selected number of rows
+var selectedValue = parseInt(select.value);
+for (var i = 0; i < selectedValue; i++) {
+    if (rows[i]) {
+        rows[i].style.display = 'table-row';
     }
 }
-
+}
 
 // Global variables for pagination
 let currentPage = 1;

@@ -59,8 +59,9 @@ color: red;
 .transfer-logo img:hover {
     transform: scale(1.05);
 }
-/*  */
-.action-buttons1 {
+/* 
+ */
+ .action-buttons1 {
     display: flex; /* Ensures child elements align in a row */
     gap: 15px; /* Space between buttons */
     align-items: center; /* Centers buttons vertically */
@@ -118,8 +119,7 @@ color: red;
     height: 20px;
     stroke-width: 2;
 }
-/* pages */
-
+/* pagesination */
 .pagination-container {
     margin: 20px 0;
   }
@@ -149,3 +149,60 @@ color: red;
     color: #6c757d;
     border-color: #dee2e6;
   }
+  
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.1);
+    border-color: #2563eb;
+}
+
+/* Image Upload */
+.image-upload-container {
+    border: 2px dashed #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.image-upload-container:hover {
+    border-color: #2563eb;
+}
+
+.preview-image {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+/* Submit Button */
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(37, 99, 235, 0.2);
+}
+
+/* General Animations */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}

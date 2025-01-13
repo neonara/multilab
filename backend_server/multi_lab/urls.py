@@ -24,7 +24,7 @@ router.register(r'persations', PersationViewSet)
 router.register(r'events', EventViewSet)
 router.register(r'event-articles', EventArticleViewSet)
 #
-router.register(r'offre', OffresViewSet)
+router.register(r'condidat', OffresViewSet)
 #
 router.register(r'stageur', StagieurViewSet)
 #

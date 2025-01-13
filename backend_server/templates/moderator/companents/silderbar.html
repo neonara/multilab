@@ -83,11 +83,7 @@
             <i class="fas fa-file-upload"></i>
             <span>Liste des rapports</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'report_client' %}">
-            <i class="fas fa-file-upload"></i>
-            <span>Liste des clients</span></a>
-    </li>
+   
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
     <div class="sidebar-heading">
@@ -141,16 +137,21 @@
         </div>
     </li>
    
-    <!-- Nav Item - Charts -->
+  
+
+    <!-- Nav Item - Tables -->
+    
     <li class="nav-item">
         <a class="nav-link" href="{% url 'alimentation_animale_list' %}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Alimentation Animale</span></a>
     </li>
-
-    <!-- Nav Item - Tables -->
-    
-
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'alimentation_animale_list' %}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Produits cosmétiques</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
