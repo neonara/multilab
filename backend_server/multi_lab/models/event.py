@@ -29,7 +29,7 @@ class Event(models.Model):
 
 
     class Meta:
-        ordering = ['-date_event']
+        ordering = ['-created_at']
         verbose_name_plural = "Multi Lab Events"
 
 class EventArticle(models.Model):

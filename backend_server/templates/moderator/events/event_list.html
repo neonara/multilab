@@ -96,6 +96,7 @@
                         <h3 class="mb-0">Liste des Events</h3>
 
                       </div>
+
                       <button  type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#createStage">
                        Ajouter <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
@@ -216,56 +217,62 @@
                                   <!-- Modal Structure -->
                                   <div class="modal fade" id="eventModal{{event.pk}}" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
-                                        <div class="modal-content">
-                                            <!-- Modal Header -->
-                                            <div class="modal-header bg-light">
-                                                <h1 class="modal-title text-xl font-semibold" id="modalTitle">
-                                                    <i class="fas fa-file-alt me-2"></i>{{ event.title }}
-                                                </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div class="modal-content border-0 shadow-lg">
+                                            <!-- Gradient Header -->
+                                            <div class="modal-header border-0 p-4" style="background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="rounded-circle bg-white p-2 me-3">
+                                                        <i class="fas fa-calendar-alt text-primary fs-4"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h5 class="modal-title text-white mb-1" id="modalTitle">{{ event.title }}</h5>
+                                                        <span class="text-white-50">{{event.date_event}}</span>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                 
                                             <!-- Modal Body -->
                                             <div class="modal-body p-4">
                                                 <div class="container-fluid">
                                                     <!-- Event Details Section -->
-                                                    <div class="row">
+                                                    <div class="row g-4">
                                                         <!-- Image Section -->
-                                                        <div class="col-md-6 mb-4">
-                                                            <div class="card h-100">
-                                                                <div class="card-header bg-light">
-                                                                    <h5 class="card-title mb-0">
-                                                                        <i class="fas fa-image me-2"></i>Image
+                                                        <div class="col-md-6">
+                                                            <div class="card border-0 shadow-sm h-100 hover-shadow">
+                                                                <div class="card-header bg-light border-0 py-3">
+                                                                    <h5 class="card-title mb-0 d-flex align-items-center">
+                                                                        <i class="fas fa-image text-primary me-2"></i>
+                                                                        Image de l'événement
                                                                     </h5>
                                                                 </div>
-                                                                <div class="card-body text-center">
+                                                                <div class="card-body text-center p-4">
                                                                     {% if event.image %}
                                                                         <img src="{{ event.image.url }}" 
                                                                              alt="{{ event.title }}" 
-                                                                             class="img-fluid rounded shadow-sm"
-                                                                             style="max-height: 300px; object-fit: contain;">
+                                                                             class="img-fluid rounded-3 shadow-sm hover-zoom"
+                                                                             style="max-height: 300px; object-fit: cover;">
                                                                     {% else %}
-                                                                        <div class="text-muted py-5">
-                                                                            <i class="fas fa-image fa-3x mb-3"></i>
-                                                                            <p>Aucune image disponible</p>
+                                                                        <div class="text-muted py-5 bg-light rounded-3">
+                                                                            <i class="fas fa-image fa-3x mb-3 text-primary"></i>
+                                                                            <p class="mb-0">Aucune image disponible</p>
                                                                         </div>
                                                                     {% endif %}
-                                                                    <span>{{event.date_event}}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                 
                                                         <!-- Details Section -->
                                                         <div class="col-md-6">
-                                                            <div class="card h-100">
-                                                                <div class="card-header bg-light">
-                                                                    <h5 class="card-title mb-0">
-                                                                        <i class="fas fa-info-circle me-2"></i>Détails
+                                                            <div class="card border-0 shadow-sm h-100 hover-shadow">
+                                                                <div class="card-header bg-light border-0 py-3">
+                                                                    <h5 class="card-title mb-0 d-flex align-items-center">
+                                                                        <i class="fas fa-info-circle text-primary me-2"></i>
+                                                                        Détails de l'événement
                                                                     </h5>
                                                                 </div>
-                                                                <div class="card-body">
-                                                                    <!-- Event details content remains the same -->
-                                                                    {{ event.description }}
+                                                                <div class="card-body p-4">
+                                                                    <div class="description-text">{{ event.description }}</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -274,72 +281,82 @@
                                                     <!-- Articles Section -->
                                                     <div class="row mt-4">
                                                         <div class="col-12">
-                                                            <div class="card">
-                                                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                                                    <h5 class="card-title mb-0">
-                                                                        <i class="fas fa-newspaper me-2"></i>Articles
+                                                            <div class="card border-0 shadow-sm hover-shadow">
+                                                                <div class="card-header bg-light border-0 py-3 d-flex justify-content-between align-items-center">
+                                                                    <h5 class="card-title mb-0 d-flex align-items-center">
+                                                                        <i class="fas fa-newspaper text-primary me-2"></i>
+                                                                        Articles
                                                                     </h5>
                                                                     {% if not event.articles.all %}
-                                                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createArticle{{event.pk}}">
-                                                                        <i class="fas fa-plus me-2"></i>Nouvel Article
-                                                                    </button>
-                                                                {% endif %}
+                                                                        <button type="button" class="btn btn-primary btn-sm d-flex align-items-center"
+                                                                                data-bs-toggle="modal" data-bs-target="#createArticle{{event.pk}}">
+                                                                            <i class="fas fa-plus me-2"></i>
+                                                                            Nouvel Article
+                                                                        </button>
+                                                                    {% endif %}
                                                                 </div>
-                                                                <div class="card-body">
+                                                                <div class="card-body p-4">
                                                                     {% if event.articles.all %}
-                                                                        <div class="row">
+                                                                        <div class="row g-4">
                                                                             {% for article in event.articles.all %}
-                                                                                <div class="col-md-12 mb-3">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                    <div class="card border-0 shadow-sm hover-shadow">
+                                                                                        <div class="card-body p-4">
+                                                                                            <div class="row g-4 align-items-center">
                                                                                                 <!-- Article Images -->
                                                                                                 <div class="col-md-4">
-                                                                                                    <div class=" gap-2">
+                                                                                                    <div class="d-flex gap-3 flex-wrap">
                                                                                                         {% if article.image1 %}
-                                                                                                            <img src="{{ article.image1.url }}" alt="Image 1" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                                                                                                            <img src="{{ article.image1.url }}" 
+                                                                                                                 alt="Image 1" 
+                                                                                                                 class="img-thumbnail shadow-sm hover-zoom"
+                                                                                                                 style="width: 100px; height: 100px; object-fit: cover;">
                                                                                                         {% endif %}
                                                                                                         {% if article.image2 %}
-                                                                                                            <img src="{{ article.image2.url }}" alt="Image 2" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                                                                                                            <img src="{{ article.image2.url }}" 
+                                                                                                                 alt="Image 2" 
+                                                                                                                 class="img-thumbnail shadow-sm hover-zoom"
+                                                                                                                 style="width: 100px; height: 100px; object-fit: cover;">
                                                                                                         {% endif %}
                                                                                                         {% if article.image3 %}
-                                                                                                            <img src="{{ article.image3.url }}" alt="Image 3" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                                                                                                            <img src="{{ article.image3.url }}" 
+                                                                                                                 alt="Image 3" 
+                                                                                                                 class="img-thumbnail shadow-sm hover-zoom"
+                                                                                                                 style="width: 100px; height: 100px; object-fit: cover;">
                                                                                                         {% endif %}
                                                                                                     </div>
                                                                                                 </div>
-                                                                                                
+                                
                                                                                                 <!-- Article Description -->
                                                                                                 <div class="col-md-6">
-                                                                                                    <p class="mb-2">{{ article.description }}</p>
-                                                                                                    <small class="text-muted">
+                                                                                                    <p class="mb-2 description-text">{{ article.description }}</p>
+                                                                                                    <small class="text-muted d-flex align-items-center">
+                                                                                                        <i class="fas fa-clock me-2"></i>
                                                                                                         Créé le {{ article.created_at|date:"d/m/Y H:i" }}
                                                                                                     </small>
                                                                                                 </div>
                                 
                                                                                                 <!-- Article Actions -->
-                                                                                                <div class="col-md-2">
-                                                                                                    <div class="btn-group-vertical">
-                                                                                                       
-                                                                                                        <form method="post" action="{% url 'article_delete' event.pk article.pk %}" class="d-inline">
-
-                                                                                                            {% csrf_token %}
-                                                                                                            <button type="submit" class="btn btn-sm btn-outline-danger">
-                                                                                                                <i class="fas fa-trash"></i>
-                                                                                                            </button>
-                                                                                                        </form>
-                                                                                                    </div>
+                                                                                                <div class="col-md-2 text-end">
+                                                                                                    <form method="post" action="{% url 'article_delete' event.pk article.pk %}">
+                                                                                                        {% csrf_token %}
+                                                                                                        <button type="submit" 
+                                                                                                                class="btn btn-outline-danger btn-sm hover-scale">
+                                                                                                            <i class="fas fa-trash me-2"></i>
+                                                                                                            Supprimer
+                                                                                                        </button>
+                                                                                                    </form>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                              
                                                                             {% endfor %}
                                                                         </div>
                                                                     {% else %}
-                                                                        <div class="text-center text-muted py-4">
-                                                                            <i class="fas fa-newspaper fa-3x mb-3"></i>
-                                                                            <p>Aucun article n'a été créé pour cet événement</p>
+                                                                        <div class="text-center text-muted py-5 bg-light rounded-3">
+                                                                            <i class="fas fa-newspaper fa-3x mb-3 text-primary"></i>
+                                                                            <p class="mb-0">Aucun article n'a été créé pour cet événement</p>
                                                                         </div>
                                                                     {% endif %}
                                                                 </div>
@@ -350,8 +367,13 @@
                                             </div>
                                 
                                             <!-- Modal Footer -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <div class="modal-footer border-0 bg-light">
+                                                <button type="button" 
+                                                        class="btn btn-secondary px-4 py-2 d-flex align-items-center text-white"
+                                                        data-bs-dismiss="modal">
+                                                    <i class="fas fa-times me-2"></i>
+                                                    Fermer
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -566,7 +588,7 @@
             </div>
   
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+              <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Annuler</button>
               <button type="submit" class="btn btn-primary">Créer l'article</button>
             </div>
           </form>
