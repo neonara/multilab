@@ -56,6 +56,18 @@ h6 {
   height: fit-content;
   z-index: 3;
 }
+
+.list-image-none {
+  width: 1318px;
+  height: 308px;
+  gap: 0px;
+  border-radius: 17px 0px 0px 0px;
+  opacity: 0px;
+}
+
+
+/* ------------------  Qui sommes nous ---------------------- */
+
 .home-container {
   display: flex;
   flex-direction: column; /* Stack elements vertically on mobile */
@@ -67,35 +79,31 @@ h6 {
   gap: 60px;
 }
 
-.list-image-none {
-  width: 1318px;
-  height: 308px;
-  gap: 0px;
-  border-radius: 17px 0px 0px 0px;
-  opacity: 0px;
-}
-
-.text-section {
-  text-align: center; /* Center the text */
-  margin-bottom: 20px; /* Space below text */
-}
-
 .text-section h1 {
   color: var(--blue);
-  font-size: 2.5rem; /* Large header */
+  font-size: 35px; /* Large header */
   margin-bottom: 15px; /* Space below header */
   text-align: left;
   font-weight: bold;
 }
 
 .text-section p {
-  font-size: 1rem; /* Normal text size */
-  line-height: 1.5; /* Improve readability */
+  font-size: 16px; /* Normal text size */
   text-align: justify;
 }
 
 .img-mobile .lab-image {
   display: none;
+}
+
+.image-section .lab-image {
+  width: 100%; /* Responsive image width */
+  max-width: 600px; /* Limit max width */
+  min-width: 300px;
+  height: 490px; /* Maintain aspect ratio */
+  object-fit: cover;
+  object-position: right; /* Show the right part of the image */
+  border-radius: 15px; /* Rounded corners */
 }
 
 .top-paragraph {
@@ -104,6 +112,7 @@ h6 {
 
   margin-bottom: 24px;
 }
+
 .cta-button {
   justify-content: left;
   font-weight: bold;
@@ -116,21 +125,15 @@ h6 {
   transition: background-color 0.3s; /* Smooth transition */
   float: left;
 }
+
 .cta-button:hover {
   background-color: white; /* Darker blue on hover */
   color: var(--blue);
   border: 1px solid;
   border-radius: 8px;
 }
-.image-section .lab-image {
-  width: 100%; /* Responsive image width */
-  max-width: 600px; /* Limit max width */
-  min-width: 350px;
-  height: 490px; /* Maintain aspect ratio */
-  object-fit: cover;
-  object-position: right; /* Show the right part of the image */
-  border-radius: 15px; /* Rounded corners */
-}
+
+/* --------- values ----------- */
 
 .values-section {
   margin-top: 12px;
@@ -316,6 +319,7 @@ h6 {
   font-size: 24px;
   font-weight: 400;
 }
+
 
 .analysis-grid {
   display: flex;

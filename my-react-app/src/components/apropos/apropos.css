@@ -1,154 +1,206 @@
+:root {
+  --blue: #013d8f;
+  --light-blue: #00a0d8;
+}
+p {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5; /* Improve readability */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5rem; /* Large header */
+}
+
+h2 {
+  font-size: 2rem; /* Medium header */
+}
+
+h3 {
+  font-size: 1.75rem; /* Smaller header */
+}
+
+h4 {
+  font-size: 1.5rem; /* Smaller header */
+}
+
+h5 {
+  font-size: 1.25rem; /* Smaller header */
+}
+
+h6 {
+  font-size: 1rem; /* Smallest header */
+}
+
 .apropos-container {
-  width: Fixed (1, 320px);
-  height: Hug (352px);
+  width: 100%;
   top: 724px;
   gap: 80px;
   opacity: 0px;
-  padding-left: 18px;
+  padding: 0 40px;
 }
 /* apropos css*/
 .banner-container {
   position: relative;
   width: 100%;
+  margin-top: 20px;
 }
 
 .banner-image {
-  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  max-height: 240px;
+
+  object-fit: cover;
   border-radius: 10px; /* Optional: if you want rounded corners */
 }
 
 .banner-text {
   position: absolute;
-  bottom: -20px; /* Move part of the text outside the image */
-  left: 20px;
-  background-color: #0070c0;
+  bottom: -10px; /* Move part of the text outside the image */
+  left: 40px;
+  background-color: var(--light-blue);
   color: white;
-  font-size: 2rem;
-  border-radius: 5px;
+  border-radius: 2px;
   transform: translateY(30%); /* Moves the text 50% down */
-  font-family: "Inter";
   /* Optional styling to adjust for responsive */
-  width: 280px;
-  height: 51px;
+  padding:12px 48px;
   z-index: 1;
-}
-/*      */
-
-.apropos-content {
-  width: 1320px;
-  height: 436px;
-  top: 640px;
-  left: 60px;
-  gap: 0px;
-  opacity: 0px;
-  padding-left: 18px;
-}
-.apropos-content h1 {
-  font-family: Inter;
-  font-size: 35px;
-  font-weight: 700;
-  line-height: 42.36px;
-  text-align: left;
-  color: rgba(1, 61, 143, 1);
-}
-
-.apropos-body {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
 
-.apropos-image {
-  width: 555px;
-  height: 352px;
-  gap: 0px;
-  border-radius: 17px;
-  opacity: 0px;
+.banner-text h2 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 35px;
 }
 
-.apropos-text {
-  max-width: 40%;
-  text-align: left;
-}
-.apropos-text p {
-  margin-top: 40px;
-  width: 100%;
-  height: 30px;
-  font-family: "Inter";
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 29.05px;
-  text-align: left;
-  color: rgba(0, 160, 216, 1);
-}
-.par-text p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 10px;
-  margin-left: 60px;
-  text-align: left;
+.Accreditation {
+  margin-top: 80px;
+  margin-bottom: 50px;
 }
 
-.apropos-icons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  max-width: 150px;
-  margin: 0 auto;
-  align-items: flex-start;
-}
-.icons {
-  text-align: left;
-  margin-left: 60px;
-}
-
-.apropos-icons i {
-  font-size: 2rem;
-  color: #0050a0; /* Adjust to your primary color */
-  text-align: left;
-}
 .Accreditation h1 {
-  width: 1320px;
   height: 34px;
   gap: 0px;
-  opacity: 0px;
-  font-family: Inter;
   font-size: 35px;
   font-weight: 700;
   line-height: 42.36px;
   text-align: left;
   color: rgba(1, 61, 143, 1);
-  margin-top: 40px;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 
 .Accreditation p {
   width: Fixed (1, 320px);
-  font-family: "Roboto";
-  font-size: 20px;
+  font-size: 18px;
   size: 18px;
   font-weight: 400;
-  line-height: 26.82px;
+  margin: 0;
   text-align: justify;
 }
-.dark-background {
-  padding: 5px; /* Adjust padding as needed */
-  font-weight: bold;
-}
-.Accreditation {
-  margin-top: 80px;
-  padding-left: 16px;
+
+/*      */
+
+.apropos-content {
+  margin-bottom: 70px;
+  font-size: 18px;
 }
 
-.accreditation-text {
-  color: #ffffff; /* Match the background color */
-  margin-bottom: 10px;
+.apropos-content h1 {
+  font-size: 35px;
+  font-weight: 700;
+  text-align: left;
+  color: var(--blue);
+  margin-bottom:40px;
 }
 
-.accreditation-text .dark-background {
-  display: inline-block; /* Ensure text remains inline */
+.apropos-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  gap: 50px;
 }
+
+.apropos-image {
+  width: 100%; /* Responsive image width */
+  max-width: 650px; /* Limit max width */
+  min-width: 400px;
+  height: 350px;
+  object-fit: cover;
+  object-position:bottom right;
+  border-radius: 17px;
+}
+
+.par-text p {
+  font-size: 18px;
+  text-align: left;
+  margin: 0;
+}
+
+.par-text .para {
+  margin-bottom: 30px;
+}
+
+.apropos-text {
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;
+  color: var(--light-blue);
+}
+
+.icons-container {
+  margin-bottom: 30px;
+}
+
+.icons-container p {
+  margin-bottom: 16px;
+}
+
+.icons {
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+  list-style: none;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.icons li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icons .icon {
+  color: var(--light-blue);
+  display: inline-block;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -183,33 +235,6 @@
   background-color: #f0f0f0;
 }
 
-.cards-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cardd p {
-  color: #00a0d8;
-  margin-top: 10px;
-}
-
-.cardd {
-  width: 100%; /* Adjust width as needed */
-  height: 284px; /* Adjust height as needed */
-  border: 1px;
-  margin: 0 10px;
-  text-align: center;
-  scroll-snap-align: center;
-  box-shadow: 0px 16px 40px 0px #9aaacf33;
-}
-.cardd img {
-  width: 300px; /* Makes the image take up the card width */
-  height: 192px;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.1); /* Adds a border under the image */
-  border-radius: 10px 10px 0 0; /* Rounds the top corners of the image */
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -230,141 +255,273 @@ img {
   text-align: center;
   margin-bottom: 20px;
 }
+
 /* test imgs */
-.apropos-container {
-  text-align: center;
-  padding: 2rem;
-  margin-left: 5px;
+.clients-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2rem;
 }
 
 .title {
   color: rgba(1, 61, 143, 1);
-  font-size: 2rem;
+  font-size: 35px;
   font-weight: bold;
-  text-align: left;
-  margin-left: 5px;
 }
 
 .description {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 2rem;
-  text-align: left;
+  font-size: 18px;
+  margin: 0;
 }
 
 .carousel {
   position: relative;
   background-color: white;
+  width: 100%;
+}
+
+.clients-grid {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin: 0 -20px;
+  margin-top: -20px;
+  padding: 30px 20px;
+  gap: 60px;
+}
+
+.clients-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  text-decoration: none; /* Prevent underline */
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  min-width: 240px;
+  height: 280px;
+  opacity: 1;
+}
+
+.clients-card:hover {
+  transform: translateY(-5px);
+}
+.image-wrapper {
+  height: 190px;
+  border: none;
+}
+
+.clients-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.clients-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  padding: 26px 20px;
+  flex-grow: 1;
+}
+
+.clients-title {
+  color: var(--light-blue);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0px;
 }
 
 .cards-container {
+  gap: 1rem;
+  overflow-x: auto;
+  width: 100%; /* Adjust this to control the width of the visible cards */
+  height: 360px;
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  overflow: hidden;
-  width: 100%; /* Adjust this to control the width of the visible cards */
+  align-items: center;
   margin-bottom: 1rem;
-}
-
-.card {
-  width: 100%;
-  overflow: hidden; /* Ensures content stays within the card */
-
-  height: 100%;
-  gap: 0px;
-  opacity: 0px;
-  box-shadow: 40px rgba(154, 170, 207, 0.2);
-  border-radius: 17px 17px 0px 0px;
-  background-color: white;
-}
-
-.card img {
-  width: 100%;
-  height: 192px;
-  gap: 0px;
-  opacity: 0px;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.1); /* Adds a border under the image */
-  border-radius: 10px 10px 0 0; /* Rounds the top corners of the image */
-}
-
-.card p {
-  font-size: 1rem;
-  color: #0070c0;
-  padding: 1rem 0;
 }
 
 /* Arrow buttons container */
 .arrow-buttons {
+  width: 100%;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 2rem;
 }
 
 .arrow-button {
-  background: rgba(0, 160, 216, 1);
-
+  background: var(--light-blue);
   border: none;
   border-radius: 50%;
-  padding: 0.5rem;
   cursor: pointer;
   color: white;
-  width: 51.55px;
+  width: 50px;
   height: 50px;
-  top: 50px;
-  left: 119.1px;
-  gap: 0px;
-  opacity: 0px;
-  position: -180 deg;
 }
 
 .arrow-button .svg-inline--fa {
   font-size: 20px;
 }
-/* recherche and developement*/
+
+/* ---------- recherche and developement -------- */
 .research-section {
+  margin: 40px 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
-  padding-left: 18px;
-  width: 1320px;
-  height: 284px;
-  margin-top: 15px;
+  gap: 60px;
 }
 
-.research-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 30px;
-  max-width: 1200px;
-}
-
-.text-content {
-  flex: 1;
-}
-
-.research-title {
-  font-size: 2rem;
-  color: #0050a0; /* Custom color for title */
+.text-content h1 {
+  color: var(--blue);
+  font-size: 35px; /* Large header */
+  margin-bottom: 15px; /* Space below header */
+  text-align: left;
   font-weight: bold;
-  text-align: left;
 }
 
-.research-description {
-  font-size: 1.1rem;
-  color: #333; /* Text color */
-  line-height: 1.6;
-  max-width: 600px;
-  text-align: left;
+.text-content p {
+  font-size: 16px; /* Normal text size */
+  text-align: justify;
 }
 
-.image-content {
-  flex: 1;
+.image-content-mobile {
+  display: none;
 }
 
-.lab-image {
-  max-width: 100%;
-  border-radius: 10px;
+.image-content .lab-image {
+
+  max-width: 600px; /* Limit max width */
+  min-width: 300px;
+  border-radius: 17px;
   object-fit: cover;
-  height: 284px;
+  
+  height: 255px;
+}
+
+.swiper-container {
+  width: 100%;
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  padding: 20px 10px;
+  margin: 0 -10px;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .apropos-body,
+  .research-section {
+    flex-direction: row;
+  }
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .image-content {
+    display: none;
+  }
+  .image-content-mobile {
+    display: block;
+  }
+
+  .clients-card {
+    width: 100%;
+    min-width: 180px;
+    max-width: 350px;
+  }
+  
+  .apropos-{
+    margin:0px -40px ;
+  }
+
+  .banner-image {
+    width: 100%;
+  height: auto;
+    /* min-height: 170px; */
+    border-radius: 0px;
+    /* object-fit: cover ; */
+  }
+
+  .banner-text {
+    padding:12px 32px;
+  }
+
+  .banner-text h2 {
+    font-size: 18px;
+  }
+
+  .apropos-text {
+    font-size: 18px;
+  }
+
+  .arrow-buttons {
+    display: none;
+    
+  }
+  
+  .arrow-button {
+    background: var(--light-blue);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    width: 40px;
+    height: 40px;
+  }
+
+  .Accreditation h1,
+  .apropos-content h1,
+  .clients-container h1,
+  .research-section h1
+   {
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+
+  .image-content-mobile  .lab-image{
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: right; /* Show the right part of the image */
+    border-radius: 17px;
+  }
+  .image-content-mobile {
+    margin-bottom: 24px;
+  }
+
+  .Accreditation {
+    margin-top: 40px;
+    margin-bottom: 50px;
+  }
+
+  .Accreditation p{
+    font-size: 16px;
+  }
+
+  p{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 540px) {
+  .apropos-image {
+    height: 200px;
+  min-width: 300px;
+
+  }
+
 }
