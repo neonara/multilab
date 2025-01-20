@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from.models.avis import Avis
-
+from.models.notification import Notification
 
 from.models.jobdescription import Offre_description
 from.models.offres import Offre
@@ -41,3 +41,9 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields =  '__all__'

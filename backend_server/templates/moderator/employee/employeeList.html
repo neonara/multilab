@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static './css/project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
     <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -97,7 +97,7 @@
                                 <div class="dropdown-field">
                                  <select id="status-filter" onchange="filterContrat(this.value)">
                                     <option value="">Tous</option>
-                                    <option value="CIVP">CIVP</option>
+                                    <option value="CIVP">SIVP</option>
                                     <option value="CDI">CDI</option>
                                     <option value="CDD">CDD</option>
                                     <option value="Karama">Karama</option>
@@ -358,7 +358,7 @@
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <select id="contrat" name="contrat" class="form-select bg-light border-0">
-                                            <option value="CIVP" {% if post.contrat == 'CIVP' %} selected {% endif %}>CIVP</option>
+                                            <option value="CIVP" {% if post.contrat == 'CIVP' %} selected {% endif %}>SIVP</option>
                                             <option value="CDI" {% if post.contrat == 'CDI' %} selected {% endif %}>CDI</option>
                                             <option value="CDD" {% if post.contrat == 'CDD' %} selected {% endif %}>CDD</option>
                                             <option value="Karama" {% if post.contrat == 'Karama' %} selected {% endif %}>Karama</option>
@@ -539,7 +539,7 @@
                         <div class="col-sm-9">
                             <select class="form-control" id="contrat" name="contrat">
                                 <option value="">Select Type d'emploi désiré</option>
-                                <option value="CIVP1">CIVP</option>
+                                <option value="CIVP">SIVP</option>
                                 <option value="CDI">CDI</option>
                                 <option value="CDD">CDD</option>
                                 <option value="Karama">Karama</option>

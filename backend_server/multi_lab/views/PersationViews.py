@@ -36,7 +36,7 @@ class PersationUpdateView(UpdateView):
         print("Form errors:", form.errors)  # Debugging
         return super().form_invalid(form)
     def form_valid(self, form):
-        messages.success(self.request, 'Persation a été modifié avec succès.')
+        messages.success(self.request, 'Perstation a été modifié avec succès.')
         return super().form_valid(form)
 
 class PersationDeleteView(DeleteView):

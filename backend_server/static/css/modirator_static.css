@@ -1,0 +1,44 @@
+:root {
+    --primary-color: rgb(30 64 175);
+    --secondary-color: rgb(34 211 238);
+    --hover-transform: scale(1.03);
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Nunito', sans-serif;
+}
+
+.dashboard-card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: var(--hover-transform);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.trend-indicator {
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+

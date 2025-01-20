@@ -13,6 +13,10 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+class TypeDeviFROMAGEViewSet(viewsets.ModelViewSet):
+    queryset = TypeDeviFROMAGE.objects.all()
+    serializer_class = TypeDeviFROMAGESerializer
+
 #! ----------------TypeDeviFROMAGE----------------
 @method_decorator(login_required(), name='dispatch')
 class TypeDeviFROMAGECreateView(CreateView):

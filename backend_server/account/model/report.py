@@ -61,5 +61,6 @@ class ReportFile(models.Model):
         return self.original_name or os.path.basename(self.file.name)
 
     class Meta:
+        ordering = ['-created_at']
         verbose_name = "Fichier de Rapport"
         verbose_name_plural = "Liste des Fichiers des Rapports"

@@ -28,4 +28,4 @@ class Persation(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-        verbose_name_plural = "Multi Lab Persations"
+        verbose_name_plural = "MULTILAB a.s Perstations"

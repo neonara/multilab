@@ -22,8 +22,12 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from django.core.exceptions import ValidationError
 from django.http import HttpResponse, JsonResponse
+from multi_lab.models.notification  import Notification
+from django.http import HttpResponseRedirect
 
-
+import logging
+logger = logging.getLogger('django.mail')
+logger.setLevel(logging.DEBUG)
 class ReportViewSet(ModelViewSet):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
@@ -154,11 +158,11 @@ class ReportCreateView(CreateView):
         return super().form_invalid(form)
 
 
-# views.py
+# add repport 
 @method_decorator(login_required(), name='dispatch')
 class ReportUpdateView(UpdateView):
     model = Report
-    template_name = './moderator/report/client_list.html'
+    template_name = 'moderator/report/client_list.html'  # Fixed template path
     fields = ['client', 'title', 'description', 'status']
     success_url = reverse_lazy('report_list')
 
@@ -166,42 +170,85 @@ class ReportUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['clients'] = User.objects.all()
         context['existing_files'] = self.object.files.all()
-
-        # Calculate how many more files can be uploaded
         context['remaining_slots'] = 3 - self.object.files.count()
         return context
 
     def form_valid(self, form):
-        response = super().form_valid(form)
-
-        # Handle file uploads
-        files = self.request.FILES.getlist(
-            'report_files')  # Get the files from the form
-        # Get the current number of files associated with the report
-        current_files_count = self.object.files.count()
-        # Calculate how many more files can be uploaded
-        remaining_slots = 3 - current_files_count
-
-        # Check if the user is trying to upload more than the allowed files
-        if len(files) > remaining_slots:
-            messages.error(self.request, f'You can only upload up to {
-                           remaining_slots} more files.')
-            return self.form_invalid(form)
-
-        # Save the uploaded files
-        for file in files:
-            ReportFile.objects.create(
-                report_related=self.object,
-                file=file
+        try:
+            # Save the form first
+            self.object = form.save()
+            
+            # Create notification for update
+            notification = Notification.objects.create(
+                recipient=self.object.client,
+                message=f"Votre rapport '{self.object.title}' a été mis à jour",
+                report=self.object,
+                avis=None
             )
 
-        messages.success(self.request, 'Report updated successfully.')
-        return response
+            # Handle file uploads
+            files = self.request.FILES.getlist('report_files')
+            current_files_count = self.object.files.count()
+            remaining_slots = 3 - current_files_count
+
+            if len(files) > remaining_slots:
+                messages.error(self.request, f'Vous ne pouvez télécharger que {remaining_slots} fichiers supplémentaires.')
+                return self.form_invalid(form)
+
+            # Process each uploaded file
+            for file in files:
+                report_file = ReportFile.objects.create(
+                    report_related=self.object,
+                    file=file
+                )
+
+                # Create separate notification for each file
+                file_notification = Notification.objects.create(
+                    recipient=self.object.client,
+                    message=f"Nouveau fichier '{file.name}' ajouté à votre rapport '{self.object.title}'",
+                    report=self.object,
+                    avis=None
+                )
+
+            # Send email notification
+            subject = 'Mise à jour de votre Rapport MULTILAB s.a.'
+            context = {
+                'report': self.object,
+                'client': self.object.client,
+                'files_added': len(files) > 0,
+                'num_files': len(files)
+            }
+            
+            html_message = render_to_string('moderator/notif/file_added_email.html', context)
+            plain_message = strip_tags(html_message)
+            
+            send_mail(
+                subject,
+                plain_message,
+                'nour.d@neonara.digital',
+                [self.object.client.email],
+                html_message=html_message,
+                fail_silently=False
+            )
+            
+            logger.info(f"Successfully updated report and sent notifications to {self.object.client.email}")
+            messages.success(self.request, 'Le rapport a été mis à jour avec succès et le client a été notifié.')
+
+        except Exception as e:
+            logger.error(f"Error in report update/notification: {str(e)}")
+            messages.error(self.request, f'Le rapport a été mis à jour, mais une erreur s\'est produite lors de la notification: {str(e)}')
+
+        return redirect(self.success_url)
 
     def form_invalid(self, form):
-        print(form.errors.as_json())  # Debugging
+        logger.error(f"Report update form errors: {form.errors}")
+        messages.error(self.request, 'Erreur lors de la mise à jour du rapport. Veuillez vérifier le formulaire.')
         return super().form_invalid(form)
 
+    def form_invalid(self, form):
+        logger.error(f"Report update form errors: {form.errors}")
+        messages.error(self.request, 'Error updating report. Please check the form.')
+        return super().form_invalid(form)
 
 # Update the template to handle multiple files
 
@@ -233,11 +280,11 @@ class UploadFileView(CreateView):
 
 
 class DeleteFileView(UpdateView):
+    success_url = reverse_lazy('report_list')
     def post(self, request, file_id):
         file = get_object_or_404(ReportFile, pk=file_id)
-        report_id = file.report_related.id
         file.delete()
-        return JsonResponse({'message': 'File deleted successfully', 'report_id': report_id}, status=200)
+        return HttpResponseRedirect(self.success_url)
 
 
 class UpdateFileView(DeleteView):

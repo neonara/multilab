@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views.avi import *
-
+from .views.notifications import *
 from .views.project import *
 from .views.offres import *
 from .views.stageur import *
@@ -95,6 +95,9 @@ urlpatterns = [
          ArticleUpdateView.as_view(), name='article_update'),
     path('events/<int:event_pk>/articles/<int:pk>/delete/',
          ArticleDeleteView.as_view(), name='article_delete'),
+     #     notif
+    path('notifications/',get_notifications, name='notifications'),
+    path('notifications/<int:notification_id>/mark-read/', mark_notification_read, name='mark_notification_read'),
 
 
 ]

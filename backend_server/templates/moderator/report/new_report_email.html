@@ -1,9 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './css/email.css' %}">
     <title>Nouveau Rapport Multi Lab</title>
+   
+</head>
+<body>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,9 +35,7 @@
             text-decoration: underline;
         }
     </style>
-</head>
-<body>
-    <h1>Nouveau rapport soumis Multi Lab</h1>
+    <h1>Nouveau rapport soumis MULTILAB s.a.</h1>
     <p>Bonjour {{ report.client.last_name }} {{ report.client.first_name }},</p>
     <p>Un nouveau rapport a été soumis. Voici les détails :</p>
     <ul>
@@ -42,6 +45,7 @@
     </ul>
     <p>Vous pouvez consulter le rapport en cliquant sur le lien ci-dessous :</p>
     <p><a href="https://multilab-tunisia.com.tn/reports/{{ report.id }}">Consulter le rapport</a></p>
-    <p>Merci,<br>L'équipe Multi Lab</p>
+    <p>Merci,<br>L'équipe MULTILAB s.a.</p>
+    <img src="{% static 'images/logo VF.png' %}" width="150" alt="MULTILAB s.a.">
 </body>
 </html>

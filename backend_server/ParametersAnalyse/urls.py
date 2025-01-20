@@ -14,7 +14,25 @@ from.views.microbiologie_produits_eaux import *
 from.views.physicochimiques_produits_eaux import *
 from.views.azote_kjedahl import *
 from.views.alimentation_animale import *
+from.views.AnalysesProduitCosmetique import *
 router = DefaultRouter()
+
+# Register all viewsets
+router.register(r'physico-eaux', TypeAnalysesPhysicochimiquesProduitsEauxViewSet)
+router.register(r'azote-kjedahl', TypeAzoteKjedahlViewSet)
+router.register(r'devi', TypeDeviViewSet)
+router.register(r'micro-eaux', TypeDeviAnalyseMicrobiologieProduitsEauxViewSet)
+router.register(r'physico-peche', TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHEViewSet)
+router.register(r'beurre', TypeDeviBEURREViewSet)
+router.register(r'fromage', TypeDeviFROMAGEViewSet)
+router.register(r'produits-laitiers', TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSViewSet)
+router.register(r'miel', TypeDeviANALYSESPHYSICOCHIMIQUESMIELViewSet)
+router.register(r'huiles', TypeDeviANALYSESPHYSICOCHIMIQUESHUILESETPRODUITSGRASViewSet)
+router.register(r'viandes', TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESViewSet)
+router.register(r'micro-alimentaires', TypeDeviAnalysesmicrobiologiquesproduitsalimentairesViewSet)
+router.register(r'cosmetique', AnalysesProduitCosmetiqueViewSet)
+
+
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -66,5 +84,16 @@ urlpatterns = [
     path('alimentation_animale_list/', TypeAalimentation_animalelCreateView.as_view(), name='alimentation_animale_list'),
     path('alimentation_animale/<int:pk>/delete/', Typealimentation_animalelDeleteView.as_view(), name='alimentation_animale_delete'),
     path('alimentation_animale/<int:pk>/update/', Typealimentation_animaleUpdateView.as_view(), name='alimentation_animale_update'),
+  #  ?------------------------ produit_cosmetique--------------------------------
+    path('produit_cosmetique_list/', TypeAnalysesProduitCosmetiqueCreateView.as_view(), 
+         name='produit_cosmetique_list'),
+    
+    path('analyses/produit-cosmetique/update/<int:pk>/', 
+         Typealimentation_animaleUpdateView.as_view(), 
+         name='produit_cosmetique_update'),
+    
+    path('analyses/produit-cosmetique/delete/<int:pk>/', 
+         Typealimentation_animalelDeleteView.as_view(), 
+         name='produit_cosmetique_delete'),
 
 ]

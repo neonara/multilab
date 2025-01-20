@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\djangoproject\Real project systems\Role_based_login_system\venv"
+VIRTUAL_ENV="C:\djangoproject\Real project systems\backed_project_multilab\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

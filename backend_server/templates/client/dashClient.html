@@ -25,6 +25,7 @@
     <!-- Custom styles for this template-->
     
     <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
+  
     <link rel="stylesheet" href="{% static './css/project.css' %}">
     <link rel="stylesheet" href="{% static './css/clientView.css' %}">
 </head>
@@ -113,7 +114,23 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                       
+                        <li class="nav-item dropdown no-arrow mx-1">
+                          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fas fa-bell fa-fw"></i>
+                              <span class="badge badge-danger badge-counter" id="notif-counter"></span>
+                          </a>
+                          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                              aria-labelledby="alertsDropdown">
+                              <h6 class="dropdown-header">
+                                  Notifications
+                              </h6>
+                              <div id="notifications-dropdown">
+                                  <!-- Notifications will be loaded here -->
+                              </div>
+                              <a class="dropdown-item text-center small text-gray-500" href="#">Voir toutes les notifications</a>
+                          </div>
+                      </li>
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" role="button"  data-bs-toggle="modal" data-bs-target="#createAnalyses">
@@ -514,6 +531,7 @@
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/clientdash.js' %}"></script>
     <script src="{% static 'js/clientView.js' %}"></script>
+    <script src="{% static './js/notifications.js' %}"></script>
     
 </body>
 
