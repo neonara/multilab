@@ -13,6 +13,7 @@ from .views.PersationViews import (
 )
 from .views.Event import (EventViewSet, EventArticleViewSet, EventCreateView, EventUpdateView, EventDeleteView,
                           EventListView, EventDetailView, ArticleCreateView, ArticleUpdateView, ArticleDeleteView)
+from .views.CandidateViewSet import *
 # routes URLCOF
 router = DefaultRouter()
 router.register(r'avis', AvisViewSet)
@@ -31,7 +32,8 @@ router.register(r'stageur', StagieurViewSet)
 router.register(r'stage', OffreStageViewSet)
 #
 router.register(r'job', Offre_descriptionViewSet)
-
+#
+router.register(r'candidates-simplify', CandidateViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 
@@ -98,6 +100,7 @@ urlpatterns = [
      #     notif
     path('notifications/',get_notifications, name='notifications'),
     path('notifications/<int:notification_id>/mark-read/', mark_notification_read, name='mark_notification_read'),
-
-
+     #     candidate
+      path('candidate_simplify_list', CandidateListView.as_view(), name='candidate_simplify_list'),
+   
 ]

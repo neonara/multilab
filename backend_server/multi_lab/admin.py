@@ -9,7 +9,7 @@ from.models.stageurs import Stagieur
 from.models.jobdescription import Offre_description
 from.models.projects import Project
 from.models.stagedescription import OffreStage
-
+from .models.condidat_semplife import Candidate_simplify
 class AvisConfig(admin.ModelAdmin):
     
     list_display=['fullname','nom_entreprise','created_at']
@@ -58,3 +58,4 @@ admin.site.register(OffreStage,OffreStageConfig)
 admin.site.register(Stagieur,StagieurConfig)
 
 admin.site.register(Project,ProjectConfig)
+admin.site.register(Candidate_simplify)

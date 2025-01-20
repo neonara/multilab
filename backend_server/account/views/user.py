@@ -64,7 +64,7 @@ def login_view(request):
 
 def customer(request):
     user = request.user  # Get the logged-in user
-    reports = Report.objects.filter(client=user)  # Get all reports related to the user
+    reports = Report.objects.filter(client=user).order_by('-created_at')  # Get all reports related to the user
     return render(request, './client/dashClient.html', {'reports': reports})
 
 @login_required()
