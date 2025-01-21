@@ -4,9 +4,9 @@ try:
     server = smtplib.SMTP('ssl0.ovh.net', 587)
     server.set_debuglevel(1)  # Enable debugging
     server.starttls()
-    server.login('nour.d@neonara.digital', 's,5LVz(9F')
+    server.login('commercial@multilab.com.tn', 'b6htafjo')
     server.sendmail(
-        'nour.d@neonara.digital',
+        'commercial@multilab.com.tn',
         'nourderouich159@gmail.com',
         'Subject: Test Email\n\nThis is a test email from Django.'
     )

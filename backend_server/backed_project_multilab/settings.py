@@ -9,14 +9,16 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-import os
-from pathlib import Path
 from .jazzmin import JAZZMIN_SETTINGS
+from pathlib import Path
+import environ
+import os
+env = environ.Env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
-
+environ.Env.read_env(BASE_DIR / '.env')
 LOGOUT_REDIRECT_URL = '/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -27,7 +29,9 @@ SECRET_KEY = 'b_z73j80aa!3h9s+%ui*ii*bl%(cdw*w-tpukpqngcr7+!_dtw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 WHITENOISE_SKIP_MISSING = True
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[
+                         '102.211.210.120', 'multilab-tunisia.com.tn', 'www.multilab-tunisia.com.tn'])
+APPEND_SLASH = False
 WHITENOISE_AUTOREFRESH = False  # Enable auto-refresh for development
 WHITENOISE_INDEX_FILE = True
 CSRF_COOKIE_SECURE = True
@@ -36,7 +40,7 @@ CSRF_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     'jazzmin',
-  
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,10 +56,22 @@ INSTALLED_APPS = [
     'ParametersAnalyse.apps.ParametersanalyseConfig',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000',
+    'https://102.211.210.120',
+    'https://multilab-tunisia.com.tn',
 )
+CSRF_TRUSTED_ORIGINS = [
+    'https://102.211.210.120',
+    'https://multilab-tunisia.com.tn',
+
+]
+CORS_ALLOWED_ORIGINS = [
+    'https://102.211.210.120',
+    'https://multilab-tunisia.com.tn',
+
+]
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -108,7 +124,7 @@ DATABASES = {
         'NAME': 'multilab',
         'USER': 'multilab',
         'PASSWORD': 'root',
-        'HOST': 'localhost',  # Assuming the database is hosted locally
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
@@ -133,6 +149,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
+DOMAIN = 'multilab-tunisia.com.tn'
+SITE_NAME = 'MULTILAB a.s'
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -157,9 +175,9 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False  # Disable TLS
 EMAIL_USE_SSL = True   # Enable SSL
 
-EMAIL_HOST_USER = 'nour.d@neonara.digital'
-EMAIL_HOST_PASSWORD = 's,5LVz(9F'
-DEFAULT_FROM_EMAIL = 'nour.d@neonara.digital'
+EMAIL_HOST_USER = 'commercial@multilab.com.tn'
+EMAIL_HOST_PASSWORD = 'b6htafjo'
+DEFAULT_FROM_EMAIL = 'commercial@multilab.com.tn'
 
 # GOOGLE_CLIENT_ID = '84824279187-i984iquv2b83e4gf9b5jort0p770v21g.apps.googleusercontent.com'
 # GOOGLE_CLIENT_SECRET = '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'

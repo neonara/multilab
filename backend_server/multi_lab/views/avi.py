@@ -62,7 +62,8 @@ class AvisCreateView(CreateView):
                         self.request.user.username}",
                     avis=self.object
                 )
-                logger.info(f"Created notification {notification.id} for moderator {moderator.username}")
+                logger.info(f"Created notification {
+                            notification.id} for moderator {moderator.username}")
                 # Send email to the moderator
                 subject = 'Nouveau Avis Créé'
                 context = {
@@ -73,7 +74,7 @@ class AvisCreateView(CreateView):
                 html_message = render_to_string(
                     'moderator/notif/avis_notification_email.html', context)
                 plain_message = strip_tags(html_message)
-                from_email = 'nour.d@neonara.digital'  # Sender email, adjust as needed
+                from_email = 'commercial@multilab.com.tn'  # Sender email, adjust as needed
                 to_email = moderator.email or moderator.username
 
                 try:
@@ -88,7 +89,8 @@ class AvisCreateView(CreateView):
 
                 except Exception as e:
                     print(f"Failed to send email to {moderator.username}: {e}")
-                    logger.info(f"Successfully sent email to moderator { moderator.username} at {moderator.email}")
+                    logger.info(f"Successfully sent email to moderator {
+                                moderator.username} at {moderator.email}")
 
             messages.success(
                 self.request, 'Votre avis a été envoyé avec succès, et les modérateurs ont été notifiés par email.')

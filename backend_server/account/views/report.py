@@ -22,12 +22,14 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from django.core.exceptions import ValidationError
 from django.http import HttpResponse, JsonResponse
-from multi_lab.models.notification  import Notification
+from multi_lab.models.notification import Notification
 from django.http import HttpResponseRedirect
 
 import logging
 logger = logging.getLogger('django.mail')
 logger.setLevel(logging.DEBUG)
+
+
 class ReportViewSet(ModelViewSet):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
@@ -95,7 +97,7 @@ class ClientReportListView(CreateView):
         template_path = './moderator/report/new_report_email.html'
         html_message = render_to_string(template_path, context)
         plain_message = strip_tags(html_message)
-        from_email = 'nour.d@neonara.digital'
+        from_email = 'commercial@multilab.com.tn'
         to_email = form.cleaned_data['client'].username
 
         import logging
@@ -158,7 +160,7 @@ class ReportCreateView(CreateView):
         return super().form_invalid(form)
 
 
-# add repport 
+# add repport
 @method_decorator(login_required(), name='dispatch')
 class ReportUpdateView(UpdateView):
     model = Report
@@ -177,11 +179,12 @@ class ReportUpdateView(UpdateView):
         try:
             # Save the form first
             self.object = form.save()
-            
+
             # Create notification for update
             notification = Notification.objects.create(
                 recipient=self.object.client,
-                message=f"Votre rapport '{self.object.title}' a été mis à jour",
+                message=f"Votre rapport '{
+                    self.object.title}' a été mis à jour",
                 report=self.object,
                 avis=None
             )
@@ -192,7 +195,8 @@ class ReportUpdateView(UpdateView):
             remaining_slots = 3 - current_files_count
 
             if len(files) > remaining_slots:
-                messages.error(self.request, f'Vous ne pouvez télécharger que {remaining_slots} fichiers supplémentaires.')
+                messages.error(self.request, f'Vous ne pouvez télécharger que {
+                               remaining_slots} fichiers supplémentaires.')
                 return self.form_invalid(form)
 
             # Process each uploaded file
@@ -205,7 +209,8 @@ class ReportUpdateView(UpdateView):
                 # Create separate notification for each file
                 file_notification = Notification.objects.create(
                     recipient=self.object.client,
-                    message=f"Nouveau fichier '{file.name}' ajouté à votre rapport '{self.object.title}'",
+                    message=f"Nouveau fichier '{
+                        file.name}' ajouté à votre rapport '{self.object.title}'",
                     report=self.object,
                     avis=None
                 )
@@ -218,36 +223,42 @@ class ReportUpdateView(UpdateView):
                 'files_added': len(files) > 0,
                 'num_files': len(files)
             }
-            
-            html_message = render_to_string('moderator/notif/file_added_email.html', context)
+
+            html_message = render_to_string(
+                'moderator/notif/file_added_email.html', context)
             plain_message = strip_tags(html_message)
-            
+
             send_mail(
                 subject,
                 plain_message,
-                'nour.d@neonara.digital',
+                'commercial@multilab.com.tn',
                 [self.object.client.email],
                 html_message=html_message,
                 fail_silently=False
             )
-            
-            logger.info(f"Successfully updated report and sent notifications to {self.object.client.email}")
-            messages.success(self.request, 'Le rapport a été mis à jour avec succès et le client a été notifié.')
+
+            logger.info(f"Successfully updated report and sent notifications to {
+                        self.object.client.email}")
+            messages.success(
+                self.request, 'Le rapport a été mis à jour avec succès et le client a été notifié.')
 
         except Exception as e:
             logger.error(f"Error in report update/notification: {str(e)}")
-            messages.error(self.request, f'Le rapport a été mis à jour, mais une erreur s\'est produite lors de la notification: {str(e)}')
+            messages.error(
+                self.request, f'Le rapport a été mis à jour, mais une erreur s\'est produite lors de la notification: {str(e)}')
 
         return redirect(self.success_url)
 
     def form_invalid(self, form):
         logger.error(f"Report update form errors: {form.errors}")
-        messages.error(self.request, 'Erreur lors de la mise à jour du rapport. Veuillez vérifier le formulaire.')
+        messages.error(
+            self.request, 'Erreur lors de la mise à jour du rapport. Veuillez vérifier le formulaire.')
         return super().form_invalid(form)
 
     def form_invalid(self, form):
         logger.error(f"Report update form errors: {form.errors}")
-        messages.error(self.request, 'Error updating report. Please check the form.')
+        messages.error(
+            self.request, 'Error updating report. Please check the form.')
         return super().form_invalid(form)
 
 # Update the template to handle multiple files
@@ -281,6 +292,7 @@ class UploadFileView(CreateView):
 
 class DeleteFileView(UpdateView):
     success_url = reverse_lazy('report_list')
+
     def post(self, request, file_id):
         file = get_object_or_404(ReportFile, pk=file_id)
         file.delete()
@@ -289,18 +301,19 @@ class DeleteFileView(UpdateView):
 
 class UpdateFileView(DeleteView):
     success_url = reverse_lazy('report_list')
+
     def post(self, request, file_id):
-            file = get_object_or_404(ReportFile, pk=file_id)
-            if 'file' in request.FILES:
-                new_file = request.FILES['file']
-                file.file = new_file
-                try:
-                    file.full_clean()
-                    file.save()
-                    messages.success(request, 'File updated successfully')
-                    return redirect(self.success_url)
-                except ValidationError as e:
-                    messages.error(request, 'Error updating file: {}'.format(e))
-                    return redirect(self.success_url)
-            messages.error(request, 'No file uploaded')
-            return redirect(self.success_url)
+        file = get_object_or_404(ReportFile, pk=file_id)
+        if 'file' in request.FILES:
+            new_file = request.FILES['file']
+            file.file = new_file
+            try:
+                file.full_clean()
+                file.save()
+                messages.success(request, 'File updated successfully')
+                return redirect(self.success_url)
+            except ValidationError as e:
+                messages.error(request, 'Error updating file: {}'.format(e))
+                return redirect(self.success_url)
+        messages.error(request, 'No file uploaded')
+        return redirect(self.success_url)
