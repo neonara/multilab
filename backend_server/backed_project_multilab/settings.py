@@ -25,10 +25,10 @@ LOGOUT_REDIRECT_URL = '/'
 SECRET_KEY = 'b_z73j80aa!3h9s+%ui*ii*bl%(cdw*w-tpukpqngcr7+!_dtw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 WHITENOISE_SKIP_MISSING = True
 ALLOWED_HOSTS = ["*"]
-WHITENOISE_AUTOREFRESH = True  # Enable auto-refresh for development
+WHITENOISE_AUTOREFRESH = False  # Enable auto-refresh for development
 WHITENOISE_INDEX_FILE = True
 CSRF_COOKIE_SECURE = True
 
@@ -96,7 +96,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backed_project_multilab.wsgi.application'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 
 # Database
@@ -169,11 +169,12 @@ DEFAULT_FROM_EMAIL = 'nour.d@neonara.digital'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 AUTH_USER_MODEL = 'account.User'
 JAZZMIN_SETTINGS = JAZZMIN_SETTINGS

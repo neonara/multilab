@@ -4077,3 +4077,474 @@ Traceback (most recent call last):
     raise e.__class__(
 TypeError: Field 'id' expected a number but got <SimpleLazyObject: <django.contrib.auth.models.AnonymousUser object at 0x794798c0b290>>.
 "GET /customer/ HTTP/1.1" 500 138534
+Internal Server Error: /customer/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 68, in customer
+    return render(request, './client/dashClient.html', {'reports': reports})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './vendor/fontawesome-free/css/all.min.css'
+"GET /customer/ HTTP/1.1" 500 145
+Internal Server Error: /customer/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 68, in customer
+    return render(request, './client/dashClient.html', {'reports': reports})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './vendor/fontawesome-free/css/all.min.css'
+"GET /customer/ HTTP/1.1" 500 145
+Internal Server Error: /customer/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 68, in customer
+    return render(request, './client/dashClient.html', {'reports': reports})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './vendor/fontawesome-free/css/all.min.css'
+"GET /customer/ HTTP/1.1" 500 145
+Internal Server Error: /employee/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 91, in employee
+    return render(request, './moderator/dashboard_moderator.html', {'counts': counts})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './css/clientdash.css'
+"GET /employee/ HTTP/1.1" 500 145
+Internal Server Error: /employee/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 91, in employee
+    return render(request, './moderator/dashboard_moderator.html', {'counts': counts})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './css/clientdash.css'
+"GET /employee/ HTTP/1.1" 500 145
+Internal Server Error: /employee/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 91, in employee
+    return render(request, './moderator/dashboard_moderator.html', {'counts': counts})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './css/clientdash.css'
+"GET /employee/ HTTP/1.1" 500 145
+Internal Server Error: /employee/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 91, in employee
+    return render(request, './moderator/dashboard_moderator.html', {'counts': counts})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './vendor/fontawesome-free/css/all.min.css'
+"GET /employee/ HTTP/1.1" 500 145
+Internal Server Error: /employee/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 91, in employee
+    return render(request, './moderator/dashboard_moderator.html', {'counts': counts})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './vendor/fontawesome-free/css/all.min.css'
+"GET /employee/ HTTP/1.1" 500 145
+Internal Server Error: /api/persation_list
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 116, in render
+    url = self.url(context)
+          ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 113, in url
+    return self.handle_simple(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/templatetags/static.py", line 129, in handle_simple
+    return staticfiles_storage.url(path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 203, in url
+    return self._url(self.stored_name, name, force)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 182, in _url
+    hashed_name = hashed_name_func(*args)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/staticfiles/storage.py", line 513, in stored_name
+    raise ValueError(
+ValueError: Missing staticfiles manifest entry for './css/clientdash.css'
+"GET /api/persation_list HTTP/1.1" 500 145
