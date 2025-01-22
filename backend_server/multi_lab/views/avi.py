@@ -58,8 +58,7 @@ class AvisCreateView(CreateView):
             for moderator in moderators:
                 notification = Notification.objects.create(
                     recipient=moderator,
-                    message=f"Nouvel avis créé par {
-                        self.request.user.username}",
+                    message=f"Nouvel avis créé par {self.request.user.username}",
                     avis=self.object
                 )
                 logger.info(f"Created notification {notification.id} for moderator {moderator.username}")
