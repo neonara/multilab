@@ -1,4 +1,14 @@
-export default function FormationCard({ formation }) {
+
+interface Formation {
+  image: string;
+  title: string;
+  prices: string[]; // Assuming prices is an array of strings
+  levels?: string[]; // Assuming levels is an optional array of strings
+}
+interface FormationCardProps {
+  formation: Formation;
+}
+export default function FormationCard({ formation }: FormationCardProps) {
   const isLevelNotFound = !formation.levels?.[0] || !formation.levels?.[1];
   return (
     <div className="py-4 sm:py-0 flex flex-col justify-between items-center w-[232px] h-[368px] sm:w-[300px] sm:h-[524px] rounded-lg shadow-lg">

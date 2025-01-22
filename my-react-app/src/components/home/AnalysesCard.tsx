@@ -1,8 +1,8 @@
-import card from "../home/assets/card1.png";
+import card from "../home/assets/first.png";
 import tt from "../home/assets/tt.png";
 import phy from "../home/assets/phy.png";
 import img4 from "../home/assets/Rectangle 3898.png";
-import img6 from "../home/assets/Rectangle 3900.png";
+import img6 from "@/assets/analyse6.jpg";
 import img5 from "../home/assets/img5.png";
 import { GoChevronRight } from "react-icons/go";
 import "./home.css";

@@ -239,21 +239,7 @@ function HomePage() {
               </div>
             </p>
 
-            <button
-              style={{
-                alignContent: "left",
-                backgroundColor: "transparent",
-                fontWeight: "bold",
-                color: "#013D8F",
-                padding: "10px 20px",
-                borderRadius: "5px",
-                border: "1px solid #013D8F",
-                fontSize: "16px",
-                cursor: "pointer",
-              }}
-            >
-              En apprendre plus
-            </button>
+            <button className="reconnaissance-button">En apprendre plus</button>
           </div>
 
           {/* img */}

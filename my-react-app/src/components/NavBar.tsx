@@ -38,7 +38,7 @@ function NavBar() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-md navbar-light bg-white shadow ">
+      <nav className="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
         <div className="container-fluid d-flex align-items-center">
           <a className="navbar-brand d-flex align-items-center" href="/">
             <img
@@ -163,7 +163,7 @@ function NavBar() {
       </nav>
 
       {isMobileMenuOpen && (
-        <div className="mobile-menu">
+        <div className="mobile-menu shadow-sm">
           <a href="/" onClick={toggleMobileMenu}>
             {t("Accueil")}
           </a>
