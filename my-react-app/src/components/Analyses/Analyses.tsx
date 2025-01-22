@@ -46,15 +46,16 @@ const Analyses: React.FC = () => {
     };
   }, []);
   return (
-    <div className="aa">
+    <div className="analyses-container">
       <div className="image-container">
-        <img src={backimg} alt="Lab Worker" className="background-image" />
+        <img src={backimg} alt="Lab Worker" className="banner-image" />
         <div className="text-container">
-          <p className="line1">MULTILAB s.a</p>
-          <p className="line2">ANALYSE </p>
+          <p className="title-text">MULTILAB s.a</p>
+          <p className="subtitle-text">ANALYSE </p>
         </div>
       </div>
-      <div className="container">
+
+      <div className="video-section">
         <div className="textContainer">
           <h2 className="titles">L'Approche Innovante de MULTILAB s.a</h2>
           <p className="paragraph">
@@ -67,19 +68,21 @@ const Analyses: React.FC = () => {
           </p>
         </div>
         <div className="videoContainer">
-          <video src={vid} className="video" controls muted>
+          <video src={vid} className="video" autoPlay muted loop playsInline>
             <source src="your-video-file.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
+
       <div className="home-containers">
         <h2 className="home-title">Nos analyses</h2>
 
         <AnalysesCard />
       </div>
-      <div className="a">
-        <h1>Nos thèmes de formation</h1>
+
+      <div className="themes-section">
+        <h1 className="themes-title">Produits analysés</h1>
         <div className="themes-grid">
           <div className="theme">
             <img
@@ -135,11 +138,12 @@ const Analyses: React.FC = () => {
           </div>
         </div>
       </div>
+
       <section className="logistics-section">
         <div className="logistics-content">
-          <h2>
+          <h1>
             Nos Logistique de Pointe : Des Solutions Intégrées par MULTILAB s.a
-          </h2>
+          </h1>
           <p>
             <strong>MULTILAB s.a</strong> met en place une solution intégrée
             pour simplifier le processus d’acheminement des échantillons pour
