@@ -35,7 +35,7 @@ class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHECreateView(CreateView):
         context = super().get_context_data(**kwargs)
         queryset = TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHE.objects.order_by('-created_at')
         context['analyse'] = queryset 
-        print("++++++++++++++++++++++++x",context) # Retrieve all analyse
+        
         return context
 @method_decorator(login_required(), name='dispatch')
 class TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHEpdateView(UpdateView):

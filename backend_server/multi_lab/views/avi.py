@@ -62,8 +62,7 @@ class AvisCreateView(CreateView):
                         self.request.user.username}",
                     avis=self.object
                 )
-                logger.info(f"Created notification {
-                            notification.id} for moderator {moderator.username}")
+                logger.info(f"Created notification {notification.id} for moderator {moderator.username}")
                 # Send email to the moderator
                 subject = 'Nouveau Avis Créé'
                 context = {
@@ -89,8 +88,7 @@ class AvisCreateView(CreateView):
 
                 except Exception as e:
                     print(f"Failed to send email to {moderator.username}: {e}")
-                    logger.info(f"Successfully sent email to moderator {
-                                moderator.username} at {moderator.email}")
+                    logger.info(f"Successfully sent email to moderator {moderator.username} at {moderator.email}")
 
             messages.success(
                 self.request, 'Votre avis a été envoyé avec succès, et les modérateurs ont été notifiés par email.')
