@@ -183,8 +183,7 @@ class ReportUpdateView(UpdateView):
             # Create notification for update
             notification = Notification.objects.create(
                 recipient=self.object.client,
-                message=f"Votre rapport '{
-                    self.object.title}' a été mis à jour",
+                message=f"Votre rapport '{self.object.title}' a été mis à jour",
                 report=self.object,
                 avis=None
             )
@@ -195,8 +194,7 @@ class ReportUpdateView(UpdateView):
             remaining_slots = 3 - current_files_count
 
             if len(files) > remaining_slots:
-                messages.error(self.request, f'Vous ne pouvez télécharger que {
-                               remaining_slots} fichiers supplémentaires.')
+                messages.error(self.request, f'Vous ne pouvez télécharger que {remaining_slots} fichiers supplémentaires.')
                 return self.form_invalid(form)
 
             # Process each uploaded file
@@ -209,8 +207,7 @@ class ReportUpdateView(UpdateView):
                 # Create separate notification for each file
                 file_notification = Notification.objects.create(
                     recipient=self.object.client,
-                    message=f"Nouveau fichier '{
-                        file.name}' ajouté à votre rapport '{self.object.title}'",
+                    message=f"Nouveau fichier '{file.name}' ajouté à votre rapport '{self.object.title}'",
                     report=self.object,
                     avis=None
                 )
@@ -237,8 +234,7 @@ class ReportUpdateView(UpdateView):
                 fail_silently=False
             )
 
-            logger.info(f"Successfully updated report and sent notifications to {
-                        self.object.client.email}")
+            logger.info(f"Successfully updated report and sent notifications to {self.object.client.email}")
             messages.success(
                 self.request, 'Le rapport a été mis à jour avec succès et le client a été notifié.')
 
