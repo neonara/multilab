@@ -28,7 +28,7 @@ SECRET_KEY = 'b_z73j80aa!3h9s+%ui*ii*bl%(cdw*w-tpukpqngcr7+!_dtw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-WHITENOISE_SKIP_MISSING = True
+WHITENOISE_SKIP_MISSING = False
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[
                          '102.211.210.120', 'multilab-tunisia.com.tn', 'www.multilab-tunisia.com.tn'])
 APPEND_SLASH = False
