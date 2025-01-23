@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 interface Formation {
   image: string;
@@ -9,6 +10,16 @@ interface FormationCardProps {
   formation: Formation;
 }
 export default function FormationCard({ formation }: FormationCardProps) {
+=======
+interface Formation {
+  image: string;
+  title: string;
+  prices: string[];
+  levels?: string[];
+}
+
+export default function FormationCard({ formation }: { formation: Formation }) {
+>>>>>>> 408c70a0b5f6fdd0fc8328695e72ec6e34f69bdf
   const isLevelNotFound = !formation.levels?.[0] || !formation.levels?.[1];
   return (
     <div className="py-4 sm:py-0 flex flex-col justify-between items-center w-[232px] h-[368px] sm:w-[300px] sm:h-[524px] rounded-lg shadow-lg">

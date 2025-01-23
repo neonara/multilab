@@ -286,12 +286,13 @@ img {
 .clients-grid {
   display: flex;
   overflow-x: auto;
-  flex-wrap: nowrap;
-  justify-content: space-around;
+  /* flex-wrap: nowrap; */
+  /* justify-content: space-around; */
   margin: 0 -20px;
   margin-top: -20px;
   padding: 30px 20px;
   gap: 60px;
+  max-width: 100%;
 }
 
 .clients-card {
@@ -441,6 +442,12 @@ img {
     width: 100%;
     min-width: 180px;
     max-width: 350px;
+    height: 230px;
+
+  }
+
+  .clients-content {
+    padding: 16px;
   }
   
   .apropos-{
