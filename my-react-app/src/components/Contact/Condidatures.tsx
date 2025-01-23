@@ -1,6 +1,6 @@
 // src/pages/contact.tsx
 import React, { useState } from "react";
-import "./Contact.css";
+import "./Contact.css"
 import back from "./assets/Rectangle 3901.jpg";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { CiUser, CiTrash } from "react-icons/ci";

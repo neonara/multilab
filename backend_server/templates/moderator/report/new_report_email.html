@@ -1,13 +1,51 @@
-
-    <h1>Nouveau rapport soumis Multi Lab</h1>
-    <p>Bonjour {{ report.client.last_name }} {{ report.client.first_name }} </p>
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static './css/email.css' %}">
+    <title>Nouveau Rapport Multi Lab</title>
+   
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        p {
+            margin: 0 0 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <h1>Nouveau rapport soumis MULTILAB s.a.</h1>
+    <p>Bonjour {{ report.client.last_name }} {{ report.client.first_name }},</p>
     <p>Un nouveau rapport a été soumis. Voici les détails :</p>
     <ul>
         <li><strong>Titre du rapport :</strong> {{ report.title }}</li>
-        
-        <li><strong>Créé à :</strong> {{ report.created_at }}</li>
-        <!-- Ajoutez plus de détails si nécessaire -->
+        <li><strong>Date de création :</strong> {{ report.created_at|date:"d M Y H:i" }}</li>
+        <li><strong>Description :</strong> {{ report.description }}</li>
     </ul>
-    <p>Vous pouvez consulter le rapport <a href="{{ report.file.url }}">{{ report.file.name }}</a>.</p>
-
-    <p>Merci.</p>
+    <p>Vous pouvez consulter le rapport en cliquant sur le lien ci-dessous :</p>
+    <p><a href="https://multilab-tunisia.com.tn/reports/{{ report.id }}">Consulter le rapport</a></p>
+    <p>Merci,<br>L'équipe MULTILAB s.a.</p>
+    <img src="{% static 'images/logo VF.png' %}" width="150" alt="MULTILAB s.a.">
+</body>
+</html>

@@ -13,6 +13,9 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+class TypeAnalysesPhysicochimiquesProduitsEauxViewSet(viewsets.ModelViewSet):
+    queryset = TypeAnalysesPhysicochimiquesProduitsEaux.objects.all()
+    serializer_class = TypeAnalysesPhysicochimiquesProduitsEauxSerializer
 #! ----------------TypeAnalysesPhysicochimiquesProduitsEaux----------------
 @method_decorator(login_required(), name='dispatch')
 class TypeAnalysesPhysicochimiquesProduitsEauxCreateView(CreateView):

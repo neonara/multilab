@@ -1,0 +1,607 @@
+<!-- stage.html -->
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>persation Multi lab</title> <!-- Bootstrap CDN link -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <!-- Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+z24KtnFyvJfYOpJCy8Lb5+p3Gnpw1XNamvV6jN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static './vendor/fontawesome-free/css/all.min.css' %}">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
+    <link rel="stylesheet" href="{% static './css/perstation.css' %}">
+
+</head>
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        {% include 'moderator/companents/silderbar.html' %}
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                {% include 'moderator/companents/navbar.html' %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    {% if messages %}
+                    <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+               
+
+                    <!-- Page Heading -->
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Liste des Persations</h3>
+
+                      </div>
+                      <button  type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#createStage">
+                       Ajouter <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
+                        <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
+                        <path d="M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4"/>
+                      </svg>
+                    </button>
+                    <div class="card shadow">
+                    </div>
+                    <div class="view-controls mb-4">
+                      <button class="btn btn-primary active" id="tableViewBtn">
+                        <i class="fas fa-table me-2"></i>Table View
+                      </button>
+                      <button class="btn btn-outline-primary" id="kanbanViewBtn">
+                        <i class="fas fa-columns me-2"></i>Kanban View
+                      </button>
+                    </div>
+                        <div class="app-body-main-content">
+                    <section class="service-section">
+                       
+                        <div class="service-section-header">
+                            <div class="dropdown-field">
+                                <select  id="entriesPerPage" onchange="changeEntriesPerPage(this)">
+                                  <option> Entries per page</option>
+                                  <option value="5">5</option>
+                                  <option value="10">10</option>
+                                  <option value="20">20</option>
+                              </select>
+                              <i class="bi bi-caret-down"></i> </div>
+                           
+                            <div class="search-field">
+                                <i class="bi bi-search"></i>
+                                <input type="text" placeholder="Rechercher"id="searchInput">
+                                <button class="flat-button" onclick="searchStage()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                                      </svg>
+                                </button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="resetSearch()">Reset</button>
+                            </div>
+                            
+                        </div>
+                        
+                        <div >
+                           
+                            <div id="tableView" class="table-responsive">
+                                
+                                <table class="table align-items-center table-flush">
+                                  <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col"></th>
+                                      <th scope="col">Titre </th>
+                                      <th scope="col">Status </th>
+                                    
+                                      <th scope="col">Crée le</th>
+                                      <th scope="col">Action</th>
+                                     
+                                      <th scope="col"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {% for persation in persations  %}
+                                    <tr >
+                                      <td scope="row">
+                                        <div class="transfer">
+                                            
+                                            <div class="transfer-logo">
+                                            {% if persation.image  %}
+                                              <img src="{{ persation.image.url }}" alt="{{ persation.title }}"/>
+                                              {% endif %}  </div>
+                                           
+                                       
+                                      </td>
+                                      <td>
+                                       
+                                            
+                                            <dt> {{ persation.title }}</dt>
+                                           
+                                                                                 </td>
+                                     
+                                     
+                                      <td>
+                                        <span class="badge bg-{% if persation.status == 'published' %}success{% elif persation.status == 'draft' %}warning{% else %}secondary{% endif %}">
+                                            {{ persation.get_status_display }}
+                                        </span>
+                                      </td>
+                                      
+                                    <td>{{ persation.created_at|date:"Y-m-d" }}</td>
+                                    <td>
+                                        <div class="action-buttons1 d-flex">
+                                            <!-- View button -->
+                                            <button type="button" class="action-btn view-btn" data-bs-toggle="modal" data-bs-target="#persationModal{{persation.pk}}" title="View">
+                                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                            
+                                            <!-- Edit button -->
+                                            <button type="button" class="action-btn edit-btn" data-bs-toggle="modal" data-bs-target="#updatepersation{{persation.pk}}" title="Edit">
+                                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M18.5 2.50001C18.8978 2.10219 19.4374 1.87869 20 1.87869C20.5626 1.87869 21.1022 2.10219 21.5 2.50001C21.8978 2.89784 22.1213 3.4374 22.1213 4.00001C22.1213 4.56262 21.8978 5.10219 21.5 5.50001L12 15L8 16L9 12L18.5 2.50001Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
+                                            
+                                            <!-- Delete button -->
+                                            <form method="post" action="{% url 'persation_delete' persation.pk %}" style="display:inline;">
+                                                {% csrf_token %}
+                                                <button type="submit" class="action-btn delete-btn" title="Delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+                                                    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                        <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M10 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path d="M14 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    
+                                    
+                                      
+                                      
+                                    </tr>
+                                  <!-- Modal Structure -->
+                                  <div class="modal fade" id="persationModal{{persation.pk}}" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" style="max-width: 800px;">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header bg-light">
+                                                <h1 class="modal-title text-xl font-semibold" id="modalTitle">
+                                                    <i class="fas fa-file-alt me-2"></i>{{ persation.title }}
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                
+                                            <!-- Modal Body -->
+                                            <div class="modal-body p-4">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <!-- Image Section -->
+                                                        <div class="col-md-6 mb-4">
+                                                            <div class="card h-100">
+                                                                <div class="card-header bg-light">
+                                                                    <h5 class="card-title mb-0">
+                                                                        <i class="fas fa-image me-2"></i>Image
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="card-body text-center">
+                                                                    {% if persation.image %}
+                                                                        <img src="{{ persation.image.url }}" 
+                                                                             alt="{{ persation.title }}" 
+                                                                             class="img-fluid rounded shadow-sm"
+                                                                             style="max-height: 300px; object-fit: contain;">
+                                                                    {% else %}
+                                                                        <div class="text-muted py-5">
+                                                                            <i class="fas fa-image fa-3x mb-3"></i>
+                                                                            <p>Aucune image disponible</p>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                
+                                                        <!-- Details Section -->
+                                                        <div class="col-md-6">
+                                                            <div class="card h-100">
+                                                                <div class="card-header bg-light">
+                                                                    <h5 class="card-title mb-0">
+                                                                        <i class="fas fa-info-circle me-2"></i>Détails
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <!-- Title -->
+                                                                    <div class="mb-3">
+                                                                        <label class="text-muted small mb-1">
+                                                                            <i class="fas fa-heading me-2"></i>Titre
+                                                                        </label>
+                                                                        <p class="font-semibold">{{ persation.title }}</p>
+                                                                    </div>
+                                
+                                                                    <!-- Description -->
+                                                                    <div class="mb-3">
+                                                                        <label class="text-muted small mb-1">
+                                                                            <i class="fas fa-align-left me-2"></i>Description
+                                                                        </label>
+                                                                        <p class="text-justify">{{ persation.description }}</p>
+                                                                    </div>
+                                
+                                                                    <!-- Status -->
+                                                                    <div class="mb-3">
+                                                                        <label class="text-muted small mb-1">
+                                                                            <i class="fas fa-tag me-2"></i>Status
+                                                                        </label>
+                                                                        <div>
+                                                                            <span class="badge {% if persation.status == 'published' %}bg-success
+                                                                                           {% elif persation.status == 'draft' %}bg-warning
+                                                                                           {% elif persation.status == 'pending' %}bg-info
+                                                                                           {% else %}bg-secondary{% endif %}">
+                                                                                {{ persation.status }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                
+                                                                    <!-- Timestamps -->
+                                                                    <div class="mb-3">
+                                                                        <label class="text-muted small mb-1">
+                                                                            <i class="fas fa-clock me-2"></i>Informations temporelles
+                                                                        </label>
+                                                                        <div class="small">
+                                                                            <p><strong>Créé le:</strong> {{ persation.created_at|date:"d/m/Y H:i" }}</p>
+                                                                            <p><strong>Dernière mise à jour:</strong> {{ persation.updated_at|date:"d/m/Y H:i" }}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                
+                                            <!-- Modal Footer -->
+                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- irir -->
+                                <div class="modal fade" id="updatepersation{{persation.pk}}" tabindex="-1" aria-labelledby="updateModalLabel{{persation.pk}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content shadow">
+                                            <!-- Header -->
+                                            <div class="modal-header bg-primary text-white rounded-top">
+                                                <h5 class="modal-title">
+                                                    <i class="fas fa-edit me-2"></i> Mettre à jour {{ persation.title }}
+                                                </h5>
+                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                
+                                            <!-- Body -->
+                                            <div class="modal-body p-4">
+                                                <form method="post" action="{% url 'persation_update' persation.pk %}" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <!-- Left Section -->
+                                                        <div class="col-md-6">
+                                                            <h6 class="text-uppercase text-muted mb-3">Informations principales</h6>
+                                                            
+                                                            <!-- Title -->
+                                                            <div class="mb-3">
+                                                                <label for="id_title" class="form-label">
+                                                                    <i class="fas fa-heading me-1"></i> Titre :
+                                                                </label>
+                                                                <input type="text" class="form-control" id="id_title" name="title" 
+                                                                       value="{{ persation.title }}" required>
+                                                            </div>
+                                
+                                                            <!-- Description -->
+                                                            <div class="mb-3">
+                                                                <label for="id_description" class="form-label">
+                                                                    <i class="fas fa-align-left me-1"></i> Description :
+                                                                </label>
+                                                                <textarea class="form-control" id="id_description" name="description" 
+                                                                          rows="4" required>{{ persation.description }}</textarea>
+                                                            </div>
+                                
+                                                            <!-- Status -->
+                                                            <div class="mb-3">
+                                                                <label for="id_status" class="form-label">
+                                                                    <i class="fas fa-tag me-1"></i> Statut :
+                                                                </label>
+                                                                <select class="form-select" id="id_status" name="status" required>
+                                                                    <option value="draft" {% if persation.status == 'draft' %}selected{% endif %}>Brouillon</option>
+                                                                    <option value="pending" {% if persation.status == 'pending' %}selected{% endif %}>En attente</option>
+                                                                    <option value="published" {% if persation.status == 'published' %}selected{% endif %}>Publié</option>
+                                                                    <option value="archived" {% if persation.status == 'archived' %}selected{% endif %}>En attente</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                
+                                                        <!-- Right Section -->
+                                                        <div class="col-md-6">
+                                                            <h6 class="text-uppercase text-muted mb-3">Image</h6>
+                                                            
+                                                            <!-- Current Image Preview -->
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Image actuelle :</label>
+                                                                {% if persation.image %}
+                                                                    <div class="current-image-container border rounded p-2 text-center">
+                                                                        <img src="{{ persation.image.url }}" alt="Current image" 
+                                                                             class="img-fluid mb-2" style="max-height: 150px;">
+                                                                        <p class="small text-muted mb-0">Image actuelle</p>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <p class="text-muted">Aucune image</p>
+                                                                {% endif %}
+                                                            </div>
+                                
+                                                            <!-- New Image Upload -->
+                                                            <div class="mb-3">
+                                                                <label for="id_image" class="form-label">
+                                                                    <i class="fas fa-upload me-1"></i> Nouvelle image :
+                                                                </label>
+                                                                <input type="file" class="form-control" id="id_image" name="image" 
+                                                                       accept="image/*">
+                                                                <div class="form-text">Laissez vide pour conserver l'image actuelle</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                
+                                                    <!-- Footer -->
+                                                    <div class="modal-footer border-top mt-4">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                            <i class="fas fa-times me-2"></i> Annuler
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">
+                                                            <i class="fas fa-save me-2"></i> Sauvegarder
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    {% endfor %}
+                                    <div id="imageModal" class="modal custom-image-modal">
+                                        <span class="close">&times;</span>
+                                        <img class="modal-content" id="modalImage">
+                                      </div>
+                                  </tbody>
+                                </table>
+                                
+                              </div>
+
+
+                        </div>
+                     
+                    </section>
+                     
+                
+            </div>
+        </div>                   
+    </div>
+                  
+    <div class="modal fade" id="createStage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Créer une nouvelle Perstation</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'persation_create' %}">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="id_title" class="form-label required-field">Titre</label>
+                            <input type="text" class="form-control shadow-sm border-light" id="id_title" name="title" required placeholder="Entrez le titre de la persation">
+                        </div>
+                    
+                        <div class="mb-4">
+                            <label for="id_description" class="form-label required-field">Description</label>
+                            <textarea class="form-control shadow-sm border-light" id="id_description" name="description" rows="4" required placeholder="Décrivez votre persation..."></textarea>
+                        </div>
+                    
+                        <div class="mb-4">
+                            <label for="id_image" class="form-label">Image</label>
+                            <div class="image-upload-container">
+                                <input type="file" class="form-control" id="id_image" name="image" 
+                                       accept="image/*" onchange="previewImage(this)">
+                                <small class="form-text text-muted">Sélectionnez une image pour l'event (optionnel)</small>
+                                <div class="image-preview-wrapper mt-3">
+                                    <img id="imagePreview" src="" alt="Aperçu de l'image" 
+                                         style="display: none; max-width: 200px; height: auto; border-radius: 8px;">
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="mb-4">
+                            <label for="id_status" class="form-label required-field">Statut</label>
+                            <select class="form-select shadow-sm border-light" id="id_status" name="status" required>
+                                <option value="archived">En attente</option>
+                                <option value="published">Publié</option>
+                            </select>
+                        </div>
+                    
+                        <div class="modal-footer d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Annuler</button>
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+                
+                <!-- /.container-fluid -->
+                 <!-- kanban -->
+                <div id="kanbanView" style="display: none;" class="row container-fluid">
+                    <div class="row g-4 py-3">
+                      {% for persation in persations %}
+                      <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm hover-shadow">
+                          <!-- Card Image -->
+                          <div class="position-relative">
+                            {% if persation.image %}
+                            <img src="{{ persation.image.url }}" class="card-img-top object-fit-cover" style="height: 200px;" alt="{{ persation.title }}">
+                            {% else %}
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                              <i class="fas fa-image fa-3x text-muted"></i>
+                            </div>
+                            {% endif %}
+                            
+                            <!-- Action Buttons Overlay -->
+                            <div class="position-absolute top-0 end-0 m-3">
+                              <div class="btn-group action-buttons bg-white rounded-3 shadow p-1">
+                               
+                              
+                                <form method="post" action="{% url 'persation_delete' persation.pk %}" class="d-inline">
+                                  {% csrf_token %}
+                                  <button type="submit" class="btn btn-light btn-sm rounded-circle" onclick="return confirm('Are you sure?')" title="Delete">
+                                    <i class="fas fa-trash text-danger"></i>
+                                  </button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                  
+                          <!-- Card Body -->
+                          <div class="card-body">
+                            <h5 class="card-title text-truncate">{{ persation.title }}</h5>
+                            <p class="card-text text-muted small mb-2">{{ persation.description|truncatechars:100 }}</p>
+                            <div class="d-flex align-items-center text-muted small">
+                              <i class="fas fa-clock me-1"></i>
+                              {{ persation.created_at|date:"Y-m-d" }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
+                  
+                      {% if not persations %}
+                      <div class="col-12 text-center py-5">
+                        <div class="mb-4">
+                          <i class="fas fa-box-open fa-4x text-muted"></i>
+                        </div>
+                        <h4 class="text-muted">Aucune persation trouvée</h4>
+                        <p class="text-muted">Commencez par ajouter une nouvelle persation</p>
+                        <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#createStage">
+                          <i class="fas fa-plus me-2"></i>Ajouter une persation
+                        </button>
+                      </div>
+                      {% endif %}
+                    </div>
+                    
+                  </div>
+                   <!-- Add this right after the table -->
+                   <div class="pagination-container mt-4">
+                    <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                        <a class="page-link" href="#" id="prevPage" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#" id="currentPage">1</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#" id="nextPage" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                    </nav>
+                </div>
+</div>
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        {% comment %} <span>Copyright &copy; Your Website 2020</span> {% endcomment %}
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/clientdash.js' %}"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static './js/script_dashboard.js' %}"></script>
+    <!-- Include jQuery -->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+   <!-- Bootstrap Bundle with Popper -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
+   <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   <!-- Custom JS -->
+   <script src="{% static './js/script_dashboard.js' %}"></script>
+   <script src="{% static './js/perstation.js' %}"></script>
+
+</body>
+</html>

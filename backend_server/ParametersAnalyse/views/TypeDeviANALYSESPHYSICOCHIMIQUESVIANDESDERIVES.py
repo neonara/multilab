@@ -13,7 +13,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 # Create your views here.
-
+class TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESViewSet(viewsets.ModelViewSet):
+    queryset = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVES.objects.all()
+    serializer_class = TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESSerializer
 
 def analyse(request):
     return render(request, './moderator/analyses/alimentation_animal/physicochimie/index.html')

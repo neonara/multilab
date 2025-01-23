@@ -13,6 +13,9 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+class TypeDeviBEURREViewSet(viewsets.ModelViewSet):
+    queryset = TypeDeviBEURRE.objects.all()
+    serializer_class = TypeDeviBEURRESerializer
 #! ----------------TypeDeviBEURRE----------------
 @method_decorator(login_required(), name='dispatch')
 class TypeDeviBEURRECreateView(CreateView):

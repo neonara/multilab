@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Un nouveau fichier a été ajouté à votre rapport</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        p {
+            margin: 0 0 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <h2>Un nouveau fichier a été ajouté à votre rapport</h2>
+    <p>Bonjour {{ client.get_full_name|default:client.username }},</p>
+    
+    <p>Un nouveau fichier a été ajouté à votre rapport "{{ report.title }}".</p>
+    
+    <p>Vous pouvez consulter le rapport mis à jour et ses fichiers en vous connectant à votre compte.</p>
+    
+    <p>Cordialement,<br>
+        <img src="{% static 'images/logo VF.png' %}" width="150" alt="MULTILAB s.a.">
+    </p>
+</body>
+</html>

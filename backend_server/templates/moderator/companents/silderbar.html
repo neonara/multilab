@@ -24,10 +24,11 @@
             <span>Avis Client</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{% url 'devi_list' %}">
+        <a class="nav-link" href="{% url 'persation_list' %}">
             <i class="fas fa-file-upload"></i>
-            <span>Devis Client</span></a>
+            <span>Perstation</span></a>
     </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -65,7 +66,7 @@
                 <h6 class="collapse-header">Multi Lab Offre:</h6>
                 <a class="collapse-item" href="{% url 'job_list' %}">Liste d'offre d'emploi</a>
                 <a class="collapse-item" href="{% url 'condidat_list' %}">Liste des candidats</a>
-                
+                <a class="collapse-item" href="{% url 'candidate_simplify_list' %}">candidats simplify</a>
             </div>
         </div>
     </li>
@@ -82,20 +83,21 @@
             <i class="fas fa-file-upload"></i>
             <span>Liste des rapports</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'report_client' %}">
-            <i class="fas fa-file-upload"></i>
-            <span>Liste des clients</span></a>
-    </li>
+   
     <hr class="sidebar-divider">
     <!-- Nav Item - Pages Collapse Menu -->
-    <div class="sidebar-heading">
+    <!-- <div class="sidebar-heading">
         Multi Lab Projets
-    </div>
+    </div> -->
     <li class="nav-item">
         <a class="nav-link" href="{% url 'project_list' %}">
             <i class="fas fa-file-upload"></i>
             <span>Liste des Projets</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'event_list' %}">
+            <i class="fas fa-file-upload"></i>
+            <span>Liste des Events</span></a>
     </li>
     
     <hr class="sidebar-divider">
@@ -135,16 +137,21 @@
         </div>
     </li>
    
-    <!-- Nav Item - Charts -->
+  
+
+    <!-- Nav Item - Tables -->
+    
     <li class="nav-item">
         <a class="nav-link" href="{% url 'alimentation_animale_list' %}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Alimentation Animale</span></a>
     </li>
-
-    <!-- Nav Item - Tables -->
-    
-
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'produit_cosmetique_list' %}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Produits cosmétiques</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

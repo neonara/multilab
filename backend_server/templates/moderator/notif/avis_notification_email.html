@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveau Avis client MULTILAB s.a.</title>
+    <link rel="stylesheet" href="{% static './css/email.css' %}">
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+        }
+        p {
+            margin: 0 0 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <h1>Bonjour {{ moderator.username }},<h1>
+  <p>Un nouvel avis a été créé par {{ client.username }}.</p>
+  <p><strong>Avis:</strong></p>
+  <p>{{ avis.title }}</p>
+  <p><a href="https://multilab-tunisia.com.tn/employee/">Voir l'avis</a></p>
+</body>
+</html>

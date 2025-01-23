@@ -19,4 +19,4 @@ class Offre(models.Model):
         return str(self.titre)
    
     class Meta:
-        verbose_name_plural="Liste candidat"
+        verbose_name_plural="Liste candidate"

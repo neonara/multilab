@@ -86,3 +86,11 @@ class TypeDeviAnalysesmicrobiologiquesproduitsalimentaires(models.Model):
     
     class Meta:
         verbose_name_plural = "Ajouter Analyses Microbiologiques des Produits Alimentaires"
+class AnalysesProduitCosmetique(models.Model):
+    type_analyses_microbiologiques_produits_cosmetique = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.type_analyses_microbiologiques_produits_cosmetique
+    
+    class Meta:
+        verbose_name_plural = "Ajouter Analyses Microbiologiques des Produits Cosmétique et D'hygiène"

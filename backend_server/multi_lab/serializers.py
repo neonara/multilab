@@ -1,8 +1,8 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
 from.models.avis import Avis
+from.models.notification import Notification
 
-from.models.devis import *
 from.models.jobdescription import Offre_description
 from.models.offres import Offre
 from.models.stageurs import Stagieur
@@ -24,10 +24,7 @@ class Offre_descriptionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
   
-class DevisSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Devi
-        fields = '__all__'
+
 
 class OffresSerializer(serializers.ModelSerializer):
     class Meta:
@@ -44,3 +41,9 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'
+
+
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields =  '__all__'

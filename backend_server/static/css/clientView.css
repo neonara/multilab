@@ -1,0 +1,437 @@
+.gap-3 {
+    gap: 1rem !important;
+  }
+  .hover-show {
+    transition: opacity 0.2s;
+  }
+  .position-relative:hover .fa-spinner {
+    opacity: 0;
+  }
+  .position-relative:hover .hover-show {
+    opacity: 1 !important;
+  }
+  /* Custom Table Styles */
+    .custom-table-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    padding: 20px;
+    }
+
+    .custom-table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    }
+
+    .custom-table thead th {
+    border: none;
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    font-weight: 600;
+    color: #5a5c69;
+    }
+
+    .custom-table tbody tr {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: transform 0.2s;
+    background: white;
+    }
+
+    .custom-table tbody tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .custom-table td {
+    padding: 15px;
+    vertical-align: middle;
+    border: none;
+    }
+
+    .status-badge {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    }
+
+    .doc-icon {
+    transition: transform 0.2s;
+    }
+
+    .doc-icon:hover {
+    transform: translateY(-2px);
+    }
+
+    /* View Controls */
+    .view-controls {
+    display: flex;
+    gap: 10px;
+    }
+
+    .view-controls .btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    }
+
+    /* Kanban Styles */
+    .kanban-container {
+padding: 24px;
+background: #f0f2f5;
+min-height: calc(100vh - 200px);
+border-radius: 16px;
+}
+
+.kanban-board {
+display: flex;
+gap: 24px;
+min-height: 600px;
+}
+
+.kanban-column {
+flex: 1;
+min-width: 300px;
+background: rgba(255, 255, 255, 0.9);
+border-radius: 16px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+display: flex;
+flex-direction: column;
+border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Gradient Headers */
+.pending-gradient {
+background: linear-gradient(135deg, #FF6B6B, #FFB876);
+}
+
+.progress-gradient {
+background: linear-gradient(135deg, #4E7FFF, #56CCF2);
+}
+
+.completed-gradient {
+background: linear-gradient(135deg, #34D399, #10B981);
+}
+
+.kanban-column-header {
+padding: 20px;
+border-radius: 16px 16px 0 0;
+color: white;
+}
+
+.header-content {
+display: flex;
+align-items: center;
+gap: 12px;
+font-weight: 600;
+font-size: 1.1em;
+}
+
+.task-count {
+background: rgba(255, 255, 255, 0.2);
+padding: 2px 8px;
+border-radius: 12px;
+font-size: 0.8em;
+margin-left: auto;
+}
+
+.kanban-items {
+padding: 20px;
+overflow-y: auto;
+flex-grow: 1;
+}
+
+.kanban-item {
+background: white;
+border-radius: 12px;
+margin-bottom: 16px;
+position: relative;
+overflow: hidden;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+transition: all 0.3s ease;
+}
+
+.kanban-item:hover {
+transform: translateY(-3px);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.priority-line {
+height: 4px;
+width: 100%;
+}
+
+.priority-line.pending { background: #FF6B6B; }
+.priority-line.in-progress { background: #4E7FFF; }
+.priority-line.completed { background: #34D399; }
+
+.item-content {
+padding: 16px;
+}
+
+.item-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 12px;
+}
+
+.item-header h6 {
+margin: 0;
+font-weight: 600;
+color: #2D3748;
+}
+
+.status-dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+display: inline-block;
+}
+
+.status-dot.pending { background: #FF6B6B; }
+.status-dot.in-progress { background: #4E7FFF; }
+.status-dot.completed { background: #34D399; }
+
+.item-meta {
+display: flex;
+align-items: center;
+gap: 16px;
+margin-bottom: 16px;
+color: #718096;
+font-size: 0.9em;
+}
+
+.date i {
+margin-right: 6px;
+}
+
+.doc-container {
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+}
+
+.doc-bubble {
+display: flex;
+align-items: center;
+gap: 4px;
+padding: 6px 10px;
+border-radius: 20px;
+font-size: 0.85em;
+background: #F7FAFC;
+color: #4A5568;
+transition: all 0.2s ease;
+}
+
+.doc-bubble:hover {
+transform: translateY(-2px);
+}
+
+.doc-bubble.pending {
+background: #FFF5F5;
+color: #FF6B6B;
+}
+
+.doc-bubble.completed {
+background: #F0FFF4;
+color: #34D399;
+}
+
+.doc-number {
+background: rgba(0, 0, 0, 0.1);
+padding: 2px 6px;
+border-radius: 10px;
+font-size: 0.8em;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+.kanban-board {
+flex-wrap: wrap;
+}
+
+.kanban-column {
+min-width: calc(50% - 12px);
+}
+}
+
+@media (max-width: 768px) {
+.kanban-column {
+min-width: 100%;
+}
+
+.kanban-container {
+padding: 12px;
+}
+}
+.pagination-container {
+margin: 20px 0;
+}
+
+.pagination {
+gap: 5px;
+}
+
+.page-link {
+color: #4e73df;
+border: 1px solid #4e73df;
+padding: 8px 16px;
+transition: all 0.3s ease;
+}
+
+.page-link:hover {
+background-color: #4e73df;
+color: white;
+}
+
+.page-item.active .page-link {
+background-color: #4e73df;
+border-color: #4e73df;
+}
+
+.page-item.disabled .page-link {
+color: #6c757d;
+border-color: #dee2e6;
+}
+/* Custom Sidebar Styling */
+.custom-sidebar {
+    background: linear-gradient(135deg, #3f5566 0%, #7a7a7a 100%);
+    min-height: 100vh;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand/Logo Area */
+.sidebar-brand {
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+    background: rgba(251, 251, 251, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.sidebar-logo {
+    transition: all 0.3s ease;
+    filter: brightness(1.1);
+}
+
+.sidebar-logo:hover {
+    transform: scale(1.02);
+}
+
+/* Divider Lines */
+.sidebar-divider {
+    border-top: 1px solid rgba(251, 251, 251, 0.15);
+    margin: 0 1rem;
+}
+
+/* Nav Items */
+.nav-item {
+    margin: 0.5rem 1rem;
+}
+
+.nav-link {
+    padding: 1rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    color: #FBFBFB !important;
+}
+
+.nav-link-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-link:hover {
+    background: rgba(251, 251, 251, 0.1);
+    transform: translateX(5px);
+}
+
+.nav-link i {
+    width: 20px;
+    text-align: center;
+    color: #00A0D8;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover i {
+    color: #FBFBFB;
+}
+
+.nav-link span {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Toggler Button */
+.sidebar-toggler {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#sidebarToggle {
+    width: 40px;
+    height: 40px;
+    background: rgba(251, 251, 251, 0.1);
+    color: #FBFBFB;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sidebarToggle:hover {
+    background: rgba(251, 251, 251, 0.2);
+    transform: scale(1.1);
+}
+
+#sidebarToggle i {
+    transition: transform 0.3s ease;
+}
+
+/* Collapsed State */
+.sidebar.toggled {
+    width: 6.5rem !important;
+}
+
+.sidebar.toggled .nav-link-content {
+    justify-content: center;
+}
+
+.sidebar.toggled .nav-link span {
+    display: none;
+}
+
+.sidebar.toggled #sidebarToggle i {
+    transform: rotate(180deg);
+}
+
+/* Hover Effects for Collapsed State */
+.sidebar.toggled .nav-item:hover .nav-link span {
+    display: block;
+    position: absolute;
+    left: 100%;
+    background: #013D8F;
+    padding: 0.5rem 1rem;
+    border-radius: 0 5px 5px 0;
+    margin-left: 0.5rem;
+    z-index: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .custom-sidebar {
+        width: 100%;
+        min-height: auto;
+    }
+    
+    .sidebar-brand {
+        padding: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.75rem;
+    }
+}

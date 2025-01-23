@@ -3,7 +3,7 @@ from django.db import models
 class Avis(models.Model):
     STATUS_CHOICES = [
         ('pending', 'privé'),
-        ('approved', 'publique'),
+        ('approved', 'Publié'),
     ]
     ETAT_CHOICES = [
         ('satisfait', 'Satisfait'),

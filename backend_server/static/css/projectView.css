@@ -1,0 +1,208 @@
+.image-upload-container {
+    border: 2px dashed #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.image-upload-container:hover {
+    border-color: #0d6efd;
+}
+
+.required-field::after {
+    content: " *";
+    color: red;
+}
+.required-field::after {
+content: " *";
+color: red;
+}
+
+.custom-image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.custom-image-modal .modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.custom-image-modal .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.transfer-logo img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    max-width: 100px;
+    height: auto;
+}
+
+.transfer-logo img:hover {
+    transform: scale(1.05);
+}
+/* 
+ */
+ .action-buttons1 {
+    display: flex; /* Ensures child elements align in a row */
+    gap: 15px; /* Space between buttons */
+    align-items: center; /* Centers buttons vertically */
+    justify-content: flex-start; /* Aligns buttons to the start */
+}
+
+.action-btn {
+    border: none;
+    background: transparent;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center; /* Centers icon inside the button */
+    justify-content: center; /* Centers icon inside the button */
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+}
+
+.view-btn {
+    color: #16a085;
+    background-color: rgba(22, 160, 133, 0.1);
+}
+
+.view-btn:hover {
+    background-color: rgba(22, 160, 133, 0.2);
+    box-shadow: 0 4px 12px rgba(22, 160, 133, 0.15);
+}
+
+.edit-btn {
+    color: #3498db;
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.edit-btn:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.delete-btn {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.delete-btn:hover {
+    background-color: rgba(231, 76, 60, 0.2);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.15);
+}
+
+.btn-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+/* pagesination */
+.pagination-container {
+    margin: 20px 0;
+  }
+  
+  .pagination {
+    gap: 5px;
+  }
+  
+  .page-link {
+    color: #4e73df;
+    border: 1px solid #4e73df;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .page-link:hover {
+    background-color: #4e73df;
+    color: white;
+  }
+  
+  .page-item.active .page-link {
+    background-color: #4e73df;
+    border-color: #4e73df;
+  }
+  
+  .page-item.disabled .page-link {
+    color: #6c757d;
+    border-color: #dee2e6;
+  }
+  
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.1);
+    border-color: #2563eb;
+}
+
+/* Image Upload */
+.image-upload-container {
+    border: 2px dashed #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.image-upload-container:hover {
+    border-color: #2563eb;
+}
+
+.preview-image {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+/* Submit Button */
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(37, 99, 235, 0.2);
+}
+
+/* General Animations */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}
