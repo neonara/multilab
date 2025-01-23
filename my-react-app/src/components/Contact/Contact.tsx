@@ -1,5 +1,5 @@
 // src/pages/contact.tsx
-import "./contact.css";
+import "./Contact.css"
 import back from "./assets/Rectangle 39000.jpg";
 import { CiUser, CiMail } from "react-icons/ci";
 import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa"; // FontAwesome icons

@@ -1,42 +1,31 @@
-import React, { useState } from "react";
-import "./home.css"; // Create a CSS file for custom styles
-import vid from "./assets/WhatsApp Vidéo 2024-09-24 à 16.11.34_ea417abf.mp4";
-import undervid from "./assets/under-vid1.jpeg";
+import React from "react";
+import "./home.css";
+import vid from "@/assets/Multilab-hero.mp4";
+import undervid from "@/assets/undervid1.jpg";
 import undervid2 from "./assets/under-vid2.jpeg";
-
 import undervid3 from "./assets/under-vid3.jpeg";
 
 const VideoSection: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-
-  const handlePlay = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
-
   return (
     <div className="section-container">
       <div className="video-container">
-        <video
-          className="video"
-          src={vid}
-          poster="your-image-poster-url.jpg"
-          autoPlay
-          muted
-          loop // optional: loops the video
-          playsInline // allows playback inline on mobile devices
-        />
+        <video className="video" src={vid} autoPlay muted loop playsInline />
+        <div className="hero-content">
+          <h1>
+            Engagés pour la sécurité alimentaire et La protection de
+            l'environnement
+          </h1>
+          <div className="title-bg"></div>
+        </div>
       </div>
+
       <div className="values-section-vid">
         <div className="values-grid-vid">
           <div className="vid-item-one">
             <img src={undervid} alt="Fiabilité" />
             <div className="info-content">
               <h3 className="transformable">Analyses</h3>
-              <p className="hidden-desc">Nos analyses </p>
+              <p className="hidden-desc">Nos analyses</p>
             </div>
           </div>
           <div className="vid-item">

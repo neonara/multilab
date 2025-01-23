@@ -5,55 +5,6 @@ import "./analyse.css";
 const Analyse: React.FC = () => {
   return (
     <div className="test">
-      {/* <div className="analyse">
-      {cardsData.map((card, index) => (
-        <Card
-          key={index}
-          title={card.title}
-          imageSrc={card.imageSrc}
-          altText={card.altText}
-          link={card.link}
-        />
-      ))}
-      </div> */}
-      {/* <div className='a'>
-            <h1>Nos thèmes de formation</h1>
-            <div className="themes-grid">
-                <div className="theme">
-                    <img src={im1} alt="Bonne pratiques d'hygiene" className="theme-image"/>
-                    <p>Bonne pratiques d'hygiene</p>
-                </div>
-                <div className="theme">
-                    <img src={im1} alt="Sciences Analytiques" className="theme-image"/>
-                    <p>Sciences Analytiques</p>
-                </div>
-                <div className="theme">
-                    <img src={im1} alt="Sécurité des Aliments" className="theme-image"/>
-                    <p>Sécurité des Aliments</p>
-                </div>
-                <div className="theme">
-                    <img src={im1} alt="Management de la Qualité" className="theme-image"/>
-                    <p>Management de la Qualité</p>
-                </div>
-                <div className="theme">
-                    <img src={im1} alt="Sécurité des Eaux" className="theme-image"/>
-                    <p>Sécurité des Eaux</p>
-                </div>
-                <div className="theme">
-                    <img src={im1} alt="Bonnes Pratiques de Prélèvement" className="theme-image"/>
-                    <p>Bonnes Pratiques de Prélèvement</p>
-                </div>
-                <div className="theme">
-                    <img src={im1} alt="Sécurité des Eaux" className="theme-image"/>
-                    <p>Sécurité des Eaux</p>
-                </div>
-                <div className="theme">
-                    <img src={im1} alt="Bonnes Pratiques de Prélèvement" className="theme-image"/>
-                    <p>Bonnes Pratiques de Prélèvement</p>
-                </div>
-            </div>
-            </div> */}
-
       <section className="logistics-section">
         <div className="logistics-content">
           <h2>

@@ -22,6 +22,7 @@ import Video from "./components/home/Video";
 import Login from "./components/Login/Login";
 import React from "react";
 import { IoIosArrowUp } from "react-icons/io";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [showButton, setShowButton] = React.useState(false);
@@ -54,9 +55,10 @@ function App() {
         onClick={scrollToTop}
       >
         {/* <FontAwesomeIcon icon={faArrowUp} /> */}
-        <IoIosArrowUp className="m-auto" />
+        <IoIosArrowUp className="icon" />
       </button>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/apropos" element={<Apropos />}></Route> // Add the route
