@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "swiper": "^11.2.1"
+  },
+  "devDependencies": {
+    "@types/react-slick": "^0.23.13"
+  }
+}
