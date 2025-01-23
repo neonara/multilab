@@ -14,6 +14,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 class TypeDeviViewSet(viewsets.ModelViewSet):
+    
     queryset = TypeDevi.objects.all()
     serializer_class = TypeDeviSerializer
 

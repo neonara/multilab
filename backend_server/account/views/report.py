@@ -29,11 +29,13 @@ import logging
 logger = logging.getLogger('django.mail')
 logger.setLevel(logging.DEBUG)
 class ReportViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]  
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
 
 
 class ReportListView(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         reports = Report.objects.all()
         serializer = ReportSerializer(reports, many=True)
@@ -41,6 +43,7 @@ class ReportListView(APIView):
 
 
 class ReportDetailView(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, pk):
         report = get_object_or_404(Report, pk=pk)
@@ -64,6 +67,7 @@ class ReportDetailView(APIView):
 
 
 class ReportFileView(APIView):
+    permission_classes = [IsAuthenticated]
     def post(self, request, report_id):
         report = get_object_or_404(Report, pk=report_id)
         file_serializer = ReportFileSerializer(data=request.data)
@@ -263,7 +267,7 @@ class ReportDeleteView(DeleteView):
         messages.success(self.request, 'report a été supprimer avec succès.')
         return super().form_valid(form)
 
-
+@method_decorator(login_required(), name='dispatch')
 class UploadFileView(CreateView):
     def post(self, request, report_id):
         report = get_object_or_404(Report, pk=report_id)
@@ -278,7 +282,7 @@ class UploadFileView(CreateView):
                 return JsonResponse({'error': e.message_dict}, status=400)
         return JsonResponse({'error': 'No file uploaded'}, status=400)
 
-
+@method_decorator(login_required(), name='dispatch')
 class DeleteFileView(UpdateView):
     success_url = reverse_lazy('report_list')
     def post(self, request, file_id):
@@ -286,7 +290,7 @@ class DeleteFileView(UpdateView):
         file.delete()
         return HttpResponseRedirect(self.success_url)
 
-
+@method_decorator(login_required(), name='dispatch')
 class UpdateFileView(DeleteView):
     success_url = reverse_lazy('report_list')
     def post(self, request, file_id):

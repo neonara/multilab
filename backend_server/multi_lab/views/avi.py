@@ -17,9 +17,10 @@ from ..models.avis import Avis
 from account.models import User
 from ..models.notification import Notification
 logger = logging.getLogger(__name__)
-
+from rest_framework.permissions import IsAuthenticated
 
 class AvisViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Avis.objects.all()
     serializer_class = AvisSerializer
 #!"""""djanoooo"""""""""""

@@ -9,10 +9,12 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.http import JsonResponse
-
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 import logging
 
 logger = logging.getLogger(__name__)
+@method_decorator(login_required(), name='dispatch')
 class EventListView(ListView):
     model = Event
     template_name = './moderator/events/event_list.html'
@@ -21,11 +23,12 @@ class EventListView(ListView):
         context = super().get_context_data(**kwargs)
         print("Events in context:", context['events'])  # Debug print
         return context
-    
+@method_decorator(login_required(), name='dispatch')   
 class EventDetailView(DetailView):
     model = Event 
     template_name = './moderator/events/event_list.html'
     context_object_name = 'event'
+@method_decorator(login_required(), name='dispatch')
 class EventCreateView(SuccessMessageMixin, CreateView):
     model = Event
     fields = ['title', 'description', 'date_event', 'image', 'status']
@@ -40,7 +43,7 @@ class EventCreateView(SuccessMessageMixin, CreateView):
             'success': False,
             'errors': form.errors
         })
-
+@method_decorator(login_required(), name='dispatch')
 class EventUpdateView(SuccessMessageMixin, UpdateView):
     model = Event
     fields = ['title', 'description', 'date_event', 'image', 'status']
@@ -50,7 +53,7 @@ class EventUpdateView(SuccessMessageMixin, UpdateView):
     def form_invalid(self, form):
         print("Form errors:", form.errors)  # Debugging
         return super().form_invalid(form)
-
+@method_decorator(login_required(), name='dispatch')
 class EventDeleteView(SuccessMessageMixin, DeleteView):
     model = Event
     success_url = reverse_lazy('event_list')
@@ -58,7 +61,7 @@ class EventDeleteView(SuccessMessageMixin, DeleteView):
     def form_invalid(self, form):
         print("Form errors:", form.errors)  # Debugging
         return super().form_invalid(form)
-
+@method_decorator(login_required(), name='dispatch')
 class ArticleCreateView(SuccessMessageMixin, CreateView):
     model = EventArticle
     fields = ['description', 'image1', 'image2', 'image3']
@@ -81,6 +84,7 @@ class ArticleCreateView(SuccessMessageMixin, CreateView):
         return reverse('event_list')
 
 #api article event
+@method_decorator(login_required(), name='dispatch')
 class ArticleUpdateView(SuccessMessageMixin, UpdateView):
     model = EventArticle
     fields = ['description', 'image1', 'image2', 'image3']
@@ -94,7 +98,7 @@ class ArticleUpdateView(SuccessMessageMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('event_list')
-
+@method_decorator(login_required(), name='dispatch')
 class ArticleDeleteView(SuccessMessageMixin, DeleteView):
     model = EventArticle
     template_name = './moderator/events/event_list.html'

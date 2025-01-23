@@ -17,7 +17,7 @@ urlpatterns = [
      path('api/', include(router.urls)),
       path('api/login/', LoginView.as_view()),
     # path('/test', index, name= 'index'),
-    path('account/login', login_view, name='login_view'),
+    path('login_view', login_view, name='login_view'),
     path('register/', register, name='register'),
     # path('adminpage/', admin, name='adminpage'),
     path('customer/', customer, name='customer'),

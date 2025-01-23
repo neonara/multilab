@@ -7,7 +7,8 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 class CandidateViewSet(viewsets.ModelViewSet):
     queryset = Candidate_simplify.objects.all()
@@ -18,7 +19,7 @@ class CandidateViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save()
 # djano template
-
+@method_decorator(login_required(), name='dispatch')
 class CandidateListView( ListView):
     model = Candidate_simplify
     template_name = './moderator/candidates/candidate_list.html'
