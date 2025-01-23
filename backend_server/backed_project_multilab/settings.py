@@ -164,7 +164,7 @@ USE_I18N = True
 
 USE_L10N = True
 #! login url"""
-LOGIN_URL = '/account/login'
+LOGIN_URL = '/login_view'
 USE_TZ = True
 # send email config
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
