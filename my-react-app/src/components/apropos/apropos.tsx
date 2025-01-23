@@ -1,5 +1,3 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 
 import React, { useState } from "react";
@@ -170,7 +168,7 @@ const Apropos: React.FC = () => {
         </p>
 
         {/* swiper */}
-        <Swiper
+        {/* <Swiper
           className="centered-slide-carousel swiper-container w-full overflow-hidden mx-[-20px] md:mx-[-48px]"
           grabCursor={true}
           spaceBetween={20}
@@ -216,7 +214,25 @@ const Apropos: React.FC = () => {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper>
+        </Swiper> */}
+
+        <div className="clients-grid">
+          {clients.map((clients, index) => (
+            <div key={index} className="clients-card">
+              <div className="image-wrapper">
+                <img
+                  src={clients.image}
+                  alt={clients.label}
+                  className="clients-image"
+                />
+              </div>
+
+              <div className="clients-content">
+                <h3 className="clients-title">{clients.label}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Arrow buttons placed below the cards */}
         <div className="arrow-buttons">
