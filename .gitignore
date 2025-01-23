@@ -4,3 +4,4 @@ backend_server/ParameterAnalyse/migrations/
 backend_server/static/
 backend_server/staticfiles/
 my-react-app/
+backend_server/django_error.log
