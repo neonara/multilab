@@ -1,4 +1,54 @@
-.formation-container {
+:root {
+  --blue: #013d8f;
+  --light-blue: #00a0d8;
+}
+p {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5; /* Improve readability */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5rem; /* Large header */
+}
+
+h2 {
+  font-size: 2rem; /* Medium header */
+}
+
+h3 {
+  font-size: 1.75rem; /* Smaller header */
+}
+
+h4 {
+  font-size: 1.5rem; /* Smaller header */
+}
+
+h5 {
+  font-size: 1.25rem; /* Smaller header */
+}
+
+h6 {
+  font-size: 1rem; /* Smallest header */
+}
+
+.formation-containerr {
+  padding: 0 40px;
 }
 .a3 {
   padding: 20px;

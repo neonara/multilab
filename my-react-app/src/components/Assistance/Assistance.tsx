@@ -4,8 +4,9 @@ import assistanceImage from "../Assistance/assets/Rectangle 16.jpg";
 import newImage from "../Assistance/assets/Rectangle 17.jpg";
 import img3 from "../Assistance/assets/Rectangle 392674.jpg";
 import img4 from "../Assistance/assets/Rectangle 39267.jpg";
-import back from "../formation/assets/Subtract2.jpg";
+import backimg from "@/assets/images/40-blue.png";
 import { Link } from "react-router-dom";
+import BannerImage from "../Analyses/BannerImage";
 const Assistance = () => {
   useEffect(() => {
     const elements = document.querySelectorAll(".animation-class");
@@ -33,15 +34,16 @@ const Assistance = () => {
   }, []);
 
   return (
-    <div>
+    <div className="assistance-container">
       {/* Section 1 */}
-      <div className="image-container">
+      {/* <div className="image-container">
         <img src={back} alt="Lab Worker" className="background-image" />
         <div className="text-container">
           <p className="line1">MULTILAB s.a</p>
           <p className="line2">ASSISTANCE ET AUDIT </p>
         </div>
-      </div>
+      </div> */}
+      <BannerImage backimg={backimg} title="ASSISTANCE ET CONSEIL" />
       <div className="containers">
         <div className="text-left animation-class">
           <h2 className="test">Une offre adaptée à tous vos besoins</h2>
@@ -114,7 +116,7 @@ const Assistance = () => {
         <img src={img4} className="image-left animation-class" alt="Image 4" />
 
         <div className="text-right animation-class ">
-          <h2 className="test">Assistance et conseil technique :</h2>
+          <h2 className="test">Assistance et conseil technique :</h2>
           <p>
             Nos équipes de Docteurs, ingénieurs et techniciens assurent un rôle
             de conseiller, et vous apportent leurs expertises et conseils pour
@@ -124,9 +126,11 @@ const Assistance = () => {
           </p>
         </div>
       </div>
-      <Link to="/Contact">
-        <button className="custom-formation-button">Contacter-nous</button>
-      </Link>
+      <div className="link">
+        <Link to="/Contact">
+          <button className="custom-formation-button">Contacter-nous</button>
+        </Link>
+      </div>
     </div>
   );
 };
