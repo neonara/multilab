@@ -3,7 +3,7 @@ import "swiper/swiper-bundle.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./Apropos.css";
+import "./apropos.css";
 import aprop from "@/assets/images/18.jpg";
 import lab from "@/assets/images/34.jpg";
 import laitImage from "@/assets/images/19.jpg";

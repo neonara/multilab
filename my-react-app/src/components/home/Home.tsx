@@ -17,7 +17,9 @@ import calendarIcon from "@/assets/icons/icon-calendar.svg";
 import log from "../home/assets/log.png";
 import AnalysesCard from "./AnalysesCard";
 
+
 import "./home.css";
+
 import ServicesCards from "./ServicesCards";
 import VideoSection from "./Video";
 import StatsSection from "./StatsSection";
