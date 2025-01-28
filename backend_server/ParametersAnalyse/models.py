@@ -19,7 +19,7 @@ class TypeDevi(models.Model):
         return self.type_alimentation_animale
     
     class Meta:
-        verbose_name_plural = "Ajouter Analyses de l’alimentation animale"
+        verbose_name_plural = "Ajouter Physicochimie des aliments pour animaux"
 
 class TypeDeviAnalyseMicrobiologieProduitsEaux(models.Model):
     type_analyse_microbiologie_produits_eaux = models.CharField(max_length=255)

@@ -33,12 +33,12 @@ function AnalysesCard() {
     {
       title: "Physicochimie des Eaux",
       image: img5, // Replace with your image path
-      link: "/physicochimie-eaux",
+      link: "/analyse-physicochimique-produits-eaux",
     },
     {
       title: "Microbiologie des produits cosmétiques et d’hygiène",
       image: img6, // Replace with your image path
-      link: "/microbiologie-cosmetiques-hygiene",
+      link: "/analyse-microbiologie-produits-cosmetique",
     },
   ];
 

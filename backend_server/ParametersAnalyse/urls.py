@@ -40,7 +40,7 @@ router.register(r'cosmetique', AnalysesProduitCosmetiqueViewSet)
 
 
 urlpatterns = [
-    path('multilab/', include(router.urls)),
+    path('', include(router.urls)),
     path('analyse/', analyse, name='analyse'),
     path('viandesetderives_list/', TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESCreateView.as_view(),
          name='viandesetderives_list'),

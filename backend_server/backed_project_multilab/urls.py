@@ -7,11 +7,14 @@ urlpatterns = [
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
 
     path('secret_multilab/', admin.site.urls),
-    path('MULTILAB/', include('account.urls')),
-    path('MULTILAB/', include('account.passwordurls')),
-    path('MULTILAB/', include('account.sendaccount')),
-    path('MULTILAB/', include('multi_lab.urls')),
-    path('MULTILAB/', include('ParametersAnalyse.urls')),
+    path('MULTILAB/', include([
+        path('', include('account.urls')),  # Account-related views
+        path('', include('account.passwordurls')),  # Password-related views
+        path('', include('account.sendaccount')),  # Account sending related views
+        path('', include('multi_lab.urls')),  # Multi Lab related views
+        path('', include('ParametersAnalyse.urls')),  # Parameters Analysis related views
+    ])),
+
 
 ]
 if settings.DEBUG:

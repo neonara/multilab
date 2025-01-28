@@ -14,7 +14,7 @@ router = DefaultRouter()
 router.register(r'reports', ReportViewSet, basename='report')  # Use ReportViewSet here
 
 urlpatterns = [
-     path('api/', include(router.urls)),
+     path('', include(router.urls)),
       path('api/login/', LoginView.as_view()),
     # path('/test', index, name= 'index'),
     path('login_view', login_view, name='login_view'),

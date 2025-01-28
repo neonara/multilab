@@ -11,6 +11,8 @@ class Persation(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     image = models.ImageField(upload_to='persations/', null=True, blank=True)
+    icon_image = models.ImageField(upload_to='persations/ ', null=True, blank=True)
+    link_description = models.TextField(blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='archived')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

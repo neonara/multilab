@@ -1,6 +1,8 @@
 import "../Parametres/Parametres.css";
-
-const microbiologieParameters = [
+import api from "../../lib/api";
+import { useEffect, useState } from "react";
+import {Analysesmicrobiologiquesproduitsalimentaires} from "../../types/types";
+const MICROBIOLOGIE_PARAMETERS = [
   [
     "Dénombrement des micro-organismes à 30 °C",
     "Dénombrement des micro-organismes à 30 °C",
@@ -30,24 +32,52 @@ const microbiologieParameters = [
     "Dénombrement des Pseudomonas spp à 22°C",
   ],
 ];
-
-const Card = ({ items }: { items: string[] }) => (
+// Helper function to chunk array into groups
+const chunkArray = (array: Analysesmicrobiologiquesproduitsalimentaires[], size: number) => {
+  const chunked = [];
+  for (let i = 0; i < array.length; i += size) {
+    chunked.push(array.slice(i, i + size));
+  }
+  return chunked;
+};
+const Card = ({ items }: { items: Analysesmicrobiologiquesproduitsalimentaires[] }) => (
   <div className="card">
-    <ul>
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
+   <ul className="space-y-2">
+        {items.map((item, index) => (
+          <li 
+            key={index} 
+            className="text-sm text-gray-700 hover:bg-gray-50 p-2 rounded transition-colors"
+          >
+            {item.type_analyses_microbiologiques_produits_alimentaires}
+          </li>
+        ))}
+      </ul>
   </div>
 );
 
 const Microbiologie = () => {
+  const [analyses, setAnalyses] = useState<Analysesmicrobiologiquesproduitsalimentaires[]>([]);
+  const getAnalyses = async() => {
+   
+    try {
+      const response = await api.get('/micro-alimentaires');
+     setAnalyses(response.data);
+    } catch (error) {
+      console.error('Error Fetching Perstation data', error);
+      console.log('Failed to fetch perstations');
+    }
+  };
+
+  useEffect(() => {
+    getAnalyses();
+  }, []);
+  const chunkedAnalyses = chunkArray(analyses, 8);
   return (
     <div className="container">
-      <h2>Paramètre d’analyses Physicochimiques des Produits d’Eaux</h2>
+      <h2>Paramètre d’analyses Physicochimiques des Produits Alimentaires</h2>
       <div className="grid-container">
-        {microbiologieParameters.map((items, index) => (
-          <Card key={index} items={items} />
+        {chunkedAnalyses.map((chunk, index) => (
+          <Card key={index} items={chunk} />
         ))}
       </div>
     </div>

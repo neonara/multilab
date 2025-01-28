@@ -25,7 +25,7 @@ LOGOUT_REDIRECT_URL = '/'
 SECRET_KEY = 'b_z73j80aa!3h9s+%ui*ii*bl%(cdw*w-tpukpqngcr7+!_dtw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 WHITENOISE_SKIP_MISSING = True
 ALLOWED_HOSTS = ["*"]
 WHITENOISE_AUTOREFRESH = False  # Enable auto-refresh for development
@@ -36,7 +36,7 @@ CSRF_COOKIE_SECURE = True
 
 INSTALLED_APPS = [
     'jazzmin',
-  
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -146,7 +146,7 @@ USE_I18N = True
 
 USE_L10N = True
 #! login url"""
-LOGIN_URL = '/account/login'
+LOGIN_URL = 'login_view'
 USE_TZ = True
 # send email config
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -172,6 +172,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, '../dist'),
+
 
 ]
 
