@@ -1,4 +1,4 @@
-import "./Formation.css"
+import "./Formation.css";
 import im from "./assets/1.jpg";
 import Sciences from "./assets/2.jpg";
 import Sécurité from "./assets/3.jpg";
@@ -6,8 +6,8 @@ import Management from "./assets/4.jpg";
 import Sécurité5 from "./assets/5.jpg";
 import Prélèvement from "./assets/6.jpg";
 import backimg from "./assets/Subtract2.jpg";
-import logo1 from "./assets/logo1.jpeg";
-import logo2 from "./assets/right.jpg";
+import logo1 from "@/assets/icons/icon-group.svg";
+import logo2 from "@/assets/icons/icon-collaborative.svg";
 
 import { Link } from "react-router-dom";
 import BannerImage from "../Analyses/BannerImage";
@@ -23,9 +23,21 @@ const Formation = () => {
         </div>
       </div> */}
       <BannerImage backimg={backimg} title="FORMATION" />
+      <p className="formation-para">
+        <strong>MULTILAB s.a</strong> propose à ses clients des formations
+        ciblées et approfondies en hygiène et sécurité alimentaire, ainsi que
+        sur diverses méthodes et techniques d'analyse. Nos programmes de
+        formation incluent des études de cas pratiques, des simulations et des
+        ateliers interactifs, permettant à vos équipes d'appliquer immédiatement
+        les connaissances acquises. Nous nous engageons à adapter nos formations
+        aux besoins spécifiques de chaque entreprise, afin de maximiser leur
+        impact et leur efficacité. Choisir <strong>MULTILAB s.a</strong>. pour
+        vos formations, c'est investir dans l'excellence opérationnelle et la
+        sécurité de vos produits.
+      </p>
 
       <div className="themes-section">
-        <h1 className="themes-title">Produits analysés</h1>
+        <h1 className="themes-title">Nos thèmes de formation</h1>
         <div className="themes-grid">
           <div className="theme">
             <img
@@ -33,7 +45,7 @@ const Formation = () => {
               alt="Bonne pratiques d'hygiene"
               className="theme-image"
             />
-            <p>Viandes et dérivés</p>
+            <p>Bonne pratiques d'hygiene</p>
           </div>
           <div className="theme">
             <img
@@ -41,7 +53,7 @@ const Formation = () => {
               alt="Sciences Analytiques"
               className="theme-image"
             />
-            <p>Huile et produits gras</p>
+            <p>Sciences Analytiques</p>
           </div>
           <div className="theme">
             <img
@@ -49,7 +61,7 @@ const Formation = () => {
               alt="Sécurité des Aliments"
               className="theme-image"
             />
-            <p>Miel</p>
+            <p>Sécurité des Aliments</p>
           </div>
           <div className="theme">
             <img
@@ -57,7 +69,7 @@ const Formation = () => {
               alt="Management de la Qualité"
               className="theme-image"
             />
-            <p>Produit laitiers</p>
+            <p>Management de la Qualité</p>
           </div>
           <div className="theme">
             <img
@@ -65,7 +77,7 @@ const Formation = () => {
               alt="Sécurité des Eaux"
               className="theme-image"
             />
-            <p>Aliments des animaux</p>
+            <p>Sécurité des Eaux</p>
           </div>
           <div className="theme">
             <img
@@ -73,11 +85,12 @@ const Formation = () => {
               alt="Bonnes Pratiques de Prélèvement"
               className="theme-image"
             />
-            <p>Produits hygiène et cosmétiques</p>
+            <p>Bonnes Pratiques de Prélèvement</p>
           </div>
         </div>
       </div>
 
+      <h2 className="section-title">Nos méthodes pédagogiques</h2>
       <div className="formation-containers">
         <div className="formation-card">
           <img
@@ -85,12 +98,14 @@ const Formation = () => {
             alt="Formation sur mesure"
             className="formation-image"
           />
-          <h3>Formations sur mesure</h3>
-          <p>
-            Des programmes de formation adaptés aux besoins spécifiques, aux
-            niveaux de compétences et aux rythmes d'apprentissage de chaque
-            participant.
-          </p>
+          <div className="formation-text">
+            <h3>Formations sur mesure</h3>
+            <p>
+              Des programmes de formation adaptés aux besoins spécifiques, aux
+              niveaux de compétences et aux rythmes d'apprentissage de chaque
+              participant.
+            </p>
+          </div>
         </div>
         <div className="formation-card">
           <img
@@ -98,26 +113,29 @@ const Formation = () => {
             alt="Formations Collaboratives"
             className="formation-image"
           />
-          <h3>Formations Collaboratives</h3>
-          <p>
-            Favoriser le partage de connaissances et de bonnes pratiques, la
-            mutualisation des compétences et la participation active à des mises
-            en situation interactives pour une expérience d'apprentissage
-            enrichissante.
-          </p>
+          <div className="formation-text">
+            <h3>Formations Collaboratives</h3>
+            <p>
+              Favoriser le partage de connaissances et de bonnes pratiques, la
+              mutualisation des compétences et la participation active à des
+              mises en situation interactives pour une expérience
+              d'apprentissage.
+            </p>
+          </div>
         </div>
       </div>
 
       <div className="custom-formation-container">
         <h2 className="custom-formation-heading">
-          Vous ne trouvez pas la formation
+          Vous ne trouvez pas la formation dont vous avez besoin ?
         </h2>
-        <h2 className="custom-formation-heading">dont vous avez besoin ?</h2>
-        <Link to="/Contact">
-          <button className="custom-formation-button">
-            Demander une formation personnalisée
-          </button>
-        </Link>
+        <div className="link">
+          <Link to="/Contact">
+            <button className="custom-formation-button">
+              Demander une formation personnalisée
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

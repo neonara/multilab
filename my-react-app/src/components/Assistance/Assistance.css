@@ -78,6 +78,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
   gap: 30px;
   padding: 20px;
   margin: 20px 20px;
@@ -207,15 +208,7 @@ h6 {
   border-radius: 17px;
   object-fit: cover;
 }
-/* .p {
-  width: 709.88px;
-  height: 250px;
-  top: 66px;
-  gap: 0px;
-  opacity: 0px;
-  text-align: left;
-  margin-left: 20px;
-} */
+
 .test {
   width: 100%;
   height: fit-content;
@@ -242,11 +235,14 @@ h6 {
 }
 
 .custom-formation-button {
-  padding: 8px 16px;
-  margin: 20px 0;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 40px 0;
   border-radius: 8px;
   border: none;
   opacity: 0px;
+  font-size: 18px;
+  font-weight: bold ;
   transition: 0.3s ease-in-out;
 }
 
@@ -254,4 +250,75 @@ h6 {
   background-color: white;
   color: #00a2e8;
   border: solid 1px rgba(0, 160, 216, 1);
+}
+
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: 1150px) {
+  .containers {
+    justify-content: center;
+    align-items: center;
+  }
+  
+}
+
+@media screen and (max-width: 800px) {
+  .containers {
+    margin: 50px 0;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .text-left,
+  .text-right {
+    order: 1;
+    margin-left: 0;
+  }
+
+  .image-right,
+  .image-left {
+    order: 2;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    margin-bottom: 20px; /* Add margin-bottom to images */
+  }
+
+  .text-left p,
+  .text-right p {
+    order: 3;
+  }
+
+  .animation-class,
+  .animation-class-r,
+  .image-right,
+  .image-left,
+  .text-left,
+  .text-right {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .test {
+    font-size: 20px;
+    font-weight: bold;
+
+    line-height: 24px;
+  }
 }

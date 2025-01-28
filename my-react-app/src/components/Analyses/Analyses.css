@@ -163,6 +163,7 @@ h6 {
 object-fit: contain;
 }
 .image-container {
+  position: relative;
   width: 100%;
   margin-top: 20px;
   margin-bottom: 50px 
@@ -178,9 +179,10 @@ object-fit: contain;
 
 .text-container {
   position: absolute;
-  bottom: 0; /* Adjust positioning as needed */
-  left: 0;
-  color: white; /* Adjust text color if needed */
+  width: auto; /* Make width dynamic */
+  bottom: 20px; /* Adjust positioning as needed */
+  left: 20px; /* Adjust positioning as needed */
+  color: white;
 }
 
 .title-text {
@@ -300,6 +302,13 @@ object-fit: contain;
 
   .subtitle-text {
 
-    font-size: 40px;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .text-container {
+    width: auto; /* Make width dynamic */
+    bottom: 0; /* Adjust positioning as needed */
+    left: 0; /* Adjust positioning as needed */
   }
 }
