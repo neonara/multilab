@@ -178,37 +178,11 @@ const Poste = () => {
 
           {/* Job Cards Section */}
           <div className="job-cards">
-            {/* Map over a list of job offers to generate cards dynamically */}
-            {[1, 2, 3, 4].map((_, index) => (
-              <div key={index} className="job-card">
-                <div className="job-card-header">
-                  <div className="card-logo-container">
-                    <img src={doc} alt="job icon" className="job-icon" />
-                  </div>
-                  <div className="job-details">
-                    <h4>Désignation de l’offre</h4>
-                    <p>Temps plein</p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
-                </div>
-                <div className="job-card-footer">
-                  <div className="job-info">
-                    <p>
-                      <i className="fas fa-briefcase"></i> CDD
-                    </p>
-                    <p>
-                      <i className="fas fa-calendar-alt"></i> 4 ans
-                    </p>
-                  </div>
-                  <button className="apply-button">Postuler</button>
-                </div>
-              </div>
-            ))}
+            <div className="job-card"></div>
           </div>
         </div>
       </div>
+
       <div
         className="linkedin-section"
         style={{

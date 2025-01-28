@@ -63,10 +63,12 @@ h6 {
   flex-grow: 1;
   position: relative;
   color: white;
+  background-color: transparent;
   font-size: 35px;
   text-align: left;
   margin-left: clamp(0px, 2vw, 50px);
-  margin-bottom: clamp(50px, 5vw, 80px);
+  /* margin-bottom: clamp(50px, 5vw, 80px); */
+  /* padding-bottom: clamp(50px, 5vw, 80px); */
 }
 
 .themes-title::after {
@@ -84,9 +86,11 @@ h6 {
   display: flex;
   overflow-x: auto;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-wrap: wrap;
   gap:40px clamp(20px, 10vw, 120px) ;
+  padding-top: clamp(50px, 5vw, 80px);
+
 }
 
 .theme{
