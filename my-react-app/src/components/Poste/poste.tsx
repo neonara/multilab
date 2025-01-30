@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Poste.css";
-import back from "./assets/Subtracts.jpg";
+import back from "@/assets/images/53.jpg";
 import linkedin from "./assets/linkedin.jpg";
-import doc from "./assets/document.png";
+import offre from "@/assets/icons/icon-offre.svg";
+import { IoMdSearch } from "react-icons/io";
 
 const Poste = () => {
   // State for filters
@@ -50,6 +51,7 @@ const Poste = () => {
     });
   };
 
+  const postsNum = 4; // Number of posts
   return (
     <div className="page-container">
       <div className="poste-container">
@@ -57,48 +59,52 @@ const Poste = () => {
           <img src={back} alt="À propos banner" className="banner-image" />
         </div>
         <h2 className="poste-title">MULTILAB sa recrute</h2>
+
         <div className="search-bar">
-          <div className="input-group">
+          <div className="search-input-container">
+            <IoMdSearch className="search-icon" />
             <input
               type="text"
               placeholder="Titre du poste ou mot-clé"
-              className="search-input"
+              className="search-input input-item"
             />
-            <select
-              className="dropdown"
-              value={unite}
-              onChange={handleUniteChange}
-            >
-              <option value="Administration">Administration</option>
-              <option value="Finance">Finance</option>
-              <option value="Comptabilité">Comptabilité</option>
-              <option value="Analyse">Analyse</option>
-            </select>
-            <select
-              className="dropdown"
-              value={emploi}
-              onChange={handleEmploiChange}
-            >
-              <option value="Emploi">Emploi</option>
-              <option value="Stage">Stage</option>
-            </select>
-            <button
-              className="reset-button"
-              onClick={() => {
-                setUnite("");
-                setEmploi("");
-              }}
-            >
-              Réinitialiser
-            </button>
-            <button className="search-button" onClick={handleSearch}>
-              Chercher
-            </button>
           </div>
+          <select
+            className="dropdown input-item"
+            value={unite}
+            onChange={handleUniteChange}
+          >
+            <option value="Administration">Administration</option>
+            <option value="Finance">Finance</option>
+            <option value="Comptabilité">Comptabilité</option>
+            <option value="Analyse">Analyse</option>
+          </select>
+          <select
+            className="dropdown input-item"
+            value={emploi}
+            onChange={handleEmploiChange}
+          >
+            <option value="Emploi">Emploi</option>
+            <option value="Stage">Stage</option>
+          </select>
+          <button
+            className="reset-button"
+            onClick={() => {
+              setUnite("");
+              setEmploi("");
+            }}
+          >
+            Réinitialiser
+          </button>
+          <button className="search-button" onClick={handleSearch}>
+            Chercher
+          </button>
         </div>
+
         <div className="content-wrapper">
           {/* Filters Section */}
           <div className="filters">
+            <h2>Filtrer</h2>
             <h3>Type de contrat</h3>
             <div className="filter-option">
               <input
@@ -177,9 +183,16 @@ const Poste = () => {
           </div>
 
           {/* Job Cards Section */}
-          <div className="job-cards">
-            <div className="job-card"></div>
-          </div>
+          <span>
+            <h2 className="post-num">{postsNum} Postes Disponible</h2>
+            <div className="job-cards">
+              <div className="job-card">
+                <div className="job-icon">
+                  <img src={offre} alt="" />
+                </div>
+              </div>
+            </div>
+          </span>
         </div>
       </div>
 
@@ -191,8 +204,9 @@ const Poste = () => {
           backgroundPosition: "center", // Adjust to show a part of the image, e.g., 'top', 'center', 'bottom', etc.
           height: "300px", // Set the height you want for the visible section
           width: "100%", // Set the width (could be 100% of the container or fixed)
-          position: "relative", // Needed for absolute positioning of content
+          // Needed for absolute positioning of content
           overflow: "hidden", // Hide parts of the image outside the container
+          borderRadius: "17px", // Optional: round the corners of the div
         }}
       >
         <div className="content">
