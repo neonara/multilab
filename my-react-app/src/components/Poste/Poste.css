@@ -26,6 +26,7 @@ h2 {
 
 .filters {
   width: 20%;
+  min-width: 220px;
   padding: 20px;
   border-radius: 10px;
 }
@@ -66,13 +67,6 @@ border: 1px solid #666;
   margin-left: 10px;
 }
 
-.job-cards {
-  width: 75%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
 .post-num {
   color: black;
   font-size: 18px;
@@ -80,33 +74,63 @@ border: 1px solid #666;
   text-align: left;
 }
 
+
+
+
+
+.job-section{
+  display: flex;
+  justify-content: start;
+  gap: clamp(20px, 5vw, 120px);
+  margin: 60px 0;
+}
+
+.job-cards-container{
+  
+  width: 100%;
+  position: relative;
+}
+
+.job-cardss{
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  width: 100%;
+  row-gap: clamp(20px, 5vw, 40px);
+  column-gap: clamp(60px, 6vw, 110px);
+  margin: 20px 0;
+}
+
 .job-card {
   border: 1px solid var(--blue);
   box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.1);
-  width: 380px;
-  height: 416px;
+  width: 100%;
+  max-width: 340px ;
+  min-width: 260px;
+  height: 368px;
   padding: 24px;
-  gap: 10px;
   border-radius: 17px;
-  border: 1px 0px 0px 0px;
-  opacity: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.job-card-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+.job-card h2{
+  color: var(--blue);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 24px 0 8px;
+  text-align: left;
 }
-.card-logo-container {
-  background-color: var(--light-blue); /* Dark blue background */
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  margin-top: -40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.job-card h3 {
+  color: var(--green);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.job-card p{
+  font-size: 16px;
+  text-align: justify;
 }
 
 .job-icon {
@@ -121,30 +145,36 @@ border: 1px solid #666;
   color: var(--blue);
 }
 
-.job-details p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #777;
-}
-
-.job-card-footer {
+.job-details{
+  margin: 20px 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: start;
+  gap: clamp(20px, 2vw, 120px);
+}
+
+.job-detail{
+  display: flex;
   align-items: center;
+  gap: 8px;
 }
 
-.job-info p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--blue);
+.job-details p {
+  flex-shrink: 0;
+  font-size: 16px;
+  color: #343434;
 }
 
-.apply-button {
-  padding: 10px 20px;
+.postuler-button {
+  margin-top: 4px;
+  width: fit-content;
+  padding: 6px 20px;
+  font-size: 18px;
+  font-weight: bold;
   background-color: var(--blue);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -169,6 +199,7 @@ border: 1px solid #666;
   /* shadoww */
   box-shadow: 0px 16px 40px 0px rgba(154, 170, 207, 0.20);
 }
+
 .search-input-container {
   display: flex;
   justify-content: center;
@@ -183,11 +214,27 @@ border: 1px solid #666;
   font-size: 18px;
 }
 
+
 .search-bar .dropdown {
   padding: 12px 15px;
-  border: white;
-  /* background-color: white; */
+  padding-right: 40px;
+  border: none; /* Make borderless */
   font-size: 18px;
+  min-width: fit-content;
+  appearance: none; /* Remove default arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px; /* Adjust size of the arrow */
+  background-color: white; /* Ensure background color is white */
+  position: relative; /* For positioning the icon */
+  outline: none;
+}
+
+.separator {
+  min-width: 0.5px;
+  height: 70px;
+  margin:-10px 0;
+  background-color: #888888;
 }
 
 .reset-button,

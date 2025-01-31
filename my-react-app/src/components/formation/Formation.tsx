@@ -15,13 +15,6 @@ import BannerImage from "../Analyses/BannerImage";
 const Formation = () => {
   return (
     <div className="formation-containerr">
-      {/* <div className="image-container">
-        <img src={back} alt="Lab Worker" className="background-image" />
-        <div className="text-container">
-          <p className="line1">MULTILAB s.a</p>
-          <p className="line2">ASSISTANCE ET AUDIT </p>
-        </div>
-      </div> */}
       <BannerImage backimg={backimg} title="FORMATION" />
       <p className="formation-para">
         <strong>MULTILAB s.a</strong> propose à ses clients des formations

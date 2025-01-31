@@ -1,4 +1,8 @@
 /* src/pages/contact.css */
+:root {
+  --green: #3A8F3A;
+}
+
 .contact {
   display: flex;
   justify-content: space-between;
@@ -370,3 +374,4 @@ background: rgba(217, 217, 217, 0.50);
   font-size: 16px;
   color: #000;
 }
+

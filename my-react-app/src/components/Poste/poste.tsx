@@ -3,7 +3,10 @@ import "./Poste.css";
 import back from "@/assets/images/53.jpg";
 import linkedin from "./assets/linkedin.jpg";
 import offre from "@/assets/icons/icon-offre.svg";
+import contrat from "@/assets/icons/icon-contrat.svg";
+import experiencee from "@/assets/icons/icon-experience.svg";
 import { IoMdSearch } from "react-icons/io";
+import arrowDown from "@/assets/icons/icon-arrow-down.svg"; // Add this line
 
 const Poste = () => {
   // State for filters
@@ -52,6 +55,73 @@ const Poste = () => {
   };
 
   const postsNum = 4; // Number of posts
+  const jobs = [
+    {
+      title: "Développeur Full Stack",
+      time: "Full-time",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      contract: "CIVP",
+      experience: "3 ans",
+    },
+    {
+      title: "Développeur Full Stack",
+      time: "Part-time",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      contract: "CIVP",
+      experience: "3 ans",
+    },
+    {
+      title: "Développeur Full Stack",
+      time: "Part-time",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      contract: "CIVP",
+      experience: "3 ans",
+    },
+    {
+      title: "Développeur Full Stack",
+      time: "Part-time",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      contract: "CIVP",
+      experience: "3 ans",
+    },
+  ];
+
+  interface Job {
+    title: string;
+    time: string;
+    description: string;
+    contract: string;
+    experience: string;
+  }
+
+  function Card(job: Job) {
+    return (
+      <div className="job-card">
+        <div className="job-icon">
+          <img src={offre} alt="" />
+        </div>
+        <h2>{job.title}</h2>
+        <h3>{job.time}</h3>
+        <p>{job.description}</p>
+        <div className="job-details">
+          <div className="job-detail">
+            <img src={contrat} alt="" />
+            <p>{job.contract}</p>
+          </div>
+          <div className="job-detail">
+            <img src={experiencee} alt="" />
+            <p>{job.experience}</p>
+          </div>
+        </div>
+        <button className="postuler-button">Postuler</button>
+      </div>
+    );
+  }
+
   return (
     <div className="page-container">
       <div className="poste-container">
@@ -69,24 +139,29 @@ const Poste = () => {
               className="search-input input-item"
             />
           </div>
+          <div className="separator"></div> {/* Add this line */}
           <select
             className="dropdown input-item"
             value={unite}
             onChange={handleUniteChange}
+            style={{ backgroundImage: `url(${arrowDown})` }} // Add this line
           >
             <option value="Administration">Administration</option>
             <option value="Finance">Finance</option>
             <option value="Comptabilité">Comptabilité</option>
             <option value="Analyse">Analyse</option>
           </select>
+          <div className="separator"></div> {/* Add this line */}
           <select
             className="dropdown input-item"
             value={emploi}
             onChange={handleEmploiChange}
+            style={{ backgroundImage: `url(${arrowDown})` }} // Add this line
           >
             <option value="Emploi">Emploi</option>
             <option value="Stage">Stage</option>
           </select>
+          <div className="separator"></div> {/* Add this line */}
           <button
             className="reset-button"
             onClick={() => {
@@ -101,7 +176,7 @@ const Poste = () => {
           </button>
         </div>
 
-        <div className="content-wrapper">
+        <div className="job-section">
           {/* Filters Section */}
           <div className="filters">
             <h2>Filtrer</h2>
@@ -183,14 +258,12 @@ const Poste = () => {
           </div>
 
           {/* Job Cards Section */}
-          <span>
+          <span className="job-cards-container">
             <h2 className="post-num">{postsNum} Postes Disponible</h2>
-            <div className="job-cards">
-              <div className="job-card">
-                <div className="job-icon">
-                  <img src={offre} alt="" />
-                </div>
-              </div>
+            <div className="job-cardss">
+              {jobs.map((job) => (
+                <Card {...job} />
+              ))}
             </div>
           </span>
         </div>
