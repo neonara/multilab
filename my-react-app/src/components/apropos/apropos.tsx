@@ -95,7 +95,7 @@ const Apropos: React.FC = () => {
           <img
             src={bannerImage}
             alt="À propos banner"
-            className="banner-image"
+            className="banner-apropos"
           />
           <div className="banner-text">
             <h2>À propos</h2>

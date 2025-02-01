@@ -3,42 +3,36 @@ import tt from "../home/assets/tt.png";
 import phy from "../home/assets/phy.png";
 import img4 from "../home/assets/Rectangle 3898.png";
 import img6 from "@/assets/analyse6.jpg";
-import img5 from "../home/assets/img5.png";
+// import img5 from "../home/assets/img5.png";
 import { GoChevronRight } from "react-icons/go";
 import "./home.css";
-
 
 function AnalysesCard() {
   const analyses = [
     {
-      title: "Microbiologie des Produits Alimentaires",
+      title: "microbiologiques des Produits Alimentaires",
       image: card, // Replace with your image path
-      link: "/param-danalyse",
+      link: "/parametre/microbiologiques",
     },
     {
-      title: "Microbiologie des Eaux",
+      title: "Microbiologiques des Eaux",
       image: tt, // Replace with your image path
-      link: "/Physicochimiques",
+      link: "/parametre/microbiologiquesEaux",
     },
     {
-      title: "Physicochimies des Produits Alimentaires",
+      title: "Physicochimiques des Eaux",
       image: phy, // Replace with your image path
-      link: "/parametre",
+      link: "/parametre/physicochimiquesEaux",
     },
     {
       title: "Physicochimie des aliments pour animaux",
       image: img4, // Replace with your image path
-      link: "/physicochimie-aliments-animaux",
-    },
-    {
-      title: "Physicochimie des Eaux",
-      image: img5, // Replace with your image path
-      link: "/physicochimie-eaux",
+      link: "/parametre/alimentsAnimaux",
     },
     {
       title: "Microbiologie des produits cosmétiques et d’hygiène",
       image: img6, // Replace with your image path
-      link: "/microbiologie-cosmetiques-hygiene",
+      link: "/parametre/cosmetiquesHygiene",
     },
   ];
 

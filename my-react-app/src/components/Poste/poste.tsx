@@ -126,7 +126,7 @@ const Poste = () => {
     <div className="page-container">
       <div className="poste-container">
         <div className="banner-container">
-          <img src={back} alt="À propos banner" className="banner-image" />
+          <img src={back} alt="À propos banner" className="banner-poste" />
         </div>
         <h2 className="poste-title">MULTILAB sa recrute</h2>
 
