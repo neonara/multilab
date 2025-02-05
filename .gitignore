@@ -1,10 +1,10 @@
-<<<<<<< HEAD
+
 backend_server/account/migrations/
 backend_server/multi_lab/migrations/
 backend_server/ParameterAnalyse/migrations/
 backend_server/static/
 backend_server/staticfiles/
-my-react-app/
-=======
+
+
 node_modules/
->>>>>>> front-end
+
