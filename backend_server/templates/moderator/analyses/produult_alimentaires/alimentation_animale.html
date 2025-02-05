@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static './css/project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
     <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -29,6 +29,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
+    <link rel="stylesheet" href="{% static './css/analyses/analyseMPA.css' %}">
 </head> 
 <body>
   <div id="wrapper">
@@ -88,14 +89,14 @@
                   <div class="card-header border-0 d-flex ">
                     
                     <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAnalyses">
-                      Create un paramètre d’analyse <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
+                      Ajouter un paramètre d’analyse <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
                         <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
                         <path d="M12.096 6.223A5 5 0 0 0 13 5.698V7c0 .289-.213.654-.753 1.007a4.5 4.5 0 0 1 1.753.25V4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16c.536 0 1.058-.034 1.555-.097a4.5 4.5 0 0 1-.813-.927Q8.378 15 8 15c-1.464 0-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13h.027a4.6 4.6 0 0 1 0-1H8c-1.464 0-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10q.393 0 .774-.024a4.5 4.5 0 0 1 1.102-1.132C9.298 8.944 8.666 9 8 9c-1.464 0-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777M3 4c0-.374.356-.875 1.318-1.313C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4"/>
                       </svg>
                     </button>
                   </div>
                   <div class="card-header border-0 justify-content-center ">
-                    <h3 class="mb-0">Analyses de l’alimentation animale</h3>
+                    <h3 class="mb-0">Analyses des Aliments des Animaux</h3>
                   </div>
                   <div class="service-section-header">
                     
@@ -148,18 +149,23 @@
                            
                             <td>{{ indx.created_at|date:"Y-m-d" }}</td>
                             <td>
-                              <div class="avatar-group">
+                              <div class="action-buttons1 d-flex">
                                
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateAnalyse{{indx.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                  </svg></button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#updateAnalyse{{indx.pk}}" class="action-btn edit-btn"  data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                  <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                    <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg></button>
                                   <form method="post" action="{% url 'alimentation_animale_delete' indx.pk %}" style="display:inline;">
                                     {% csrf_token %}
-                                  <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
-                                    <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
-                                  </svg></button>  
+                                    <button type="submit" class="action-btn delete-btn" title="Delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+                                      <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                          <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                          <path d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                          <path d="M10 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                          <path d="M14 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                      </svg>
+                                  </button> 
                                 </form>
                                   
                               </div>
@@ -200,7 +206,24 @@
               
               
             <!-- /.container-fluid -->
-
+             <!-- Add this right after the table -->
+ <div class="pagination-container mt-4">
+  <nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+      <li class="page-item">
+      <a class="page-link" href="#" id="prevPage" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+      </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#" id="currentPage">1</a></li>
+      <li class="page-item">
+      <a class="page-link" href="#" id="nextPage" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+      </a>
+      </li>
+  </ul>
+  </nav>
+</div>
         </div>
         <!-- End of Main Content -->
 
@@ -240,56 +263,8 @@
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Custom JS -->
-<script src="{% static './js/script_dashboard.js' %}"></script>
-    <script>
-        function searchAnalyse() {
-          var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
-          input = document.getElementById("searchInput");
-          filter = input.value.toUpperCase();
-          table = document.getElementsByClassName("table")[0];
-          tr = table.getElementsByTagName("tr");
-          for (i = 0; i < tr.length; i++) {
-              td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column (title))
-              td2 = tr[i].getElementsByTagName("td")[1]; // Get the second column (created_at)
-              if (td1 && td2) {
-                  txtValue1 = td1.textContent || td1.innerText;
-                  txtValue2 = td2.textContent || td2.innerText;
-                  if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
-                      tr[i].style.display = "";
-                  } else {
-                      tr[i].style.display = "none";
-                  }
-              }
-          }
-        }
-        
-        function resetSearch() {
-          var input = document.getElementById("searchInput");
-          input.value = "";
-          var rows = document.querySelectorAll('.table tbody tr');
-          rows.forEach(function(row) {
-              row.style.display = 'table-row';
-          });
-      }
-      function changeEntriesPerPage(select) {
-        var table = document.querySelector('.table');
-        var rows = table.querySelectorAll('tbody tr');
-    
-        // Hide all rows
-        rows.forEach(function(row) {
-            row.style.display = 'none';
-        });
-    
-        // Show only selected number of rows
-        var selectedValue = parseInt(select.value);
-        for (var i = 0; i < selectedValue; i++) {
-            if (rows[i]) {
-                rows[i].style.display = 'table-row';
-            }
-        }
-    }
-    
-    </script>
+<script src="{% static './js/analyses/analyseMPA.js' %}"></script>
+   
     
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

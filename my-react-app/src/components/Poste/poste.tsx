@@ -7,11 +7,13 @@ import contrat from "@/assets/icons/icon-contrat.svg";
 import experiencee from "@/assets/icons/icon-experience.svg";
 import { IoMdSearch } from "react-icons/io";
 import arrowDown from "@/assets/icons/icon-arrow-down.svg"; // Add this line
+import api from "../../lib/api"
 
 const Poste = () => {
   // State for filters
   const [unite, setUnite] = useState("Tous les unités d’affectation");
   const [emploi, setEmploi] = useState("Emploi");
+  
 
   const handleUniteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setUnite(e.target.value);
@@ -57,7 +59,7 @@ const Poste = () => {
   const postsNum = 4; // Number of posts
   const jobs = [
     {
-      title: "Développeur Full Stack",
+      title: "MULTILAB postion",
       time: "Full-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
@@ -65,7 +67,7 @@ const Poste = () => {
       experience: "3 ans",
     },
     {
-      title: "Développeur Full Stack",
+      title: "MULTILAB postion",
       time: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
@@ -73,7 +75,7 @@ const Poste = () => {
       experience: "3 ans",
     },
     {
-      title: "Développeur Full Stack",
+      title: "MULTILAB postion",
       time: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
@@ -81,7 +83,7 @@ const Poste = () => {
       experience: "3 ans",
     },
     {
-      title: "Développeur Full Stack",
+      title: "MULTILAB postion",
       time: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",

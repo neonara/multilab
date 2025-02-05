@@ -19,7 +19,7 @@ class TypeDevi(models.Model):
         return self.type_alimentation_animale
     
     class Meta:
-        verbose_name_plural = "Ajouter Analyses de l’alimentation animale"
+        verbose_name_plural = "Ajouter Physicochimie des aliments pour animaux"
 
 class TypeDeviAnalyseMicrobiologieProduitsEaux(models.Model):
     type_analyse_microbiologie_produits_eaux = models.CharField(max_length=255)
@@ -86,3 +86,11 @@ class TypeDeviAnalysesmicrobiologiquesproduitsalimentaires(models.Model):
     
     class Meta:
         verbose_name_plural = "Ajouter Analyses Microbiologiques des Produits Alimentaires"
+class AnalysesProduitCosmetique(models.Model):
+    type_analyses_microbiologiques_produits_cosmetique = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.type_analyses_microbiologiques_produits_cosmetique
+    
+    class Meta:
+        verbose_name_plural = "Ajouter Analyses Microbiologiques des Produits Cosmétique et D'hygiène"

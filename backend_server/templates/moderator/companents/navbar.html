@@ -1,4 +1,5 @@
 {% block content %}
+{% load static %}
 
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
@@ -37,25 +38,24 @@
         </li>
 
         <!-- Nav Item - Alerts -->
-        {% comment %}
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <!-- Counter - Alerts -->
-                    <span class="badge badge-danger badge-counter">3+</span>
-                </a>
-                <!-- Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="alertsDropdown">
-                    <h6 class="dropdown-header">
-                        Notification
-                    </h6>
-                    <div id="notifications-dropdown"><!-- Initialize notifications dropdown --></div>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <span class="badge badge-danger badge-counter" id="notif-counter"></span>
+            </a>
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                    Notifications
+                </h6>
+                <div id="notifications-dropdown">
+                    <!-- Notifications will be loaded here -->
                 </div>
-            </li>
-        {% endcomment %}
+                <a class="dropdown-item text-center small text-gray-500" href="#">Voir toutes les notifications</a>
+            </div>
+        </li>
+        
 
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
@@ -80,4 +80,8 @@
     </ul>
 
 </nav>
+
+
+<script src="{% static './js/notifications.js' %}"></script>
+
 {% endblock %}

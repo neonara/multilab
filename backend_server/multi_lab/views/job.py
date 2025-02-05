@@ -10,6 +10,7 @@ from ..models.offres import Offre
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+
 class Offre_descriptionViewSet(viewsets.ModelViewSet):
     queryset = Offre_description.objects.all()
     serializer_class = Offre_descriptionSerializer

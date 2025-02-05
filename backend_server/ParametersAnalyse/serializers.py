@@ -52,3 +52,7 @@ class TypeDeviAnalysesmicrobiologiquesproduitsalimentairesSerializer(serializers
     class Meta:
         model = TypeDeviAnalysesmicrobiologiquesproduitsalimentaires
         fields = '__all__'
+class AnalysesProduitCosmetiqueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model =AnalysesProduitCosmetique
+        fields = '__all__'

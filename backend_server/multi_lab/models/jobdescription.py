@@ -3,7 +3,7 @@ from django.db import models
 class Offre_description(models.Model):
     STATUS_CHOICES = [
         ('pending', 'Privé'),
-        ('approved', 'Publique'),
+        ('approved', 'Publié'),
        
     ]
     CHOICES = (

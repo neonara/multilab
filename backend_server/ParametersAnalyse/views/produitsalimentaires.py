@@ -13,6 +13,10 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+class TypeDeviAnalysesmicrobiologiquesproduitsalimentairesViewSet(viewsets.ModelViewSet):
+    queryset = TypeDeviAnalysesmicrobiologiquesproduitsalimentaires.objects.all()
+    serializer_class = TypeDeviAnalysesmicrobiologiquesproduitsalimentairesSerializer
 #! ----------------TypeDeviAnalysesmicrobiologiquesproduitsalimentaires----------------
 @method_decorator(login_required(), name='dispatch')
 class TypeDeviAnalysesmicrobiologiquesproduitsalimentairesCreateView(CreateView):

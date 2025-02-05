@@ -18,8 +18,8 @@
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1uUjPW7dJnp4zhdg/g+Kw1RtW3j0RbBzZ97sI49czhI8JyLrDkljvnQzwDqprLqc+ay5Ypygcjte6cJnTktVUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static './css/project.css' %}">
-    <link rel="stylesheet" href="{% static './css/clientdash.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/clientdash.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -28,7 +28,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link rel="stylesheet" href="{% static './css/dasboardmaodirator.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dasboardmaodirator.css' %}">
+    <link rel="stylesheet" href="{% static 'css/job.css' %}">
 </head>
 <body>
     <div id="wrapper">
@@ -61,7 +62,11 @@
                     <div class="card shadow">
                         <div class="app-body-main-content">
                     <section class="service-section">
-                        <h2>Liste d'offre d'emploi</h2>
+                        <div class="card-header border-0">
+                            <h3 class="mb-0">Liste des offres d'emploi</h3>
+    
+                          </div>
+                        <h2></h2>
                         <button  type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#createStage">
                             Create de une offre d'emploi <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-database-add" viewBox="0 0 16 16">
                             <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0"/>
@@ -87,12 +92,12 @@
                                 <select id="status-filter" onchange="filterStatus(this.value)">
                                     <option value="">Tous</option>
                                     <option value="pending">Privé</option>
-                                    <option value="approved">Publique</option>
+                                    <option value="approved">Publié</option>
                                 </select> <i class="bi bi-caret-down"></i></div>
                                 <div class="dropdown-field">
                                  <select id="status-filter" onchange="filterContrat(this.value)">
                                     <option value="">Tous</option>
-                                    <option value="CIVP">CIVP</option>
+                                    <option value="CIVP">SIVP</option>
                                     <option value="CDI">CDI</option>
                                     <option value="CDD">CDD</option>
                                     <option value="Karama">Karama</option>
@@ -169,20 +174,28 @@
                                     </td>
                                     <td>{{ post.created_at|date:"Y-m-d" }}</td>
                                       <td>
-                                        <div class="avatar-group">
-                                        <div style="display:inline;">  <button  data-bs-toggle="modal" data-bs-target="#postModal{{post.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                            <i class="bi bi-eye"></i>  </button></div>
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#postUpdate{{post.pk}}" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                                </svg>                               </button>
+                                        <div class="action-buttons1 d-flex">
+                                        <button  data-bs-toggle="modal" data-bs-target="#postModal{{post.pk}}" class="action-btn view-btn" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                            <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg> </button>
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#postUpdate{{post.pk}}" class="action-btn edit-btn" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M18.5 2.50001C18.8978 2.10219 19.4374 1.87869 20 1.87869C20.5626 1.87869 21.1022 2.10219 21.5 2.50001C21.8978 2.89784 22.1213 3.4374 22.1213 4.00001C22.1213 4.56262 21.8978 5.10219 21.5 5.50001L12 15L8 16L9 12L18.5 2.50001Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>                            </button>
                                                
-                                        <form method="post" action="{% url 'job_delete' post.pk %}" style="display:inline;">
+                                        <form method="post" action="{% url 'job_delete' post.pk %}" class="action-btn delete-btn" style="display:inline;">
                                               {% csrf_token %}
-                                            <button type="submit" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
-                                                <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8z"/>
-                                              </svg> </button>  
+                                              <button type="submit" class="action-btn delete-btn" title="Delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+                                                <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M3 6H5H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M19 6V20C19 20.5304 18.7893 21.0391 18.4142 21.4142C18.0391 21.7893 17.5304 22 17 22H7C6.46957 22 5.96086 21.7893 5.58579 21.4142C5.21071 21.0391 5 20.5304 5 20V6M8 6V4C8 3.46957 8.21071 2.96086 8.58579 2.58579C8.96086 2.21071 9.46957 2 10 2H14C14.5304 2 15.0391 2.21071 15.4142 2.58579C15.7893 2.96086 16 3.46957 16 4V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M10 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M14 11V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            </button>
                                           </form>                           
                                           
                                             
@@ -191,57 +204,82 @@
                                       
                                       
                                     </tr>
-                                    <div class="modal fade" id="postModal{{post.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">{{post.titre}}</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal fade" id="postModal{{post.pk}}" tabindex="-1" role="dialog" aria-labelledby="jobModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content border-0 shadow-lg">
+                                                <!-- Stylish Header -->
+                                                <div class="modal-header border-0 p-4" 
+                                                     style="background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%)">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="rounded-circle bg-white p-2 me-3">
+                                                            <i class="bi bi-briefcase-fill text-primary fs-4"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="modal-title text-white mb-1">{{post.titre}}</h5>
+                                                            <span class="badge bg-white text-primary">{{post.departement}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                               
-                                                                <div class="form-group">
-                                                                    <label><strong>Unité :</strong></label>
-                                                                    <p>{{ post.departement }}</p>
+                                    
+                                                <!-- Job Details Body -->
+                                                <div class="modal-body p-4">
+                                                    <!-- Key Details Section -->
+                                                    <div class="row g-4 mb-4">
+                                                        <div class="col-md-4">
+                                                            <div class="p-3 bg-light rounded-3 h-100">
+                                                                <div class="d-flex align-items-center mb-2">
+                                                                    <i class="bi bi-clock text-primary me-2"></i>
+                                                                    <small class="text-uppercase text-muted fw-bold">Temps</small>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label><strong>Type d'emploi désiré :</strong></label>
-                                                                    <p>{{ post.get_temps_display }}</p>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                  <label><strong>Type du contrat  :</strong></label>
-                                                                  <p>{{ post.get_contrat_display }}</p>
-                                                              </div>
-                                                              <div class="form-group">
-                                                                <label><strong>les années d'expérience  :</strong></label>
-                                                                <p>{{ post.experience }} ans</p>
-                                                            </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                
-                                                                <div class="form-group">
-                                                                  <label><strong>Description :</strong></label>
-                                                                  <p>{{ post.description }}</p>
-                                                              </div>
-                                                              
-                                                                
-                                                                
+                                                                <p class="mb-0">{{ post.get_temps_display }}</p>
                                                             </div>
                                                         </div>
-                                                        
+                                                        <div class="col-md-4">
+                                                            <div class="p-3 bg-light rounded-3 h-100">
+                                                                <div class="d-flex align-items-center mb-2">
+                                                                    <i class="bi bi-file-text text-primary me-2"></i>
+                                                                    <small class="text-uppercase text-muted fw-bold">Contrat</small>
+                                                                </div>
+                                                                <p class="mb-0">{{ post.get_contrat_display }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="p-3 bg-light rounded-3 h-100">
+                                                                <div class="d-flex align-items-center mb-2">
+                                                                    <i class="bi bi-graph-up text-primary me-2"></i>
+                                                                    <small class="text-uppercase text-muted fw-bold">Expérience</small>
+                                                                </div>
+                                                                <p class="mb-0">{{ post.experience }} ans</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <!-- Description Section -->
+                                                    <div class="description-section bg-light rounded-3 p-4">
+                                                        <div class="d-flex align-items-center mb-3">
+                                                            <i class="bi bi-card-text text-primary me-2 fs-5"></i>
+                                                            <h6 class="text-uppercase mb-0 fw-bold">Description du poste</h6>
+                                                        </div>
+                                                        <p class="mb-0 text-muted">{{ post.description }}</p>
+                                                    </div>
                                                 </div>
-                                                    
-                                                    
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form method="post" action="{% url 'job_delete' post.pk %}" style="display:inline;">
-                                                        {% csrf_token %}
-                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                                                    </form>
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    
+                                                <!-- Footer with Actions -->
+                                                <div class="modal-footer border-0 bg-light rounded-bottom p-3">
+                                                    <div class="d-flex gap-2 w-100 justify-content-between">
+                                                        <form method="post" action="{% url 'job_delete' post.pk %}" class="d-inline">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn-danger d-flex align-items-center">
+                                                                <i class="bi bi-trash me-2"></i>
+                                                                Supprimer
+                                                            </button>
+                                                        </form>
+                                                        <button type="button" class="btn btn-light d-flex align-items-center" data-bs-dismiss="modal">
+                                                            <i class="bi bi-x-lg me-2"></i>
+                                                            Fermer
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -253,86 +291,135 @@
 <!-- Modal upadte-->
 
 
-<div class="modal fade" id="postUpdate{{post.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Mettre à jour</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-        <form method="post" action="{% url 'job_update' post.pk %}" enctype="multipart/form-data">
-            {% csrf_token %}
-           
-            
-            <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label><strong>Titre du Poste :</strong></label>
-                        
-                        <input type="text" name="titre" value="{{post.titre}}">
+<div class="modal fade" id="postUpdate{{post.pk}}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg">
+            <!-- Stylish Header -->
+            <div class="modal-header border-0 bg-gradient-primary p-4"
+                 style="background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%)">
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle bg-white p-2 me-3">
+                        <i class="bi bi-pencil-square text-primary fs-4"></i>
                     </div>
-                    <div class="form-group">
-                        <label><strong>Unité :</strong></label>
-                        
-                        <input type="text" name="departement" value="{{post.departement}}">
+                    <div>
+                        <h5 class="modal-title text-white mb-1">Modifier l'offre d'emploi</h5>
+                        <span class="text-white-50">{{post.titre}}</span>
                     </div>
-                    <div class="form-group">
-                        <label><strong>Type d'emploi désiré :</strong></label>
-                        
-                        <select id="temps" name="temps" class="form-control">
-                            <option value="1" {% if post.temps == '1' %} selected {% endif %}>Temps plein</option>
-                            <option value="2" {% if post.temps == '2' %} selected {% endif %}>Partiel</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                      <label><strong>Type du contrat  :</strong></label>
-                      
-                      <select id="contrat" name="contrat" class="form-control">
-                        <option value="CIVP" {% if post.contrat == 'CIVP' %} selected {% endif %}>CIVP</option>
-                        <option value="CDI" {% if post.contrat == 'CDI' %} selected {% endif %}>CDI</option>
-                        <option value="CDD" {% if post.contrat == 'CDD' %} selected {% endif %}>CDD</option>
-                        <option value="Karama" {% if post.contrat == 'Karama' %} selected {% endif %}>Karama</option>
-                        <option value="CSC" {% if post.contrat == 'CSC' %} selected {% endif %}>CSC</option>
-                        
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label><strong>les années d'expérience  :</strong></label>
-                    
-                    <input type="number" name="experience" value="{{post.experience}}">
                 </div>
-                </div>
-                <div class="col-md-6">
-                    
-                    <div class="form-group">
-                      <label><strong>Description :</strong></label>
-                      
-                      <textarea type="text" name="description" value="{{post.description}}" rows="5" >{{post.description}}</textarea>
-                  </div>
-                  <div class="form-group">
-                    <label><strong>Status :</strong></label>
-                    <select id="status" name="status" class="form-control">
-                        <option value="pending" {% if post.status == 'pending' %} selected {% endif %}>Privé</option>
-                        <option value="approved" {% if post.status == 'approved' %} selected {% endif %}>Publique</option>
-                    </select>
-                </div> 
-                    
-                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="m-2">
-                <button type="submit" class="btn btn-primary"> Confirmer la modification</button>
-                    </div> 
+
+            <!-- Form Body -->
+            <div class="modal-body p-4">
+                <form method="post" action="{% url 'job_update' post.pk %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="container-fluid px-0">
+                        <!-- Basic Information Section -->
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-3 d-flex align-items-center">
+                                <i class="bi bi-info-circle me-2"></i>
+                                Informations de base
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="titre" value="{{post.titre}}" 
+                                               class="form-control bg-light border-0" id="floatingTitle" placeholder="Titre">
+                                        <label for="floatingTitle">Titre du Poste</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="departement" value="{{post.departement}}" 
+                                               class="form-control bg-light border-0" id="floatingDept" placeholder="Département">
+                                        <label for="floatingDept">Unité</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contract Details Section -->
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-3 d-flex align-items-center">
+                                <i class="bi bi-file-text me-2"></i>
+                                Détails du contrat
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select id="temps" name="temps" class="form-select bg-light border-0">
+                                            <option value="1" {% if post.temps == '1' %} selected {% endif %}>Temps plein</option>
+                                            <option value="2" {% if post.temps == '2' %} selected {% endif %}>Partiel</option>
+                                        </select>
+                                        <label>Type d'emploi</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select id="contrat" name="contrat" class="form-select bg-light border-0">
+                                            <option value="CIVP" {% if post.contrat == 'CIVP' %} selected {% endif %}>SIVP</option>
+                                            <option value="CDI" {% if post.contrat == 'CDI' %} selected {% endif %}>CDI</option>
+                                            <option value="CDD" {% if post.contrat == 'CDD' %} selected {% endif %}>CDD</option>
+                                            <option value="Karama" {% if post.contrat == 'Karama' %} selected {% endif %}>Karama</option>
+                                            <option value="CSC" {% if post.contrat == 'CSC' %} selected {% endif %}>CSC</option>
+                                        </select>
+                                        <label>Type de contrat</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input type="number" name="experience" value="{{post.experience}}" 
+                                               class="form-control bg-light border-0" id="floatingExp" placeholder="Experience">
+                                        <label for="floatingExp">Années d'expérience</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description and Status Section -->
+                        <div class="mb-4">
+                            <h6 class="text-primary mb-3 d-flex align-items-center">
+                                <i class="bi bi-card-text me-2"></i>
+                                Description et statut
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <div class="form-floating">
+                                        <textarea name="description" class="form-control bg-light border-0" 
+                                                  style="height: 150px" id="floatingDescription" 
+                                                  placeholder="Description">{{post.description}}</textarea>
+                                        <label for="floatingDescription">Description du poste</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select id="status" name="status" class="form-select bg-light border-0">
+                                            <option value="pending" {% if post.status == 'pending' %} selected {% endif %}>Privé</option>
+                                            <option value="approved" {% if post.status == 'approved' %} selected {% endif %}>Publié</option>
+                                        </select>
+                                        <label>Statut de publication</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer with Submit Button -->
+                    <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                            <i class="bi bi-x-lg me-2"></i>
+                            Annuler
+                        </button>
+                        <button type="submit" class="btn btn-primary d-flex align-items-center px-4">
+                            <i class="bi bi-check2-circle me-2"></i>
+                            Confirmer les modifications
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    
-</form>
-        
-        
-    </div>
-    
-</div>
-</div>
 </div>
                                     {% endfor %}
                                   </tbody>
@@ -341,7 +428,24 @@
 
 <!-- Modal -->
 
-
+<!-- Add this right after the table -->
+<div class="pagination-container mt-4">
+    <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+        <a class="page-link" href="#" id="prevPage" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+        </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#" id="currentPage">1</a></li>
+        <li class="page-item">
+        <a class="page-link" href="#" id="nextPage" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+        </a>
+        </li>
+    </ul>
+    </nav>
+</div>
 
                            <!-- Button trigger modal -->
 
@@ -414,7 +518,8 @@
                     <div class="mb-3 row">
                         <label for="description" class="col-sm-3 col-form-label">Description :</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="description" name="description">
+                            <textarea class="form-control shadow-sm border-light" id="id_description" name="description" rows="4" required placeholder="Décrivez votre persation..."></textarea>
+
                         </div>
                     </div>
                     <hr>
@@ -434,7 +539,7 @@
                         <div class="col-sm-9">
                             <select class="form-control" id="contrat" name="contrat">
                                 <option value="">Select Type d'emploi désiré</option>
-                                <option value="CIVP1">CIVP</option>
+                                <option value="CIVP">SIVP</option>
                                 <option value="CDI">CDI</option>
                                 <option value="CDD">CDD</option>
                                 <option value="Karama">Karama</option>
@@ -450,7 +555,7 @@
                             <select class="form-control" id="status" name="status">
                                 <option value="">Select Status</option>
                                 <option value="pending">Privé</option>
-                                <option value="approved">Publique</option>
+                                <option value="approved">Publié</option>
                             </select>
                         </div>
                     </div>
@@ -481,104 +586,17 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
     <!-- Custom JS -->
-    <script src="{% static './js/script_dashboard.js' %}"></script>
+
    <!-- Bootstrap Bundle with Popper -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JTk5KbXfS3JYOxxl4+ixPZS4eQQy1HPrPii+xoUK6hO7iH5RQfYzpcJmAvZC93FJ" crossorigin="anonymous"></script>
    <!-- jQuery -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
    <!-- Custom JS -->
    <script src="{% static './js/script_dashboard.js' %}"></script>
-   <script>
-    function searchStage() {
-        var input, filter, table, tr, td1, td2, i, txtValue1, txtValue2;
-        input = document.getElementById("searchInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementsByClassName("table")[0];
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td1 = tr[i].getElementsByTagName("td")[0]; // Get the first column 
-            td2 = tr[i].getElementsByTagName("td")[1]; // Get the second column
-            if (td1 && td2) {
-                txtValue1 = td1.textContent || td1.innerText;
-                txtValue2 = td2.textContent || td2.innerText;
-                if (txtValue1.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-    function filterStatus(status) {
-        var rows = document.querySelectorAll('.post-row');
-        
-        rows.forEach(function(row) {
-            var rowStatus = row.getAttribute('data-status');
-            
-            if (status === '' || rowStatus === status) {
-                row.style.display = 'table-row';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-    function filterContrat(contrat) {
-        var rows = document.querySelectorAll('.post-row');
-        
-        rows.forEach(function(row) {
-            var rowcontrat = row.getAttribute('data-contrat');
-            
-            if (contrat === '' || rowcontrat === contrat) {
-                row.style.display = 'table-row';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-    function filterTime(temps) {
-        var rows = document.querySelectorAll('.post-row');
-        
-        rows.forEach(function(row) {
-            var rowtemps = row.getAttribute('data-temps');
-            
-            if (temps === '' || rowtemps === temps) {
-                row.style.display = 'table-row';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    }
-    
-  
-  function resetSearch() {
-      var input = document.getElementById("searchInput");
-      input.value = "";
-      var rows = document.querySelectorAll('.table tbody tr');
-      rows.forEach(function(row) {
-          row.style.display = 'table-row';
-      });
-  }
-  function changeEntriesPerPage(select) {
-    var table = document.querySelector('.table');
-    var rows = table.querySelectorAll('tbody tr');
-
-    // Hide all rows
-    rows.forEach(function(row) {
-        row.style.display = 'none';
-    });
-
-    // Show only selected number of rows
-    var selectedValue = parseInt(select.value);
-    for (var i = 0; i < selectedValue; i++) {
-        if (rows[i]) {
-            rows[i].style.display = 'table-row';
-        }
-    }
-}
-</script>              
+   <script src="{% static './js/job.js' %}"></script>
+              
 
     
 </body>

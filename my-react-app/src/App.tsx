@@ -61,8 +61,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/apropos" element={<Apropos />}></Route> // Add the route
-          for the Apropos component
+          <Route path="/apropos" element={<Apropos />}></Route> 
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/Formation" element={<Formation />}></Route>
           <Route path="/Contact" element={<Contact />}></Route>
@@ -70,14 +69,13 @@ function App() {
           <Route path="/Analyse" element={<Analyses />}></Route>
           <Route path="/test" element={<Test />}></Route>
           <Route path="/condidature" element={<Condidature />}></Route>
-          <Route path="/article" element={<Article />}></Route>
+          <Route path="/article/:id" element={<Article />}></Route>
           <Route path="/assistance" element={<Assistance />}></Route>
           <Route path="/parametre" element={<Physicochimiques />}></Route>
           <Route path="/Video" element={<Video />}></Route>
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/param-danalyse" element={<Paramanalyse />}></Route>
-          <Route path="/parametre/:id" element={<ParametreAnalyses />} />
-        </Routes>
+          <Route path="/parametre/:id" element={<ParametreAnalyses />} /></Routes>
       </BrowserRouter>
       {/* Other content can go here */}
       <Footer />

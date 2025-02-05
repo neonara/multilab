@@ -3,23 +3,19 @@ from django.utils.html import format_html
 # Register your models here.
 from.models.avis import Avis
 
-from.models.devis import *
+
 from.models.offres import Offre
 from.models.stageurs import Stagieur
 from.models.jobdescription import Offre_description
 from.models.projects import Project
 from.models.stagedescription import OffreStage
-
+from .models.condidat_semplife import Candidate_simplify
 class AvisConfig(admin.ModelAdmin):
     
     list_display=['fullname','nom_entreprise','created_at']
     list_filter=['fullname','nom_entreprise']
     search_fields=('fullname',)
-class DeviConfig(admin.ModelAdmin):
-     
-    list_display=['fullname','nom_entreprise','poste','parametre_analyes','type_debis','created_at']
-    list_filter=['parametre_analyes','type_debis']
-    search_fields=('fullname',)  
+
 class OffreConfig(admin.ModelAdmin):
      
     list_display=['fullname','titre','email','numero_telephone','transport','created_at']
@@ -54,7 +50,7 @@ class StagieurConfig(admin.ModelAdmin):
     
 admin.site.register(Avis,AvisConfig)
 
-admin.site.register(Devi,DeviConfig)
+
 
 admin.site.register(Offre_description,Offre_descriptionConfig)
 admin.site.register(Offre,OffreConfig)
@@ -62,3 +58,4 @@ admin.site.register(OffreStage,OffreStageConfig)
 admin.site.register(Stagieur,StagieurConfig)
 
 admin.site.register(Project,ProjectConfig)
+admin.site.register(Candidate_simplify)

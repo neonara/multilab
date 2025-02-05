@@ -6,7 +6,8 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Role_based_login_system.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                          'backed_project_multilab.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
