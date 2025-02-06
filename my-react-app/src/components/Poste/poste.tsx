@@ -7,13 +7,12 @@ import contrat from "@/assets/icons/icon-contrat.svg";
 import experiencee from "@/assets/icons/icon-experience.svg";
 import { IoMdSearch } from "react-icons/io";
 import arrowDown from "@/assets/icons/icon-arrow-down.svg"; // Add this line
-import api from "../../lib/api"
+import api from "../../lib/api";
 
 const Poste = () => {
   // State for filters
   const [unite, setUnite] = useState("Tous les unités d’affectation");
   const [emploi, setEmploi] = useState("Emploi");
-  
 
   const handleUniteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setUnite(e.target.value);
@@ -54,6 +53,12 @@ const Poste = () => {
       ...experience,
       [e.target.name]: e.target.checked,
     });
+  };
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
   const postsNum = 4; // Number of posts
@@ -142,6 +147,85 @@ const Poste = () => {
             />
           </div>
           <div className="separator"></div> {/* Add this line */}
+          <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
+            <h2 className="filters-title">Filtrer</h2>
+            <div className="filter-content">
+              <h3>Type de contrat</h3>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CIVP"
+                  checked={contractType.CIVP}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CIVP">CIVP</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="Karama"
+                  checked={contractType.Karama}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="Karama">Karama</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CDD"
+                  checked={contractType.CDD}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CDD">CDD</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CDI"
+                  checked={contractType.CDI}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CDI">CDI</label>
+              </div>
+              <h3>Durée d'expérience</h3>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="nouveau"
+                  checked={experience.nouveau}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="nouveau">Nouveau diplômé</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="oneToTwo"
+                  checked={experience.oneToTwo}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="oneToTwo">1-2 ans</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="threeToFive"
+                  checked={experience.threeToFive}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="threeToFive">3-5 ans</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="ninePlus"
+                  checked={experience.ninePlus}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="ninePlus">9+ ans</label>
+              </div>
+            </div>
+          </div>
           <select
             className="dropdown input-item"
             value={unite}
@@ -278,7 +362,7 @@ const Poste = () => {
           backgroundSize: "100%", // Ensures the image covers the div
           backgroundPosition: "center", // Adjust to show a part of the image, e.g., 'top', 'center', 'bottom', etc.
           height: "300px", // Set the height you want for the visible section
-          width: "100%", // Set the width (could be 100% of the container or fixed)
+          // Set the width (could be 100% of the container or fixed)
           // Needed for absolute positioning of content
           overflow: "hidden", // Hide parts of the image outside the container
           borderRadius: "17px", // Optional: round the corners of the div
