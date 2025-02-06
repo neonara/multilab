@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import "./Poste.css";
 import back from "@/assets/images/53.jpg";
 import linkedin from "./assets/linkedin.jpg";
@@ -8,12 +8,36 @@ import experiencee from "@/assets/icons/icon-experience.svg";
 import { IoMdSearch } from "react-icons/io";
 import arrowDown from "@/assets/icons/icon-arrow-down.svg"; // Add this line
 import api from "../../lib/api"
-
-const Poste = () => {
+import {OffreStageShow } from "../../types/types";
+import { useNavigate } from "react-router";
+import StageApplication from "./StageApplication";
+const Stage = () => {
   // State for filters
   const [unite, setUnite] = useState("Tous les unités d’affectation");
-  const [emploi, setEmploi] = useState("Emploi");
+  const [emploi, setEmploi] = useState("Stage");
+  const [stageDescriptions, setStageDescriptions] =  useState<OffreStageShow[]>([]);
+    const [selectedJob, setSelectedJob] = useState<OffreStageShow | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
   
+  const navigate = useNavigate();
+  
+  const getEmploi = async () => {
+    try {
+      const response = await api.get('/stage');
+      const publicEmploi = response.data.filter(
+        (emploi: OffreStageShow) => emploi.status === "approved"
+      );
+      setStageDescriptions(publicEmploi);
+    } catch (error) {
+      console.error('Error Fetching emploi data:', error);
+    }
+  };
+
+  useEffect(() => {
+    getEmploi();
+  }, []);
+
 
   const handleUniteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setUnite(e.target.value);
@@ -21,13 +45,19 @@ const Poste = () => {
 
   const handleEmploiChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setEmploi(e.target.value);
+    const selectedValue = e.target.value;
+
+    if (selectedValue === "Stage") {
+      navigate("/stage"); // Navigate to the Emploi page
+    } else if (selectedValue === "Emploi") {
+      navigate("/poste"); // Navigate to the Stage page
+    }
   };
 
   const handleSearch = () => {
     // Handle search logic here
-    console.log("Search for:", unite, emploi);
+    console.log("Search for:", { unite, emploi, searchTerm });
   };
-
   const [contractType, setContractType] = useState({
     CIVP: true,
     Karama: false,
@@ -56,70 +86,72 @@ const Poste = () => {
     });
   };
 
-  const postsNum = 4; // Number of posts
-  const jobs = [
+  
+  const  fallbackJobs: OffreStageShow[]  = [
     {
-      title: "MULTILAB postion",
-      time: "Full-time",
-      description:
-        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-      contract: "CIVP",
-      experience: "3 ans",
+      id :1,
+      titre: "MULTILAB postion",
+      type_stage: "Full-time",
+      description:"lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      departement: "MULTILAB Departement",
+      created_at: new Date(),
+      status: "approved",
     },
     {
-      title: "MULTILAB postion",
-      time: "Part-time",
+      id:2,
+      titre: "MULTILAB postion",
+      type_stage: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-      contract: "CIVP",
-      experience: "3 ans",
+        departement: "MULTILAB Departement",
+        created_at: new Date(),
+        status: "approved",
     },
     {
-      title: "MULTILAB postion",
-      time: "Part-time",
+      id:3,
+      titre: "MULTILAB postion",
+      type_stage: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-      contract: "CIVP",
-      experience: "3 ans",
+        departement: "MULTILAB Departement",
+        created_at: new Date(),
+        status: "approved",
     },
     {
-      title: "MULTILAB postion",
-      time: "Part-time",
+      id:4,
+      titre: "MULTILAB postion",
+      type_stage: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-      contract: "CIVP",
-      experience: "3 ans",
+        departement: "MULTILAB Departement",
+        created_at: new Date(),
+        status: "approved",
     },
   ];
 
-  interface Job {
-    title: string;
-    time: string;
-    description: string;
-    contract: string;
-    experience: string;
-  }
+  const jobs = stageDescriptions.length > 0 ? stageDescriptions : fallbackJobs;
+  const postsNum = jobs.length; // Dynamically calculate number of posts
 
-  function Card(job: Job) {
+  function Card(job: OffreStageShow) {
     return (
       <div className="job-card">
         <div className="job-icon">
           <img src={offre} alt="" />
         </div>
-        <h2>{job.title}</h2>
-        <h3>{job.time}</h3>
+        <h2>{job.titre}</h2>
+        <h3>{job.type_stage ==="1"? "PFE" : "Stage Mémoire"}</h3>
         <p>{job.description}</p>
         <div className="job-details">
           <div className="job-detail">
             <img src={contrat} alt="" />
-            <p>{job.contract}</p>
+            <p><b>Unité:</b>{job.departement}</p>
           </div>
-          <div className="job-detail">
-            <img src={experiencee} alt="" />
-            <p>{job.experience}</p>
-          </div>
+          
         </div>
-        <button className="postuler-button">Postuler</button>
+        <button onClick={() => {
+          setSelectedJob(job);
+          setIsModalOpen(true);
+        }} className="postuler-button">Postuler</button>
       </div>
     );
   }
@@ -139,6 +171,8 @@ const Poste = () => {
               type="text"
               placeholder="Titre du poste ou mot-clé"
               className="search-input input-item"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           <div className="separator"></div> {/* Add this line */}
@@ -167,8 +201,9 @@ const Poste = () => {
           <button
             className="reset-button"
             onClick={() => {
-              setUnite("");
-              setEmploi("");
+              setUnite("Tous les unités d'affectation");
+              setEmploi("Stage");
+              setSearchTerm("");
             }}
           >
             Réinitialiser
@@ -183,81 +218,40 @@ const Poste = () => {
           <div className="filters">
             <h2>Filtrer</h2>
             <h3>Type de contrat</h3>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="CIVP"
-                checked={contractType.CIVP}
-                onChange={handleContractChange}
-              />
-              <label htmlFor="CIVP">CIVP</label>
-            </div>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="Karama"
-                checked={contractType.Karama}
-                onChange={handleContractChange}
-              />
-              <label htmlFor="Karama">Karama</label>
-            </div>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="CDD"
-                checked={contractType.CDD}
-                onChange={handleContractChange}
-              />
-              <label htmlFor="CDD">CDD</label>
-            </div>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="CDI"
-                checked={contractType.CDI}
-                onChange={handleContractChange}
-              />
-              <label htmlFor="CDI">CDI</label>
-            </div>
+            {Object.entries(contractType).map(([key, value]) => (
+              <div className="filter-option" key={key}>
+                <input
+                  type="checkbox"
+                  name={key}
+                  checked={value}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor={key}>{key}</label>
+              </div>
+            ))}
 
             <h3>Durée d'expérience</h3>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="nouveau"
-                checked={experience.nouveau}
-                onChange={handleExperienceChange}
-              />
-              <label htmlFor="nouveau">Nouveau diplômé</label>
-            </div>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="oneToTwo"
-                checked={experience.oneToTwo}
-                onChange={handleExperienceChange}
-              />
-              <label htmlFor="oneToTwo">1-2 ans</label>
-            </div>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="threeToFive"
-                checked={experience.threeToFive}
-                onChange={handleExperienceChange}
-              />
-              <label htmlFor="threeToFive">3-5 ans</label>
-            </div>
-            <div className="filter-option">
-              <input
-                type="checkbox"
-                name="ninePlus"
-                checked={experience.ninePlus}
-                onChange={handleExperienceChange}
-              />
-              <label htmlFor="ninePlus">9+ ans</label>
-            </div>
+            {Object.entries(experience).map(([key, value]) => (
+              <div className="filter-option" key={key}>
+                <input
+                  type="checkbox"
+                  name={key}
+                  checked={value}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor={key}>
+                  {key === "nouveau"
+                    ? "Nouveau diplômé"
+                    : key === "oneToTwo"
+                    ? "1-2 ans"
+                    : key === "threeToFive"
+                    ? "3-5 ans"
+                    : "9+ ans"}
+                </label>
+              </div>
+            ))}
           </div>
+
 
           {/* Job Cards Section */}
           <span className="job-cards-container">
@@ -295,8 +289,13 @@ const Poste = () => {
           </a>
         </div>
       </div>
+      <StageApplication
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+      job={selectedJob}
+      />
     </div>
   );
 };
 
-export default Poste;
+export default Stage;

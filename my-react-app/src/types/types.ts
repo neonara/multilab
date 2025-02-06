@@ -58,3 +58,34 @@ export type JobtShow = {
     experience :string;
     created_at : Date;
 }
+export type ApplicationForm = {
+    titre: string; // or number if using ID references
+    fullname: string;
+    email: string;
+    numero_telephone: string;
+    ville: string;
+    transport: string; 
+    cvfile: File | null;
+  };
+  export type OffreStageShow ={
+  id: number;
+  titre: string;
+  description: string;
+  departement : string;
+  type_stage : string;
+  status : string;
+  created_at : Date;
+
+  }
+  export type OffreStageForm = {
+    titre: string; // or number if using ID references
+    fullname : string;
+    ville : string;
+    email: string;
+    numero_telephone: string;
+    cvfile: File | null;
+    type_stage :string;
+
+
+}
+  
