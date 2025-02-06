@@ -97,4 +97,5 @@ export type ApplicationForm = {
     file1: File | null; // Assuming file upload will be handled
   
   };
+  //
   

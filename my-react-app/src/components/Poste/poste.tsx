@@ -116,6 +116,8 @@ const Poste = () => {
       <h2>{job.titre}</h2>
       
       <h3>{job.temps ==="1"? "Temps plein" : "Partiel"}</h3>
+      <div className="job-detail"> <p><b>Unité:</b>{job.departement}</p></div>
+
       <p>{job.description}</p>
       <div className="job-details">
         <div className="job-detail">
@@ -126,7 +128,6 @@ const Poste = () => {
           <img src={experiencee} alt="" />
           <p>{job.experience}</p>
         </div>
-        <div className="job-detail"> <p><b>Unité:</b>{job.departement}</p></div>
       </div>
       <button onClick={() => {
           setSelectedJob(job);

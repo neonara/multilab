@@ -24,7 +24,7 @@ const Stage = () => {
   
   const getEmploi = async () => {
     try {
-      const response = await api.get('/stage');
+      const response = await api.get('/stage/');
       const publicEmploi = response.data.filter(
         (emploi: OffreStageShow) => emploi.status === "approved"
       );
