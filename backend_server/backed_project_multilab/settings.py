@@ -33,6 +33,7 @@ WHITENOISE_INDEX_FILE = True
 CSRF_COOKIE_SECURE = True
 
 # Application definition
+APPEND_SLASH = False
 
 INSTALLED_APPS = [
     'jazzmin',

@@ -114,7 +114,7 @@ const Poste = () => {
         <img src={offre} alt="" />
       </div>
       <h2>{job.titre}</h2>
-      <p>Unité:{job.departement}</p>
+      
       <h3>{job.temps ==="1"? "Temps plein" : "Partiel"}</h3>
       <p>{job.description}</p>
       <div className="job-details">

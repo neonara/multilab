@@ -88,4 +88,13 @@ export type ApplicationForm = {
 
 
 }
+  //
+  export type CandidatesSimplifyForm = {
+    fullname: string;
+    email: string;
+    phone_number: string;
+    description: string;
+    file1: File | null; // Assuming file upload will be handled
+  
+  };
   

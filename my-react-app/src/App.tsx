@@ -24,6 +24,7 @@ import React from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import ScrollToTop from "./components/ScrollToTop";
 import Stage from "./components/Poste/stage";
+import PhysicochimiquesProdAli from "./components/Parametres/PhysicochimiquesProdAli";
 function App() {
   const [showButton, setShowButton] = React.useState(false);
 
@@ -68,7 +69,7 @@ function App() {
           <Route path="/Poste" element={<Poste />}></Route>
           <Route path="/Analyse" element={<Analyses />}></Route>
           <Route path="/test" element={<Test />}></Route>
-          <Route path="/condidature" element={<Condidature />}></Route>
+          <Route path="/candidature" element={<Condidature />}></Route>
           <Route path="/article/:id" element={<Article />}></Route>
           <Route path="/assistance" element={<Assistance />}></Route>
           <Route path="/parametre" element={<Physicochimiques />}></Route>
@@ -76,7 +77,12 @@ function App() {
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/stage" element={<Stage />}></Route>
           <Route path="/param-danalyse" element={<Paramanalyse />}></Route>
-          <Route path="/parametre/:id" element={<ParametreAnalyses />} /></Routes>
+          <Route path="/parametre/:id" element={<ParametreAnalyses />} />
+          <Route
+            path="/parametre/physicochimiesProduitsAlimentaires"
+            element={<PhysicochimiquesProdAli />}
+          />
+               </Routes>
       </BrowserRouter>
       {/* Other content can go here */}
       <Footer />

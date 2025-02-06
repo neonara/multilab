@@ -5567,3 +5567,63 @@ Traceback (most recent call last):
     raise ImproperlyConfigured(
 django.core.exceptions.ImproperlyConfigured: EventListView is missing a QuerySet. Define EventListView.model, EventListView.queryset, or override EventListView.get_queryset().
 "GET /MULTILAB/event_list/ HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78526
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78544
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78528
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78560

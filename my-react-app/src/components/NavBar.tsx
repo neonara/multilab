@@ -111,7 +111,7 @@ function NavBar() {
                     <MDBDropdownItem link href="/poste ">
                       {t("Les offres d'emploi")}
                     </MDBDropdownItem>
-                    <MDBDropdownItem link href="/condidature">
+                    <MDBDropdownItem link href="/candidature">
                       {t("Candidatures spontanées")}
                     </MDBDropdownItem>
                   </MDBDropdownMenu>
@@ -225,7 +225,7 @@ function NavBar() {
                 <a href="/poste" onClick={toggleMobileMenu}>
                   {t("Les offres d'emploi")}
                 </a>
-                <a href="/condidature" onClick={toggleMobileMenu}>
+                <a href="/candidature" onClick={toggleMobileMenu}>
                   {t("Candidatures spontanées")}
                 </a>
               </div>
