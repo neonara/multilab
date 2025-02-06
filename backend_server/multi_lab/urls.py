@@ -25,13 +25,13 @@ router.register(r'persations', PersationViewSet)
 router.register(r'events', EventViewSet)
 router.register(r'event-articles', EventArticleViewSet)
 #
-router.register(r'condidat', OffresViewSet)
+router.register(r'ApplicationEmploi', OffresViewSet)
 #
-router.register(r'stageur', StagieurViewSet)
+router.register(r'ApplicationStageur', StagieurViewSet)
 #
 router.register(r'stage', OffreStageViewSet)
 #
-router.register(r'job', Offre_descriptionViewSet)
+router.register(r'emploi', Offre_descriptionViewSet)
 #
 router.register(r'candidates-simplify', CandidateViewSet)
 urlpatterns = [

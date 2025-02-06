@@ -23,7 +23,7 @@ import Login from "./components/Login/Login";
 import React from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import ScrollToTop from "./components/ScrollToTop";
-
+import Stage from "./components/Poste/stage";
 function App() {
   const [showButton, setShowButton] = React.useState(false);
 
@@ -74,6 +74,7 @@ function App() {
           <Route path="/parametre" element={<Physicochimiques />}></Route>
           <Route path="/Video" element={<Video />}></Route>
           <Route path="/Login" element={<Login />}></Route>
+          <Route path="/stage" element={<Stage />}></Route>
           <Route path="/param-danalyse" element={<Paramanalyse />}></Route>
           <Route path="/parametre/:id" element={<ParametreAnalyses />} /></Routes>
       </BrowserRouter>
