@@ -126,7 +126,7 @@ const Poste = () => {
           <img src={experiencee} alt="" />
           <p>{job.experience}</p>
         </div>
-       
+        <div className="job-detail"> <p><b>Unité:</b>{job.departement}</p></div>
       </div>
       <button onClick={() => {
           setSelectedJob(job);
