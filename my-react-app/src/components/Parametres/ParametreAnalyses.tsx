@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BannerImageParam from "./BannerImageParam";
 import "../Parametres/Parametres.css";
@@ -9,7 +9,7 @@ import back1 from "@/assets/images/57.png";
 import back2 from "@/assets/images/58.jpg";
 import back3 from "@/assets/images/59.jpg";
 import back4 from "@/assets/images/60.jpg";
-import back5 from "@/assets/images/61.jpg";
+import back5 from "@/assets/images/62.jpg";
 
 // Import types
 import {
@@ -17,16 +17,16 @@ import {
   AnalyseMicrobiologieProduitsEaux,
   TypeAnalysesAlimentationAnimale,
   TypeAnalysesPhysicochimiquesProduitsEaux,
-  TypeAnalysesProduitCosmetique
+  TypeAnalysesProduitCosmetique,
 } from "../../types/types";
 
 // API endpoint mapping
 const apiEndpoints: { [key: string]: string } = {
-  microbiologiques: '/micro-alimentaires',
-  microbiologiquesEaux: '/micro-eaux',
-  physicochimiquesEaux: '/physico-eaux',
-  alimentsAnimaux: '/aliments-animaux',
-  cosmetiquesHygiene: '/cosmetiques-hygiene'
+  microbiologiques: "/micro-alimentaires",
+  microbiologiquesEaux: "/micro-eaux",
+  physicochimiquesEaux: "/physico-eaux",
+  alimentsAnimaux: "/aliments-animaux",
+  cosmetiquesHygiene: "/cosmetiques-hygiene",
 };
 
 // Static analysis data (keep for initial rendering)
@@ -39,7 +39,8 @@ const analysesData: {
 } = {
   microbiologiques: {
     title: "Analyses microbiologiques des Produits Alimentaires",
-    description: "Notre laboratoire offre une vaste gamme d'analyses microbiologiques...",
+    description:
+      "Notre laboratoire offre une vaste gamme d'analyses microbiologiques...",
     back: back1,
   },
   microbiologiquesEaux: {
@@ -61,7 +62,7 @@ const analysesData: {
     title: "Microbiologie des produits cosmétiques et d'hygiène",
     description: "Le laboratoire accompagne l'industrie...",
     back: back5,
-  }
+  },
 };
 
 const chunkArray = (array: string[], chunkSize: number) => {
@@ -85,7 +86,7 @@ const ParameterCard = ({ items }: { items: string[] }) => (
 
 const ParametreAnalyses = () => {
   const { id } = useParams<{ id: string }>();
-  
+
   // State for parameters
   const [parameters, setParameters] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -113,33 +114,48 @@ const ParametreAnalyses = () => {
     try {
       setIsLoading(true);
       const response = await api.get(endpoint);
-      
+
       // Dynamic parameter extraction based on analysis type
       let extractedParameters: string[] = [];
-      switch(id) {
-        case 'microbiologiques':
-          extractedParameters = (response.data as Analysesmicrobiologiquesproduitsalimentaires[])
-            .map(item => item.type_analyses_microbiologiques_produits_alimentaires)
+      switch (id) {
+        case "microbiologiques":
+          extractedParameters = (
+            response.data as Analysesmicrobiologiquesproduitsalimentaires[]
+          )
+            .map(
+              (item) =>
+                item.type_analyses_microbiologiques_produits_alimentaires
+            )
             .filter(Boolean);
           break;
-        case 'microbiologiquesEaux':
-          extractedParameters = (response.data as AnalyseMicrobiologieProduitsEaux[])
-            .map(item => item.type_analyse_microbiologie_produits_eaux)
+        case "microbiologiquesEaux":
+          extractedParameters = (
+            response.data as AnalyseMicrobiologieProduitsEaux[]
+          )
+            .map((item) => item.type_analyse_microbiologie_produits_eaux)
             .filter(Boolean);
           break;
-        case 'physicochimiquesEaux':
-          extractedParameters = (response.data as TypeAnalysesPhysicochimiquesProduitsEaux[])
-            .map(item => item.type_analyses_physicochimiques_produits_eaux)
+        case "physicochimiquesEaux":
+          extractedParameters = (
+            response.data as TypeAnalysesPhysicochimiquesProduitsEaux[]
+          )
+            .map((item) => item.type_analyses_physicochimiques_produits_eaux)
             .filter(Boolean);
           break;
-        case 'alimentsAnimaux':
-          extractedParameters = (response.data as TypeAnalysesAlimentationAnimale[])
-            .map(item => item.type_alimentation_animale)
+        case "alimentsAnimaux":
+          extractedParameters = (
+            response.data as TypeAnalysesAlimentationAnimale[]
+          )
+            .map((item) => item.type_alimentation_animale)
             .filter(Boolean);
           break;
-        case 'cosmetiquesHygiene':
-          extractedParameters = (response.data as TypeAnalysesProduitCosmetique[])
-            .map(item => item.type_analyses_microbiologiques_produits_cosmetique)
+        case "cosmetiquesHygiene":
+          extractedParameters = (
+            response.data as TypeAnalysesProduitCosmetique[]
+          )
+            .map(
+              (item) => item.type_analyses_microbiologiques_produits_cosmetique
+            )
             .filter(Boolean);
           break;
         default:
@@ -149,8 +165,8 @@ const ParametreAnalyses = () => {
       setParameters(extractedParameters);
       setIsLoading(false);
     } catch (err) {
-      console.error('Error fetching parameters:', err);
-      setError('Failed to fetch parameters');
+      console.error("Error fetching parameters:", err);
+      setError("Failed to fetch parameters");
       setIsLoading(false);
     }
   };

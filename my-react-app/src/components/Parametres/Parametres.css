@@ -85,4 +85,159 @@ h1{
   font-size: 45px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-weight: bold;
+  margin: 0 40px;
+}
+
+/* FAQ section */
+.param-analyse-container{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+
+  column-gap: clamp(16px, 3vw, 60px);
+
+}
+
+.analyses-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* column-gap: clamp(16px, 3vw, 60px); */
+}
+
+.analyse-item{
+  border : 3px solid #EBEEF5;
+  border-radius: 8px;
+  box-shadow: 0px 16px 40px 0px rgba(154, 170, 207, 0.10);
+  width: 100%;
+  min-width: 600px;
+  margin: 0 auto;
+  max-width: 630px;
+  padding: 18px 30px;
+  font-size: 16px;
+  background: #FBFBFB;
+}
+
+.analyse-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--blue);
+}
+
+.title-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.title-wrapper p{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.expand-btn{
+  width: 22px;
+  height: 22px;
+
+
+  display: flex;
+  position: relative;
+}
+.expand-icon{
+  font-size: 22px;
+}
+
+.expand-icon-rotate{
+  position: absolute;
+  font-size: 22px;
+
+  transform: rotate(90deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.expand-icon-on{
+  transform: rotate(0deg);
+
+}
+
+.analyse-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.analyse-details-on {
+  max-height: 1000px;
+}
+
+.analyse-details ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 50px;
+}
+
+.analyse-details li{
+  padding: 2px 0;
+}
+
+@media (max-width: 768px) {
+  .param-container {
+    margin: 64px 20px;
+  }
+
+  .param-text{
+    margin: 64px 20px;
+  }
+
+  .param-text h2 {
+    font-size: 20px;
+  }
+
+  .param-text p {
+    font-size: 16px;
+  }
+
+  h1{
+    margin: 0 20px;
+    margin-bottom: 48px;
+    font-size: 22px;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr; /* 1 column */
+    gap: 20px;
+  }
+
+  .param-card {
+    padding: 16px;
+  }
+
+  .banner-image-param {
+    height: 300px;
+  }
+
+  .banner-image-param h1 {
+    font-size: 30px;
+    margin: 0 20px;
+  }
+
+  .param-analyse-container{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .analyse-item{
+    width: 340px;
+min-width: 280px;
+
+  }
+  .analyse-title p{
+    font-size: 15px;
+  }
 }

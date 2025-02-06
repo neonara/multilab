@@ -23,6 +23,7 @@ import Login from "./components/Login/Login";
 import React from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import ScrollToTop from "./components/ScrollToTop";
+import PhysicochimiquesProdAli from "./components/Parametres/PhysicochimiquesProdAli";
 
 function App() {
   const [showButton, setShowButton] = React.useState(false);
@@ -61,7 +62,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/apropos" element={<Apropos />}></Route> 
+          <Route path="/apropos" element={<Apropos />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/Formation" element={<Formation />}></Route>
           <Route path="/Contact" element={<Contact />}></Route>
@@ -75,7 +76,12 @@ function App() {
           <Route path="/Video" element={<Video />}></Route>
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/param-danalyse" element={<Paramanalyse />}></Route>
-          <Route path="/parametre/:id" element={<ParametreAnalyses />} /></Routes>
+          <Route path="/parametre/:id" element={<ParametreAnalyses />} />
+          <Route
+            path="/parametre/physicochimiesProduitsAlimentaires"
+            element={<PhysicochimiquesProdAli />}
+          />
+        </Routes>
       </BrowserRouter>
       {/* Other content can go here */}
       <Footer />
