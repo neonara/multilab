@@ -4,7 +4,7 @@ backend_server/multi_lab/migrations/
 backend_server/ParameterAnalyse/migrations/
 backend_server/static/
 backend_server/staticfiles/
-
+backend_server
 
 node_modules/
 
