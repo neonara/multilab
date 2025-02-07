@@ -33,4 +33,6 @@ urlpatterns = [
     path('report/<int:report_id>/upload/', UploadFileView.as_view(), name='upload_file'),
     path('file/<int:file_id>/delete/', DeleteFileView.as_view(), name='delete_file'),
     path('file/<int:file_id>/update/', UpdateFileView.as_view(), name='update_file'),
+    #contact form
+     path('contact/', send_contact_email, name='send_contact_email'), 
 ]

@@ -14,7 +14,27 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from ..serializers import LoginFormSerializer
 from django.contrib.auth.decorators import login_required
+from rest_framework.decorators import api_view
+import json
+from ..utils import send_contact_form_email
 
+@api_view(['POST'])
+def send_contact_email(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        name = data.get('name')
+        email = data.get('email')
+        phone = data.get('phone')
+        company_name = data.get('company_name')
+        subject = data.get('subject')
+        message = data.get('message')
+
+        try:
+            # Call the utility function to send the email
+            send_contact_form_email(name,company_name, email, phone, subject, message)
+            return JsonResponse({'message': 'Email sent successfully'}, status=200)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
 def index(request):
     return render(request, 'index.html')
 
