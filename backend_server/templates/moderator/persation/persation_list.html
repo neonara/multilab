@@ -210,12 +210,13 @@
                                             <div class="modal-body p-4">
                                                 <div class="container-fluid">
                                                     <div class="row">
-                                                        <!-- Image Section -->
+                                                        <!-- Left Column: Images Section -->
                                                         <div class="col-md-6 mb-4">
-                                                            <div class="card h-100">
+                                                            <!-- Main Image Card -->
+                                                            <div class="card mb-4">
                                                                 <div class="card-header bg-light">
                                                                     <h5 class="card-title mb-0">
-                                                                        <i class="fas fa-image me-2"></i>Image
+                                                                        <i class="fas fa-image me-2"></i>Image principale
                                                                     </h5>
                                                                 </div>
                                                                 <div class="card-body text-center">
@@ -227,14 +228,36 @@
                                                                     {% else %}
                                                                         <div class="text-muted py-5">
                                                                             <i class="fas fa-image fa-3x mb-3"></i>
-                                                                            <p>Aucune image disponible</p>
+                                                                            <p>Aucune image principale disponible</p>
+                                                                        </div>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                
+                                                            <!-- Icon Image Card -->
+                                                            <div class="card">
+                                                                <div class="card-header bg-light">
+                                                                    <h5 class="card-title mb-0">
+                                                                        <i class="fas fa-icons me-2"></i>Icône
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="card-body text-center">
+                                                                    {% if persation.icon_image %}
+                                                                        <img src="{{ persation.icon_image.url }}" 
+                                                                             alt="Icône {{ persation.title }}" 
+                                                                             class="img-fluid rounded shadow-sm"
+                                                                             style="max-height: 100px; object-fit: contain;">
+                                                                    {% else %}
+                                                                        <div class="text-muted py-3">
+                                                                            <i class="fas fa-icons fa-2x mb-2"></i>
+                                                                            <p>Aucune icône disponible</p>
                                                                         </div>
                                                                     {% endif %}
                                                                 </div>
                                                             </div>
                                                         </div>
                                 
-                                                        <!-- Details Section -->
+                                                        <!-- Right Column: Details Section -->
                                                         <div class="col-md-6">
                                                             <div class="card h-100">
                                                                 <div class="card-header bg-light">
@@ -257,6 +280,20 @@
                                                                             <i class="fas fa-align-left me-2"></i>Description
                                                                         </label>
                                                                         <p class="text-justify">{{ persation.description }}</p>
+                                                                    </div>
+                                
+                                                                    <!-- Link Description -->
+                                                                    <div class="mb-3">
+                                                                        <label class="text-muted small mb-1">
+                                                                            <i class="fas fa-link me-2"></i>Description du lien
+                                                                        </label>
+                                                                        <p class="text-justify">
+                                                                            {% if persation.link_description %}
+                                                                                {{ persation.link_description }}
+                                                                            {% else %}
+                                                                                <span class="text-muted">Aucune description de lien disponible</span>
+                                                                            {% endif %}
+                                                                        </p>
                                                                     </div>
                                 
                                                                     <!-- Status -->
@@ -290,12 +327,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                
-                                            <!-- Modal Footer -->
-                                            
-                                            </div>
                                         </div>
                                     </div>
+                                </div>
                                 </div>
                                 
                                 <!-- irir -->
@@ -337,27 +371,36 @@
                                                                           rows="4" required>{{ persation.description }}</textarea>
                                                             </div>
                                 
+                                                            <!-- Link Description (New) -->
+                                                            <div class="mb-3">
+                                                                <label for="id_link_description" class="form-label">
+                                                                    <i class="fas fa-link me-1"></i> Lien description :
+                                                                </label>
+                                                                <input type="text" class="form-control" id="id_link_description" name="link_description" 
+                                                                       value="{{ persation.link_description }}">
+                                                            </div>
+                                
                                                             <!-- Status -->
                                                             <div class="mb-3">
                                                                 <label for="id_status" class="form-label">
                                                                     <i class="fas fa-tag me-1"></i> Statut :
                                                                 </label>
                                                                 <select class="form-select" id="id_status" name="status" required>
-                                                                    <option value="draft" {% if persation.status == 'draft' %}selected{% endif %}>Brouillon</option>
-                                                                    <option value="pending" {% if persation.status == 'pending' %}selected{% endif %}>En attente</option>
-                                                                    <option value="published" {% if persation.status == 'published' %}selected{% endif %}>Publié</option>
+                                                                   
                                                                     <option value="archived" {% if persation.status == 'archived' %}selected{% endif %}>En attente</option>
+                                                                    <option value="published" {% if persation.status == 'published' %}selected{% endif %}>Publié</option>
+                                                                    
                                                                 </select>
                                                             </div>
                                                         </div>
                                 
                                                         <!-- Right Section -->
                                                         <div class="col-md-6">
-                                                            <h6 class="text-uppercase text-muted mb-3">Image</h6>
+                                                            <h6 class="text-uppercase text-muted mb-3">Médias</h6>
                                                             
                                                             <!-- Current Image Preview -->
                                                             <div class="mb-3">
-                                                                <label class="form-label">Image actuelle :</label>
+                                                                <label class="form-label">Image principale actuelle :</label>
                                                                 {% if persation.image %}
                                                                     <div class="current-image-container border rounded p-2 text-center">
                                                                         <img src="{{ persation.image.url }}" alt="Current image" 
@@ -372,18 +415,42 @@
                                                             <!-- New Image Upload -->
                                                             <div class="mb-3">
                                                                 <label for="id_image" class="form-label">
-                                                                    <i class="fas fa-upload me-1"></i> Nouvelle image :
+                                                                    <i class="fas fa-upload me-1"></i> Nouvelle image principale :
                                                                 </label>
                                                                 <input type="file" class="form-control" id="id_image" name="image" 
                                                                        accept="image/*">
                                                                 <div class="form-text">Laissez vide pour conserver l'image actuelle</div>
+                                                            </div>
+                                
+                                                            <!-- Current Icon Image Preview (New) -->
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Icône actuelle :</label>
+                                                                {% if persation.icon_image %}
+                                                                    <div class="current-image-container border rounded p-2 text-center">
+                                                                        <img src="{{ persation.icon_image.url }}" alt="Current icon" 
+                                                                             class="img-fluid mb-2" style="max-height: 100px;">
+                                                                        <p class="small text-muted mb-0">Icône actuelle</p>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <p class="text-muted">Aucune icône</p>
+                                                                {% endif %}
+                                                            </div>
+                                
+                                                            <!-- New Icon Image Upload (New) -->
+                                                            <div class="mb-3">
+                                                                <label for="id_icon_image" class="form-label">
+                                                                    <i class="fas fa-upload me-1"></i> Nouvelle icône :
+                                                                </label>
+                                                                <input type="file" class="form-control" id="id_icon_image" name="icon_image" 
+                                                                       accept="image/*">
+                                                                <div class="form-text">Laissez vide pour conserver l'icône actuelle</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                 
                                                     <!-- Footer -->
                                                     <div class="modal-footer border-top mt-4">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                        <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">
                                                             <i class="fas fa-times me-2"></i> Annuler
                                                         </button>
                                                         <button type="submit" class="btn btn-primary">
@@ -430,25 +497,40 @@
                             <label for="id_title" class="form-label required-field">Titre</label>
                             <input type="text" class="form-control shadow-sm border-light" id="id_title" name="title" required placeholder="Entrez le titre de la persation">
                         </div>
-                    
                         <div class="mb-4">
                             <label for="id_description" class="form-label required-field">Description</label>
                             <textarea class="form-control shadow-sm border-light" id="id_description" name="description" rows="4" required placeholder="Décrivez votre persation..."></textarea>
                         </div>
-                    
                         <div class="mb-4">
                             <label for="id_image" class="form-label">Image</label>
                             <div class="image-upload-container">
-                                <input type="file" class="form-control" id="id_image" name="image" 
-                                       accept="image/*" onchange="previewImage(this)">
-                                <small class="form-text text-muted">Sélectionnez une image pour l'event (optionnel)</small>
+                                <input type="file" class="form-control" id="id_image" name="image"
+                                    accept="image/*" onchange="previewImage(this)">
+                                <small class="form-text text-muted">Sélectionnez une image pour l'event</small>
                                 <div class="image-preview-wrapper mt-3">
-                                    <img id="imagePreview" src="" alt="Aperçu de l'image" 
-                                         style="display: none; max-width: 200px; height: auto; border-radius: 8px;">
+                                    <img id="imagePreview" src="" alt="Aperçu de l'image"
+                                        style="display: none; max-width: 200px; height: auto; border-radius: 8px;">
                                 </div>
                             </div>
                         </div>
-                    
+                        <!-- New icon_image field -->
+                        <div class="mb-4">
+                            <label for="id_icon_image" class="form-label">Icône</label>
+                            <div class="image-upload-container">
+                                <input type="file" class="form-control" id="id_icon_image" name="icon_image"
+                                    accept="image/*" onchange="previewIconImage(this)">
+                                <small class="form-text text-muted">Sélectionnez une icône </small>
+                                <div class="image-preview-wrapper mt-3">
+                                    <img id="iconImagePreview" src="" alt="Aperçu de l'icône"
+                                        style="display: none; max-width: 100px; height: auto; border-radius: 8px;">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- New link_description field -->
+                        <div class="mb-4">
+                            <label for="id_link_description" class="form-label">Lien description</label>
+                            <input type="text" class="form-control shadow-sm border-light" id="id_link_description" name="link_description" placeholder="Entrez le lien de la description">
+                        </div>
                         <div class="mb-4">
                             <label for="id_status" class="form-label required-field">Statut</label>
                             <select class="form-select shadow-sm border-light" id="id_status" name="status" required>
@@ -456,15 +538,11 @@
                                 <option value="published">Publié</option>
                             </select>
                         </div>
-                    
                         <div class="modal-footer d-flex justify-content-between">
                             <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Annuler</button>
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </div>
                     </form>
-                    
-                    
-                    
                 </div>
             </div>
         </div>

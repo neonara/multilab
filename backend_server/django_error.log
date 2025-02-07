@@ -4828,3 +4828,805 @@ Traceback (most recent call last):
   File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/http/request.py", line 167, in get_host
     raise DisallowedHost(msg)
 django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'localhost:8000'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Internal Server Error: /MULTILAB/persations/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 398, in __iter__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persations/ HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persations/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 398, in __iter__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persations/ HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persations/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 398, in __iter__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persations/ HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persation_list
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persation_list HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persation_list
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persation_list HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persations/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/rest_framework/serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 398, in __iter__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persations/ HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/employee/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: SELECT COUNT(*) AS "__count" FROM "multi_lab_persation"
+                                          ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/Downloads/multi-lab/backend_server/account/views/user.py", line 87, in employee
+    Persation_count=Persation.objects.count(),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 608, in count
+    return self.query.get_count(using=self.db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/query.py", line 536, in get_count
+    return obj.get_aggregation(using, {"__count": Count("*")})["__count"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/query.py", line 522, in get_aggregation
+    result = compiler.execute_sql(SINGLE)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: SELECT COUNT(*) AS "__count" FROM "multi_lab_persation"
+                                          ^
+
+"GET /MULTILAB/employee/ HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persation_list
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persation_list HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persation_list
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persation_list HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/persation_list
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 111, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/response.py", line 89, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 167, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/template/defaulttags.py", line 194, in render
+    len_values = len(values)
+                 ^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 380, in __len__
+    self._fetch_all()
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/db/backends/utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "multi_lab_persation" does not exist
+LINE 1: ...ated_at", "multi_lab_persation"."updated_at" FROM "multi_lab...
+                                                             ^
+
+"GET /MULTILAB/persation_list HTTP/1.1" 500 145
+Internal Server Error: /MULTILAB/event_list/
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/decorators.py", line 46, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/generic/list.py", line 154, in get
+    self.object_list = self.get_queryset()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/views/generic/list.py", line 36, in get_queryset
+    raise ImproperlyConfigured(
+django.core.exceptions.ImproperlyConfigured: EventListView is missing a QuerySet. Define EventListView.model, EventListView.queryset, or override EventListView.get_queryset().
+"GET /MULTILAB/event_list/ HTTP/1.1" 500 145
+<<<<<<< HEAD
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78526
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78544
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78528
+Internal Server Error: /MULTILAB/candidates-simplify
+Traceback (most recent call last):
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/utils/deprecation.py", line 136, in __call__
+    response = self.process_response(request, response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 108, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/middleware/common.py", line 87, in get_full_path_with_slash
+    raise RuntimeError(
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+"POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78560
+=======
+>>>>>>> front-end

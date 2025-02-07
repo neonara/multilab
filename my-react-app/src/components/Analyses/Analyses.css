@@ -63,10 +63,12 @@ h6 {
   flex-grow: 1;
   position: relative;
   color: white;
+  background-color: transparent;
   font-size: 35px;
   text-align: left;
   margin-left: clamp(0px, 2vw, 50px);
-  margin-bottom: clamp(50px, 5vw, 80px);
+  /* margin-bottom: clamp(50px, 5vw, 80px); */
+  /* padding-bottom: clamp(50px, 5vw, 80px); */
 }
 
 .themes-title::after {
@@ -84,9 +86,11 @@ h6 {
   display: flex;
   overflow-x: auto;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   flex-wrap: wrap;
   gap:40px clamp(20px, 10vw, 120px) ;
+  padding-top: clamp(50px, 5vw, 80px);
+
 }
 
 .theme{
@@ -160,12 +164,13 @@ h6 {
   width: 386.89px;
   max-width: 600px;
   height: 362px;
-object-fit: contain;
+  object-fit: contain;
 }
 .image-container {
+  position: relative;
   width: 100%;
   margin-top: 20px;
-  margin-bottom: 50px 
+  margin-bottom: 50px ;
 }
 
 .banner-image {
@@ -178,9 +183,10 @@ object-fit: contain;
 
 .text-container {
   position: absolute;
-  bottom: 0; /* Adjust positioning as needed */
-  left: 0;
-  color: white; /* Adjust text color if needed */
+  width: auto; /* Make width dynamic */
+  bottom: 20px; /* Adjust positioning as needed */
+  left: 20px; /* Adjust positioning as needed */
+  color: white;
 }
 
 .title-text {
@@ -300,6 +306,13 @@ object-fit: contain;
 
   .subtitle-text {
 
-    font-size: 40px;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  .text-container {
+    width: auto; /* Make width dynamic */
+    bottom: 0; /* Adjust positioning as needed */
+    left: 0; /* Adjust positioning as needed */
   }
 }

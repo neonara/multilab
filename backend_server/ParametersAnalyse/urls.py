@@ -21,12 +21,12 @@ router = DefaultRouter()
 router.register(r'physico-eaux',
                 TypeAnalysesPhysicochimiquesProduitsEauxViewSet)
 router.register(r'azote-kjedahl', TypeAzoteKjedahlViewSet)
-router.register(r'devi', TypeDeviViewSet)
+router.register(r'aliments-animaux', TypeDeviViewSet)
 router.register(r'micro-eaux', TypeDeviAnalyseMicrobiologieProduitsEauxViewSet)
 router.register(r'physico-peche',
                 TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHEViewSet)
-router.register(r'beurre', TypeDeviBEURREViewSet)
-router.register(r'fromage', TypeDeviFROMAGEViewSet)
+router.register(r'produits-laitiers-beurre', TypeDeviBEURREViewSet)
+router.register(r'produits-laitiers-fromage', TypeDeviFROMAGEViewSet)
 router.register(r'produits-laitiers',
                 TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSViewSet)
 router.register(r'miel', TypeDeviANALYSESPHYSICOCHIMIQUESMIELViewSet)
@@ -36,7 +36,7 @@ router.register(
     r'viandes', TypeDeviANALYSESPHYSICOCHIMIQUESVIANDESDERIVESViewSet)
 router.register(r'micro-alimentaires',
                 TypeDeviAnalysesmicrobiologiquesproduitsalimentairesViewSet)
-router.register(r'cosmetique', AnalysesProduitCosmetiqueViewSet)
+router.register(r'cosmetiques-hygiene', AnalysesProduitCosmetiqueViewSet)
 
 
 urlpatterns = [

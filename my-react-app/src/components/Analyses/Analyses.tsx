@@ -13,6 +13,8 @@ import groupe from "./assets/Group 1000002140.jpg";
 import AnalysesCard from "../home/AnalysesCard";
 import backimg from "./assets/Subtract.jpg";
 import { useEffect, useRef } from "react";
+import BannerImage from "./BannerImage";
+
 const Analyses: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   useEffect(() => {
@@ -47,13 +49,14 @@ const Analyses: React.FC = () => {
   }, []);
   return (
     <div className="analyses-container">
-      <div className="image-container">
+      {/* <div className="image-container">
         <img src={backimg} alt="Lab Worker" className="banner-image" />
         <div className="text-container">
           <p className="title-text">MULTILAB s.a</p>
           <p className="subtitle-text">ANALYSE </p>
         </div>
-      </div>
+      </div> */}
+      <BannerImage backimg={backimg} title="ANALYSE" />
 
       <div className="video-section">
         <div className="textContainer">

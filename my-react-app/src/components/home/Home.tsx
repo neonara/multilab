@@ -1,7 +1,6 @@
 import home1 from "../home/assets/home 1.png";
 import expertise from "@/assets/icons/icon-expertise.svg";
 import fiabilite from "@/assets/icons/icon-fiabilité.svg";
-
 import reactivite from "@/assets/icons/icon-réactivité.svg";
 import proximite from "@/assets/icons/icon-proximité.svg";
 import first from "../home/assets/first.png";
@@ -13,18 +12,45 @@ import logo3 from "@/assets/icons/icon-assistance.svg";
 import event1 from "../home/assets/WhatsApp Image 2024-04-04 at 1.21.41 PM.jpeg";
 import event2 from "../home/assets/Actualité 1.jpg";
 import event3 from "../home/assets/event 27.png";
-import calendarIcon from "@/assets/icons/icon-calendar.svg";
 import log from "../home/assets/log.png";
 import AnalysesCard from "./AnalysesCard";
-
-
 import "./home.css";
-
 import ServicesCards from "./ServicesCards";
 import VideoSection from "./Video";
 import StatsSection from "./StatsSection";
+import api from "../../lib/api";
+import { useEffect, useState } from "react";
+import {Perstation,EventMULTILAB} from "../../types/types";
+import { EventCard } from "./EventCard";
+import { formatDate } from '../../utils/dateFormatter';
+
 function HomePage() {
-  const services = [
+
+  const [perstations, setPerstations] = useState<Perstation[]>([]);
+  const [events, setEvents] = useState<EventMULTILAB[]>([]);
+  const getPerstations = async() => {
+   
+    try {
+      const response = await api.get('/persations');
+      const publicPerstations = response.data.filter(
+        (perstation: Perstation) => perstation.status === 'published'
+      );
+      
+      if (publicPerstations.length > 0) {
+        setPerstations(publicPerstations);
+      } else {
+        console.log('No published perstations found');
+      }
+    } catch (error) {
+      console.error('Error Fetching Perstation data', error);
+      console.log('Failed to fetch perstations');
+    }
+  };
+
+  useEffect(() => {
+    getPerstations();
+  }, []);
+  const staticServices = [
     {
       imageSrc: first,
       logoSrc: logo1,
@@ -50,14 +76,46 @@ function HomePage() {
       link: "Assistance",
     },
   ];
+    // Use perstations if available, otherwise fall back to static services
 
-  const projects = [
+    const servicesData = perstations.length > 0 
+    ? perstations.map(perstation => ({
+        imageSrc: perstation.image,
+        logoSrc: perstation.icon_image,
+        title: perstation.title,
+        description: perstation.description,
+        link: perstation.link_description,
+      }))
+    : staticServices; 
+    // 
+    const getEventService = async() =>{
+      try {
+        const response = await api.get('/events');
+        const publicEvents = response.data.filter(
+          (event: EventMULTILAB) => event.status === 'published'
+        );
+      
+        if (publicEvents.length > 0) {
+          setEvents(publicEvents);
+        } else {
+          console.log('No upcoming events found');
+        }
+      } catch (error) {
+        console.error('Error Fetching Event data', error);
+        console.log('Failed to fetch events');
+      }
+    }
+    useEffect(() => {
+      getEventService();
+    }, []);
+  const staticProjects = [
     {
       imgSrc: event1,
       date: "17/01/2024",
       description:
         "Le maintien de l'accréditation ISO/IEC 17025 des laboratoires de Microbiologie et de Physicochimie de MULTILAB s.a",
       link: "/link-to-project1",
+      id: 1,
     },
     {
       imgSrc: event2,
@@ -65,6 +123,7 @@ function HomePage() {
       description:
         "Participation active de MULTILAB s.a à la première journée de l'Association Tunisienne de l'Aviculture (TPA)",
       link: "/link-to-project2",
+      id: 2,
     },
     {
       imgSrc: event3,
@@ -72,8 +131,20 @@ function HomePage() {
       description:
         'Evènement :Thème "Risques des Mycotoxines dans l\'alimentation animale".',
       link: "/link-to-project3",
+      id: 3,
     },
   ];
+  const eventData = events.length > 0 
+  ? events.map(event => ({
+    imgSrc: event.image,
+    title: event.title,
+    description: event.description,
+    date: formatDate(event.date_event),
+     id: event.id
+
+     
+    }))
+  : staticProjects; 
   return (
     <div className="toppp">
       <VideoSection />
@@ -167,14 +238,14 @@ function HomePage() {
         </p>
 
         <div className="prestations-grid">
-          {services.map((service, index) => (
+          {servicesData.map((service, index) => (
             <ServicesCards
-              key={index}
-              imageSrc={service.imageSrc}
-              logoSrc={service.logoSrc}
-              title={service.title}
-              description={service.description}
-              link={service.link}
+            key={index}
+            imageSrc={service.imageSrc}
+            logoSrc={service.logoSrc}
+            title={service.title}
+            description={service.description}
+            link={service.link}
             />
           ))}
         </div>
@@ -265,27 +336,15 @@ function HomePage() {
         </p>
 
         <div className="projects-cards">
-          {projects.map((project, index) => (
-            <div className="project-card" key={index}>
-              <img
-                src={project.imgSrc}
-                alt={`Project ${index + 1}`}
-                className="project-image"
-              />
-              <div className="project-info">
-                <div className="project-content">
-                  <div className="project-date">
-                    <img src={calendarIcon} alt="Calendar Icon" />{" "}
-                    {project.date}
-                  </div>
-                  <p className="project-description">{project.description}</p>
-                  <a href={project.link} className="project-link">
-                    Lire la suite
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+        {eventData.map((project, index) => (
+                <EventCard
+                    key={index}
+                    imgSrc={project.imgSrc}
+                    date={project.date}
+                    description={project.description}
+                    id={project.id}
+                />
+            ))}
         </div>
       </section>
       {/* Testimonials Section */}

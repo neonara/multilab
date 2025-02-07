@@ -15,15 +15,16 @@ import Condidature from "./components/Contact/Condidatures";
 import Article from "./components/Article/Article";
 import Assistance from "./components/Assistance/Assistance";
 import Physicochimiques from "./components/Parametres/Physicochimiques";
-import Microbiologie from "./components/Parametres/Microbiologie";
 import Paramanalyse from "./components/Parametres/ParametreAnalyses";
+import ParametreAnalyses from "./components/Parametres/ParametreAnalyses";
 
 import Video from "./components/home/Video";
 import Login from "./components/Login/Login";
 import React from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import ScrollToTop from "./components/ScrollToTop";
-
+import Stage from "./components/Poste/stage";
+import PhysicochimiquesProdAli from "./components/Parametres/PhysicochimiquesProdAli";
 function App() {
   const [showButton, setShowButton] = React.useState(false);
 
@@ -61,22 +62,26 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/apropos" element={<Apropos />}></Route> // Add the route
-          for the Apropos component
+          <Route path="/apropos" element={<Apropos />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/Formation" element={<Formation />}></Route>
           <Route path="/Contact" element={<Contact />}></Route>
           <Route path="/Poste" element={<Poste />}></Route>
           <Route path="/Analyse" element={<Analyses />}></Route>
           <Route path="/test" element={<Test />}></Route>
-          <Route path="/condidature" element={<Condidature />}></Route>
-          <Route path="/article" element={<Article />}></Route>
+          <Route path="/candidature" element={<Condidature />}></Route>
+          <Route path="/article/:id" element={<Article />}></Route>
           <Route path="/assistance" element={<Assistance />}></Route>
           <Route path="/parametre" element={<Physicochimiques />}></Route>
-          <Route path="/Physicochimiques" element={<Microbiologie />}></Route>
           <Route path="/Video" element={<Video />}></Route>
           <Route path="/Login" element={<Login />}></Route>
+          <Route path="/stage" element={<Stage />}></Route>
           <Route path="/param-danalyse" element={<Paramanalyse />}></Route>
+          <Route path="/parametre/:id" element={<ParametreAnalyses />} />
+          <Route
+            path="/parametre/physicochimiesProduitsAlimentaires/"
+            element={<PhysicochimiquesProdAli />}
+          />
         </Routes>
       </BrowserRouter>
       {/* Other content can go here */}

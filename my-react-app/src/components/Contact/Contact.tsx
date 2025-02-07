@@ -1,131 +1,172 @@
-// src/pages/contact.tsx
-import "./Contact.css"
+import "./Contact.css";
 import back from "./assets/Rectangle 39000.jpg";
-import { CiUser, CiMail } from "react-icons/ci";
+// import { CiUser, CiMail } from "react-icons/ci";
 import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa"; // FontAwesome icons
-
+import {useState} from "react";
+import api from "../../lib/api";
 const Contact = () => {
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+    company_name: "",
+  });
+
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  // Handle input changes
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatusMessage(""); // Reset status message
+
+    try {
+      const response = await api.post("contact/", formData);
+      if (response.status === 200) {
+        setStatusMessage("Votre message a été envoyé avec succès!");
+        setIsSuccess(true);
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+          company_name: "",
+        });
+      } else {
+        setStatusMessage("Une erreur est survenue lors de l'envoi de votre message.");
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      console.error(error);
+      setStatusMessage("Une erreur est survenue lors de l'envoi de votre message.");
+      setIsSuccess(false);
+    }
+  };
+
   return (
     <div className="header">
-      <div className="back">
-        <div
-          className="background-image-contact"
-          style={{ backgroundImage: `url(${back})` }}
-        >
-          <div className="overlay-content">
-            <h1>Contactez-nous</h1>
-          </div>
+      <div className="contact-image-container">
+        <img src={back} alt="Lab Worker" className="banner-image" />
+        <div className="text-container">
+          <h1 className="header-text">Contactez-nous</h1>
         </div>
       </div>
-      <div className="container">
-        <div className="row">
-          <div className="contact col">
-            <div className="contact-card">
-              <h2>Contact</h2>
-              <div className="contact-item">
-                <FaPhoneAlt className="contact-icon" />
-                <p>(+216) 71 941 436 / 22 344 976</p>
+      <div className="contact-cont-container">
+        <div className="contact-card">
+          <h2>Contact</h2>
+          <div className="contact-item">
+            <FaPhoneAlt className="contact-icon" />
+            <p>(+216) 71 941 436 / 22 344 976</p>
+          </div>
+          <div className="contact-item">
+            <FaMapMarkerAlt className="contact-icon" />
+            <p>Rue de l’argent - Zone industrielle el bosten Soukra - Ariana</p>
+          </div>
+          <div className="contact-item">
+            <FaEnvelope className="contact-icon" />
+            <p>multilab@planet.tn</p>
+          </div>
+        </div>
+
+        <div className="contact-container">
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-row">
+              <div className="input-box">
+                <label htmlFor="fullName">Nom et Prénom</label>
+
+                <input
+                      type="text"
+                      id="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="input-field"
+                    />
               </div>
-              <div className="contact-item">
-                <FaMapMarkerAlt className="contact-icon" />
-                <p>
-                  Rue de l’argent - Zone industrielle el bosten Soukra - Ariana
-                </p>
-              </div>
-              <div className="contact-item">
-                <FaEnvelope className="contact-icon" />
-                <p>multilab@planet.tn</p>
+              <div className="input-box">
+                <label htmlFor="companyName">Nom de l'entreprise</label>
+                <input
+                      type="text"
+                      id="company_name"
+                      className="input-field"
+                      value={formData.company_name}
+                      onChange={handleChange}
+                    />
               </div>
             </div>
-          </div>
+            <div className="form-row">
+              <div className="input-box">
+                <label htmlFor="fullName">Numéro de téléphone</label>
 
-          <div className="contact-container col    shadow-contact">
-            {/* <form className="contact-form"> 
-                <div className="form-group">
-               
-                    <label>Nom et prénom</label>
-                    <input type="text" /><CiUser />
-                    </div>
-                    <div className="form-group">
-
-                    <label>Nom de l’entreprise</label>
-                    <input type="text" placeholder="Nom de l’entreprise" />
-                </div>
-                <div className="form-group">
-                    <label>Numéro de téléphone</label>
-                    <input type="tel" placeholder="Numéro de téléphone" />
-                </div>
-                <div className="form-group">
-                    <label>E-mail</label>
-                    <input type="email" placeholder="E-mail" />
-                </div>
-                <div className="form-group">
-                    <label>Objet du message</label>
-                    <input type="text" placeholder="Objet du message" />
-                </div>
-                <div className="form-group">
-                    <label>Message</label>
-                    <textarea placeholder="Message"></textarea>
-                </div>
-                <button type="submit">Envoyer</button>
-            </form>*/}
-            <form className="contact-form">
-              <div className="row">
-                <div className="form-group ">
-                  <label htmlFor="fullName">Nom et Prénom</label>{" "}
-                  {/* Label for the first input */}
-                  <div className="input-container">
-                    <CiUser className="input-icon" />
-                    <input type="text" id="fullName" className="input-field" />
-                  </div>
-                </div>
-                <div className="form-group ">
-                  <label htmlFor="companyName">Nom de l'entreprise</label>{" "}
-                  {/* Label for the second input */}
-                  <div className="input-container">
-                    <CiMail className="input-icon" />
-                    <input
+                <input
                       type="text"
-                      id="companyName"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
                       className="input-field"
                     />
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="form-group">
-                  <label htmlFor="fullName">Numéro de téléphone</label>{" "}
-                  {/* Label for the first input */}
-                  <div className="input-container">
-                    <CiUser className="input-icon" />
-                    <input type="text" id="fullName" className="input-field" />
-                  </div>
-                </div>
-                <div className="form-group ">
-                  <label htmlFor="companyName">E-mail</label>{" "}
-                  {/* Label for the second input */}
-                  <div className="input-container">
-                    <CiUser className="input-icon" />
-                    <input
-                      type="text"
-                      id="companyName"
-                      className="input-field"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="form-group">
-                <label>Objet du message</label>
-                <input type="text" placeholder="Objet du message" />
-              </div>
-              <div className="form-group">
-                <label>Message</label>
-                <textarea placeholder="Message"></textarea>
-              </div>
 
-              <button type="submit">Envoyer</button>
-            </form>
-          </div>
+              </div>
+              <div className="input-box">
+                <label htmlFor="companyName">E-mail</label>
+                
+
+                <input
+                      type="email"
+                      id="email"
+                      className="input-field"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+
+              </div>
+            </div>
+            <div className="input-box">
+              <label>Objet du message</label>
+              <input
+                  type="text"
+                  id="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Objet du message"
+                />
+            </div>
+            <div className="input-box">
+              <label>Message</label>
+              <textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Écrivez votre message ici..."
+                ></textarea>
+            </div>
+            {statusMessage && (
+                <div
+                  className={`text-center font-ebGaramond text-sm sm:text-xl font-bold mt-3 ${
+                    isSuccess ? "text-burlywood" : "text-red-500"
+                  }`}
+                >
+                  {statusMessage}
+                </div>
+              )}
+            <button type="submit" className="submit-btn">
+              Envoyer
+            </button>
+          </form>
         </div>
       </div>
     </div>
