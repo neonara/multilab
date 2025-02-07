@@ -5,11 +5,14 @@ import "../Parametres/Parametres.css";
 import api from "../../lib/api";
 
 // Import background images
+import api from "../../lib/api";
+
+// Import background images
 import back1 from "@/assets/images/57.png";
 import back2 from "@/assets/images/58.jpg";
 import back3 from "@/assets/images/59.jpg";
 import back4 from "@/assets/images/60.jpg";
-import back5 from "@/assets/images/61.jpg";
+import back5 from "@/assets/images/62.jpg";
 
 // Import types
 import {
@@ -45,19 +48,24 @@ const analysesData: {
   microbiologiquesEaux: {
     title: "Analyse Microbiologiques des Eaux",
     description: "MULTILAB réalise pour le compte de ses clients...",
+    description: "MULTILAB réalise pour le compte de ses clients...",
     back: back2,
   },
   physicochimiquesEaux: {
     title: "Analyses Physicochimiques des Eaux",
+    description: "MULTILAB réalise des analyses permettant...",
     description: "MULTILAB réalise des analyses permettant...",
     back: back3,
   },
   alimentsAnimaux: {
     title: "Analyses des aliments des animaux",
     description: "MULTILAB propose une gamme complète...",
+    description: "MULTILAB propose une gamme complète...",
     back: back4,
   },
   cosmetiquesHygiene: {
+    title: "Microbiologie des produits cosmétiques et d'hygiène",
+    description: "Le laboratoire accompagne l'industrie...",
     title: "Microbiologie des produits cosmétiques et d'hygiène",
     description: "Le laboratoire accompagne l'industrie...",
     back: back5,
@@ -179,6 +187,17 @@ const ParametreAnalyses = () => {
   }
 
   // Render not found state
+  // Render loading state
+  if (isLoading) {
+    return <div>Chargement...</div>;
+  }
+
+  // Render error state
+  if (error) {
+    return <div>Erreur : {error}</div>;
+  }
+
+  // Render not found state
   if (!analysis) {
     return <div>Analyse non trouvée</div>;
   }
@@ -193,6 +212,8 @@ const ParametreAnalyses = () => {
         </div>
         <h1>Paramètre {removeAnalysePrefix(analysis.title)}</h1>
         <div className="grid-container">
+          {chunkedParameters.map((chunk, index) => (
+            <ParameterCard key={index} items={chunk} />
           {chunkedParameters.map((chunk, index) => (
             <ParameterCard key={index} items={chunk} />
           ))}

@@ -88,8 +88,14 @@ const Poste = () => {
     });
   };
 
-  // Fallback data if API fails
-  const fallbackJobs: JobtShow[] = [
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const postsNum = 4; // Number of posts
+  const jobs = [
     {
       id: 1,
       titre: "MULTILAB position",
@@ -102,53 +108,55 @@ const Poste = () => {
       status: "approved",
       created_at: new Date(),
     },
-    // ... other fallback jobs
+    {
+      title: "Développeur Full Stack",
+      time: "Part-time",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      contract: "CIVP",
+      experience: "3 ans",
+    },
+    {
+      title: "Développeur Full Stack",
+      time: "Part-time",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      contract: "CIVP",
+      experience: "3 ans",
+    },
   ];
 
-  const jobs =
-    emploiDescriptions.length > 0 ? emploiDescriptions : fallbackJobs;
-  const postsNum = jobs.length; // Dynamically calculate number of posts
+  interface Job {
+    title: string;
+    time: string;
+    description: string;
+    contract: string;
+    experience: string;
+  }
 
-  const JobCard = ({ job }: { job: JobtShow }) => (
-    <div className="job-card" key={job.id}>
-      <div className="job-icon">
-        <img src={offre} alt="" />
-      </div>
-      <h2 className="job-titre">{job.titre}</h2>
-
-      <h3 className="job-time">
-        {job.temps === "1" ? "Temps plein" : "Partiel"}
-      </h3>
-      <div className="job-dep">
-        {" "}
-        <p>
-          <b>Unité:</b>
-          {job.departement}
-        </p>
-      </div>
-
-      <p className="job-description">{job.description}</p>
-      <div className="job-details">
-        <div className="job-detail">
-          <img src={contrat} alt="" />
-          <p>{job.contrat}</p>
+  function JobCard(job: Job) {
+    return (
+      <div className="job-card">
+        <div className="job-icon">
+          <img src={offre} alt="" />
         </div>
-        <div className="job-detail">
-          <img src={experiencee} alt="" />
-          <p>{job.experience}</p>
+        <h2>{job.title}</h2>
+        <h3>{job.time}</h3>
+        <p>{job.description}</p>
+        <div className="job-details">
+          <div className="job-detail">
+            <img src={contrat} alt="" />
+            <p>{job.contract}</p>
+          </div>
+          <div className="job-detail">
+            <img src={experiencee} alt="" />
+            <p>{job.experience}</p>
+          </div>
         </div>
+        <button className="postuler-button">Postuler</button>
       </div>
-      <button
-        onClick={() => {
-          setSelectedJob(job);
-          setIsModalOpen(true);
-        }}
-        className="postuler-button"
-      >
-        Postuler
-      </button>
-    </div>
-  );
+    );
+  }
 
   return (
     <div className="page-container">
@@ -169,7 +177,86 @@ const Poste = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div className="separator" />
+          <div className="separator"></div> {/* Add this line */}
+          <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
+            <h2 className="filters-title">Filtrer</h2>
+            <div className="filter-content">
+              <h3>Type de contrat</h3>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CIVP"
+                  checked={contractType.CIVP}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CIVP">CIVP</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="Karama"
+                  checked={contractType.Karama}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="Karama">Karama</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CDD"
+                  checked={contractType.CDD}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CDD">CDD</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CDI"
+                  checked={contractType.CDI}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CDI">CDI</label>
+              </div>
+              <h3>Durée d'expérience</h3>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="nouveau"
+                  checked={experience.nouveau}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="nouveau">Nouveau diplômé</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="oneToTwo"
+                  checked={experience.oneToTwo}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="oneToTwo">1-2 ans</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="threeToFive"
+                  checked={experience.threeToFive}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="threeToFive">3-5 ans</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="ninePlus"
+                  checked={experience.ninePlus}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="ninePlus">9+ ans</label>
+              </div>
+            </div>
+          </div>
           <select
             className="dropdown input-item"
             value={unite}
@@ -266,7 +353,7 @@ const Poste = () => {
           backgroundSize: "100%",
           backgroundPosition: "center",
           height: "300px",
-          width: "100%",
+
           overflow: "hidden",
           borderRadius: "17px",
         }}

@@ -5567,6 +5567,7 @@ Traceback (most recent call last):
     raise ImproperlyConfigured(
 django.core.exceptions.ImproperlyConfigured: EventListView is missing a QuerySet. Define EventListView.model, EventListView.queryset, or override EventListView.get_queryset().
 "GET /MULTILAB/event_list/ HTTP/1.1" 500 145
+<<<<<<< HEAD
 Internal Server Error: /MULTILAB/candidates-simplify
 Traceback (most recent call last):
   File "/home/nour/.local/share/virtualenvs/project_biopilate-oAoMj3mD/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
@@ -5627,3 +5628,5 @@ Traceback (most recent call last):
     raise RuntimeError(
 RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/MULTILAB/candidates-simplify/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
 "POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78560
+=======
+>>>>>>> front-end

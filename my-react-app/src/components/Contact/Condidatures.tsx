@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Contact.css";
+import "./Contact.css"
 import back from "./assets/Rectangle 3901.jpg";
 import {
   FaEnvelope,
