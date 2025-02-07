@@ -97,5 +97,38 @@ export type ApplicationForm = {
     file1: File | null; // Assuming file upload will be handled
   
   };
-  //
-  
+  // Analyses physicochimiques des viandes et derives
+  export type ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES ={
+    id: number;
+    type_analyses_physicochimiques_viandes_et_derives : string;
+  }
+//Analyses physicochimiques huiles et produits gras
+  export type ANALYSESPHYSICOCHIMIQUESHUILESPRODUITSGRAS ={
+    id: number;
+    type_analyses_physicochimiques_huiles_et_produits_gras : string;
+  }
+  //Analyses physicochimiques du miel
+  export type ANALYSESPHYSICOCHIMIQUESMIEL ={
+    id: number;
+    type_analyses_physicochimiques_miel : string;
+  }
+  //Analyses physicochimiques des produits laitiers
+  export type ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS ={
+    id: number;
+    type_analyses_physicochimiques_produits_laitiers : string;
+  }
+  //Analyses physicochimiques des produits laitiers brueer
+  export type ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSBRUER ={
+    id: number;
+    type_beurre : string;
+  }
+    //Analyses physicochimiques des produits laitiers formage
+    export type ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSFROMAGE ={
+        id: number;
+        type_fromage : string;
+  }
+  //Analyses physicochimiques des produits de la pêche
+  export type ANALYSESPHYSICOCHIMIQUESPRODUITSPECHE ={
+    id: number;
+    type_analyses_physicochimiques_produit_peche : string;
+  }

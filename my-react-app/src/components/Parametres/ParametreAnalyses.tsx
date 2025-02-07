@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import BannerImageParam from "./BannerImageParam";
 import "../Parametres/Parametres.css";
@@ -23,10 +23,10 @@ import {
 // API endpoint mapping
 const apiEndpoints: { [key: string]: string } = {
   microbiologiques: '/micro-alimentaires',
-  microbiologiquesEaux: '/micro-eaux',
+  microbiologiquesEaux: '/micro-eaux/',
   physicochimiquesEaux: '/physico-eaux',
-  alimentsAnimaux: '/aliments-animaux',
-  cosmetiquesHygiene: '/cosmetiques-hygiene'
+  alimentsAnimaux: '/aliments-animaux/',
+  cosmetiquesHygiene: '/cosmetiques-hygiene/'
 };
 
 // Static analysis data (keep for initial rendering)

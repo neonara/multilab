@@ -79,7 +79,7 @@ function App() {
           <Route path="/param-danalyse" element={<Paramanalyse />}></Route>
           <Route path="/parametre/:id" element={<ParametreAnalyses />} />
           <Route
-            path="/parametre/physicochimiesProduitsAlimentaires"
+            path="/parametre/physicochimiesProduitsAlimentaires/"
             element={<PhysicochimiquesProdAli />}
           />
                </Routes>

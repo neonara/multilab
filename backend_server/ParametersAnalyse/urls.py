@@ -25,8 +25,8 @@ router.register(r'aliments-animaux', TypeDeviViewSet)
 router.register(r'micro-eaux', TypeDeviAnalyseMicrobiologieProduitsEauxViewSet)
 router.register(r'physico-peche',
                 TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSPECHEViewSet)
-router.register(r'beurre', TypeDeviBEURREViewSet)
-router.register(r'fromage', TypeDeviFROMAGEViewSet)
+router.register(r'produits-laitiers-beurre', TypeDeviBEURREViewSet)
+router.register(r'produits-laitiers-fromage', TypeDeviFROMAGEViewSet)
 router.register(r'produits-laitiers',
                 TypeDeviANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSViewSet)
 router.register(r'miel', TypeDeviANALYSESPHYSICOCHIMIQUESMIELViewSet)
