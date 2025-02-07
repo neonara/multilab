@@ -258,6 +258,7 @@ const Poste = () => {
         </div>
       </div>
 
+      {/* linkedin */}
       <div
         className="linkedin-section"
         style={{
