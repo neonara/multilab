@@ -1,43 +1,43 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./Poste.css";
 import back from "@/assets/images/53.jpg";
 import linkedin from "./assets/linkedin.jpg";
 import offre from "@/assets/icons/icon-offre.svg";
 import contrat from "@/assets/icons/icon-contrat.svg";
-import experiencee from "@/assets/icons/icon-experience.svg";
 import { IoMdSearch } from "react-icons/io";
 import arrowDown from "@/assets/icons/icon-arrow-down.svg"; // Add this line
-import api from "../../lib/api"
-import {OffreStageShow } from "../../types/types";
+import api from "../../lib/api";
+import { OffreStageShow } from "../../types/types";
 import { useNavigate } from "react-router";
 import StageApplication from "./StageApplication";
 const Stage = () => {
   // State for filters
   const [unite, setUnite] = useState("Tous les unités d’affectation");
   const [emploi, setEmploi] = useState("Stage");
-  const [stageDescriptions, setStageDescriptions] =  useState<OffreStageShow[]>([]);
-    const [selectedJob, setSelectedJob] = useState<OffreStageShow | null>(null);
+  const [stageDescriptions, setStageDescriptions] = useState<OffreStageShow[]>(
+    []
+  );
+  const [selectedJob, setSelectedJob] = useState<OffreStageShow | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-    const [searchTerm, setSearchTerm] = useState("");
-  
+  const [searchTerm, setSearchTerm] = useState("");
+
   const navigate = useNavigate();
-  
+
   const getEmploi = async () => {
     try {
-      const response = await api.get('/stage/');
+      const response = await api.get("/stage/");
       const publicEmploi = response.data.filter(
         (emploi: OffreStageShow) => emploi.status === "approved"
       );
       setStageDescriptions(publicEmploi);
     } catch (error) {
-      console.error('Error Fetching emploi data:', error);
+      console.error("Error Fetching emploi data:", error);
     }
   };
 
   useEffect(() => {
     getEmploi();
   }, []);
-
 
   const handleUniteChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setUnite(e.target.value);
@@ -86,46 +86,46 @@ const Stage = () => {
     });
   };
 
-  
-  const  fallbackJobs: OffreStageShow[]  = [
+  const fallbackJobs: OffreStageShow[] = [
     {
-      id :1,
+      id: 1,
       titre: "MULTILAB postion",
       type_stage: "Full-time",
-      description:"lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      description:
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
       departement: "MULTILAB Departement",
       created_at: new Date(),
       status: "approved",
     },
     {
-      id:2,
+      id: 2,
       titre: "MULTILAB postion",
       type_stage: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-        departement: "MULTILAB Departement",
-        created_at: new Date(),
-        status: "approved",
+      departement: "MULTILAB Departement",
+      created_at: new Date(),
+      status: "approved",
     },
     {
-      id:3,
+      id: 3,
       titre: "MULTILAB postion",
       type_stage: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-        departement: "MULTILAB Departement",
-        created_at: new Date(),
-        status: "approved",
+      departement: "MULTILAB Departement",
+      created_at: new Date(),
+      status: "approved",
     },
     {
-      id:4,
+      id: 4,
       titre: "MULTILAB postion",
       type_stage: "Part-time",
       description:
         "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-        departement: "MULTILAB Departement",
-        created_at: new Date(),
-        status: "approved",
+      departement: "MULTILAB Departement",
+      created_at: new Date(),
+      status: "approved",
     },
   ];
 
@@ -138,20 +138,29 @@ const Stage = () => {
         <div className="job-icon">
           <img src={offre} alt="" />
         </div>
-        <h2>{job.titre}</h2>
-        <h3>{job.type_stage ==="1"? "PFE" : "Stage Mémoire"}</h3>
+        <h2 className="job-titre">{job.titre}</h2>
+        <h3 className="job-time">
+          {job.type_stage === "1" ? "PFE" : "Stage Mémoire"}
+        </h3>
         <p>{job.description}</p>
         <div className="job-details">
           <div className="job-detail">
             <img src={contrat} alt="" />
-            <p><b>Unité:</b>{job.departement}</p>
+            <p>
+              <b>Unité:</b>
+              {job.departement}
+            </p>
           </div>
-          
         </div>
-        <button onClick={() => {
-          setSelectedJob(job);
-          setIsModalOpen(true);
-        }} className="postuler-button">Postuler</button>
+        <button
+          onClick={() => {
+            setSelectedJob(job);
+            setIsModalOpen(true);
+          }}
+          className="postuler-button"
+        >
+          Postuler
+        </button>
       </div>
     );
   }
@@ -252,7 +261,6 @@ const Stage = () => {
             ))}
           </div>
 
-
           {/* Job Cards Section */}
           <span className="job-cards-container">
             <h2 className="post-num">{postsNum} Postes Disponible</h2>
@@ -290,9 +298,9 @@ const Stage = () => {
         </div>
       </div>
       <StageApplication
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      job={selectedJob}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        job={selectedJob}
       />
     </div>
   );

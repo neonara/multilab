@@ -62,7 +62,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/apropos" element={<Apropos />}></Route> 
+          <Route path="/apropos" element={<Apropos />}></Route>
           <Route path="/contact" element={<Contact />}></Route>
           <Route path="/Formation" element={<Formation />}></Route>
           <Route path="/Contact" element={<Contact />}></Route>
@@ -82,7 +82,7 @@ function App() {
             path="/parametre/physicochimiesProduitsAlimentaires/"
             element={<PhysicochimiquesProdAli />}
           />
-               </Routes>
+        </Routes>
       </BrowserRouter>
       {/* Other content can go here */}
       <Footer />
