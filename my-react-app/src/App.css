@@ -2,6 +2,62 @@
 @tailwind components;
 @tailwind utilities; */
 
+*{
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+}
+
+:root {
+  --gray-heading: var(--gra-heading);
+}
+p {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5; /* Improve readability */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2.5rem; /* Large header */
+}
+
+h2 {
+  font-size: 2rem; /* Medium header */
+}
+
+h3 {
+  font-size: 1.75rem; /* Smaller header */
+}
+
+h4 {
+  font-size: 1.5rem; /* Smaller header */
+}
+
+h5 {
+  font-size: 1.25rem; /* Smaller header */
+}
+
+h6 {
+  font-size: 1rem; /* Smallest header */
+}
+
+
 body,
 html {
   overflow-x: hidden;
@@ -14,6 +70,9 @@ html {
   margin-right: 0;
   margin-left: 0;
   width: 100%;
+  display: flex;
+  gap: 20px;
+
 }
 
 /* Custom footer styles */
@@ -69,8 +128,15 @@ html {
   align-items: start;
 }
 
-.footer .col h5 {
-  font-size: 18px;
+.thirdone .footer-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.footer-contact .social-icons {
+  display: flex;
 }
 
 .footer .firstone {
@@ -78,8 +144,9 @@ html {
   min-width: 250px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between  ;
+  justify-content: space-between ;
   align-items: start;
+  gap: 20px;
 }
 
 .footer .firstone .text {
@@ -104,6 +171,7 @@ html {
   flex-direction: column;
   justify-content: start;
   align-items: start;
+  gap: 24px;
 }
 
 .footer .menu-container {
@@ -122,11 +190,11 @@ html {
   list-style: none;
 
   width: max-content;
-
+  
 }
 
 .footer .menu-column li {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .footer .menu-column a {
@@ -141,7 +209,14 @@ html {
 
 @media (max-width: 768px) {
   .footer {
-    text-align: center;
+
+  }
+
+  .container-f {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
   }
 
   .footer .row {
@@ -153,9 +228,20 @@ html {
     max-width: 100%;
   }
 
+  .footer .secondone{
+    width: 370px;
+    margin:  0 auto;
+
+  }
+
   .footer .menu-container {
-    flex-direction: column;
-    align-items: center;
+    justify-content: start;
+    align-items: start;
+  }
+  .footer .thirdone {
+    text-align: left;
+    gap: 20px;
+    height: 190px;
   }
 }
 
@@ -168,6 +254,10 @@ html {
 
   .footer img {
     width: 200px;
+  }
+
+  .footer .secondone{
+    margin:  0 auto;
   }
 }
 

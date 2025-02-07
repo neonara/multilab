@@ -21,7 +21,9 @@ function NavBar() {
 
   const handleLanguageChange = (language: string) => {
     setSelectedLanguage(language);
-    i18n.changeLanguage(language); // Change language across the entire app
+    i18n.changeLanguage(language); 
+    console.log(selectedLanguage);
+    // Change language across the entire app
   };
 
   const getNavLinkClass = (path: string) => {

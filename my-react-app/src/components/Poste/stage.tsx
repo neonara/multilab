@@ -86,6 +86,14 @@ const Stage = () => {
     });
   };
 
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  console.log(setIsDrawerOpen);
+  
+
+  // const toggleDrawer = () => {
+  //   setIsDrawerOpen(!isDrawerOpen);
+  // };
+
   const fallbackJobs: OffreStageShow[] = [
     {
       id: 1,
@@ -185,6 +193,85 @@ const Stage = () => {
             />
           </div>
           <div className="separator"></div> {/* Add this line */}
+          <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
+            <h2 className="filters-title">Filtrer</h2>
+            <div className="filter-content">
+              <h3>Type de contrat</h3>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CIVP"
+                  checked={contractType.CIVP}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CIVP">CIVP</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="Karama"
+                  checked={contractType.Karama}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="Karama">Karama</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CDD"
+                  checked={contractType.CDD}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CDD">CDD</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="CDI"
+                  checked={contractType.CDI}
+                  onChange={handleContractChange}
+                />
+                <label htmlFor="CDI">CDI</label>
+              </div>
+              <h3>Durée d'expérience</h3>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="nouveau"
+                  checked={experience.nouveau}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="nouveau">Nouveau diplômé</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="oneToTwo"
+                  checked={experience.oneToTwo}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="oneToTwo">1-2 ans</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="threeToFive"
+                  checked={experience.threeToFive}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="threeToFive">3-5 ans</label>
+              </div>
+              <div className="filter-option">
+                <input
+                  type="checkbox"
+                  name="ninePlus"
+                  checked={experience.ninePlus}
+                  onChange={handleExperienceChange}
+                />
+                <label htmlFor="ninePlus">9+ ans</label>
+              </div>
+            </div>
+          </div>
           <select
             className="dropdown input-item"
             value={unite}

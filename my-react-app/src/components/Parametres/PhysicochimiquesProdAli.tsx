@@ -159,7 +159,7 @@ export default function PhysicochimiquesProdAli() {
   const [elements, setElements] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const analysisdata = id ? analysesData[id] : undefined;
+    // const analysisdata = id ? analysesData[id] : undefined;
     // Fetch parameters from API
  
     useEffect(() => {
