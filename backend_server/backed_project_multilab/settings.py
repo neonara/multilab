@@ -63,15 +63,22 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     'https://102.211.210.120',
     'https://multilab-tunisia.com.tn',
+    'https://www.multilab-tunisia.com.tn',
+    'http://102.211.210.120',
+   
 )
 CSRF_TRUSTED_ORIGINS = [
     'https://102.211.210.120',
     'https://multilab-tunisia.com.tn',
+     'https://www.multilab-tunisia.com.tn',
+    'http://102.211.210.120',
 
 ]
 CORS_ALLOWED_ORIGINS = [
     'https://102.211.210.120',
     'https://multilab-tunisia.com.tn',
+     'https://www.multilab-tunisia.com.tn',
+    'http://102.211.210.120',
 
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
@@ -192,7 +199,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-     os.path.join(BASE_DIR, '../dist'),
+     os.path.join(BASE_DIR, '../my-react-app/dist'),
 
 ]
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:8000/MULTILAB/";
+const baseURL = `${window.location.protocol}//${window.location.host}/MULTILAB/`;
 
 const api = axios.create({
   baseURL: baseURL,

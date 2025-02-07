@@ -23,11 +23,14 @@ import { useEffect, useState } from "react";
 import {Perstation,EventMULTILAB} from "../../types/types";
 import { EventCard } from "./EventCard";
 import { formatDate } from '../../utils/dateFormatter';
+import { useNavigate } from "react-router";
+import pdfFile from "./assets/BIOPILATES SITE MODIFICATIONS280125.pdf";
 
 function HomePage() {
 
   const [perstations, setPerstations] = useState<Perstation[]>([]);
   const [events, setEvents] = useState<EventMULTILAB[]>([]);
+  const navigate = useNavigate();
   const getPerstations = async() => {
    
     try {
@@ -145,6 +148,15 @@ function HomePage() {
      
     }))
   : staticProjects; 
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = pdfFile;
+    link.download = "BIOPILATES SITE MODIFICATIONS280125.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  
   return (
     <div className="toppp">
       <VideoSection />
@@ -178,7 +190,7 @@ function HomePage() {
             « Bien plus qu’un laboratoire agroalimentaire, un véritable
             partenaire. »
           </p>
-          <button className="cta-button">Découvrez-nous</button>
+          <button className="cta-button" onClick={() => navigate("/apropos")}>Découvrez-nous</button>
         </div>
 
         <div className="image-section">
@@ -310,7 +322,7 @@ function HomePage() {
               </div>
             </p>
 
-            <button className="reconnaissance-button">En apprendre plus</button>
+            <button className="reconnaissance-button"  onClick={handleDownload}>En apprendre plus</button>
           </div>
 
           {/* img */}

@@ -40,27 +40,27 @@ const analysesData: {
   microbiologiques: {
     title: "Analyses microbiologiques des Produits Alimentaires",
     description:
-      "Notre laboratoire offre une vaste gamme d'analyses microbiologiques...",
+      "Notre laboratoire offre une vaste gamme d’analyses microbiologiques pour garantir la sécurité et la qualité des produits alimentaires. Notre expertise vise à accompagner les industriels de l'agroalimentaire, les distributeurs et les acteurs de la chaîne alimentaire dans leurs démarches de conformité réglementaire et de maîtrise des risques sanitaires.",
     back: back1,
   },
   microbiologiquesEaux: {
     title: "Analyse Microbiologiques des Eaux",
-    description: "MULTILAB réalise pour le compte de ses clients...",
+    description: "MULTILAB réalise pour le compte de ses clients une panoplie d’analyses microbiologiques dans les eaux qui permettent de détecter et de quantifier les micro-organismes pathogènes ou indicateurs de contamination. Elles sont essentielles pour évaluer la qualité de l'eau destinée à la consommation humaine, aux usages industriels ou encore à des fins environnementales.",
     back: back2,
   },
   physicochimiquesEaux: {
     title: "Analyses Physicochimiques des Eaux",
-    description: "MULTILAB réalise des analyses permettant...",
+    description: "MULTILAB réalise des analyses permettant de déterminer la qualité de l’eau en évaluant divers paramètres essentiels. Ces prestations sont adaptées aux exigences des industries, des collectivités et des particuliers soucieux de la qualité de l’eau utilisée ou rejetée.",
     back: back3,
   },
   alimentsAnimaux: {
     title: "Analyses des aliments des animaux",
-    description: "MULTILAB propose une gamme complète...",
+    description: "MULTILAB propose une gamme complète d’analyses physicochimiques pour les aliments pour animaux, répondant aux besoins des professionnels du secteur. Ces analyses permettent de déterminer la qualité nutritionnelle, la composition chimique et la conformité des matières premières et des produits finis aux normes en vigueur.",
     back: back4,
   },
   cosmetiquesHygiene: {
     title: "Microbiologie des produits cosmétiques et d'hygiène",
-    description: "Le laboratoire accompagne l'industrie...",
+    description: "Le laboratoire accompagne l’industrie des cosmétiques ainsi que celle des produits d’hygiène, de nettoyage et de désinfection, en assurant la qualité et la sécurité des produits formulés et de leurs ingrédients par le dénombrement et la détection de différents microorganismes. Il évalue également leur stabilité et leur efficacité à travers une série de tests rigoureux, en conformité avec les normes en vigueur.",
     back: back5,
   },
 };
@@ -99,6 +99,8 @@ const ParametreAnalyses = () => {
   const fetchParameters = async () => {
     if (!id) {
       setError("No analysis ID provided");
+      console.log(error);
+      
       setIsLoading(false);
       return;
     }
@@ -190,9 +192,6 @@ const ParametreAnalyses = () => {
   }
 
   // Render error state
-  if (error) {
-    return <div>Erreur : {error}</div>;
-  }
 
   // Render not found state
   if (!analysis) {

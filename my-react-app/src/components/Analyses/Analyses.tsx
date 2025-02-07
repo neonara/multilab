@@ -6,7 +6,7 @@ import im5 from "./assets/rectangle 5.jpg";
 import im6 from "./assets/Rectangle 6.jpg";
 import im7 from "./assets/rectangle 7.jpg";
 import im8 from "./assets/Rectangle 8.png";
-import vid from "./assets/Design sans titre.mp4";
+import vid from "./assets/0702vd page analyse Multilab.mp4";
 
 import "./Analyses.css";
 import groupe from "./assets/Group 1000002140.jpg";

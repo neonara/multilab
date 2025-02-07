@@ -33,7 +33,7 @@ const Article: React.FC = () => {
   }
 
   if (!event) {
-    return <div className="error">Event not found</div>;
+    return <div className="error">Loading...</div>;
   }
 
   // Gather all available images for the gallery
