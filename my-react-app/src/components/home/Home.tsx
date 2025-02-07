@@ -34,7 +34,7 @@ function HomePage() {
   const getPerstations = async() => {
    
     try {
-      const response = await api.get('/persations');
+      const response = await api.get('/persations/');
       const publicPerstations = response.data.filter(
         (perstation: Perstation) => perstation.status === 'published'
       );
@@ -93,7 +93,7 @@ function HomePage() {
     // 
     const getEventService = async() =>{
       try {
-        const response = await api.get('/events');
+        const response = await api.get('/events/');
         const publicEvents = response.data.filter(
           (event: EventMULTILAB) => event.status === 'published'
         );
