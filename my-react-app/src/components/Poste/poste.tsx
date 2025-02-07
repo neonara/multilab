@@ -14,26 +14,25 @@ import ApplicationModal from "./Application";
 import { useNavigate } from "react-router";
 const Poste = () => {
   const navigate = useNavigate();
- 
+
   // State for filters
   const [unite, setUnite] = useState("Tous les unités d'affectation");
   const [emploi, setEmploi] = useState("Emploi");
-  const [emploiDescriptions, setEmploiDescriptions] =  useState<JobtShow[]>([]);
+  const [emploiDescriptions, setEmploiDescriptions] = useState<JobtShow[]>([]);
   const [selectedJob, setSelectedJob] = useState<JobtShow | null>(null);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
 
   const getEmploi = async () => {
     try {
-      const response = await api.get('/emploi');
+      const response = await api.get("/emploi");
       const publicEmploi = response.data.filter(
         (emploi: JobtShow) => emploi.status === "approved"
       );
       setEmploiDescriptions(publicEmploi);
     } catch (error) {
-      console.error('Error Fetching emploi data:', error);
+      console.error("Error Fetching emploi data:", error);
     }
   };
 
@@ -95,7 +94,8 @@ const Poste = () => {
       id: 1,
       titre: "MULTILAB position",
       temps: "Full-time",
-      description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
+      description:
+        "We are looking for a creative and detail-oriented Marketing Coordinator to join our growing team. The ideal candidate will play a key role in supporting various marketing initiatives, from digital campaigns to event planning, while ensuring consistency across all platforms. If you’re passionate about marketing, have a keen eye for trends, and thrive in a fast-paced environment, we’d love to hear from you!",
       contrat: "CIVP",
       departement: "MULTILAB Departement",
       experience: "3 ans",
@@ -105,7 +105,8 @@ const Poste = () => {
     // ... other fallback jobs
   ];
 
-  const jobs = emploiDescriptions.length > 0 ? emploiDescriptions : fallbackJobs;
+  const jobs =
+    emploiDescriptions.length > 0 ? emploiDescriptions : fallbackJobs;
   const postsNum = jobs.length; // Dynamically calculate number of posts
 
   const JobCard = ({ job }: { job: JobtShow }) => (
@@ -113,12 +114,20 @@ const Poste = () => {
       <div className="job-icon">
         <img src={offre} alt="" />
       </div>
-      <h2>{job.titre}</h2>
-      
-      <h3>{job.temps ==="1"? "Temps plein" : "Partiel"}</h3>
-      <div className="job-detail"> <p><b>Unité:</b>{job.departement}</p></div>
+      <h2 className="job-titre">{job.titre}</h2>
 
-      <p>{job.description}</p>
+      <h3 className="job-time">
+        {job.temps === "1" ? "Temps plein" : "Partiel"}
+      </h3>
+      <div className="job-dep">
+        {" "}
+        <p>
+          <b>Unité:</b>
+          {job.departement}
+        </p>
+      </div>
+
+      <p className="job-description">{job.description}</p>
       <div className="job-details">
         <div className="job-detail">
           <img src={contrat} alt="" />
@@ -129,14 +138,17 @@ const Poste = () => {
           <p>{job.experience}</p>
         </div>
       </div>
-      <button onClick={() => {
+      <button
+        onClick={() => {
           setSelectedJob(job);
           setIsModalOpen(true);
-        }} className="postuler-button">Postuler</button>
+        }}
+        className="postuler-button"
+      >
+        Postuler
+      </button>
     </div>
   );
-
-
 
   return (
     <div className="page-container">
@@ -274,7 +286,6 @@ const Poste = () => {
         onClose={() => setIsModalOpen(false)}
         job={selectedJob}
       />
-
     </div>
   );
 };
