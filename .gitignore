@@ -3,10 +3,9 @@ backend_server/account/migrations/
 backend_server/multi_lab/migrations/
 backend_server/ParameterAnalyse/migrations/
 backend_server/static/
-backend_server/staticfiles/
+
 
 
 node_modules/
 
 
-backend_server

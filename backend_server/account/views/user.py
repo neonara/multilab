@@ -55,27 +55,36 @@ def register(request):
 
 
 def login_view(request):
+    context = {
+        'background_image_url': '/static/images/Login-bg.jpg'  # Adjust path accordingly
+    }
     form = LoginForm(request.POST or None)
     msg = None
+
     if request.method == 'POST':
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None and user.is_admin:
+
+            if user is not None:
                 login(request, user)
-                return redirect('adminpage')
-            elif user is not None and user.is_client:
-                login(request, user)
-                return redirect('customer')
-            elif user is not None and user.is_moderator:
-                login(request, user)
-                return redirect('employee')
+                if user.is_admin:
+                    return redirect('adminpage')
+                elif user.is_client:
+                    return redirect('customer')
+                elif user.is_moderator:
+                    return redirect('employee')
             else:
-                msg= 'invalid credentials'
+                msg = 'Invalid credentials'
         else:
-            msg = 'error validating form'
-    return render(request, 'login.html', {'form': form, 'msg': msg})
+            msg = 'Error validating form'
+
+    # Merge 'form' and 'msg' into the context dictionary
+    context.update({'form': form, 'msg': msg})
+
+    return render(request, 'login.html', context)
+
 
 
 # def admin(request):
@@ -121,14 +130,49 @@ class LoginView(APIView):
             username = serializer.validated_data['username']
             password = serializer.validated_data['password']
             user = authenticate(request, username=username, password=password)
+            
             if user is not None:
                 login(request, user)
-                return JsonResponse({'message': 'Login successful'}, status=status.HTTP_200_OK)
+
+                # Fetch counts
+                class Counts:
+                    def __init__(self, avis_count, Offre_description_count, OffreStage_count, Report_count, Persation_count, event_count):
+                        self.avis_count = avis_count
+                        self.Offre_description_count = Offre_description_count
+                        self.OffreStage_count = OffreStage_count
+                        self.Report_count = Report_count
+                        self.Persation_count = Persation_count
+                        self.event_count = event_count
+                
+                counts = Counts(
+                    avis_count=Avis.objects.count(),
+                    Offre_description_count=Offre_description.objects.count(),
+                    OffreStage_count=OffreStage.objects.count(),
+                    Report_count=Report.objects.count(),
+                    Persation_count=Persation.objects.count(),
+                    event_count=Event.objects.count(),
+                )
+
+                # Convert counts object to a dictionary
+                counts_data = {
+                    "avis_count": counts.avis_count,
+                    "Offre_description_count": counts.Offre_description_count,
+                    "OffreStage_count": counts.OffreStage_count,
+                    "Report_count": counts.Report_count,
+                    "Persation_count": counts.Persation_count,
+                    "event_count": counts.event_count
+                }
+
+                return JsonResponse({
+                    'message': 'Login successful',
+                    'counts': counts_data
+                }, status=status.HTTP_200_OK)
+            
             else:
                 return JsonResponse({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         else:
             return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
 class LogoutView(APIView):
     def post(self, request):
         logout(request)

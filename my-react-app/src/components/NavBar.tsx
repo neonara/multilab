@@ -119,7 +119,7 @@ function NavBar() {
               </li>
 
               <li className="nav-item">
-                <a className={getNavLinkClass("/login")} href="/login">
+                <a className={getNavLinkClass("/login")} href="https://multilab-tunisia.com.tn/MULTILAB/login_view">
                   {t("Accès client")} {/* Translated Client Access */}
                 </a>
               </li>
@@ -130,7 +130,7 @@ function NavBar() {
               </li>
 
               {/* Language Selector */}
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <MDBDropdown>
                   <MDBDropdownToggle tag="a" className="nav-link">
                     <i className="bi bi-globe"></i> {selectedLanguage}
@@ -150,7 +150,7 @@ function NavBar() {
                     </MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
-              </li>
+              </li> */}
               <li
                 className="search-btn ms-2"
                 onClick={() => setIsSearchOpen(true)}
