@@ -24,7 +24,7 @@ import {Perstation,EventMULTILAB} from "../../types/types";
 import { EventCard } from "./EventCard";
 import { formatDate } from '../../utils/dateFormatter';
 import { useNavigate } from "react-router";
-import pdfFile from "./assets/BIOPILATES SITE MODIFICATIONS280125.pdf";
+import pdfFile from "./assets/Annexe technique .pdf";
 
 function HomePage() {
 
@@ -151,7 +151,7 @@ function HomePage() {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = pdfFile;
-    link.download = "BIOPILATES SITE MODIFICATIONS280125.pdf";
+    link.download = "Annexe technique .pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
