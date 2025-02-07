@@ -27,7 +27,7 @@ const Poste = () => {
 
   const getEmploi = async () => {
     try {
-      const response = await api.get('/emploi');
+      const response = await api.get('/emploi/');
       const publicEmploi = response.data.filter(
         (emploi: JobtShow) => emploi.status === "approved"
       );

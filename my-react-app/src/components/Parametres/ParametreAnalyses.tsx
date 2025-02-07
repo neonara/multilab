@@ -22,9 +22,9 @@ import {
 
 // API endpoint mapping
 const apiEndpoints: { [key: string]: string } = {
-  microbiologiques: '/micro-alimentaires',
+  microbiologiques: '/micro-alimentaires/',
   microbiologiquesEaux: '/micro-eaux/',
-  physicochimiquesEaux: '/physico-eaux',
+  physicochimiquesEaux: '/physico-eaux/',
   alimentsAnimaux: '/aliments-animaux/',
   cosmetiquesHygiene: '/cosmetiques-hygiene/'
 };

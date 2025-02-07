@@ -19,7 +19,7 @@ const LoginForm: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/MULTILAB/api/login/", {
+      const response = await fetch(`${window.location.protocol}//${window.location.host}/MULTILAB/api/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

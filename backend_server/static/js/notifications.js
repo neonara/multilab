@@ -7,7 +7,7 @@ function loadNotifications() {
         return;
     }
 
-    fetch('http://localhost:8000/api/notifications/', {
+    fetch(`${window.location.protocol}//${window.location.host}/MULTILAB/notifications/`, {
         headers: {
             'X-Requested-With': 'XMLHttpRequest',
             'X-CSRFToken': csrfToken.value,
