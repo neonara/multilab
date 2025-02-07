@@ -94,8 +94,8 @@ const Poste = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const postsNum = 4; // Number of posts
-  const jobs = [
+  // Fallback data if API fails
+  const fallbackJobs: JobtShow[] = [
     {
       id: 1,
       titre: "MULTILAB position",
@@ -108,55 +108,53 @@ const Poste = () => {
       status: "approved",
       created_at: new Date(),
     },
-    {
-      title: "Développeur Full Stack",
-      time: "Part-time",
-      description:
-        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-      contract: "CIVP",
-      experience: "3 ans",
-    },
-    {
-      title: "Développeur Full Stack",
-      time: "Part-time",
-      description:
-        "lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio. lorem ipsum dolor sit amet, consectetur elit.",
-      contract: "CIVP",
-      experience: "3 ans",
-    },
+    // ... other fallback jobs
   ];
 
-  interface Job {
-    title: string;
-    time: string;
-    description: string;
-    contract: string;
-    experience: string;
-  }
+  const jobs =
+    emploiDescriptions.length > 0 ? emploiDescriptions : fallbackJobs;
+  const postsNum = jobs.length; // Dynamically calculate number of posts
 
-  function JobCard(job: Job) {
-    return (
-      <div className="job-card">
-        <div className="job-icon">
-          <img src={offre} alt="" />
-        </div>
-        <h2>{job.title}</h2>
-        <h3>{job.time}</h3>
-        <p>{job.description}</p>
-        <div className="job-details">
-          <div className="job-detail">
-            <img src={contrat} alt="" />
-            <p>{job.contract}</p>
-          </div>
-          <div className="job-detail">
-            <img src={experiencee} alt="" />
-            <p>{job.experience}</p>
-          </div>
-        </div>
-        <button className="postuler-button">Postuler</button>
+  const JobCard = ({ job }: { job: JobtShow }) => (
+    <div className="job-card" key={job.id}>
+      <div className="job-icon">
+        <img src={offre} alt="" />
       </div>
-    );
-  }
+      <h2 className="job-titre">{job.titre}</h2>
+
+      <h3 className="job-time">
+        {job.temps === "1" ? "Temps plein" : "Partiel"}
+      </h3>
+      <div className="job-dep">
+        {" "}
+        <p>
+          <b>Unité:</b>
+          {job.departement}
+        </p>
+      </div>
+
+      <p className="job-description">{job.description}</p>
+      <div className="job-details">
+        <div className="job-detail">
+          <img src={contrat} alt="" />
+          <p>{job.contrat}</p>
+        </div>
+        <div className="job-detail">
+          <img src={experiencee} alt="" />
+          <p>{job.experience}</p>
+        </div>
+      </div>
+      <button
+        onClick={() => {
+          setSelectedJob(job);
+          setIsModalOpen(true);
+        }}
+        className="postuler-button"
+      >
+        Postuler
+      </button>
+    </div>
+  );
 
   return (
     <div className="page-container">
