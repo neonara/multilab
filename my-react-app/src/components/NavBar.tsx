@@ -14,17 +14,19 @@ import {
 
 function NavBar() {
   const { t, i18n } = useTranslation();
-  const [selectedLanguage, setSelectedLanguage] = useState("English");
+  console.log(i18n);
+  
+  // const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [isSearchOpen, setIsSearchOpen] = useState(false); // State for search popup
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null); // State for accordion
 
-  const handleLanguageChange = (language: string) => {
-    setSelectedLanguage(language);
-    i18n.changeLanguage(language); 
-    console.log(selectedLanguage);
-    // Change language across the entire app
-  };
+  // const handleLanguageChange = (language: string) => {
+  //   setSelectedLanguage(language);
+  //   i18n.changeLanguage(language); 
+  //   console.log(selectedLanguage);
+  //   // Change language across the entire app
+  // };
 
   const getNavLinkClass = (path: string) => {
     return window.location.pathname === path ? "nav-link active" : "nav-link";
@@ -243,7 +245,7 @@ function NavBar() {
 
           {/* Language Selector */}
 
-          <div className="accordion1">
+          {/* <div className="accordion1">
             <div className="accordion-item">
               <div
                 className="accordion-header"
@@ -279,7 +281,7 @@ function NavBar() {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
 

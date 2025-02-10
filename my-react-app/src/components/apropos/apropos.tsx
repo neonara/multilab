@@ -47,7 +47,7 @@ const Apropos: React.FC = () => {
     },
     { image: Pâtisserie, label: "Pâtisserie confiserie" },
     { image: distribution, label: "La grande distribution" },
-    { image: ServHygiènes, label: "Services d’hygiènes" },
+    { image: ServHygiènes, label: "Services d’hygiène" },
     { image: Eaux, label: "Eaux" },
     { image: Nutrition, label: "Nutrition animale" },
     { image: Fruits, label: "Fruits et Légumes" },
@@ -281,7 +281,7 @@ const Apropos: React.FC = () => {
       </section>
 
       <div className="Accreditation">
-        <h1>Accreditation</h1>
+        <h1>Accréditation</h1>
         <p>
           Depuis sa première accréditation obtenue en 2012,{" "}
           <strong>MULTILAB</strong> n'a cessé d'élargir son champ d'expertise,
