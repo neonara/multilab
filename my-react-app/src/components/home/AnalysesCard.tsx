@@ -1,9 +1,9 @@
 import card from "../home/assets/first.png";
 import tt from "../home/assets/tt.png";
 import phy from "../home/assets/phy.png";
-import img4 from "../home/assets/Rectangle 3898.png";
+import img4 from "@/assets/images/64.png";
 import img6 from "@/assets/analyse6.jpg";
- import img5 from "../home/assets/img5.png";
+import img5 from "../home/assets/img5.png";
 import { GoChevronRight } from "react-icons/go";
 import "./home.css";
 
@@ -15,12 +15,12 @@ function AnalysesCard() {
       link: "/parametre/microbiologiques",
     },
     {
-      title: "Microbiologie des Eaux",
+      title: "Microbiologie <br> des Eaux",
       image: tt, // Replace with your image path
       link: "/parametre/microbiologiquesEaux",
     },
     {
-      title: "Physicochimie des Eaux",
+      title: "Physicochimie <br>des Eaux",
       image: img5, // Replace with your image path
       link: "/parametre/physicochimiquesEaux",
     },
@@ -29,7 +29,7 @@ function AnalysesCard() {
       image: img4, // Replace with your image path
       link: "/parametre/alimentsAnimaux",
     },
-    
+
     {
       title: "Physicochimies des Produits Alimentaires",
       image: phy, // Replace with your image path
@@ -55,7 +55,10 @@ function AnalysesCard() {
           </div>
 
           <div className="analysis-content">
-            <h3 className="analysis-title">{analysis.title}</h3>
+            <h3
+              className="analysis-title"
+              dangerouslySetInnerHTML={{ __html: analysis.title }}
+            ></h3>
             <a href={analysis.link} className="analysis-link">
               En savoir plus <GoChevronRight className="icon" />
             </a>

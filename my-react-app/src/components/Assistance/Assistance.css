@@ -111,18 +111,7 @@ h6 {
   text-align: left;
   margin-left: 20px;
 }
-.test {
-  width: 542px;
-  height: 34px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: "Inter";
-  font-size: 35px;
-  font-weight: 700;
-  line-height: 42.36px;
-  text-align: left;
-  color: rgba(1, 61, 143, 1);
-}
+
 
 .image-container {
   position: relative;
@@ -210,13 +199,14 @@ h6 {
 }
 
 .test {
+  gap: 0px;
   width: 100%;
   height: fit-content;
-  opacity: 0px;
   font-size: 35px;
   font-weight: 700;
   text-align: left;
   color: var(--blue);
+  margin-bottom: 32px;
 }
 
 .image-container {

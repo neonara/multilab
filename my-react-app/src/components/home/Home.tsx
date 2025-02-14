@@ -20,33 +20,31 @@ import VideoSection from "./Video";
 import StatsSection from "./StatsSection";
 import api from "../../lib/api";
 import { useEffect, useState } from "react";
-import {Perstation,EventMULTILAB} from "../../types/types";
+import { Perstation, EventMULTILAB } from "../../types/types";
 import { EventCard } from "./EventCard";
-import { formatDate } from '../../utils/dateFormatter';
+import { formatDate } from "../../utils/dateFormatter";
 import { useNavigate } from "react-router";
 import pdfFile from "./assets/Annexe technique .pdf";
 
 function HomePage() {
-
   const [perstations, setPerstations] = useState<Perstation[]>([]);
   const [events, setEvents] = useState<EventMULTILAB[]>([]);
   const navigate = useNavigate();
-  const getPerstations = async() => {
-   
+  const getPerstations = async () => {
     try {
-      const response = await api.get('/persations/');
+      const response = await api.get("/persations/");
       const publicPerstations = response.data.filter(
-        (perstation: Perstation) => perstation.status === 'published'
+        (perstation: Perstation) => perstation.status === "published"
       );
-      
+
       if (publicPerstations.length > 0) {
         setPerstations(publicPerstations);
       } else {
-        console.log('No published perstations found');
+        console.log("No published perstations found");
       }
     } catch (error) {
-      console.error('Error Fetching Perstation data', error);
-      console.log('Failed to fetch perstations');
+      console.error("Error Fetching Perstation data", error);
+      console.log("Failed to fetch perstations");
     }
   };
 
@@ -79,38 +77,40 @@ function HomePage() {
       link: "Assistance",
     },
   ];
-    // Use perstations if available, otherwise fall back to static services
+  // Use perstations if available, otherwise fall back to static services
 
-    const servicesData = perstations.length > 0 
-    ? perstations.map(perstation => ({
-        imageSrc: perstation.image,
-        logoSrc: perstation.icon_image,
-        title: perstation.title,
-        description: perstation.description,
-        link: perstation.link_description,
-      }))
-    : staticServices; 
-    // 
-    const getEventService = async() =>{
-      try {
-        const response = await api.get('/events/');
-        const publicEvents = response.data.filter(
-          (event: EventMULTILAB) => event.status === 'published'
-        );
-      
-        if (publicEvents.length > 0) {
-          setEvents(publicEvents);
-        } else {
-          console.log('No upcoming events found');
-        }
-      } catch (error) {
-        console.error('Error Fetching Event data', error);
-        console.log('Failed to fetch events');
+  const servicesData =
+    perstations.length > 0
+      ? perstations.map((perstation) => ({
+          imageSrc: perstation.image,
+          logoSrc: perstation.icon_image,
+          title: perstation.title,
+          description: perstation.description,
+          link: perstation.link_description,
+        }))
+      : staticServices;
+  //
+  const getEventService = async () => {
+    try {
+      const response = await api.get("/events/");
+      const publicEvents = response.data.filter(
+        (event: EventMULTILAB) => event.status === "published"
+      );
+
+      if (publicEvents.length > 0) {
+        setEvents(publicEvents);
+      } else {
+        console.log("No upcoming events found");
       }
+    } catch (error) {
+      console.error("Error Fetching Event data", error);
+      console.log("Failed to fetch events");
     }
-    useEffect(() => {
-      getEventService();
-    }, []);
+  };
+  useEffect(() => {
+    getEventService();
+  }, []);
+
   const staticProjects = [
     {
       imgSrc: event1,
@@ -137,17 +137,17 @@ function HomePage() {
       id: 3,
     },
   ];
-  const eventData = events.length > 0 
-  ? events.map(event => ({
-    imgSrc: event.image,
-    title: event.title,
-    description: event.description,
-    date: formatDate(event.date_event),
-     id: event.id
+  const eventData =
+    events.length > 0
+      ? events.map((event) => ({
+          imgSrc: event.image,
+          title: event.title,
+          description: event.description,
+          date: formatDate(event.date_event),
+          id: event.id,
+        }))
+      : staticProjects;
 
-     
-    }))
-  : staticProjects; 
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = pdfFile;
@@ -156,7 +156,7 @@ function HomePage() {
     link.click();
     document.body.removeChild(link);
   };
-  
+
   return (
     <div className="toppp">
       <VideoSection />
@@ -190,7 +190,9 @@ function HomePage() {
             « Bien plus qu’un laboratoire agroalimentaire, un véritable
             partenaire. »
           </p>
-          <button className="cta-button" onClick={() => navigate("/apropos")}>Découvrez-nous</button>
+          <button className="cta-button" onClick={() => navigate("/apropos")}>
+            Découvrez-nous
+          </button>
         </div>
 
         <div className="image-section">
@@ -226,7 +228,9 @@ function HomePage() {
               <img src={reactivite} alt="Réactivité" />
             </div>
             <h3>Réactivité</h3>
-            <p>Résultats rapides et délais optimisés.</p>
+            <p>
+              Résultats rapides et délais <br /> optimisés.
+            </p>
           </div>
 
           <div className="value-item">
@@ -252,12 +256,12 @@ function HomePage() {
         <div className="prestations-grid">
           {servicesData.map((service, index) => (
             <ServicesCards
-            key={index}
-            imageSrc={service.imageSrc}
-            logoSrc={service.logoSrc}
-            title={service.title}
-            description={service.description}
-            link={service.link}
+              key={index}
+              imageSrc={service.imageSrc}
+              logoSrc={service.logoSrc}
+              title={service.title}
+              description={service.description}
+              link={service.link}
             />
           ))}
         </div>
@@ -272,21 +276,6 @@ function HomePage() {
         </p>
         <AnalysesCard />
       </div>
-
-      {/* <div className="stats-section">
-        <div className="stats-item">
-          <h2>+500</h2>
-          <p>Clients</p>
-        </div>
-        <div className="stats-item">
-          <h2>+50 000</h2>
-          <p>Échantillons traités par an</p>
-        </div>
-        <div className="stats-item">
-          <h2>+25 ans</h2>
-          <p>d'expérience</p>
-        </div>
-      </div> */}
 
       <StatsSection />
 
@@ -311,7 +300,13 @@ function HomePage() {
               />
             </div>
 
-            <p style={{ fontSize: "18px", textAlign: "justify" }}>
+            <p
+              style={{
+                fontSize: "18px",
+                textAlign: "justify",
+                marginBottom: "10px",
+              }}
+            >
               Depuis 2012, le laboratoire est{" "}
               <strong>accrédité ISO/IEC 17025</strong> par le TUNAC.
               <div>
@@ -322,7 +317,9 @@ function HomePage() {
               </div>
             </p>
 
-            <button className="reconnaissance-button"  onClick={handleDownload}>En apprendre plus</button>
+            <button className="reconnaissance-button" onClick={handleDownload}>
+              En apprendre plus
+            </button>
           </div>
 
           {/* img */}
@@ -348,15 +345,15 @@ function HomePage() {
         </p>
 
         <div className="projects-cards">
-        {eventData.map((project, index) => (
-                <EventCard
-                    key={index}
-                    imgSrc={project.imgSrc}
-                    date={project.date}
-                    description={project.description}
-                    id={project.id}
-                />
-            ))}
+          {eventData.map((project, index) => (
+            <EventCard
+              key={index}
+              imgSrc={project.imgSrc}
+              date={project.date}
+              description={project.description}
+              id={project.id}
+            />
+          ))}
         </div>
       </section>
       {/* Testimonials Section */}

@@ -5,6 +5,8 @@ import { IoMdSearch, IoMdClose } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import { MdExpandMore } from "react-icons/md"; // Import expand icon
 import "../App.css";
+import arrowDown from "@/assets/icons/icon-arrow-down.svg";
+
 import {
   MDBDropdown,
   MDBDropdownToggle,
@@ -15,7 +17,7 @@ import {
 function NavBar() {
   const { t, i18n } = useTranslation();
   console.log(i18n);
-  
+
   // const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [isSearchOpen, setIsSearchOpen] = useState(false); // State for search popup
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
@@ -23,7 +25,7 @@ function NavBar() {
 
   // const handleLanguageChange = (language: string) => {
   //   setSelectedLanguage(language);
-  //   i18n.changeLanguage(language); 
+  //   i18n.changeLanguage(language);
   //   console.log(selectedLanguage);
   //   // Change language across the entire app
   // };
@@ -88,15 +90,23 @@ function NavBar() {
               {/* Prestations Dropdown */}
               <li className="nav-item">
                 <MDBDropdown>
-                  <MDBDropdownToggle tag="a" className="nav-link">
+                  <MDBDropdownToggle
+                    tag="a"
+                    className="nav-link d-flex align-items-center"
+                  >
                     {t("Prestations")}
+                    <img
+                      src={arrowDown}
+                      alt="Arrow Down"
+                      className="dropdown-arrow"
+                    />
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
                     <MDBDropdownItem link href="/analyse">
                       {t("Analyses")}
                     </MDBDropdownItem>
                     <MDBDropdownItem link href="/assistance">
-                      {t("Assistance et audit")}
+                      {t("Assistance et conseil")}
                     </MDBDropdownItem>
                     <MDBDropdownItem link href="/formation">
                       {t("Formations")}
@@ -108,8 +118,16 @@ function NavBar() {
               {/* Carrière Dropdown */}
               <li className="nav-item">
                 <MDBDropdown>
-                  <MDBDropdownToggle tag="a" className="nav-link">
+                  <MDBDropdownToggle
+                    tag="a"
+                    className="nav-link d-flex align-items-center"
+                  >
                     {t("Carrière")}
+                    <img
+                      src={arrowDown}
+                      alt="Arrow Down"
+                      className="dropdown-arrow"
+                    />
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
                     <MDBDropdownItem link href="/poste ">
@@ -123,7 +141,10 @@ function NavBar() {
               </li>
 
               <li className="nav-item">
-                <a className={getNavLinkClass("/login")} href="https://multilab-tunisia.com.tn/MULTILAB/login_view">
+                <a
+                  className={getNavLinkClass("/login")}
+                  href="https://multilab-tunisia.com.tn/MULTILAB/login_view"
+                >
                   {t("Accès client")} {/* Translated Client Access */}
                 </a>
               </li>

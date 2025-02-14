@@ -1,9 +1,13 @@
 import "./Contact.css";
 import back from "./assets/Rectangle 39000.jpg";
 // import { CiUser, CiMail } from "react-icons/ci";
-import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa"; // FontAwesome icons
-import {useState} from "react";
+import { useState } from "react";
 import api from "../../lib/api";
+import { FiPhoneCall } from "react-icons/fi";
+import { IoLocationOutline } from "react-icons/io5";
+import { MdOutlineMail } from "react-icons/md";
+import sendIcon from "@/assets/icons/icon-send.png";
+
 const Contact = () => {
   // Form state
   const [formData, setFormData] = useState({
@@ -48,12 +52,16 @@ const Contact = () => {
           company_name: "",
         });
       } else {
-        setStatusMessage("Une erreur est survenue lors de l'envoi de votre message.");
+        setStatusMessage(
+          "Une erreur est survenue lors de l'envoi de votre message."
+        );
         setIsSuccess(false);
       }
     } catch (error) {
       console.error(error);
-      setStatusMessage("Une erreur est survenue lors de l'envoi de votre message.");
+      setStatusMessage(
+        "Une erreur est survenue lors de l'envoi de votre message."
+      );
       setIsSuccess(false);
     }
   };
@@ -70,15 +78,15 @@ const Contact = () => {
         <div className="contact-card">
           <h2>Contact</h2>
           <div className="contact-item">
-            <FaPhoneAlt className="contact-icon" />
+            <FiPhoneCall className="social-icon" />
             <p>(+216) 71 941 436 / 22 344 976</p>
           </div>
           <div className="contact-item">
-            <FaMapMarkerAlt className="contact-icon" />
+            <IoLocationOutline className="social-icon" />
             <p>Rue de l’argent - Zone industrielle el bosten Soukra - Ariana</p>
           </div>
           <div className="contact-item">
-            <FaEnvelope className="contact-icon" />
+            <MdOutlineMail className="social-icon" />
             <p>multilab@planet.tn</p>
           </div>
         </div>
@@ -90,22 +98,22 @@ const Contact = () => {
                 <label htmlFor="fullName">Nom et Prénom</label>
 
                 <input
-                      type="text"
-                      id="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="input-field"
-                    />
+                  type="text"
+                  id="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="input-field"
+                />
               </div>
               <div className="input-box">
                 <label htmlFor="companyName">Nom de l'entreprise</label>
                 <input
-                      type="text"
-                      id="company_name"
-                      className="input-field"
-                      value={formData.company_name}
-                      onChange={handleChange}
-                    />
+                  type="text"
+                  id="company_name"
+                  className="input-field"
+                  value={formData.company_name}
+                  onChange={handleChange}
+                />
               </div>
             </div>
             <div className="form-row">
@@ -113,58 +121,61 @@ const Contact = () => {
                 <label htmlFor="fullName">Numéro de téléphone</label>
 
                 <input
-                      type="text"
-                      id="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="input-field"
-                    />
-
+                  type="text"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="input-field"
+                />
               </div>
               <div className="input-box">
                 <label htmlFor="companyName">E-mail</label>
-                
 
                 <input
-                      type="email"
-                      id="email"
-                      className="input-field"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-
+                  type="email"
+                  id="email"
+                  className="input-field"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
               </div>
             </div>
             <div className="input-box">
               <label>Objet du message</label>
               <input
-                  type="text"
-                  id="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Objet du message"
-                />
+                type="text"
+                id="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                placeholder="Objet du message"
+              />
             </div>
             <div className="input-box">
               <label>Message</label>
               <textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Écrivez votre message ici..."
-                ></textarea>
+                id="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Écrivez votre message ici..."
+              ></textarea>
             </div>
             {statusMessage && (
-                <div
-                  className={`text-center font-ebGaramond text-sm sm:text-xl font-bold mt-3 ${
-                    isSuccess ? "text-burlywood" : "text-red-500"
-                  }`}
-                >
-                  {statusMessage}
-                </div>
-              )}
+              <div
+                className={`text-center font-ebGaramond text-sm sm:text-xl font-bold mt-3 ${
+                  isSuccess ? "text-burlywood" : "text-red-500"
+                }`}
+              >
+                {statusMessage}
+              </div>
+            )}
             <button type="submit" className="submit-btn">
               Envoyer
+              <img
+                src={sendIcon}
+                alt=""
+                className="social-icon"
+                style={{ marginLeft: "16px" }}
+              />
             </button>
           </form>
         </div>

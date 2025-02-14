@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import back from "./assets/Rectangle 3901.jpg";
-import {
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaDownload,
-} from "react-icons/fa";
+import { FaDownload } from "react-icons/fa";
 import { CiTrash } from "react-icons/ci";
 import { CandidatesSimplifyForm } from "../../types/types";
 import api from "../../lib/api";
-
+import { FiPhoneCall } from "react-icons/fi";
+import { IoLocationOutline } from "react-icons/io5";
+import { MdOutlineMail } from "react-icons/md";
+import sendIcon from "@/assets/icons/icon-send.png";
+import pdfIcon from "@/assets/icons/icon-pdf.png";
 
 const Candidatures = () => {
   const [formData, setFormData] = useState<CandidatesSimplifyForm>({
@@ -26,31 +25,31 @@ const Candidatures = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (file.type !== 'application/pdf') {
+      if (file.type !== "application/pdf") {
         setError("Veuillez télécharger uniquement des fichiers PDF.");
         return;
       }
-      setFormData(prev => ({ ...prev, file1: file }));
+      setFormData((prev) => ({ ...prev, file1: file }));
       setError(null);
     }
   };
 
   const handleDelete = () => {
-    setFormData(prev => ({ ...prev, file1: null }));
+    setFormData((prev) => ({ ...prev, file1: null }));
   };
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = event.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     setError(null);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
-    
+
     if (!formData.file1) {
       setError("Veuillez télécharger un CV avant de soumettre.");
       return;
@@ -59,7 +58,7 @@ const Candidatures = () => {
     try {
       setIsSubmitting(true);
       const formDataToSend = new FormData();
-      
+
       // Append all form fields
       Object.entries(formData).forEach(([key, value]) => {
         if (value !== null) {
@@ -82,7 +81,6 @@ const Candidatures = () => {
         file1: null,
       });
       alert("Votre candidature a été envoyée avec succès!");
-      
     } catch (error) {
       console.error(error);
       setError("Une erreur s'est produite lors de l'envoi de la candidature.");
@@ -95,25 +93,26 @@ const Candidatures = () => {
     <div className="header">
       <div
         className="background-image-contact"
-        style={{ backgroundImage: `url(${back})` }}      >
+        style={{ backgroundImage: `url(${back})` }}
+      >
         <h1>Candidatures Spontanées</h1>
       </div>
-      
+
       <div className="contact-cont-container">
         <div className="contact-card">
           <h2>Contact</h2>
           <div className="contact-item">
-            <FaPhone className="icon" />
+            <FiPhoneCall className="social-icon" />
             <span>(+216) 71 941 436 / 22 344 976</span>
           </div>
           <div className="contact-item">
-            <FaMapMarkerAlt className="icon" />
+            <IoLocationOutline className="social-icon" />
             <span>
               Rue de l'argent - Zone industrielle el bosten Soukra - Ariana
             </span>
           </div>
           <div className="contact-item">
-            <FaEnvelope className="icon" />
+            <MdOutlineMail className="social-icon" />
             <span>multilab@planet.tn</span>
           </div>
         </div>
@@ -202,11 +201,7 @@ const Candidatures = () => {
               <div className="uploaded-files">
                 <div className="file-preview">
                   <div className="file-info">
-                    <img
-                      src="/pdf-icon.png"
-                      alt="PDF Icon"
-                      className="file-icon"
-                    />
+                    <img src={pdfIcon} alt="PDF Icon" className="file-icon" />
                     <div>
                       <p className="file-name">{formData.file1.name}</p>
                       <p className="file-details">
@@ -231,17 +226,26 @@ const Candidatures = () => {
             )}
 
             {error && (
-              <div className="error-message" style={{ color: "red", marginBottom: "10px" }}>
+              <div
+                className="error-message"
+                style={{ color: "red", marginBottom: "10px" }}
+              >
                 {error}
               </div>
             )}
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="submit-btn"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
+              {isSubmitting ? "Envoi en cours..." : "Envoyer"}
+              <img
+                src={sendIcon}
+                alt=""
+                className="social-icon"
+                style={{ marginLeft: "16px" }}
+              />
             </button>
           </form>
         </div>

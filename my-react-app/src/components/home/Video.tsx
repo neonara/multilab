@@ -12,7 +12,7 @@ const VideoSection: React.FC = () => {
         <video className="video" src={vid} autoPlay muted loop playsInline />
         <div className="hero-content">
           <h1>
-            Engagés pour la sécurité alimentaire et La protection de
+            Engagés pour la sécurité alimentaire et la protection de
             l'environnement
           </h1>
           <div className="title-bg"></div>

@@ -5,6 +5,10 @@ interface StatItemProps {
   label: string;
 }
 
+const formatNumberWithSpaces = (num: number) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+};
+
 const StatItem = ({ value, label }: StatItemProps) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -65,7 +69,11 @@ const StatItem = ({ value, label }: StatItemProps) => {
 
   return (
     <div className="stats-item" ref={ref}>
-      <h2>{value.includes("+") ? `+${count}` : count}</h2>
+      <h2>
+        {value.includes("+")
+          ? `+${formatNumberWithSpaces(count)}`
+          : formatNumberWithSpaces(count)}
+      </h2>
       <p>{label}</p>
     </div>
   );

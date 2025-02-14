@@ -132,11 +132,28 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-bottom: 16px;
   gap: 10px;
 }
 
 .footer-contact .social-icons {
   display: flex;
+}
+
+.footer-contact h5 {
+  margin-bottom: 10px;
+}
+
+.social-icon {
+  font-size: 24px;
+  color: var(--blue);
+  max-width: 30px;
+  max-height: 30px;
+  margin-right: 10px;
+}
+
+.social-icons h5{
+  margin-bottom: 12px;
 }
 
 .footer .firstone {
@@ -208,10 +225,6 @@ html {
 }
 
 @media (max-width: 768px) {
-  .footer {
-
-  }
-
   .container-f {
     flex-direction: column;
     justify-content: center;
@@ -473,3 +486,14 @@ html {
 .accordion-content.show {
   display: flex;
 }
+
+.dropdown-arrow{
+  margin-left: 12px;
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover .dropdown-arrow{
+  display: inline-block;
+}
+

@@ -1,52 +1,3 @@
-:root {
-  --blue: #013d8f;
-  --light-blue: #00a0d8;
-}
-p {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  padding: 0;
-  font-size: 1rem;
-  line-height: 1.5; /* Improve readability */
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Inter", sans-serif;
-  margin: 0;
-  padding: 0;
-  color: var(--blue);
-  font-weight: bold;
-}
-
-h1 {
-  font-size: 2.5rem; /* Large header */
-}
-
-h2 {
-  font-size: 2rem; /* Medium header */
-}
-
-h3 {
-  font-size: 1.75rem; /* Smaller header */
-}
-
-h4 {
-  font-size: 1.5rem; /* Smaller header */
-}
-
-h5 {
-  font-size: 1.25rem; /* Smaller header */
-}
-
-h6 {
-  font-size: 1rem; /* Smallest header */
-}
-
 .toppp {
   padding: 0 20px;
 }
@@ -64,7 +15,6 @@ h6 {
   border-radius: 17px 0px 0px 0px;
   opacity: 0px;
 }
-
 
 /* ------------------  Qui sommes nous ---------------------- */
 
@@ -119,7 +69,7 @@ h6 {
   background-color: var(--blue); /* Button color */
   color: #fff; /* Button text color */
   padding: 10px 20px; /* Button padding */
-  border: none; /* No border */
+  border: 1px solid var(--blue); /* No border */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor */
   transition: background-color 0.3s; /* Smooth transition */
@@ -128,8 +78,9 @@ h6 {
 
 .cta-button:hover {
   background-color: white; /* Darker blue on hover */
+  border: 1px solid var(--blue); /* No border */
+  
   color: var(--blue);
-  border: 1px solid;
   border-radius: 8px;
 }
 
@@ -191,6 +142,7 @@ h6 {
 
 .value-item p {
   font-size: 16px;
+  max-width: 90%;
 }
 
 .scroll-to-top {
@@ -760,9 +712,10 @@ h6 {
 }
 .values-grid-vid {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: right;
   margin-bottom: 30px;
+  gap: 12px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -798,6 +751,10 @@ h6 {
   position: relative;
   z-index: 3;
   transition: 0.3s ease-in-out;
+}
+
+.vid-item{
+  margin-top: 16px;
 }
 
 /*     cards under the video */
@@ -915,7 +872,7 @@ h6 {
   display: block;
   color: var(--blue);
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-weight: bold;
 }
 
@@ -977,6 +934,7 @@ h6 {
 .stats-item h2 {
   font-size: 2.5rem;
   font-weight: bold;
+  color: white;
 }
 
 .stats-item p {
@@ -1068,6 +1026,8 @@ h6 {
   .values-grid-vid {
     justify-content: center;
     margin-bottom: 5px;
+  gap: 2px;
+
   }
 
   .values-grid-vid img {
@@ -1082,6 +1042,10 @@ h6 {
   .vid-item-one img {
     width: 100px;
     height: 100px;
+  }
+
+  .vid-item{
+    margin-top: 10px;
   }
 
   .text-section h1 {

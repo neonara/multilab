@@ -54,10 +54,6 @@ h6 {
   font-size: 1rem; /* Smallest header */
 }
 
-h2 {
-  color :black;
-}
-
 .page-container {
   margin:0 40px;
 }
@@ -385,10 +381,6 @@ border: 1px solid #666;
   height: Fixed (44px);
   cursor: pointer;
   font-size: 16px;
-}
-
-.linkedin-button:hover {
-  background-color: #005f8d;
 }
 
 

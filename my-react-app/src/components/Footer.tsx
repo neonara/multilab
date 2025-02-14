@@ -1,5 +1,11 @@
 import "../App.css";
 import logo from "../assets/logo VF.png";
+import { FiPhoneCall } from "react-icons/fi";
+
+import { MdOutlineMail } from "react-icons/md";
+import fbIcon from "@/assets/icons/icon-facebook.png";
+import InIcon from "@/assets/icons/icon-linkedin.png";
+import { IoLocationOutline } from "react-icons/io5";
 
 function Footer() {
   return (
@@ -63,24 +69,24 @@ function Footer() {
           <div className="footer-contact">
             <h5>Contact</h5>
             <p>
-              <i className="bi bi-telephone-fill"></i> (+216) 71 941 436 / 22
-              344 976
+              <FiPhoneCall className="social-icon" /> (+216) 71 941 436 / 22 344
+              976
             </p>
             <p>
-              <i className="bi bi-geo-alt-fill"></i> Rue de l’argent, Zone
-              industrielle el bosten, Soukra - Ariana
+              <IoLocationOutline className="social-icon" /> Rue de l’argent,
+              Zone industrielle el bosten, Soukra - Ariana
             </p>
             <p>
-              <i className="bi bi-envelope-fill"></i> multilab@planet.tn
+              <MdOutlineMail className="social-icon" /> multilab@planet.tn
             </p>
           </div>
           <div className="social-icons">
             <h5>Suivez-nous</h5>
             <a href="https://facebook.com" className="me-3 text-dark">
-              <i className="bi bi-facebook"></i>
+              <img src={fbIcon} alt="facebook" className="social-icon" />
             </a>
             <a href="https://linkedin.com" className="text-dark">
-              <i className="bi bi-linkedin"></i>
+              <img src={InIcon} alt="facebook" className="social-icon" />
             </a>
           </div>
         </div>

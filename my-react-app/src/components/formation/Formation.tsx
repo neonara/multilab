@@ -46,7 +46,9 @@ const Formation = () => {
               alt="Sciences Analytiques"
               className="theme-image"
             />
-            <p>Sciences Analytiques</p>
+            <p>
+              Sciences <br /> Analytiques
+            </p>
           </div>
           <div className="theme">
             <img
@@ -54,7 +56,9 @@ const Formation = () => {
               alt="Sécurité des Aliments"
               className="theme-image"
             />
-            <p>Sécurité des Aliments</p>
+            <p>
+              Sécurité <br /> des Aliments
+            </p>
           </div>
           <div className="theme">
             <img
@@ -70,7 +74,9 @@ const Formation = () => {
               alt="Sécurité des Eaux"
               className="theme-image"
             />
-            <p>Sécurité des Eaux</p>
+            <p>
+              Sécurité <br /> des Eaux
+            </p>
           </div>
           <div className="theme">
             <img

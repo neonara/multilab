@@ -2,7 +2,7 @@ import im1 from "./assets/Rectangle 1.jpg";
 import im2 from "./assets/rectangle 2.jpg";
 import im3 from "./assets/Rectangle 3.jpg";
 import im4 from "./assets/rectangle 4.jpg";
-import im5 from "./assets/rectangle 5.jpg";
+import im5 from "@/assets/images/64-vertical.png";
 import im6 from "./assets/Rectangle 6.jpg";
 import im7 from "./assets/rectangle 7.jpg";
 import im8 from "./assets/Rectangle 8.png";
@@ -48,7 +48,7 @@ const Analyses: React.FC = () => {
     };
   }, []);
   return (
-    <div className="analyses-container">
+    <div className="analyse-container">
       {/* <div className="image-container">
         <img src={backimg} alt="Lab Worker" className="banner-image" />
         <div className="text-container">
@@ -125,7 +125,9 @@ const Analyses: React.FC = () => {
               alt="Bonnes Pratiques de Prélèvement"
               className="theme-image"
             />
-            <p>Produits hygiène et cosmétiques</p>
+            <p>
+              Produits hygiène <br /> et cosmétiques
+            </p>
           </div>
           <div className="theme">
             <img src={im7} alt="Sécurité des Eaux" className="theme-image" />
