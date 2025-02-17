@@ -1,7 +1,7 @@
 import BannerImageParam from "./BannerImageParam";
 import back from "@/assets/images/61.jpg";
 import "../Parametres/Parametres.css";
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FiMinus } from "react-icons/fi";
 import api from "../../lib/api";
 import {
@@ -11,9 +11,8 @@ import {
   ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS,
   ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSBRUER,
   ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSFROMAGE,
-  ANALYSESPHYSICOCHIMIQUESPRODUITSPECHE
-}
-from "../../types/types";
+  ANALYSESPHYSICOCHIMIQUESPRODUITSPECHE,
+} from "../../types/types";
 
 import { useParams } from "react-router-dom";
 const analysis = {
@@ -24,43 +23,40 @@ const analysis = {
 };
 // API endpoint mapping
 const apiEndpoints: { [key: string]: string } = {
-  Analysesphysicochimiquesviandesetderives: '/viandes/',
-  Analysesphysicochimiqueshuilesproduitsgras: '/huiles/',
-  Analysesphysicochimiquesmiel: '/miel/',
-  Analysesphysicochimiquesdesproduitsdelapeche: '/physico-peche',
-  Analysesphysicochimiquesproduitslaitiers: '/produits-laitiers',
-  Analysesphysicochimiquesproduitslaitiersbruer: '/produits-laitiers-beurre',
-  Analysesphysicochimiquesproduitslaitiersfromage: '/produits-laitiers-fromage',
+  Analysesphysicochimiquesviandesetderives: "/viandes/",
+  Analysesphysicochimiqueshuilesproduitsgras: "/huiles/",
+  Analysesphysicochimiquesmiel: "/miel/",
+  Analysesphysicochimiquesdesproduitsdelapeche: "/physico-peche",
+  Analysesphysicochimiquesproduitslaitiers: "/produits-laitiers",
+  Analysesphysicochimiquesproduitslaitiersbruer: "/produits-laitiers-beurre",
+  Analysesphysicochimiquesproduitslaitiersfromage: "/produits-laitiers-fromage",
 };
-const analysesData :{
+const analysesData: {
   [key: string]: {
-    title: string;  
+    title: string;
   };
 } = {
-  Analysesphysicochimiquesviandesetderives :{
-    title: "Analyses physicochimiques des viandes et derives"
-    
+  Analysesphysicochimiquesviandesetderives: {
+    title: "Analyses physicochimiques des viandes et derives",
   },
-  Analysesphysicochimiqueshuilesproduitsgras :{
-    title : "Analyses physicochimiques huiles et produits gras"
-  
-},
-Analysesphysicochimiquesdesproduitsdelapeche:{
-title: "Analyses physicochimiques des produits de la pêche"
+  Analysesphysicochimiqueshuilesproduitsgras: {
+    title: "Analyses physicochimiques huiles et produits gras",
   },
-  Analysesphysicochimiquesmiel :{
-    title: "Analyses physicochimiques du miel"
+  Analysesphysicochimiquesdesproduitsdelapeche: {
+    title: "Analyses physicochimiques des produits de la pêche",
   },
-  Analysesphysicochimiquesproduitslaitiers :{
-    title: "Analyses physicochimiques des produits laitiers"
+  Analysesphysicochimiquesmiel: {
+    title: "Analyses physicochimiques du miel",
   },
-  Analysesphysicochimiquesproduitslaitiersbruer :{
-    title: "Analyses physicochimiques des produits laitiers (brueer)"
+  Analysesphysicochimiquesproduitslaitiers: {
+    title: "Analyses physicochimiques des produits laitiers",
   },
-  Analysesphysicochimiquesproduitslaitiersfromage :{
-    title: "Analyses physicochimiques des produits laitiers (formage)"
+  Analysesphysicochimiquesproduitslaitiersbruer: {
+    title: "Analyses physicochimiques des produits laitiers (brueer)",
   },
-
+  Analysesphysicochimiquesproduitslaitiersfromage: {
+    title: "Analyses physicochimiques des produits laitiers (formage)",
+  },
 };
 interface AnalyseItemProps {
   elements: string[];
@@ -68,7 +64,11 @@ interface AnalyseItemProps {
   error: string | null;
 }
 
-const AnalyseItem: React.FC<AnalyseItemProps> = ({ elements, isLoading, error }) => {
+const AnalyseItem: React.FC<AnalyseItemProps> = ({
+  elements,
+  isLoading,
+  error,
+}) => {
   const { id } = useParams<{ id: string }>();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
@@ -96,32 +96,42 @@ const AnalyseItem: React.FC<AnalyseItemProps> = ({ elements, isLoading, error })
     setOpenIndex(openIndex === index ? null : index);
   };
   console.log("id from URL:", id);
-console.log("openIndex:", openIndex);
+  console.log("openIndex:", openIndex);
 
   const renderAnalyseList = (analysesList: typeof analyses) => (
     <div className="analyses-container">
       {analysesList.map((analyse) => {
         const isCurrentAnalysis = analyse.key === id;
-        const shouldShowElements = isCurrentAnalysis && openIndex === analyse.id;
+        const shouldShowElements =
+          isCurrentAnalysis && openIndex === analyse.id;
 
         return (
           <div
             key={analyse.id}
-            className={`analyse-item ${openIndex === analyse.id ? "analyse-item-on" : ""}`}
+            className={`analyse-item ${
+              openIndex === analyse.id ? "analyse-item-on" : ""
+            }`}
           >
-            <div className="analyse-title" onClick={() => toggleFAQ(analyse.id)}>
+            <div
+              className="analyse-title"
+              onClick={() => toggleFAQ(analyse.id)}
+            >
               <div className="title-wrapper">
                 <p>{analyse.title}</p>
               </div>
               <div className="expand-btn">
                 <FiMinus className="expand-icon" />
                 <FiMinus
-                  className={`expand-icon-rotate ${openIndex === analyse.id ? "expand-icon-on" : ""}`}
+                  className={`expand-icon-rotate ${
+                    openIndex === analyse.id ? "expand-icon-on" : ""
+                  }`}
                 />
               </div>
             </div>
             <div
-              className={`analyse-details ${openIndex === analyse.id ? "analyse-details-on" : ""}`}
+              className={`analyse-details ${
+                openIndex === analyse.id ? "analyse-details-on" : ""
+              }`}
             >
               {shouldShowElements ? (
                 isLoading ? (
@@ -153,75 +163,94 @@ console.log("openIndex:", openIndex);
   );
 };
 
-
 export default function PhysicochimiquesProdAli() {
   const { id } = useParams<{ id: string }>();
   const [elements, setElements] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    // const analysisdata = id ? analysesData[id] : undefined;
-    // Fetch parameters from API
- 
-    useEffect(() => {
-      const fetchParameters = async () => {
-        if (!id) {
-          setError("No analysis ID provided");
-          setIsLoading(false);
-          return;
-        }
-        const endpoint = apiEndpoints[id];
-        if (!endpoint) {
-          setError("Invalid analysis type");
-          setIsLoading(false);
-          return;
-        }
-        try {
-          setIsLoading(true);
-          const response = await api.get(endpoint);
-          console.log("Fetched data:", response.data);
-  
-          let extractedParameters: string[] = [];
-          switch (id) {
-            case 'Analysesphysicochimiquesviandesetderives':
-              extractedParameters = response.data.map((item: ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES) => item.type_analyses_physicochimiques_viandes_et_derives);
-              break;
-            case 'Analysesphysicochimiqueshuilesproduitsgras':
-              extractedParameters = response.data.map((item: ANALYSESPHYSICOCHIMIQUESHUILESPRODUITSGRAS) => item.type_analyses_physicochimiques_huiles_et_produits_gras);
-              break;
-            case 'Analysesphysicochimiquesmiel':
-              extractedParameters = response.data.map((item: ANALYSESPHYSICOCHIMIQUESMIEL) => item.type_analyses_physicochimiques_miel);
-              break;
-            case 'Analysesphysicochimiquesdesproduitsdelapeche':
-              extractedParameters = response.data.map((item: ANALYSESPHYSICOCHIMIQUESPRODUITSPECHE) => item.type_analyses_physicochimiques_produit_peche);
-              break;
-            case 'Analysesphysicochimiquesproduitslaitiers':
-              extractedParameters = response.data.map((item: ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS) => item.type_analyses_physicochimiques_produits_laitiers);
-              break;
-            case 'Analysesphysicochimiquesproduitslaitiersbruer':
-              extractedParameters = response.data.map((item: ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSBRUER) => item.type_beurre);
-              break;
-            case 'Analysesphysicochimiquesproduitslaitiersfromage':
-              extractedParameters = response.data.map((item: ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSFROMAGE) => item.type_fromage);
-              break;
-            default:
-              setError("No valid data found");
-              setIsLoading(false);
-              return;
-          }
-  
-          setElements(extractedParameters.filter(Boolean));
-        } catch (err) {
-          console.error("Error fetching parameters:", err);
-          setError("Failed to fetch parameters");
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      fetchParameters();
-    }, [id]);
-  console.log("id from useParams:", id);
-console.log("Available analysesData keys:", Object.keys(analysesData));
+  const [error, setError] = useState<string | null>(null);
+  // const analysisdata = id ? analysesData[id] : undefined;
+  // Fetch parameters from API
 
+  useEffect(() => {
+    const fetchParameters = async () => {
+      if (!id) {
+        setError("No analysis ID provided");
+        setIsLoading(false);
+        return;
+      }
+      const endpoint = apiEndpoints[id];
+      if (!endpoint) {
+        setError("Invalid analysis type");
+        setIsLoading(false);
+        return;
+      }
+      try {
+        setIsLoading(true);
+        const response = await api.get(endpoint);
+        console.log("Fetched data:", response.data);
+
+        let extractedParameters: string[] = [];
+        switch (id) {
+          case "Analysesphysicochimiquesviandesetderives":
+            extractedParameters = response.data.map(
+              (item: ANALYSESPHYSICOCHIMIQUESVIANDESDERIVES) =>
+                item.type_analyses_physicochimiques_viandes_et_derives
+            );
+            break;
+          case "Analysesphysicochimiqueshuilesproduitsgras":
+            extractedParameters = response.data.map(
+              (item: ANALYSESPHYSICOCHIMIQUESHUILESPRODUITSGRAS) =>
+                item.type_analyses_physicochimiques_huiles_et_produits_gras
+            );
+            break;
+          case "Analysesphysicochimiquesmiel":
+            extractedParameters = response.data.map(
+              (item: ANALYSESPHYSICOCHIMIQUESMIEL) =>
+                item.type_analyses_physicochimiques_miel
+            );
+            break;
+          case "Analysesphysicochimiquesdesproduitsdelapeche":
+            extractedParameters = response.data.map(
+              (item: ANALYSESPHYSICOCHIMIQUESPRODUITSPECHE) =>
+                item.type_analyses_physicochimiques_produit_peche
+            );
+            break;
+          case "Analysesphysicochimiquesproduitslaitiers":
+            extractedParameters = response.data.map(
+              (item: ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS) =>
+                item.type_analyses_physicochimiques_produits_laitiers
+            );
+            break;
+          case "Analysesphysicochimiquesproduitslaitiersbruer":
+            extractedParameters = response.data.map(
+              (item: ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSBRUER) =>
+                item.type_beurre
+            );
+            break;
+          case "Analysesphysicochimiquesproduitslaitiersfromage":
+            extractedParameters = response.data.map(
+              (item: ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSFROMAGE) =>
+                item.type_fromage
+            );
+            break;
+          default:
+            setError("No valid data found");
+            setIsLoading(false);
+            return;
+        }
+
+        setElements(extractedParameters.filter(Boolean));
+      } catch (err) {
+        console.error("Error fetching parameters:", err);
+        setError("Failed to fetch parameters");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchParameters();
+  }, [id]);
+  console.log("id from useParams:", id);
+  console.log("Available analysesData keys:", Object.keys(analysesData));
 
   function removeAnalysePrefix(title: string): string {
     return title.startsWith("A") ? title.replace("A", "d'a") : title;
@@ -241,12 +270,7 @@ console.log("Available analysesData keys:", Object.keys(analysesData));
           <p dangerouslySetInnerHTML={{ __html: analysis.description }}></p>
         </div>
         <h1>Paramètre {removeAnalysePrefix(analysis.title)}</h1>
-        <AnalyseItem 
-  elements={elements} 
-  isLoading={isLoading}
-  error={error}
-/>
-
+        <AnalyseItem elements={elements} isLoading={isLoading} error={error} />
       </div>
     </div>
   );

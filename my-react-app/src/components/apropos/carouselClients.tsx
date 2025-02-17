@@ -2,7 +2,7 @@ import laitImage from "@/assets/images/19.jpg";
 import viandeImage from "@/assets/images/20.jpg";
 import pecheImage from "@/assets/images/21.png";
 import hotelImage from "@/assets/images/22-1.jpg";
-import Conditionnement from "@/assets/images/19.jpg";
+import Conditionnement from "@/assets/images/19-1.jpg";
 import Pâtisserie from "@/assets/images/23.jpg";
 import distribution from "@/assets/images/24.jpg";
 import ServHygiènes from "@/assets/images/25.jpg";
@@ -29,7 +29,7 @@ export default function CarouselClients() {
     },
     {
       image: Conditionnement,
-      label: "Conditionnement des produits alimentaires  ",
+      label: "Lait et conditionnement des produits alimentaires  ",
     },
     { image: Pâtisserie, label: "Pâtisserie confiserie" },
     { image: distribution, label: "La grande distribution" },
@@ -47,7 +47,7 @@ export default function CarouselClients() {
     { image: conseil, label: "Bureaux de conseil" },
   ];
 
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(0);
   const scrollAmount = 310;
   const visibleImages = 4;
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -57,7 +57,7 @@ export default function CarouselClients() {
 
   const scrollPrev = () => {
     const carousel = carouselRef.current;
-    if (index > 0) {
+    if (index >= 0) {
       setIndex(index - 1);
       if (carousel) {
         carousel.style.transform = `translateX(${-index * scrollAmount}px)`;
@@ -68,7 +68,7 @@ export default function CarouselClients() {
   const scrollNext = () => {
     const carousel = carouselRef.current;
     const images = carousel ? carousel.children.length : 0;
-    if (index < images - visibleImages) {
+    if (index <= images - visibleImages) {
       setIndex(index + 1);
       if (carousel) {
         carousel.style.transform = `translateX(${-index * scrollAmount}px)`;

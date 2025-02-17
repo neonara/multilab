@@ -73,8 +73,11 @@ function Footer() {
               976
             </p>
             <p>
-              <IoLocationOutline className="social-icon" /> Rue de l’argent,
-              Zone industrielle el bosten, Soukra - Ariana
+              <IoLocationOutline
+                className="social-icon"
+                style={{ fontSize: "26px" }}
+              />{" "}
+              Rue de l’argent, Zone industrielle el bosten, Soukra - Ariana
             </p>
             <p>
               <MdOutlineMail className="social-icon" /> multilab@planet.tn
@@ -82,10 +85,16 @@ function Footer() {
           </div>
           <div className="social-icons">
             <h5>Suivez-nous</h5>
-            <a href="https://facebook.com" className="me-3 text-dark">
+            <a
+              href="https://www.facebook.com/Multilab.sa/"
+              className="me-3 text-dark"
+            >
               <img src={fbIcon} alt="facebook" className="social-icon" />
             </a>
-            <a href="https://linkedin.com" className="text-dark">
+            <a
+              href="https://tn.linkedin.com/in/multilab-s-a-b1978870"
+              className="text-dark"
+            >
               <img src={InIcon} alt="facebook" className="social-icon" />
             </a>
           </div>

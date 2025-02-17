@@ -78,8 +78,6 @@
 
 .cta-button:hover {
   background-color: white; /* Darker blue on hover */
-  border: 1px solid var(--blue); /* No border */
-  
   color: var(--blue);
   border-radius: 8px;
 }
@@ -293,7 +291,7 @@
   text-decoration: none; /* Prevent underline */
   text-align: center;
   width: 300px;
-  min-width: 180px;
+  min-width: 280px;
   height: 300px;
   opacity: 1;
 }
@@ -710,9 +708,10 @@
   z-index: 2; /* Ensures it's above the video */
   text-align: center;
 }
+
 .values-grid-vid {
   display: flex;
-  align-items: start;
+  align-items: end;
   justify-content: right;
   margin-bottom: 30px;
   gap: 12px;
@@ -751,11 +750,9 @@
   position: relative;
   z-index: 3;
   transition: 0.3s ease-in-out;
+  height: min-content;
 }
 
-.vid-item{
-  margin-top: 16px;
-}
 
 /*     cards under the video */
 
@@ -881,9 +878,17 @@
   justify-content: center;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  margin-top: -20px;
   padding: 10px;
-  height: 208px;
+  height: 260px;
   min-width: 250px;
+}
+
+.reconnaissance-img-desk h4 {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .reconnaissance-img-mobile {
@@ -891,10 +896,17 @@
   justify-content: center;
   display: flex;
   align-items: center;
+  flex-direction: column;
   padding: 10px;
   margin-bottom: 20px;
-  height: 208px;
+  /* height: 208px; */
   min-width: 250px;
+}
+
+.reconnaissance-img-mobile h4 {
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .reconnaissance-button {
@@ -957,14 +969,6 @@
     display: flex;
     justify-content: end;
   }
-
-  h1 {
-    font-size: 3rem; /* Larger header for desktop */
-  }
-
-  p {
-    font-size: 1.125rem; /* Slightly larger text for desktop */
-  }
   .reconnaissance-img-mobile {
     display: none;
   }
@@ -976,10 +980,14 @@
     padding: 0 6px;
   }
 
+  .scroll-to-top.show {
+    display: none;
+  }
+
   .value-item {
     flex: 0 0 auto; /* Prevent flex items from shrinking */
-    width: 140px; /* Set a fixed width for smaller screens */
-    margin-right: 10px; /* Add some space between items */
+    width: 170px; /* Set a fixed width for smaller screens */
+    min-width: 170px; /* Minimum width for each item */
   }
 
   .home-title,
@@ -1005,9 +1013,11 @@
     font-size: 16px;
   }
 
-  .projects-cards,
-  .values-grid {
+  .projects-cards {
     gap: 16px;
+  }
+  .values-grid {
+    gap: 4px;
   }
 
   .value-item .img-container {
@@ -1024,9 +1034,11 @@
     margin-top: -50px;
   }
   .values-grid-vid {
+  align-items: start;
+
     justify-content: center;
     margin-bottom: 5px;
-  gap: 2px;
+    gap: 2px;
 
   }
 
@@ -1110,13 +1122,6 @@
     /* min-width: 180px; */
     gap: 24px;
     height: 100%;
-  }
-
-  .analysis-card {
-    height: 245px;
-  }
-  .image-wrapper {
-    max-height: 140px;
   }
 
   .analysis-content {

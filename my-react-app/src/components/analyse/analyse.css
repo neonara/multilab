@@ -14,13 +14,7 @@
 
   }
   
-  .text-container {
-    position: absolute;
-    bottom: 20px; /* Adjust positioning as needed */
-    left: 60px;
-    color: white; /* Adjust text color if needed */
-  }
-  
+   
   .line1 {
     font-size: 60px; /* Adjust font size to match the "MULTILAB s.a" style */
     font-weight: bold;

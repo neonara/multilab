@@ -116,7 +116,9 @@ const Poste = () => {
       </div>
       <h2 className="job-titre">{job.titre}</h2>
 
-      <h3>{job.temps === "1" ? "Temps plein" : "Partiel"}</h3>
+      <h3 className="job-time">
+        {job.temps === "1" ? "Temps plein" : "Partiel"}
+      </h3>
       <div className="job-detail">
         {" "}
         <p>
@@ -142,7 +144,6 @@ const Poste = () => {
           setIsModalOpen(true);
         }}
         className="postuler-button cta-button"
-        style={{ fontWeight: "normal" }}
       >
         Postuler
       </button>
@@ -150,150 +151,167 @@ const Poste = () => {
   );
 
   return (
-    <div className="page-container">
-      <div className="poste-container">
-        <div className="banner-container">
+    <div>
+      <div className="banner-container-mobile">
+        <img src={back} alt="À propos banner" className="banner-poste" />
+      </div>
+      <div className="page-container">
+        <div className="banner-container-desktop">
           <img src={back} alt="À propos banner" className="banner-poste" />
         </div>
-        <h2 className="poste-title">MULTILAB sa recrute</h2>
+        <div className="poste-container">
+          <h3 className="poste-title">MULTILAB s.a recrute</h3>
 
-        <div className="search-bar">
-          <div className="search-input-container">
-            <IoMdSearch className="search-icon" />
-            <input
-              type="text"
-              placeholder="Titre du poste ou mot-clé"
-              className="search-input input-item"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          <div className="separator" />
-          <select
-            className="dropdown input-item"
-            value={unite}
-            onChange={handleUniteChange}
-            style={{ backgroundImage: `url(${arrowDown})` }}
-          >
-            <option value="Administration">Administration</option>
-            <option value="Finance">Finance</option>
-            <option value="Comptabilité">Comptabilité</option>
-            <option value="Analyse">Analyse</option>
-          </select>
-          <div className="separator" />
-          <select
-            className="dropdown input-item"
-            value={emploi}
-            onChange={handleEmploiChange}
-            style={{ backgroundImage: `url(${arrowDown})` }}
-          >
-            <option value="Emploi">Emploi</option>
-            <option value="Stage">Stage</option>
-          </select>
-          <div className="separator" />
-          <button
-            className="reset-button"
-            onClick={() => {
-              setUnite("Tous les unités d'affectation");
-              setEmploi("Emploi");
-              setSearchTerm("");
-            }}
-          >
-            Réinitialiser
-          </button>
-          <button
-            className="search-button cta-button"
-            onClick={handleSearch}
-            style={{ fontWeight: "normal" }}
-          >
-            Chercher
-          </button>
-        </div>
-
-        <div className="job-section">
-          {/* Filters Section */}
-          <div className="filters">
-            <h2>Filtrer</h2>
-            <h3>Type de contrat</h3>
-            {Object.entries(contractType).map(([key, value]) => (
-              <div className="filter-option" key={key}>
-                <input
-                  type="checkbox"
-                  name={key}
-                  checked={value}
-                  onChange={handleContractChange}
-                />
-                <label htmlFor={key}>{key}</label>
-              </div>
-            ))}
-
-            <h3>Durée d'expérience</h3>
-            {Object.entries(experience).map(([key, value]) => (
-              <div className="filter-option" key={key}>
-                <input
-                  type="checkbox"
-                  name={key}
-                  checked={value}
-                  onChange={handleExperienceChange}
-                />
-                <label htmlFor={key}>
-                  {key === "nouveau"
-                    ? "Nouveau diplômé"
-                    : key === "oneToTwo"
-                    ? "1-2 ans"
-                    : key === "threeToFive"
-                    ? "3-5 ans"
-                    : "9+ ans"}
-                </label>
-              </div>
-            ))}
+          <div className="search-bar">
+            <div className="search-input-container">
+              <IoMdSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Titre du poste ou mot-clé"
+                className="search-input input-item"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="separator" />
+            <select
+              className="dropdown input-item"
+              value={unite}
+              onChange={handleUniteChange}
+              style={{ backgroundImage: `url(${arrowDown})` }}
+            >
+              <option value="Administration">Administration</option>
+              <option value="Finance">Finance</option>
+              <option value="Comptabilité">Comptabilité</option>
+              <option value="Analyse">Analyse</option>
+            </select>
+            <div className="separator" />
+            <select
+              className="dropdown input-item"
+              value={emploi}
+              onChange={handleEmploiChange}
+              style={{ backgroundImage: `url(${arrowDown})` }}
+            >
+              <option value="Emploi">Emploi</option>
+              <option value="Stage">Stage</option>
+            </select>
+            <div className="separator" />
+            <button
+              className="reset-button"
+              onClick={() => {
+                setUnite("Tous les unités d'affectation");
+                setEmploi("Emploi");
+                setSearchTerm("");
+              }}
+            >
+              Réinitialiser
+            </button>
+            <button
+              className="search-button cta-button"
+              onClick={handleSearch}
+              style={{
+                fontWeight: "normal",
+                border: "solid",
+                borderWidth: "1px",
+                borderColor: "#013D8F",
+              }}
+            >
+              Chercher
+            </button>
           </div>
 
-          {/* Job Cards Section */}
-          <span className="job-cards-container">
-            <h2 className="post-num">{postsNum} Postes Disponible</h2>
-            <div className="job-cardss">
-              {jobs.map((job) => (
-                <JobCard job={job} key={job.id} />
+          <div className="job-section">
+            {/* Filters Section */}
+            <div className="filters">
+              <h2>Filtrer</h2>
+              <h3>Type de contrat</h3>
+              {Object.entries(contractType).map(([key, value]) => (
+                <div className="filter-option" key={key}>
+                  <input
+                    type="checkbox"
+                    name={key}
+                    checked={value}
+                    onChange={handleContractChange}
+                  />
+                  <label htmlFor={key}>{key}</label>
+                </div>
+              ))}
+
+              <h3>Durée d'expérience</h3>
+              {Object.entries(experience).map(([key, value]) => (
+                <div className="filter-option" key={key}>
+                  <input
+                    type="checkbox"
+                    name={key}
+                    checked={value}
+                    onChange={handleExperienceChange}
+                  />
+                  <label htmlFor={key}>
+                    {key === "nouveau"
+                      ? "Nouveau diplômé"
+                      : key === "oneToTwo"
+                      ? "1-2 ans"
+                      : key === "threeToFive"
+                      ? "3-5 ans"
+                      : "9+ ans"}
+                  </label>
+                </div>
               ))}
             </div>
-          </span>
-        </div>
-      </div>
 
-      <div
-        className="linkedin-section"
-        style={{
-          backgroundImage: `url(${linkedin})`,
-          backgroundSize: "100%",
-          backgroundPosition: "center",
-          height: "300px",
-          width: "100%",
-          overflow: "hidden",
-          borderRadius: "17px",
-        }}
-      >
-        <div className="content">
-          <h2>Notre page LinkedIn</h2>
-          <a
-            href="https://tn.linkedin.com/in/multilab-s-a-b1978870"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button
-              className="linkedin-button cta-button"
-              style={{ fontWeight: "normal" }}
-            >
-              Suivez-nous
-            </button>
-          </a>
+            {/* Job Cards Section */}
+            <span className="job-cards-container">
+              <h2 className="post-num">{postsNum} Postes Disponible</h2>
+              <div className="job-cardss">
+                {jobs.map((job) => (
+                  <JobCard job={job} key={job.id} />
+                ))}
+              </div>
+            </span>
+          </div>
         </div>
+
+        {/* linkedin section */}
+        <div
+          className="linkedin-section"
+          style={{
+            backgroundImage: `url(${linkedin})`,
+            backgroundSize: "100%",
+            backgroundPosition: "center",
+            height: "300px",
+            width: "100%",
+            overflow: "hidden",
+            borderRadius: "17px",
+          }}
+        >
+          <div className="content">
+            <h2>Rejoignez-nous sur LinkedIn pour ne rien manquer</h2>
+            <a
+              href="https://tn.linkedin.com/in/multilab-s-a-b1978870"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button
+                className="linkedin-button cta-button"
+                style={{
+                  fontWeight: "normal",
+                  border: "solid",
+                  borderWidth: "1px",
+                  borderColor: "#013D8F",
+                }}
+              >
+                Suivez-nous
+              </button>
+            </a>
+          </div>
+        </div>
+
+        <ApplicationModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          job={selectedJob}
+        />
       </div>
-      <ApplicationModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        job={selectedJob}
-      />
     </div>
   );
 };
