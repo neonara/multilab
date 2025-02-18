@@ -60,9 +60,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-
   flex-wrap: wrap;
-  /* margin: 0 40px; */
   padding: 20px;
   width: 100%;
   gap:40px 20px;
@@ -74,6 +72,7 @@
   max-width: 800px;
   min-width: 260px;
   text-align: center;
+  height: max-content;
   flex: 1;
   gap: 64px;
 }
@@ -86,6 +85,8 @@
 }
 
 .formation-text{
+  height: 100%;
+  flex: 1;
   margin: 0;
   background: #cccccc40;
   padding: 20px 10px;

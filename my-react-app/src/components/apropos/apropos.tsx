@@ -138,7 +138,7 @@ const Apropos: React.FC = () => {
               <ul className="icons">
                 <li>
                   <img src={icon1} alt="politique" className="icon" />
-                  La garantie de la confidentialité et l’impartialité.
+                  La garantie de la confidentialité <br /> et l’impartialité.
                 </li>
                 <li>
                   <img src={icon2} alt="protection" className="icon" />
@@ -167,89 +167,6 @@ const Apropos: React.FC = () => {
           proposons plus de <strong>170 types d'essais</strong>, garantissant
           ainsi une large gamme de services adaptés aux besoins de nos clients.
         </p>
-
-        {/* swiper */}
-        {/* <Swiper
-          className="centered-slide-carousel swiper-container w-full overflow-hidden mx-[-20px] md:mx-[-48px]"
-          grabCursor={true}
-          spaceBetween={20}
-          slideToClickedSlide={false}
-          slidesPerView={1.2}
-          pagination={{
-            el: ".swiper-pagination",
-            clickable: true,
-          }}
-          navigation={{
-            nextEl: ".swiper-but-next",
-            prevEl: ".swiper-but-prev",
-          }}
-          modules={[Pagination, Navigation]}
-          breakpoints={{
-            1920: { slidesPerView: 4, spaceBetween: 25 },
-            1750: { slidesPerView: 4.3, spaceBetween: 30 },
-            1540: { slidesPerView: 4.1, spaceBetween: 30 },
-            1380: { slidesPerView: 3.9, spaceBetween: 30 },
-            1280: { slidesPerView: 3.6, spaceBetween: 30 },
-            1070: { slidesPerView: 3.2, spaceBetween: 30 },
-            768: { slidesPerView: 2.4, spaceBetween: 20 },
-            640: { slidesPerView: 2.2, spaceBetween: 20 },
-          }}
-        >
-          {clients.map((client, index) => (
-            <SwiperSlide
-              key={index}
-              className="flex flex-col justify-center items-center xl:items-start"
-            >
-              <div key={index} className="clients-card">
-                <div className="image-wrapper">
-                  <img
-                    src={client.image}
-                    alt={client.label}
-                    className="clients-image"
-                  />
-                </div>
-
-                <div className="clients-content">
-                  <h3 className="clients-title">{client.label}</h3>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper> */}
-
-        {/* <div className="clients-grid">
-          {clients.map((clients, index) => (
-            <div key={index} className="clients-card">
-              <div className="image-wrapper">
-                <img
-                  src={clients.image}
-                  alt={clients.label}
-                  className="clients-image"
-                />
-              </div>
-
-              <div className="clients-content">
-                <h3 className="clients-title">{clients.label}</h3>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        
-        <div className="arrow-buttons">
-          <button
-            className="arrow-button left swiper-but-prev"
-            onClick={handlePrev}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </button>
-          <button
-            className="arrow-button right swiper-but-next"
-            onClick={handleNext}
-          >
-            <FontAwesomeIcon icon={faArrowRight} />
-          </button>
-        </div> */}
 
         <CarouselClients />
       </div>

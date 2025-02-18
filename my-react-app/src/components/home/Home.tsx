@@ -71,7 +71,7 @@ function HomePage() {
     {
       imageSrc: third,
       logoSrc: logo3,
-      title: "Assistance et Audit",
+      title: "Assistance et Conseil",
       description:
         "<strong>MULTILAB s.a</strong> accompagne ses clients de manière personnalisée pour assurer la qualité et la sécurité de leurs produits.",
       link: "Assistance",
@@ -229,7 +229,7 @@ function HomePage() {
             </div>
             <h3>Réactivité</h3>
             <p>
-              Résultats rapides et délais <br /> optimisés.
+              Résultats rapides <br /> et délais optimisés.
             </p>
           </div>
 
@@ -298,6 +298,7 @@ function HomePage() {
                   objectFit: "cover",
                 }}
               />
+              <h4>ISO/IEC 17025</h4>
             </div>
 
             <p
@@ -334,6 +335,7 @@ function HomePage() {
                 objectFit: "cover",
               }}
             />
+            <h4>ISO/IEC 17025</h4>
           </div>
         </div>
       </div>

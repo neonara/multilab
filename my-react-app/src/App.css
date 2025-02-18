@@ -10,6 +10,8 @@
 }
 
 :root {
+  --blue: #013d8f;
+  --light-blue: #00a0d8;
   --gray-heading: var(--gra-heading);
 }
 p {
@@ -80,7 +82,7 @@ html {
   background-color: rgba(204, 204, 204, 0.8);
   color: #343a40;
   width: 100%;
-  padding: 40px 40px;
+  padding: 40px;
   margin: 0 auto;
 }
 
@@ -421,6 +423,12 @@ html {
   text-decoration: underline;
 }
 
+.mobile-banner{
+  display: none;
+}
+
+
+
 @media (max-width: 766px) {
   .mobile-menu {
     display: flex;
@@ -430,6 +438,18 @@ html {
   .menu-toggler {
     display: flex;
   }
+  .footer{
+    padding: 30px;
+  }
+
+  .mobile-banner {
+    display: block;
+  }
+
+  .desktop-banner {
+    display: none;
+  }
+
 }
 
 /* Accordion styles */

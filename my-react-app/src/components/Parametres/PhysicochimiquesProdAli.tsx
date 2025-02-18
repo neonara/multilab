@@ -11,9 +11,8 @@ import {
   ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERS,
   ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSBRUER,
   ANALYSESPHYSICOCHIMIQUESPRODUITSLAITIERSFROMAGE,
-  ANALYSESPHYSICOCHIMIQUESPRODUITSPECHE
-}
-from "../../types/types";
+  ANALYSESPHYSICOCHIMIQUESPRODUITSPECHE,
+} from "../../types/types";
 
 import { useParams } from "react-router-dom";
 const analysis = {
@@ -67,7 +66,6 @@ title: "Analyses physicochimiques des produits de la pêche"
  
     title: "Analyses physicochimiques des produits laitiers (formage)"
   },
-
 };
 // interface AnalyseItemProps {
 //   elements: string[];
@@ -239,8 +237,7 @@ export default function PhysicochimiquesProdAli() {
  
 
   console.log("id from useParams:", id);
-console.log("Available analysesData keys:", Object.keys(analysesData));
-
+  console.log("Available analysesData keys:", Object.keys(analysesData));
 
   function removeAnalysePrefix(title: string): string {
     return title.startsWith("A") ? title.replace("A", "d'a") : title;

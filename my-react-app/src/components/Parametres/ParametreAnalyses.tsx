@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BannerImageParam from "./BannerImageParam";
 import "../Parametres/Parametres.css";
@@ -9,7 +9,8 @@ import back1 from "@/assets/images/57.png";
 import back2 from "@/assets/images/58.jpg";
 import back3 from "@/assets/images/59.jpg";
 import back4 from "@/assets/images/60.jpg";
-import back5 from "@/assets/images/61.jpg";
+import back5 from "@/assets/images/62.jpg";
+import { MdOutlineCheckBox } from "react-icons/md";
 
 // Import types
 import {
@@ -22,11 +23,11 @@ import {
 
 // API endpoint mapping
 const apiEndpoints: { [key: string]: string } = {
-  microbiologiques: '/micro-alimentaires/',
-  microbiologiquesEaux: '/micro-eaux/',
-  physicochimiquesEaux: '/physico-eaux/',
-  alimentsAnimaux: '/aliments-animaux/',
-  cosmetiquesHygiene: '/cosmetiques-hygiene/'
+  microbiologiques: "/micro-alimentaires/",
+  microbiologiquesEaux: "/micro-eaux/",
+  physicochimiquesEaux: "/physico-eaux/",
+  alimentsAnimaux: "/aliments-animaux/",
+  cosmetiquesHygiene: "/cosmetiques-hygiene/",
 };
 
 // Static analysis data (keep for initial rendering)
@@ -45,22 +46,26 @@ const analysesData: {
   },
   microbiologiquesEaux: {
     title: "Analyse Microbiologiques des Eaux",
-    description: "MULTILAB réalise pour le compte de ses clients une panoplie d’analyses microbiologiques dans les eaux qui permettent de détecter et de quantifier les micro-organismes pathogènes ou indicateurs de contamination. Elles sont essentielles pour évaluer la qualité de l'eau destinée à la consommation humaine, aux usages industriels ou encore à des fins environnementales.",
+    description:
+      "<strong>MULTILAB s.a</strong> réalise pour le compte de ses clients une panoplie d’analyses microbiologiques dans les eaux qui permettent de détecter et de quantifier les micro-organismes pathogènes ou indicateurs de contamination. Elles sont essentielles pour évaluer la qualité de l'eau destinée à la consommation humaine, aux usages industriels ou encore à des fins environnementales.",
     back: back2,
   },
   physicochimiquesEaux: {
     title: "Analyses Physicochimiques des Eaux",
-    description: "MULTILAB réalise des analyses permettant de déterminer la qualité de l’eau en évaluant divers paramètres essentiels. Ces prestations sont adaptées aux exigences des industries, des collectivités et des particuliers soucieux de la qualité de l’eau utilisée ou rejetée.",
+    description:
+      "<strong>MULTILAB s.a</strong> réalise des analyses permettant de déterminer la qualité de l’eau en évaluant divers paramètres essentiels. Ces prestations sont adaptées aux exigences des industries, des collectivités et des particuliers soucieux de la qualité de l’eau utilisée ou rejetée.",
     back: back3,
   },
   alimentsAnimaux: {
     title: "Analyses des aliments des animaux",
-    description: "MULTILAB propose une gamme complète d’analyses physicochimiques pour les aliments pour animaux, répondant aux besoins des professionnels du secteur. Ces analyses permettent de déterminer la qualité nutritionnelle, la composition chimique et la conformité des matières premières et des produits finis aux normes en vigueur.",
+    description:
+      "<strong>MULTILAB s.a</strong> propose une gamme complète d’analyses physicochimiques pour les aliments pour animaux, répondant aux besoins des professionnels du secteur. Ces analyses permettent de déterminer la qualité nutritionnelle, la composition chimique et la conformité des matières premières et des produits finis aux normes en vigueur.",
     back: back4,
   },
   cosmetiquesHygiene: {
     title: "Microbiologie des produits cosmétiques et d'hygiène",
-    description: "Le laboratoire accompagne l’industrie des cosmétiques ainsi que celle des produits d’hygiène, de nettoyage et de désinfection, en assurant la qualité et la sécurité des produits formulés et de leurs ingrédients par le dénombrement et la détection de différents microorganismes. Il évalue également leur stabilité et leur efficacité à travers une série de tests rigoureux, en conformité avec les normes en vigueur.",
+    description:
+      "Le laboratoire accompagne l’industrie des cosmétiques ainsi que celle des produits d’hygiène, de nettoyage et de désinfection, en assurant la qualité et la sécurité des produits formulés et de leurs ingrédients par le dénombrement et la détection de différents microorganismes. Il évalue également leur stabilité et leur efficacité à travers une série de tests rigoureux, en conformité avec les normes en vigueur.",
     back: back5,
   },
 };
@@ -78,7 +83,14 @@ const ParameterCard = ({ items }: { items: string[] }) => (
   <div className="param-card">
     <ul>
       {items.map((item, index) => (
-        <li key={index}>{item}</li>
+        <li
+          key={index}
+          style={{
+            color: "#7A7A7A",
+          }}
+        >
+          <MdOutlineCheckBox style={{ color: "#00A0D8" }} /> {item}
+        </li>
       ))}
     </ul>
   </div>
@@ -100,7 +112,7 @@ const ParametreAnalyses = () => {
     if (!id) {
       setError("No analysis ID provided");
       console.log(error);
-      
+
       setIsLoading(false);
       return;
     }
@@ -178,12 +190,38 @@ const ParametreAnalyses = () => {
     fetchParameters();
   }, [id]);
 
+  const chunkedParametersConst = [
+    [
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+    ],
+    [
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+      "Dénombrement des micro-organismes à 30 °C",
+    ],
+  ];
+
   // Chunk parameters into groups of 8
-  const chunkedParameters = chunkArray(parameters, 8);
+  const chunkedParameters =
+    parameters.length > 0 ? chunkArray(parameters, 8) : chunkedParametersConst;
 
   // Helper function to modify title
   function removeAnalysePrefix(title: string): string {
-    return title.startsWith("A") ? title.replace("A", "d'a") : title;
+    if (title.startsWith("A")) {
+      return title.replace("A", "d'a");
+    } else {
+      return "d'analyses " + title;
+    }
   }
 
   // Render loading state
@@ -206,7 +244,7 @@ const ParametreAnalyses = () => {
           <h2>{analysis.title}</h2>
           <p dangerouslySetInnerHTML={{ __html: analysis.description }}></p>
         </div>
-        <h1>Paramètre {removeAnalysePrefix(analysis.title)}</h1>
+        <h1>Paramètres {removeAnalysePrefix(analysis.title)}</h1>
         <div className="grid-container">
           {chunkedParameters.map((chunk, index) => (
             <ParameterCard key={index} items={chunk} />

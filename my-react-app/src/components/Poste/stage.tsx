@@ -10,6 +10,7 @@ import api from "../../lib/api";
 import { OffreStageShow } from "../../types/types";
 import { useNavigate } from "react-router";
 import StageApplication from "./StageApplication";
+import filterIcon from "@/assets/icons/icon-filter.svg";
 const Stage = () => {
   // State for filters
   const [unite, setUnite] = useState("Tous les unités d’affectation");
@@ -86,9 +87,22 @@ const Stage = () => {
     });
   };
 
+  const [unit, setUnit] = useState({
+    Administration: false,
+    Finance: false,
+    Comptabilite: false,
+    Analyse: false,
+  });
+
+  const handleUnitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUnit({
+      ...unit,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   console.log(setIsDrawerOpen);
-  
 
   // const toggleDrawer = () => {
   //   setIsDrawerOpen(!isDrawerOpen);
@@ -165,7 +179,7 @@ const Stage = () => {
             setSelectedJob(job);
             setIsModalOpen(true);
           }}
-          className="postuler-button"
+          className="postuler-button cta-button"
         >
           Postuler
         </button>
@@ -174,221 +188,280 @@ const Stage = () => {
   }
 
   return (
-    <div className="page-container">
-      <div className="poste-container">
-        <div className="banner-container">
+    <div>
+      <div className="banner-container-mobile">
+        <img src={back} alt="À propos banner" className="banner-poste" />
+      </div>
+      <div className="page-container">
+        <div className="banner-container-desktop">
           <img src={back} alt="À propos banner" className="banner-poste" />
         </div>
-        <h2 className="poste-title">MULTILAB sa recrute</h2>
+        <div className="poste-container">
+          <h2 className="poste-title">MULTILAB sa recrute</h2>
 
-        <div className="search-bar">
-          <div className="search-input-container">
-            <IoMdSearch className="search-icon" />
-            <input
-              type="text"
-              placeholder="Titre du poste ou mot-clé"
-              className="search-input input-item"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          <div className="separator"></div> {/* Add this line */}
-          <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
-            <h2 className="filters-title">Filtrer</h2>
-            <div className="filter-content">
-              <h3>Type de contrat</h3>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="CIVP"
-                  checked={contractType.CIVP}
-                  onChange={handleContractChange}
-                />
-                <label htmlFor="CIVP">CIVP</label>
-              </div>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="Karama"
-                  checked={contractType.Karama}
-                  onChange={handleContractChange}
-                />
-                <label htmlFor="Karama">Karama</label>
-              </div>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="CDD"
-                  checked={contractType.CDD}
-                  onChange={handleContractChange}
-                />
-                <label htmlFor="CDD">CDD</label>
-              </div>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="CDI"
-                  checked={contractType.CDI}
-                  onChange={handleContractChange}
-                />
-                <label htmlFor="CDI">CDI</label>
-              </div>
-              <h3>Durée d'expérience</h3>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="nouveau"
-                  checked={experience.nouveau}
-                  onChange={handleExperienceChange}
-                />
-                <label htmlFor="nouveau">Nouveau diplômé</label>
-              </div>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="oneToTwo"
-                  checked={experience.oneToTwo}
-                  onChange={handleExperienceChange}
-                />
-                <label htmlFor="oneToTwo">1-2 ans</label>
-              </div>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="threeToFive"
-                  checked={experience.threeToFive}
-                  onChange={handleExperienceChange}
-                />
-                <label htmlFor="threeToFive">3-5 ans</label>
-              </div>
-              <div className="filter-option">
-                <input
-                  type="checkbox"
-                  name="ninePlus"
-                  checked={experience.ninePlus}
-                  onChange={handleExperienceChange}
-                />
-                <label htmlFor="ninePlus">9+ ans</label>
-              </div>
+          <div className="search-bar">
+            <div className="search-input-container">
+              <IoMdSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Titre du poste ou mot-clé"
+                className="search-input input-item"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
             </div>
+            <div className="separator"></div> {/* Add this line */}
+            <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
+              <h2
+                className="filters-toggle"
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              >
+                <img src={filterIcon} alt="" />
+                Filtrer
+              </h2>
+              {isDrawerOpen && (
+                <div className="filter-content">
+                  <h3 className="filter-type">Type de contrat</h3>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="CIVP"
+                      checked={contractType.CIVP}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="CIVP">CIVP</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="Karama"
+                      checked={contractType.Karama}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="Karama">Karama</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="CDD"
+                      checked={contractType.CDD}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="CDD">CDD</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="CDI"
+                      checked={contractType.CDI}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="CDI">CDI</label>
+                  </div>
+                  <h3 className="filter-type">Durée d'expérience</h3>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="nouveau"
+                      checked={experience.nouveau}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="nouveau">Nouveau diplômé</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="oneToTwo"
+                      checked={experience.oneToTwo}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="oneToTwo">1-2 ans</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="threeToFive"
+                      checked={experience.threeToFive}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="threeToFive">3-5 ans</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="ninePlus"
+                      checked={experience.ninePlus}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="ninePlus">9+ ans</label>
+                  </div>
+
+                  <h3 className="filter-type">Unité</h3>
+                  {Object.entries(unit).map(([key, value]) => (
+                    <div className="filter-option" key={key}>
+                      <input
+                        type="checkbox"
+                        name={key}
+                        checked={value}
+                        onChange={handleUnitChange}
+                      />
+                      <label htmlFor={key}>{key}</label>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <select
+              className="dropdown input-item"
+              value={unite}
+              onChange={handleUniteChange}
+              style={{ backgroundImage: `url(${arrowDown})` }} // Add this line
+            >
+              <option value="Administration">Administration</option>
+              <option value="Finance">Finance</option>
+              <option value="Comptabilité">Comptabilité</option>
+              <option value="Analyse">Analyse</option>
+            </select>
+            <div className="separator"></div> {/* Add this line */}
+            <select
+              className="dropdown input-item"
+              value={emploi}
+              onChange={handleEmploiChange}
+              style={{ backgroundImage: `url(${arrowDown})` }} // Add this line
+            >
+              <option value="Emploi">Emploi</option>
+              <option value="Stage">Stage</option>
+            </select>
+            <div className="separator"></div> {/* Add this line */}
+            <button
+              className="reset-button"
+              onClick={() => {
+                setUnite("Tous les unités d'affectation");
+                setEmploi("Stage");
+                setSearchTerm("");
+              }}
+            >
+              Réinitialiser
+            </button>
+            <button
+              className="search-button cta-button"
+              onClick={handleSearch}
+              style={{
+                fontWeight: "normal",
+                border: "solid",
+                borderWidth: "1px",
+                borderColor: "#013D8F",
+              }}
+            >
+              Chercher
+            </button>
           </div>
-          <select
-            className="dropdown input-item"
-            value={unite}
-            onChange={handleUniteChange}
-            style={{ backgroundImage: `url(${arrowDown})` }} // Add this line
-          >
-            <option value="Administration">Administration</option>
-            <option value="Finance">Finance</option>
-            <option value="Comptabilité">Comptabilité</option>
-            <option value="Analyse">Analyse</option>
-          </select>
-          <div className="separator"></div> {/* Add this line */}
-          <select
-            className="dropdown input-item"
-            value={emploi}
-            onChange={handleEmploiChange}
-            style={{ backgroundImage: `url(${arrowDown})` }} // Add this line
-          >
-            <option value="Emploi">Emploi</option>
-            <option value="Stage">Stage</option>
-          </select>
-          <div className="separator"></div> {/* Add this line */}
-          <button
-            className="reset-button"
-            onClick={() => {
-              setUnite("Tous les unités d'affectation");
-              setEmploi("Stage");
-              setSearchTerm("");
-            }}
-          >
-            Réinitialiser
-          </button>
-          <button className="search-button" onClick={handleSearch}>
-            Chercher
-          </button>
-        </div>
 
-        <div className="job-section">
-          {/* Filters Section */}
-          <div className="filters">
-            <h2>Filtrer</h2>
-            <h3>Type de contrat</h3>
-            {Object.entries(contractType).map(([key, value]) => (
-              <div className="filter-option" key={key}>
-                <input
-                  type="checkbox"
-                  name={key}
-                  checked={value}
-                  onChange={handleContractChange}
-                />
-                <label htmlFor={key}>{key}</label>
-              </div>
-            ))}
+          <div className="job-section">
+            {/* Filters Section */}
+            <div className="filters">
+              <h2>Filtrer</h2>
+              <h3>Type de contrat</h3>
+              {Object.entries(contractType).map(([key, value]) => (
+                <div className="filter-option" key={key}>
+                  <input
+                    type="checkbox"
+                    name={key}
+                    checked={value}
+                    onChange={handleContractChange}
+                  />
+                  <label htmlFor={key}>{key}</label>
+                </div>
+              ))}
 
-            <h3>Durée d'expérience</h3>
-            {Object.entries(experience).map(([key, value]) => (
-              <div className="filter-option" key={key}>
-                <input
-                  type="checkbox"
-                  name={key}
-                  checked={value}
-                  onChange={handleExperienceChange}
-                />
-                <label htmlFor={key}>
-                  {key === "nouveau"
-                    ? "Nouveau diplômé"
-                    : key === "oneToTwo"
-                    ? "1-2 ans"
-                    : key === "threeToFive"
-                    ? "3-5 ans"
-                    : "9+ ans"}
-                </label>
-              </div>
-            ))}
-          </div>
+              <h3>Durée d'expérience</h3>
+              {Object.entries(experience).map(([key, value]) => (
+                <div className="filter-option" key={key}>
+                  <input
+                    type="checkbox"
+                    name={key}
+                    checked={value}
+                    onChange={handleExperienceChange}
+                  />
+                  <label htmlFor={key}>
+                    {key === "nouveau"
+                      ? "Nouveau diplômé"
+                      : key === "oneToTwo"
+                      ? "1-2 ans"
+                      : key === "threeToFive"
+                      ? "3-5 ans"
+                      : "9+ ans"}
+                  </label>
+                </div>
+              ))}
 
-          {/* Job Cards Section */}
-          <span className="job-cards-container">
-            <h2 className="post-num">{postsNum} Postes Disponible</h2>
-            <div className="job-cardss">
-              {jobs.map((job) => (
-                <Card {...job} />
+              <h3>Unité</h3>
+              {Object.entries(unit).map(([key, value]) => (
+                <div className="filter-option" key={key}>
+                  <input
+                    type="checkbox"
+                    name={key}
+                    checked={value}
+                    onChange={handleUnitChange}
+                  />
+                  <label htmlFor={key}>{key}</label>
+                </div>
               ))}
             </div>
-          </span>
-        </div>
-      </div>
 
-      <div
-        className="linkedin-section"
-        style={{
-          backgroundImage: `url(${linkedin})`,
-          backgroundSize: "100%", // Ensures the image covers the div
-          backgroundPosition: "center", // Adjust to show a part of the image, e.g., 'top', 'center', 'bottom', etc.
-          height: "300px", // Set the height you want for the visible section
-          width: "100%", // Set the width (could be 100% of the container or fixed)
-          // Needed for absolute positioning of content
-          overflow: "hidden", // Hide parts of the image outside the container
-          borderRadius: "17px", // Optional: round the corners of the div
-        }}
-      >
-        <div className="content">
-          <h2>Notre page LinkedIn</h2>
-          <a
-            href="https://tn.linkedin.com/in/multilab-s-a-b1978870"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="linkedin-button">Suivez-nous</button>
-          </a>
+            {/* Job Cards Section */}
+            <span className="job-cards-container">
+              <h2 className="post-num">{postsNum} Postes Disponible</h2>
+              <div className="job-cardss">
+                {jobs.map((job) => (
+                  <Card {...job} />
+                ))}
+              </div>
+            </span>
+          </div>
         </div>
+
+        <div
+          className="linkedin-section"
+          style={{
+            backgroundImage: `url(${linkedin})`,
+            backgroundSize: "100%", // Ensures the image covers the div
+            backgroundPosition: "center", // Adjust to show a part of the image, e.g., 'top', 'center', 'bottom', etc.
+            height: "300px", // Set the height you want for the visible section
+            width: "100%", // Set the width (could be 100% of the container or fixed)
+            // Needed for absolute positioning of content
+            overflow: "hidden", // Hide parts of the image outside the container
+            borderRadius: "17px", // Optional: round the corners of the div
+          }}
+        >
+          <div className="content">
+            <h2>Rejoignez-nous sur LinkedIn pour ne rien manquer</h2>
+
+            <a
+              href="https://tn.linkedin.com/in/multilab-s-a-b1978870"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button
+                className="linkedin-button cta-button"
+                style={{
+                  fontWeight: "normal",
+                  border: "solid",
+                  borderWidth: "1px",
+                  borderColor: "#013D8F",
+                }}
+              >
+                Suivez-nous
+              </button>
+            </a>
+          </div>
+        </div>
+        <StageApplication
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          job={selectedJob}
+        />
       </div>
-      <StageApplication
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        job={selectedJob}
-      />
     </div>
   );
 };

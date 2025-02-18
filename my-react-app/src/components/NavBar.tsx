@@ -219,7 +219,7 @@ function NavBar() {
                   {t("Analyses")}
                 </a>
                 <a href="/assistance" onClick={toggleMobileMenu}>
-                  {t("Assistance et audit")}
+                  {t("Assistance et conseil")}
                 </a>
                 <a href="/formation" onClick={toggleMobileMenu}>
                   {t("Formations")}
