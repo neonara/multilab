@@ -1,9 +1,6 @@
 .formation-containerr {
   padding: 0 40px;
 }
-.themes-section {
-  margin: 0 40px;
-}
 .formation-para {
   font-size: 18px;
   margin: 0 40px 40px;
@@ -67,7 +64,6 @@
 }
 
 .formation-card {
-  margin-left: 10px;
   border-radius: 8px;
   max-width: 800px;
   min-width: 260px;
@@ -144,7 +140,7 @@
   color: var(--blue);
 }
 
-.custom-formation-button {
+/* .custom-formation-button {
   padding: 12px 24px;
   background-color: var(--light-blue);
   color: white;
@@ -156,7 +152,7 @@
   font-size: 18px;
   font-weight: bold;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
+} */
 
 .custom-formation-button:hover {
   background-color: white;
@@ -169,4 +165,61 @@
   justify-content: center;
   align-items: center;
   margin: 0;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .formation-containerr {
+    padding: 0 30px;
+  }
+  .formation-containers {
+    padding: 0;
+  }
+
+  .formation-para {
+    font-size: 16px;
+    margin: 0 0px 40px;
+  }
+
+  .formation-card {
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0;
+  }
+
+  .formation-card h3 {
+    font-size: 16px;
+  }
+
+  .formation-card p {
+    font-size: 15px;
+  }
+
+  .section-title{
+    font-size: 18px;
+    margin: 40px 0 16px 0;
+  }
+
+  .formation-image {
+    width: auto;
+    height: auto;
+  }
+
+  .custom-formation-heading {
+    font-size: 18px;
+  }
+
+
+  .link {
+    width: 80%;
+  }
+  
+
+}
+
+/* mobile */
+@media (max-width: 420px) {
+  .formation-image {
+    width: 60%;
+  }
 }

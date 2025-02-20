@@ -8,6 +8,7 @@
   color: white;
   text-align: center;
   border-radius: 17px;
+  margin: 0 50px;
 }
 
 .themes-title {
@@ -81,7 +82,7 @@
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  padding:50px 20px;
+  padding:50px 50px;
 }
 
 .logistics-content {
@@ -204,7 +205,7 @@
 }
 
 .home-containers{
-  padding:40px 50px;
+  margin:40px 50px;
 }
 
 @media (max-width: 1024px) {

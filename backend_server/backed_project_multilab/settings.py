@@ -27,10 +27,9 @@ LOGOUT_REDIRECT_URL = '/'
 SECRET_KEY = 'b_z73j80aa!3h9s+%ui*ii*bl%(cdw*w-tpukpqngcr7+!_dtw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 WHITENOISE_SKIP_MISSING = False
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=[
-                         '102.211.210.120', 'multilab-tunisia.com.tn', 'www.multilab-tunisia.com.tn'])
+ALLOWED_HOSTS = ['*']
 APPEND_SLASH = False
 WHITENOISE_AUTOREFRESH = False  # Enable auto-refresh for development
 WHITENOISE_INDEX_FILE = True
@@ -131,8 +130,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'multilab',
-        'USER': 'multilab',
-        'PASSWORD': 'root',
+        'USER': 'postgres',
+        'PASSWORD': 'achref',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

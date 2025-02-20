@@ -11,7 +11,10 @@ export default function BannerImage({ backimg, title }: BannerImageProps) {
       <img src={backimg} alt="Lab Worker" className="banner-image" />
       <div className="text-container">
         <p className="title-text">MULTILAB s.a</p>
-        <p className="subtitle-text">{title}</p>
+        <p
+          className="subtitle-text"
+          dangerouslySetInnerHTML={{ __html: title }}
+        ></p>
       </div>
     </div>
   );

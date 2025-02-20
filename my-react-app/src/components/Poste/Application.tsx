@@ -262,7 +262,7 @@ const ApplicationModal: React.FC<ApplicationModalProps> = ({
               )}
             </div>
 
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button cta-button">
               Envoyer ma candidature
             </button>
           </form>

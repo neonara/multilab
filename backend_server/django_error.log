@@ -5630,3 +5630,81 @@ RuntimeError: You called this URL via POST, but the URL doesn't end in a slash a
 "POST /MULTILAB/candidates-simplify HTTP/1.1" 500 78560
 =======
 >>>>>>> front-end
+Internal Server Error: /MULTILAB/produits-laitiers-beurre/
+Traceback (most recent call last):
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: relation "ParametersAnalyse_typedevibeurre" does not exist
+LINE 1: ...rametersAnalyse_typedevibeurre"."created_at" FROM "Parameter...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\serializers.py", line 795, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\serializers.py", line 249, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\rest_framework\serializers.py", line 713, in to_representation
+    return [
+           ^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\models\sql\compiler.py", line 1560, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Achref\.virtualenvs\backend_server-VlCVYJVY\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: relation "ParametersAnalyse_typedevibeurre" does not exist
+LINE 1: ...rametersAnalyse_typedevibeurre"."created_at" FROM "Parameter...
+                                                             ^
+
+"GET /MULTILAB/produits-laitiers-beurre/ HTTP/1.1" 500 174779

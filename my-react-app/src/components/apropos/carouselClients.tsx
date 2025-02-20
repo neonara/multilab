@@ -1,7 +1,7 @@
 import laitImage from "@/assets/images/19.jpg";
 import viandeImage from "@/assets/images/20.jpg";
 import pecheImage from "@/assets/images/21.png";
-import hotelImage from "@/assets/images/22-1.jpg";
+import hotelImage from "@/assets/images/22.jpg";
 import Conditionnement from "@/assets/images/19-1.jpg";
 import Pâtisserie from "@/assets/images/23.jpg";
 import distribution from "@/assets/images/24.jpg";
@@ -29,7 +29,7 @@ export default function CarouselClients() {
     },
     {
       image: Conditionnement,
-      label: "Lait et conditionnement des produits alimentaires  ",
+      label: "Conditionnement des produits alimentaires  ",
     },
     { image: Pâtisserie, label: "Pâtisserie confiserie" },
     { image: distribution, label: "La grande distribution" },

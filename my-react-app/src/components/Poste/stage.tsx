@@ -59,44 +59,27 @@ const Stage = () => {
     // Handle search logic here
     console.log("Search for:", { unite, emploi, searchTerm });
   };
-  const [contractType, setContractType] = useState({
-    CIVP: true,
-    Karama: false,
-    CDD: false,
-    CDI: false,
+  const [stageType, setStageType] = useState({
+    PFE: true,
+    Mémoire: false,
   });
 
-  const [experience, setExperience] = useState({
-    nouveau: false,
-    oneToTwo: false,
-    threeToFive: false,
-    ninePlus: false,
+  const [duree, setDuree] = useState({
+    one: false,
+    three: false,
+    six: false,
   });
 
-  const handleContractChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setContractType({
-      ...contractType,
+  const handleStageTypeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStageType({
+      ...stageType,
       [e.target.name]: e.target.checked,
     });
   };
 
-  const handleExperienceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setExperience({
-      ...experience,
-      [e.target.name]: e.target.checked,
-    });
-  };
-
-  const [unit, setUnit] = useState({
-    Administration: false,
-    Finance: false,
-    Comptabilite: false,
-    Analyse: false,
-  });
-
-  const handleUnitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUnit({
-      ...unit,
+  const handleDureeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDuree({
+      ...duree,
       [e.target.name]: e.target.checked,
     });
   };
@@ -197,7 +180,7 @@ const Stage = () => {
           <img src={back} alt="À propos banner" className="banner-poste" />
         </div>
         <div className="poste-container">
-          <h2 className="poste-title">MULTILAB s.a recrute</h2>
+          <h2 className="poste-title">MULTILAB sa recrute</h2>
 
           <div className="search-bar">
             <div className="search-input-container">
@@ -210,7 +193,7 @@ const Stage = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <div className="separator" /> {/* Add this line */}
+            <div className="separator"></div> {/* Add this line */}
             <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
               <h2
                 className="filters-toggle"
@@ -222,90 +205,35 @@ const Stage = () => {
               {isDrawerOpen && (
                 <div className="filter-content">
                   <h3 className="filter-type">Type de contrat</h3>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="CIVP"
-                      checked={contractType.CIVP}
-                      onChange={handleContractChange}
-                    />
-                    <label htmlFor="CIVP">CIVP</label>
-                  </div>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="Karama"
-                      checked={contractType.Karama}
-                      onChange={handleContractChange}
-                    />
-                    <label htmlFor="Karama">Karama</label>
-                  </div>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="CDD"
-                      checked={contractType.CDD}
-                      onChange={handleContractChange}
-                    />
-                    <label htmlFor="CDD">CDD</label>
-                  </div>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="CDI"
-                      checked={contractType.CDI}
-                      onChange={handleContractChange}
-                    />
-                    <label htmlFor="CDI">CDI</label>
-                  </div>
-                  <h3 className="filter-type">Durée d'expérience</h3>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="nouveau"
-                      checked={experience.nouveau}
-                      onChange={handleExperienceChange}
-                    />
-                    <label htmlFor="nouveau">Nouveau diplômé</label>
-                  </div>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="oneToTwo"
-                      checked={experience.oneToTwo}
-                      onChange={handleExperienceChange}
-                    />
-                    <label htmlFor="oneToTwo">1-2 ans</label>
-                  </div>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="threeToFive"
-                      checked={experience.threeToFive}
-                      onChange={handleExperienceChange}
-                    />
-                    <label htmlFor="threeToFive">3-5 ans</label>
-                  </div>
-                  <div className="filter-option">
-                    <input
-                      type="checkbox"
-                      name="ninePlus"
-                      checked={experience.ninePlus}
-                      onChange={handleExperienceChange}
-                    />
-                    <label htmlFor="ninePlus">9+ ans</label>
-                  </div>
-
-                  <h3 className="filter-type">Unité</h3>
-                  {Object.entries(unit).map(([key, value]) => (
+                  {Object.entries(stageType).map(([key, value]) => (
                     <div className="filter-option" key={key}>
                       <input
                         type="checkbox"
                         name={key}
                         checked={value}
-                        onChange={handleUnitChange}
+                        onChange={handleStageTypeChange}
                       />
                       <label htmlFor={key}>{key}</label>
+                    </div>
+                  ))}
+                  <h3 className="filter-type">Durée de stage</h3>
+                  {Object.entries(duree).map(([key, value]) => (
+                    <div className="filter-option" key={key}>
+                      <input
+                        type="checkbox"
+                        name={key}
+                        checked={value}
+                        onChange={handleDureeChange}
+                      />
+                      <label htmlFor={key}>
+                        {key === "one"
+                          ? "1 mois"
+                          : key === "three"
+                          ? "3 mois"
+                          : key === "six"
+                          ? "6 mois"
+                          : ""}
+                      </label>
                     </div>
                   ))}
                 </div>
@@ -361,50 +289,37 @@ const Stage = () => {
             {/* Filters Section */}
             <div className="filters">
               <h2>Filtrer</h2>
-              <h3>Type de contrat</h3>
-              {Object.entries(contractType).map(([key, value]) => (
+              <h3>Type de stage</h3>
+              {Object.entries(stageType).map(([key, value]) => (
                 <div className="filter-option" key={key}>
                   <input
                     type="checkbox"
                     name={key}
                     checked={value}
-                    onChange={handleContractChange}
+                    onChange={handleStageTypeChange}
                   />
                   <label htmlFor={key}>{key}</label>
                 </div>
               ))}
 
-              <h3>Durée d'expérience</h3>
-              {Object.entries(experience).map(([key, value]) => (
+              <h3>Durée de stage</h3>
+              {Object.entries(duree).map(([key, value]) => (
                 <div className="filter-option" key={key}>
                   <input
                     type="checkbox"
                     name={key}
                     checked={value}
-                    onChange={handleExperienceChange}
+                    onChange={handleDureeChange}
                   />
                   <label htmlFor={key}>
-                    {key === "nouveau"
-                      ? "Nouveau diplômé"
-                      : key === "oneToTwo"
-                      ? "1-2 ans"
-                      : key === "threeToFive"
-                      ? "3-5 ans"
-                      : "9+ ans"}
+                    {key === "one"
+                      ? "1 mois"
+                      : key === "three"
+                      ? "3 mois"
+                      : key === "six"
+                      ? "6 mois"
+                      : ""}
                   </label>
-                </div>
-              ))}
-
-              <h3>Unité</h3>
-              {Object.entries(unit).map(([key, value]) => (
-                <div className="filter-option" key={key}>
-                  <input
-                    type="checkbox"
-                    name={key}
-                    checked={value}
-                    onChange={handleUnitChange}
-                  />
-                  <label htmlFor={key}>{key}</label>
                 </div>
               ))}
             </div>

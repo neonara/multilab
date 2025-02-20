@@ -185,8 +185,9 @@ const Apropos: React.FC = () => {
             Composé de plusieurs équipes scientifiques spécialisées, ce
             département est l'un des piliers de notre laboratoire. Nos experts
             développent continuellement de nouvelles méthodes d'analyse pour
-            répondre aux besoins évolutifs de nos clients et garantir des
-            résultats précis et fiables.
+            répondre aux besoins évolutifs de nos clients{" "}
+            <br className="et-back-to-line" /> et garantir des résultats précis
+            et fiables.
             <br />
             Choisir <strong>MULTILAB s.a</strong>, c'est bénéficier de
             l'expertise, de la fiabilité, de la réactivité et de la proximité

@@ -68,28 +68,6 @@
   height: auto;
 }
 
-.custom-formation-button {
-  background-color: var(--light-blue); /* Darker blue on hover */
-
-  margin-left: 600px;
-  width: 173px;
-  height: Fixed 44px;
-  top: 2462px;
-  left: 641px;
-  padding: 8px 16px 8px 16px;
-  gap: 10px;
-  border-radius: 8px;
-  opacity: 0px;
-
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.custom-formation-button:hover {
-  background-color: white; /* Darker blue on hover */
-  color: var(--light-blue);
-  border: 1px solid;
-  border-radius: 8px;
-}
 /*    2    and    4 */
 /* Global animation class */
 .animation-class-r {
@@ -158,6 +136,8 @@
 }
 
 .custom-formation-button {
+  background-color: var(--light-blue);
+  color: white;
   padding: 10px 20px;
   width: fit-content;
   margin: 40px 0;
@@ -243,5 +223,9 @@
     font-weight: bold;
 
     line-height: 24px;
+  }
+
+  .custom-formation-button {
+    font-size: 15px;
   }
 }

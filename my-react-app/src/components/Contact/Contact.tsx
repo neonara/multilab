@@ -67,117 +67,123 @@ const Contact = () => {
   };
 
   return (
-    <div className="header">
-      <div className="contact-image-container">
+    <div>
+      <div className="contact-image-container mobile">
         <img src={back} alt="Lab Worker" className="banner-image" />
         <div className="text-container">
           <h1 className="header-text">Contactez-nous</h1>
         </div>
       </div>
-      <div className="contact-cont-container">
-        <div className="contact-card">
-          <h2>Contact</h2>
-          <div className="contact-item">
-            <FiPhoneCall className="social-icon" />
-            <p>(+216) 71 941 436 / 22 344 976</p>
-          </div>
-          <div className="contact-item">
-            <IoLocationOutline className="social-icon" />
-            <p>Rue de l’argent - Zone industrielle el bosten Soukra - Ariana</p>
-          </div>
-          <div className="contact-item">
-            <MdOutlineMail className="social-icon" />
-            <p>multilab@planet.tn</p>
+      <div className="header">
+        <div className="contact-image-container">
+          <img src={back} alt="Lab Worker" className="banner-image" />
+          <div className="text-container">
+            <h1 className="header-text">Contactez-nous</h1>
           </div>
         </div>
-
-        <div className="contact-container">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-row">
+        <div className="contact-cont-container">
+          <div className="contact-card">
+            <h2>Contact</h2>
+            <div className="contact-item">
+              <FiPhoneCall className="social-icon" />
+              <p>(+216) 71 941 436 / 22 344 976</p>
+            </div>
+            <div className="contact-item">
+              <IoLocationOutline className="social-icon" />
+              <p>
+                Rue de l’argent - Zone industrielle el bosten Soukra - Ariana
+              </p>
+            </div>
+            <div className="contact-item">
+              <MdOutlineMail className="social-icon" />
+              <p>multilab@planet.tn</p>
+            </div>
+          </div>
+          <div className="contact-container">
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="input-box">
+                  <label htmlFor="fullName">Nom et Prénom</label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="input-field"
+                  />
+                </div>
+                <div className="input-box">
+                  <label htmlFor="companyName">Nom de l'entreprise</label>
+                  <input
+                    type="text"
+                    id="company_name"
+                    className="input-field"
+                    value={formData.company_name}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="input-box">
+                  <label htmlFor="fullName">Numéro de téléphone</label>
+                  <input
+                    type="text"
+                    id="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="input-field"
+                  />
+                </div>
+                <div className="input-box">
+                  <label htmlFor="companyName">E-mail</label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="input-field"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+              </div>
               <div className="input-box">
-                <label htmlFor="fullName">Nom et Prénom</label>
-
+                <label>Objet du message</label>
                 <input
                   type="text"
-                  id="name"
-                  value={formData.name}
+                  id="subject"
+                  value={formData.subject}
                   onChange={handleChange}
-                  className="input-field"
+                  placeholder="Objet du message"
                 />
               </div>
               <div className="input-box">
-                <label htmlFor="companyName">Nom de l'entreprise</label>
-                <input
-                  type="text"
-                  id="company_name"
-                  className="input-field"
-                  value={formData.company_name}
+                <label>Message</label>
+                <textarea
+                  id="message"
+                  value={formData.message}
                   onChange={handleChange}
+                  placeholder="Écrivez votre message ici..."
+                ></textarea>
+              </div>
+              {statusMessage && (
+                <div
+                  className={`text-center font-ebGaramond text-sm sm:text-xl font-bold mt-3 ${
+                    isSuccess ? "text-burlywood" : "text-red-500"
+                  }`}
+                >
+                  {statusMessage}
+                </div>
+              )}
+              <button type="submit" className="submit-btn">
+                Envoyer
+                <img
+                  src={sendIcon}
+                  alt=""
+                  className="social-icon"
+                  style={{ marginLeft: "16px" }}
                 />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="input-box">
-                <label htmlFor="fullName">Numéro de téléphone</label>
-
-                <input
-                  type="text"
-                  id="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="input-field"
-                />
-              </div>
-              <div className="input-box">
-                <label htmlFor="companyName">E-mail</label>
-
-                <input
-                  type="email"
-                  id="email"
-                  className="input-field"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <div className="input-box">
-              <label>Objet du message</label>
-              <input
-                type="text"
-                id="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="Objet du message"
-              />
-            </div>
-            <div className="input-box">
-              <label>Message</label>
-              <textarea
-                id="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Écrivez votre message ici..."
-              ></textarea>
-            </div>
-            {statusMessage && (
-              <div
-                className={`text-center font-ebGaramond text-sm sm:text-xl font-bold mt-3 ${
-                  isSuccess ? "text-burlywood" : "text-red-500"
-                }`}
-              >
-                {statusMessage}
-              </div>
-            )}
-            <button type="submit" className="submit-btn">
-              Envoyer
-              <img
-                src={sendIcon}
-                alt=""
-                className="social-icon"
-                style={{ marginLeft: "16px" }}
-              />
-            </button>
-          </form>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

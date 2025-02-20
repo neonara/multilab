@@ -74,6 +74,7 @@
   cursor: pointer; /* Pointer cursor */
   transition: background-color 0.3s; /* Smooth transition */
   float: left;
+  font-family: "Roboto", sans-serif;
 }
 
 .cta-button:hover {
@@ -275,12 +276,13 @@
   display: flex;
   overflow-x: auto;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 0 -20px;
+  justify-content: space-between;
+  margin: 0 -14px;
   margin-top: -20px;
-  padding: 30px 20px;
+  padding: 30px 14px;
   column-gap: 190px;
   row-gap: 64px;
+  width: 100%;
 }
 
 .analysis-card {
@@ -1184,6 +1186,7 @@
 
   .stats-section {
     padding: 24px 10px;
+    align-items: start;
     margin: 0 -6px;
     border-radius: 0;
   }

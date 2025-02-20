@@ -37,7 +37,7 @@ const Assistance = () => {
   return (
     <div>
       <div className="mobile-banner">
-        <BannerImage backimg={backimg} title="ASSISTANCE ET CONSEIL" />
+        <BannerImage backimg={backimg} title="ASSISTANCE <br/> ET CONSEIL" />
       </div>
       <div className="assistance-container">
         <div className="desktop-banner">
@@ -49,16 +49,17 @@ const Assistance = () => {
           <div className="text-left animation-class">
             <h2 className="test">Nos Services d'Audit et Conseil</h2>
             <p>
-              Le service d'Assistance et de Conseil de MULTILAB s.a. s'engage à
-              accompagner ses clients de manière personnalisée pour garantir la
-              maîtrise de la qualité et de la sécurité des produits. Grâce à des
-              prestations d'assistance et de conseil, notre équipe collabore
-              étroitement avec vous pour atteindre vos objectifs d'amélioration
-              continue, tout en respectant les normes réglementaires et en
-              alliant expertise et proximité. Notre mission est de vous fournir
-              un accompagnement global, en analysant les résultats de vos
-              analyses et de vos audits, en identifiant les causes des problèmes
-              et en proposant des solutions efficaces pour optimiser vos plans
+              Le service d'Assistance et de Conseil de{" "}
+              <strong>MULTILAB s.a</strong> s'engage à accompagner ses clients
+              de manière personnalisée pour garantir la maîtrise de la qualité
+              et de la sécurité des produits. Grâce à des prestations
+              d'assistance et de conseil, notre équipe collabore étroitement
+              avec vous pour atteindre vos objectifs d'amélioration continue,
+              tout en respectant les normes réglementaires et en alliant
+              expertise et proximité. Notre mission est de vous fournir un
+              accompagnement global, en analysant les résultats de vos analyses
+              et de vos audits, en identifiant les causes des problèmes et en
+              proposant des solutions efficaces pour optimiser vos plans
               d'action.
             </p>
           </div>
@@ -76,16 +77,17 @@ const Assistance = () => {
           <img src={assistanceImage} className="image-right" alt="Image 1" />
           <div className="text-left">
             <p>
-              Le service d'Assistance et de Conseil de MULTILAB s.a. s'engage à
-              accompagner ses clients de manière personnalisée pour garantir la
-              maîtrise de la qualité et de la sécurité des produits. Grâce à des
-              prestations d'assistance et de conseil, notre équipe collabore
-              étroitement avec vous pour atteindre vos objectifs d'amélioration
-              continue, tout en respectant les normes réglementaires et en
-              alliant expertise et proximité. Notre mission est de vous fournir
-              un accompagnement global, en analysant les résultats de vos
-              analyses et de vos audits, en identifiant les causes des problèmes
-              et en proposant des solutions efficaces pour optimiser vos plans
+              Le service d'Assistance et de Conseil de{" "}
+              <strong>MULTILAB s.a</strong> s'engage à accompagner ses clients
+              de manière personnalisée pour garantir la maîtrise de la qualité
+              et de la sécurité des produits. Grâce à des prestations
+              d'assistance et de conseil, notre équipe collabore étroitement
+              avec vous pour atteindre vos objectifs d'amélioration continue,
+              tout en respectant les normes réglementaires et en alliant
+              expertise et proximité. Notre mission est de vous fournir un
+              accompagnement global, en analysant les résultats de vos analyses
+              et de vos audits, en identifiant les causes des problèmes et en
+              proposant des solutions efficaces pour optimiser vos plans
               d'action.
             </p>
           </div>

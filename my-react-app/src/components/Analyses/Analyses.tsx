@@ -1,17 +1,17 @@
-import im1 from "./assets/Rectangle 1.jpg";
-import im2 from "./assets/rectangle 2.jpg";
-import im3 from "./assets/Rectangle 3.jpg";
-import im4 from "./assets/rectangle 4.jpg";
+import im1 from "@/assets/images/20.jpg";
+import im2 from "@/assets/images/29.jpg";
+import im3 from "@/assets/images/37.jpg";
+import im4 from "@/assets/images/36.jpg";
 import im5 from "@/assets/images/64-vertical.png";
-import im6 from "./assets/Rectangle 6.jpg";
-import im7 from "./assets/rectangle 7.jpg";
-import im8 from "./assets/Rectangle 8.png";
-import vid from "./assets/0702vd page analyse Multilab.mp4";
+import im6 from "@/assets/images/38.jpg";
+import im7 from "@/assets/images/23.jpg";
+import im8 from "@/assets/images/21.jpg";
+import vid from "@/assets/0702vd page analyse Multilab.mp4";
 
 import "./Analyses.css";
-import groupe from "./assets/Group 1000002140.jpg";
+import groupe from "@/assets/Group 1000002140.jpg";
 import AnalysesCard from "../home/AnalysesCard";
-import backimg from "./assets/Subtract.jpg";
+import backimg from "@/assets/Subtract.jpg";
 import { useEffect, useRef } from "react";
 import BannerImage from "./BannerImage";
 
@@ -47,6 +47,7 @@ const Analyses: React.FC = () => {
       }
     };
   }, []);
+
   return (
     <div>
       <div className="mobile-banner">
@@ -62,15 +63,15 @@ const Analyses: React.FC = () => {
             <h2 className="titles">L'Approche Innovante de MULTILAB s.a</h2>
             <p className="paragraph">
               <strong>MULTILAB s.a.</strong> est bien plus qu'un simple
-              laboratoire d'analyses, c'est un projet technologique et humain
-              engagé dans les enjeux sociétaux de la sécurité alimentaire et
-              environnementale. Grâce à notre approche axée sur la proximité,
-              l'expertise, la réactivité et la fiabilité, nous proposons des
-              solutions innovantes et respectueuses de l'environnement,
-              garantissant ainsi une expertise de premier plan. L'anticipation
-              est au cœur de notre démarche, car nous nous efforçons de
-              maintenir notre avance technologique pour répondre aux besoins
-              futurs de nos clients.
+              laboratoire d'analyses, c'est un projet technologique{" "}
+              <br className="et-back-to-line" /> et humain engagé dans les
+              enjeux sociétaux de la sécurité alimentaire et environnementale.
+              Grâce à notre approche axée sur la proximité, l'expertise, la
+              réactivité et la fiabilité, nous proposons des solutions
+              innovantes et respectueuses de l'environnement, garantissant ainsi
+              une expertise de premier plan. L'anticipation est au cœur de notre
+              démarche, car nous nous efforçons de maintenir notre avance
+              technologique pour répondre aux besoins futurs de nos clients.
             </p>
           </div>
           <div className="videoContainer">

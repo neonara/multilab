@@ -10,7 +10,7 @@ import "./home.css";
 function AnalysesCard() {
   const analyses = [
     {
-      title: "Microbiologie des Produits Alimentaires",
+      title: "Microbiologie des Produits <br/>Alimentaires",
       image: card, // Replace with your image path
       link: "/parametre/microbiologiques",
     },
@@ -20,23 +20,23 @@ function AnalysesCard() {
       link: "/parametre/microbiologiquesEaux",
     },
     {
-      title: "Physicochimies des Produits Alimentaires",
+      title: "Physicochimies des Produits <br/>Alimentaires",
       image: phy, // Replace with your image path
       link: "/parametre/physicochimiesProduitsAlimentaires",
     },
     {
-      title: "Physicochimie des aliments pour animaux",
+      title: "Physicochimie des aliments <br/>pour animaux",
       image: img4, // Replace with your image path
       link: "/parametre/alimentsAnimaux",
     },
     {
-      title: "Physicochimie <br>des Eaux",
+      title: "Physicochimie <br/> des Eaux",
       image: img5, // Replace with your image path
       link: "/parametre/physicochimiquesEaux",
     },
 
     {
-      title: "Microbiologie des produits cosmétiques et d’hygiène",
+      title: "Microbiologie des produits <br/>cosmétiques et d’hygiène",
       image: img6, // Replace with your image path
       link: "/parametre/cosmetiquesHygiene",
     },

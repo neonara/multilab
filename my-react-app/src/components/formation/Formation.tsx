@@ -106,9 +106,10 @@ const Formation = () => {
             <div className="formation-text">
               <h3>Formations sur mesure</h3>
               <p>
-                Des programmes de formation adaptés aux besoins spécifiques, aux
-                niveaux de compétences et aux rythmes d'apprentissage de chaque
-                participant.{" "}
+                Proposer des formations ajustées aux exigences spécifiques, aux
+                niveaux de compétence et aux rythmes d'apprentissage de chaque
+                participant, favorisant une montée en compétences progressive et
+                efficace.
               </p>
             </div>
           </div>

@@ -7,6 +7,7 @@
   margin: 0;
   text-decoration: none;
   list-style: none;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -517,3 +518,12 @@ html {
   display: inline-block;
 }
 
+.et-back-to-line{
+  display: none;
+}
+
+@media (min-width: 1306px) and (max-width: 1312px) {
+  .et-back-to-line{
+    display: block;
+  }
+}

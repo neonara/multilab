@@ -280,8 +280,8 @@ img {
   text-align: center;
   width: 100%;
   max-width: 320px;
-  min-width: 260px;
-  height: 280px;
+  min-width: 300px;
+  height: 284px;
   opacity: 1;
 }
 
@@ -341,7 +341,15 @@ img {
   color: white;
   width: 50px;
   height: 50px;
+  transition: all 0.2s ease-in-out;
 }
+
+.arrow-button:hover {
+  background: white;
+  border: var(--light-blue) 1px solid;
+  color: var(--light-blue);
+}
+
 
 .arrow-button .svg-inline--fa {
   font-size: 20px;
@@ -490,8 +498,15 @@ img {
     font-size: 16px;
   }
 
+  .carousel-container {
+  padding: 20px 0;
+
+  }
   .clients-grid {
     gap: 30px;
+  overflow-x: auto;
+  padding-left: 10px;
+
   }
 }
 

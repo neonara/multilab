@@ -39,16 +39,45 @@
 
       <div
         class="login-container"
-        style="background-image: url('{{ background_image_url }}');"
+        style="background-image: url('{{ background_image_url }}');  position: relative;"
       >
-        <div class="login-form">
+        <div
+          style="
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+          "
+          onclick="window.location.href = '{{ home_url }}'"
+        >
+          <img src="../static/images/icon-arrow-back.png" alt="" class="" />
+          Acceuil
+        </div>
+        <div
+          class="login-form"
+          style="
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px); /* For the frosted glass effect */
+            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+            width: 588px;
+            height: 440px;
+            text-align: center;
+            color: white;
+            @media (max-width: 768px) {
+              width: 100%;
+            }
+          "
+        >
           <div id="error" class="error" style="display: none"></div>
+          <h2 class="fw-bold mb-5">
+            {% if msg %} {{ msg | safe }} {% else %}Merci d'entrer vos
+            informations de connexion{% endif %}
+          </h2>
           <form id="loginForm" method="post">
-            <h2 class="fw-bold mb-5">
-              {% if msg %} {{ msg | safe }} {% else %}Merci d'entrer vos
-              informations de connexion{% endif %}
-            </h2>
-
             {% csrf_token %}
             <div class="input-container">
               <label>Email</label>

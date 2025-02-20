@@ -6,13 +6,15 @@ import offre from "@/assets/icons/icon-offre.svg";
 import contrat from "@/assets/icons/icon-contrat.svg";
 import experiencee from "@/assets/icons/icon-experience.svg";
 import { IoMdSearch } from "react-icons/io";
-import arrowDown from "@/assets/icons/icon-arrow-down.svg";
+
+// import arrowDown from "@/assets/icons/icon-arrow-down.svg";
 import api from "../../lib/api";
 import { JobtShow } from "../../types/types";
 import ApplicationModal from "./Application";
 import filterIcon from "@/assets/icons/icon-filter.svg";
 
 import { useNavigate } from "react-router";
+
 const Poste = () => {
   const navigate = useNavigate();
 
@@ -192,6 +194,7 @@ const Poste = () => {
               />
             </div>
             <div className="separator" />
+
             <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
               <h2
                 className="filters-toggle"
@@ -292,11 +295,12 @@ const Poste = () => {
                 </div>
               )}
             </div>
+
             <select
               className="dropdown input-item"
               value={unite}
               onChange={handleUniteChange}
-              style={{ backgroundImage: `url(${arrowDown})` }}
+              // style={{ backgroundImage: `url(${arrowDown})` }}
             >
               <option value="Administration">Administration</option>
               <option value="Finance">Finance</option>
@@ -308,7 +312,7 @@ const Poste = () => {
               className="dropdown input-item"
               value={emploi}
               onChange={handleEmploiChange}
-              style={{ backgroundImage: `url(${arrowDown})` }}
+              // style={{ backgroundImage: `url(${arrowDown})` }}
             >
               <option value="Emploi">Emploi</option>
               <option value="Stage">Stage</option>
@@ -373,6 +377,19 @@ const Poste = () => {
                       ? "3-5 ans"
                       : "9+ ans"}
                   </label>
+                </div>
+              ))}
+
+              <h3 className="filter-type">Unité</h3>
+              {Object.entries(unit).map(([key, value]) => (
+                <div className="filter-option" key={key}>
+                  <input
+                    type="checkbox"
+                    name={key}
+                    checked={value}
+                    onChange={handleUnitChange}
+                  />
+                  <label htmlFor={key}>{key}</label>
                 </div>
               ))}
             </div>

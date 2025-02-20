@@ -250,7 +250,7 @@ const StageApplication: React.FC<StageApplicationProps> = ({
                 </div>
               )}
             </div>
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button cta-button">
               Envoyer ma candidature
             </button>
           </form>
