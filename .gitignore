@@ -6,6 +6,7 @@ backend_server/ParameterAnalyse/migrations/
 backend_server/staticfiles/
 
 backend_server/django_error.log
+! backend_server/templates/login.html
 
 node_modules/
 .vscode/settings.json
