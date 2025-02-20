@@ -310,12 +310,11 @@ function HomePage() {
             >
               Depuis 2012, le laboratoire est{" "}
               <strong>accrédité ISO/IEC 17025</strong> par le TUNAC.
-              <div>
-                L’accréditation de <strong>MULTILAB s.a</strong> couvre les
-                domaines de la microbiologie alimentaire, microbiologie des eaux
-                et Physicochimie des aliments avec une extension régulière et
-                Continue du champs d’accréditation.
-              </div>
+              <br />
+              L’accréditation de <strong>MULTILAB s.a</strong> couvre les
+              domaines de la microbiologie alimentaire, microbiologie des eaux
+              et Physicochimie des aliments avec une extension régulière et
+              Continue du champs d’accréditation.
             </p>
 
             <button className="reconnaissance-button" onClick={handleDownload}>

@@ -10,6 +10,7 @@ import arrowDown from "@/assets/icons/icon-arrow-down.svg";
 import api from "../../lib/api";
 import { JobtShow } from "../../types/types";
 import ApplicationModal from "./Application";
+import filterIcon from "@/assets/icons/icon-filter.svg";
 
 import { useNavigate } from "react-router";
 const Poste = () => {
@@ -87,6 +88,23 @@ const Poste = () => {
       [e.target.name]: e.target.checked,
     });
   };
+
+  const [unit, setUnit] = useState({
+    Administration: false,
+    Finance: false,
+    Comptabilite: false,
+    Analyse: false,
+  });
+
+  const handleUnitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUnit({
+      ...unit,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  console.log(setIsDrawerOpen);
 
   // Fallback data if API fails
   const fallbackJobs: JobtShow[] = [
@@ -174,6 +192,106 @@ const Poste = () => {
               />
             </div>
             <div className="separator" />
+            <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
+              <h2
+                className="filters-toggle"
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+              >
+                <img src={filterIcon} alt="" />
+                Filtrer
+              </h2>
+              {isDrawerOpen && (
+                <div className="filter-content">
+                  <h3 className="filter-type">Type de contrat</h3>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="CIVP"
+                      checked={contractType.CIVP}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="CIVP">CIVP</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="Karama"
+                      checked={contractType.Karama}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="Karama">Karama</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="CDD"
+                      checked={contractType.CDD}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="CDD">CDD</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="CDI"
+                      checked={contractType.CDI}
+                      onChange={handleContractChange}
+                    />
+                    <label htmlFor="CDI">CDI</label>
+                  </div>
+                  <h3 className="filter-type">Durée d'expérience</h3>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="nouveau"
+                      checked={experience.nouveau}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="nouveau">Nouveau diplômé</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="oneToTwo"
+                      checked={experience.oneToTwo}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="oneToTwo">1-2 ans</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="threeToFive"
+                      checked={experience.threeToFive}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="threeToFive">3-5 ans</label>
+                  </div>
+                  <div className="filter-option">
+                    <input
+                      type="checkbox"
+                      name="ninePlus"
+                      checked={experience.ninePlus}
+                      onChange={handleExperienceChange}
+                    />
+                    <label htmlFor="ninePlus">9+ ans</label>
+                  </div>
+
+                  <h3 className="filter-type">Unité</h3>
+                  {Object.entries(unit).map(([key, value]) => (
+                    <div className="filter-option" key={key}>
+                      <input
+                        type="checkbox"
+                        name={key}
+                        checked={value}
+                        onChange={handleUnitChange}
+                      />
+                      <label htmlFor={key}>{key}</label>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
             <select
               className="dropdown input-item"
               value={unite}

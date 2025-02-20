@@ -8,6 +8,4 @@ backend_server/staticfiles/
 backend_server/django_error.log
 
 node_modules/
-
-
-
+.vscode/settings.json

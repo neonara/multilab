@@ -197,7 +197,7 @@ const Stage = () => {
           <img src={back} alt="À propos banner" className="banner-poste" />
         </div>
         <div className="poste-container">
-          <h2 className="poste-title">MULTILAB sa recrute</h2>
+          <h2 className="poste-title">MULTILAB s.a recrute</h2>
 
           <div className="search-bar">
             <div className="search-input-container">
@@ -210,7 +210,7 @@ const Stage = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <div className="separator"></div> {/* Add this line */}
+            <div className="separator" /> {/* Add this line */}
             <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
               <h2
                 className="filters-toggle"

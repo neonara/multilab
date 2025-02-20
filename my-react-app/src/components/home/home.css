@@ -279,7 +279,8 @@
   margin: 0 -20px;
   margin-top: -20px;
   padding: 30px 20px;
-  gap: 60px;
+  column-gap: 190px;
+  row-gap: 64px;
 }
 
 .analysis-card {
@@ -558,6 +559,7 @@
 
 .project-description {
   font-size: 1rem;
+  text-align: justify;
   margin-bottom: 14px;
 }
 
@@ -953,6 +955,13 @@
   font-size: 1.2rem;
   margin: 0;
 }
+
+@media (max-width: 1380px) {
+  .analysis-grid {
+    column-gap: 80px;
+  }
+}
+
 
 /* desktop */
 @media (min-width: 768px) {

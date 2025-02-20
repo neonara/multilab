@@ -1,78 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"rel="nofollow" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
-   
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="nofollow"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}" />
 
-    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
     <!-- Style -->
-   
 
     <title>MultiLab login</title>
   </head>
   <body>
-   
-<!-- Section: Design Block -->
-<section >
-  <!-- Background image -->
-  
-  <!-- Background image -->
+    <!-- Section: Design Block -->
+    <section>
+      <!-- Background image -->
 
-  <div 
-  class="login-container" 
-  style="background-image: url('{{ background_image_url }}');"
->        <div class="login-form">
-          
-            <div id="error" class="error" style="display: none;"></div>
-            <form id="loginForm" method="post">
-              <h2 class="fw-bold mb-5">{% if msg %}
-                {{ msg | safe }}
-            {% else %}Merci d'entrer vos informations de connexion{% endif %}</h2>
-             
-                {% csrf_token %}
-                <div class="input-container">
-                    <label>Email</label>
-                    <input 
-                    id="username" name="username"
-                        type="email" 
-                        placeholder="Email" 
-                       
-                        
-                    >
-                </div>
-                <div class="input-container">
-                    <label>Mot de passe</label>
-                    <div class="password-wrapper">
-                        <input type="password" id="password" name="password"  />
-                        
-                    </div>
-                </div>
-                <button type="submit" class="login-btn">Se connecter</button>
-            </form>
-            <div class="form-check d-flex justify-content-center mb-4">
-              
-                <span class="ml-auto"><a href="{%url 'password-reset'%}" class="forgot-pass text-white mt-4">Mot de passe oublié</a></span>
+      <!-- Background image -->
+
+      <div
+        class="login-container"
+        style="background-image: url('{{ background_image_url }}');"
+      >
+        <div class="login-form">
+          <div id="error" class="error" style="display: none"></div>
+          <form id="loginForm" method="post">
+            <h2 class="fw-bold mb-5">
+              {% if msg %} {{ msg | safe }} {% else %}Merci d'entrer vos
+              informations de connexion{% endif %}
+            </h2>
+
+            {% csrf_token %}
+            <div class="input-container">
+              <label>Email</label>
+              <input
+                id="username"
+                name="username"
+                type="email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="input-container">
+              <label>Mot de passe</label>
+              <div class="password-wrapper">
+                <input type="password" id="password" name="password" />
               </div>
-  
+            </div>
+            <button type="submit" class="login-btn">Se connecter</button>
+          </form>
+          <div class="form-check d-flex justify-content-center mb-4">
+            <span class="ml-auto"
+              ><a
+                href="{%url 'password-reset'%}"
+                class="forgot-pass text-white mt-4"
+                >Mot de passe oublié</a
+              ></span
+            >
+          </div>
         </div>
-    </div>
-</section>
-<!-- Section: Design Block -->
+      </div>
+    </section>
+    <!-- Section: Design Block -->
 
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/popper.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-  
   </body>
 </html>

@@ -20,21 +20,21 @@ function AnalysesCard() {
       link: "/parametre/microbiologiquesEaux",
     },
     {
-      title: "Physicochimie <br>des Eaux",
-      image: img5, // Replace with your image path
-      link: "/parametre/physicochimiquesEaux",
+      title: "Physicochimies des Produits Alimentaires",
+      image: phy, // Replace with your image path
+      link: "/parametre/physicochimiesProduitsAlimentaires",
     },
     {
       title: "Physicochimie des aliments pour animaux",
       image: img4, // Replace with your image path
       link: "/parametre/alimentsAnimaux",
     },
-
     {
-      title: "Physicochimies des Produits Alimentaires",
-      image: phy, // Replace with your image path
-      link: "/parametre/physicochimiesProduitsAlimentaires",
+      title: "Physicochimie <br>des Eaux",
+      image: img5, // Replace with your image path
+      link: "/parametre/physicochimiquesEaux",
     },
+
     {
       title: "Microbiologie des produits cosmétiques et d’hygiène",
       image: img6, // Replace with your image path

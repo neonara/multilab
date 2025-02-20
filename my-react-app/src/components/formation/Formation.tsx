@@ -136,7 +136,7 @@ const Formation = () => {
           </h2>
           <div className="link">
             <Link to="/Contact">
-              <button className="formation-button">
+              <button className="custom-formation-button">
                 Demander une formation personnalisée
               </button>
             </Link>
