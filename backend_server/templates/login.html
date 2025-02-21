@@ -50,11 +50,14 @@
             font-size: 28px;
             cursor: pointer;
           "
-          onclick="window.location.href = '{{ home_url }}'"
+         
         >
-          <img src="../static/images/icon-arrow-back.png" alt="" class="" />
-          Acceuil
-        </div>
+        <a href="https://multilab-tunisia.com.tn" class="back-button" aria-label="Retour à l'accueil" style="text-decoration: none;">
+         
+     
+          <img src="{% static 'images/icon-arrow-back.png' %}" alt="Retour à l'accueil"  />  
+          Acceuil</a>
+        </div> 
         <div
           class="login-form"
           style="

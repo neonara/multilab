@@ -2,11 +2,14 @@
 backend_server/account/migrations/
 backend_server/multi_lab/migrations/
 backend_server/ParameterAnalyse/migrations/
-
+backend_server
 backend_server/staticfiles/
-
+backend_server/backed_project_multilab/settings.py
 backend_server/django_error.log
 ! backend_server/templates/login.html
+!  backend_server/account/templates/users/password_reset.html
+! backend_server/static/css/login.css
+! backend_server/templates/base.html
 
 node_modules/
 .vscode/settings.json

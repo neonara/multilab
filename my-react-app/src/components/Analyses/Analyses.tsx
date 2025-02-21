@@ -86,7 +86,7 @@ const Analyses: React.FC = () => {
       if (window.outerWidth - window.innerWidth > threshold || 
           window.outerHeight - window.innerHeight > threshold) {
         // Apply blur to video if DevTools is likely open
-        video.style.filter = 'blur(10px)';
+       
       } else {
         video.style.filter = '';
       }

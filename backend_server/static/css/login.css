@@ -1,3 +1,4 @@
+
 /* Full container background */
 .login-container {
   display: flex;
@@ -6,70 +7,124 @@
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Back button enhancement */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: clamp(18px, 4vw, 28px);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateX(-5px);
+}
+
+.back-button img {
+  width: clamp(20px, 4vw, 30px);
+  height: auto;
 }
 
 /* Frosted glass effect */
 .login-form {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 40px;
-  backdrop-filter: blur(10px); /* For the frosted glass effect */
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
-  width: 588px;
-  height: 440px;
+  background: var(--glass-bg);
+  border-radius: clamp(10px, 3vw, 20px);
+  padding: clamp(20px, 5vw, 40px);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0px 4px 30px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  width: min(588px, 95%);
+  min-height: 440px;
   text-align: center;
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-h2 {
-  margin-bottom: 20px;
-  font-weight: 400;
-  color: #fff;
-}
+/* Typography */
 
 /* Input fields */
 .input-container {
-  margin-bottom: 20px;
+  margin-bottom: clamp(15px, 3vw, 20px);
   text-align: left;
-  width: 520px;
+  width: 100%;
 }
 
 .input-container label {
-  color: #fff;
-  font-size: 14px;
-  margin-bottom: 5px;
+  font-size: clamp(12px, 2vw, 14px);
+  margin-bottom: 8px;
   display: block;
+  opacity: 0.9;
 }
 
 input {
   width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  font-size: 14px;
-  outline: none;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
+  padding: clamp(8px, 2vw, 12px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: clamp(14px, 2vw, 16px);
+  background-color: var(--input-bg);
+  color: white;
+  transition: all 0.3s ease;
 }
 
-/* Password field wrapper for toggle visibility */
+input:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Password field */
 .password-wrapper {
   position: relative;
 }
 
 .password-toggle {
   position: absolute;
-  right: 10px;
+  right: 12px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  font-size: 18px;
-  color: #fff;
+  font-size: clamp(16px, 2vw, 18px);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
-input[type="password"],
-input[type="text"] {
-  padding-right: 30px; /* Space for the eye icon */
+.password-toggle:hover {
+  opacity: 1;
+}
+
+/* Submit button */
+.login-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: clamp(10px, 2vw, 14px);
+  width: 100%;
+  border-radius: 8px;
+  font-size: clamp(14px, 2vw, 16px);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.login-btn:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+}
+
+.login-btn:active {
+  transform: translateY(0);
 }
 
 /* Submit button */
@@ -87,16 +142,61 @@ input[type="text"] {
 .login-btn:hover {
   background-color: #083b9a;
 }
-  
+/* Forgot password link */
+.forgot-pass {
+  font-size: clamp(12px, 2vw, 14px);
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: clamp(15px, 3vw, 20px);
+}
 
-@media (max-width: 768px) {
+.forgot-pass:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
 
+/* Error message */
+.error {
+  background-color: rgba(255, 59, 48, 0.1);
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 480px) {
   .login-form {
-    width: 100%;
+    padding: 20px;
+    min-height: auto;
   }
+  
+  .input-container {
+    margin-bottom: 15px;
+  }
+  
+  .back-button {
+    top: 10px;
+    left: 10px;
+  }
+}
 
-  .login-container{
-    width: 100%;
-    height: 100%;
+/* Animation for form appearance */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form {
+  animation: fadeIn 0.5s ease-out;
 }
