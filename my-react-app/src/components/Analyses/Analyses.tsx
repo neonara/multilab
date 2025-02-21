@@ -47,7 +47,63 @@ const Analyses: React.FC = () => {
       }
     };
   }, []);
-
+    const videoContainerRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+      const video = videoRef.current;
+      const container = videoContainerRef.current;
+      if (!video || !container) return;
+  
+      // Set video source properly after component mounts
+      video.src = vid;
+      
+      // 1. Disable right-click on video
+      const preventContextMenu = (e: Event) => {
+        e.preventDefault();
+        return false;
+      };
+      video.addEventListener('contextmenu', preventContextMenu);
+      
+      // 3. Disable keyboard shortcuts
+      const preventSaveShortcuts = (e: KeyboardEvent) => {
+        if ((e.ctrlKey || e.metaKey) && 
+            (e.key === 's' || e.key === 'S' || e.key === 'u' || e.key === 'U')) {
+          e.preventDefault();
+        }
+      };
+      
+    document.addEventListener('keydown', preventSaveShortcuts);
+    
+    // 4. Prevent drag and drop of video
+    const preventDrag = (e: DragEvent) => {
+      e.preventDefault();
+      return false;
+    };
+    video.addEventListener('dragstart', preventDrag as any);
+    
+    // 5. Monitor for DevTools opening
+    const checkDevTools = () => {
+      const threshold = 160;
+      if (window.outerWidth - window.innerWidth > threshold || 
+          window.outerHeight - window.innerHeight > threshold) {
+        // Apply blur to video if DevTools is likely open
+        video.style.filter = 'blur(10px)';
+      } else {
+        video.style.filter = '';
+      }
+    };
+    
+    window.addEventListener('resize', checkDevTools);
+    const intervalCheck = setInterval(checkDevTools, 1000);
+    
+    // Clean up event listeners
+    return () => {
+      video.removeEventListener('contextmenu', preventContextMenu);
+      document.removeEventListener('keydown', preventSaveShortcuts);
+      video.removeEventListener('dragstart', preventDrag as any);
+      window.removeEventListener('resize', checkDevTools);
+      clearInterval(intervalCheck);
+    };
+  }, []);
   return (
     <div>
       <div className="mobile-banner">
@@ -74,8 +130,8 @@ const Analyses: React.FC = () => {
               technologique pour répondre aux besoins futurs de nos clients.
             </p>
           </div>
-          <div className="videoContainer">
-            <video src={vid} className="video" autoPlay muted loop playsInline>
+          <div className="videoContainer" ref={videoContainerRef}>
+            <video ref={videoRef} className="video" autoPlay muted loop playsInline disablePictureInPicture>
               <source src="your-video-file.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
