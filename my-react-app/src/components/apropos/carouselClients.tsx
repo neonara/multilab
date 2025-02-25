@@ -16,7 +16,7 @@ import Laboratoires from "@/assets/images/32.jpg";
 import conseil from "@/assets/images/33.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 
 export default function CarouselClients() {
   const clients = [
@@ -47,81 +47,37 @@ export default function CarouselClients() {
     { image: conseil, label: "Bureaux de conseil" },
   ];
 
-  const [index, setIndex] = useState(0);
-  const scrollAmount = 310;
-  const visibleImages = 4;
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
-  const scrollPrev = () => {
-    const carousel = carouselRef.current;
-    if (index >= 0) {
-      setIndex(index - 1);
-      if (carousel) {
-        carousel.style.transform = `translateX(${-index * scrollAmount}px)`;
-      }
-    }
-  };
+  const slideToIndex = useCallback(
+    (index: number) => {
+      if (!sliderRef.current) return;
 
-  const scrollNext = () => {
-    const carousel = carouselRef.current;
-    const images = carousel ? carousel.children.length : 0;
-    if (index <= images - visibleImages) {
-      setIndex(index + 1);
-      if (carousel) {
-        carousel.style.transform = `translateX(${-index * scrollAmount}px)`;
-      }
-    }
-  };
+      const sliderWidth = sliderRef.current.offsetWidth;
+      const slidesVisible = sliderWidth / 355;
+      const maxIndex = clients.length - slidesVisible;
+      const newIndex = Math.max(0, Math.min(index, maxIndex));
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      isDragging.current = true;
-      startX.current = e.pageX - carousel.offsetLeft;
-      scrollLeft.current = carousel.scrollLeft;
-      carousel.classList.add("active");
-    }
-  };
+      setCurrentIndex(newIndex);
 
-  const handleMouseLeave = () => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      isDragging.current = false;
-      carousel.classList.remove("active");
-    }
-  };
+      sliderRef.current.style.transform = `translateX(-${newIndex * 355}px)`;
+      sliderRef.current.style.transition = "transform 0.3s ease-out";
+    },
+    [clients.length]
+  );
 
-  const handleMouseUp = () => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      isDragging.current = false;
-      carousel.classList.remove("active");
-    }
-  };
+  const slidePrev = useCallback(() => {
+    slideToIndex(currentIndex - 1);
+  }, [currentIndex, slideToIndex]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const carousel = carouselRef.current;
-    if (!isDragging.current || !carousel) return;
-    e.preventDefault();
-    const x = e.pageX - carousel.offsetLeft;
-    const walk = (x - startX.current) * 2; //scroll-fast
-    carousel.scrollLeft = scrollLeft.current - walk;
-  };
+  const slideNext = useCallback(() => {
+    slideToIndex(currentIndex + 1);
+  }, [currentIndex, slideToIndex]);
 
   return (
     <div className="carousel-container">
-      <div
-        className="clients-grid"
-        id="carousel"
-        ref={carouselRef}
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeave}
-        onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-      >
+      <div className="clients-grid" id="carousel" ref={sliderRef}>
         {clients.map((client, index) => (
           <div key={index} className="clients-card">
             <div className="image-wrapper">
@@ -144,13 +100,13 @@ export default function CarouselClients() {
       <div className="arrow-buttons">
         <button
           className="arrow-button left swiper-but-prev"
-          onClick={scrollPrev}
+          onClick={slidePrev}
         >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <button
           className="arrow-button right swiper-but-next"
-          onClick={scrollNext}
+          onClick={slideNext}
         >
           <FontAwesomeIcon icon={faArrowRight} />
         </button>

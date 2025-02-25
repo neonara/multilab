@@ -448,8 +448,7 @@ img {
   }
 
   .arrow-buttons {
-    display: none;
-    
+    display: none; 
   }
   
   .arrow-button {
@@ -504,10 +503,10 @@ img {
   }
   .clients-grid {
     gap: 30px;
-  overflow-x: auto;
-  padding-left: 10px;
-
+    padding-left: 10px;
+    overflow-x: auto;
   }
+
 }
 
 .icons br {
