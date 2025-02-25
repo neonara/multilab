@@ -192,10 +192,11 @@ const Assistance = () => {
             <h2 className="test">Assistance et Conseil Technique</h2>
             <p>
               Nos équipes de Docteurs, ingénieurs et techniciens assurent un
-              rôle de conseiller, et vous apportent leurs expertises et conseils
-              pour anticiper les défis, promouvoir les bonnes pratiques et
-              procédures, et optimiser les actions correctives à la suite des
-              audits ou des réclamations.
+              rôle de conseiller, et vous apportent leurs expertises{" "}
+              <br className="et-back-to-line1" />
+              et conseils pour anticiper les défis, promouvoir les bonnes
+              pratiques et procédures, et optimiser les actions correctives à la
+              suite des audits ou des réclamations.
             </p>
           </div>
         </div>
@@ -218,7 +219,7 @@ const Assistance = () => {
 
         <div className="link">
           <Link to="/Contact">
-            <button className="custom-formation-button">Contacter-nous</button>
+            <button className="custom-formation-button">Contactez-nous</button>
           </Link>
         </div>
       </div>

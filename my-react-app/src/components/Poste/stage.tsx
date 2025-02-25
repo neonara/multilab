@@ -180,7 +180,7 @@ const Stage = () => {
           <img src={back} alt="À propos banner" className="banner-poste" />
         </div>
         <div className="poste-container">
-          <h2 className="poste-title">MULTILAB sa recrute</h2>
+          <h2 className="poste-title">MULTILAB s.a recrute</h2>
 
           <div className="search-bar">
             <div className="search-input-container">
@@ -194,6 +194,7 @@ const Stage = () => {
               />
             </div>
             <div className="separator"></div> {/* Add this line */}
+            {/* filters mobile */}
             <div className={`filters-mobile ${isDrawerOpen ? "open" : ""}`}>
               <h2
                 className="filters-toggle"
@@ -204,7 +205,7 @@ const Stage = () => {
               </h2>
               {isDrawerOpen && (
                 <div className="filter-content">
-                  <h3 className="filter-type">Type de contrat</h3>
+                  <h3 className="filter-type">Type de stage</h3>
                   {Object.entries(stageType).map(([key, value]) => (
                     <div className="filter-option" key={key}>
                       <input
@@ -245,6 +246,9 @@ const Stage = () => {
               onChange={handleUniteChange}
               style={{ backgroundImage: `url(${arrowDown})` }} // Add this line
             >
+              <option value="Administration">
+                Tous les unités d'affectations
+              </option>
               <option value="Administration">Administration</option>
               <option value="Finance">Finance</option>
               <option value="Comptabilité">Comptabilité</option>
@@ -326,7 +330,12 @@ const Stage = () => {
 
             {/* Job Cards Section */}
             <span className="job-cards-container">
-              <h2 className="post-num">{postsNum} Postes Disponible</h2>
+              {postsNum == 1 && (
+                <h2 className="post-num">{postsNum} Poste Disponible</h2>
+              )}
+              {postsNum > 1 && (
+                <h2 className="post-num">{postsNum} Postes Disponibles</h2>
+              )}
               <div className="job-cardss">
                 {jobs.map((job) => (
                   <Card {...job} />

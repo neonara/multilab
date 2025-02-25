@@ -198,11 +198,6 @@
   min-width: 300px;
 }
 
-.video {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
 
 .home-containers{
   margin:40px 50px;
@@ -231,6 +226,9 @@
 }
 
 @media (max-width: 768px) {
+  .analyse-container{
+    padding: 0 30px;
+  }
   
   .container {
     flex-direction: column;
@@ -242,6 +240,7 @@
 
   .videoContainer {
     width: 100%;
+    min-width: auto;
     height: auto;
   }
 
@@ -289,12 +288,16 @@
 
   .home-containers{
     padding:40px 0px;
+    margin:30px 0;
   }
 
   .title-text {
     font-size: 30px;
   }
 
+  .image-container{
+    margin-top: 4px;
+  }
   .image-container, .banner-image{
     min-height: 240px;
   }

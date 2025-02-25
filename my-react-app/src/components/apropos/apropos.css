@@ -250,9 +250,7 @@ img {
   flex-direction: column;
   position: relative;
   width: 100%;
-  padding: 20px;
-  padding-left: 0px;
-
+  padding: 20px 0;
   border-radius: 10px;
 }
 
@@ -262,8 +260,7 @@ img {
   /* justify-content: space-around; */
   margin: 0 -20px;
   margin-top: -20px;
-  padding: 30px 20px;
-  padding-left: 0px;
+  padding: 30px 0;
   gap: 60px;
   /* max-width: 100%; */
   transition: transform 0.5s ease-in-out;
@@ -413,6 +410,10 @@ img {
 
 /* mobile */
 @media (max-width: 768px) {
+  .apropos-banner-container{
+    margin-top: 4px;
+  }
+
   .apropos-container {
     padding: 0 30px;
   }
@@ -461,6 +462,10 @@ img {
     height: 40px;
   }
 
+  .research-section {
+    margin-top: 30px;
+  }
+
   .Accreditation h1,
   .apropos-content h1,
   .clients-container h1,
@@ -498,12 +503,10 @@ img {
   }
 
   .carousel-container {
-  padding: 20px 0;
-
+    padding: 20px 0;
   }
   .clients-grid {
-    gap: 30px;
-    padding-left: 10px;
+    gap: 10px;
     overflow-x: auto;
   }
 
@@ -516,13 +519,10 @@ img {
   .apropos-image {
     height: 200px;
     min-width: 300px;
-
   }
   .icons br {
     display: block;
   }
-
-
 
 }
 

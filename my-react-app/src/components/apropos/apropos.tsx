@@ -174,7 +174,8 @@ const Apropos: React.FC = () => {
       <section className="research-section">
         <div className="text-content">
           <h1 className="research-title">
-            MULTILAB s.a. Recherche et Développement
+            MULTILAB s.a. Recherche <br className="et-back-to-line3" />
+            et Développement
           </h1>
           <div className="image-content-mobile">
             <img src={lab} alt="Laboratoire MULTILAB" className="lab-image" />

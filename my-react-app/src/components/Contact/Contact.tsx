@@ -173,7 +173,7 @@ const Contact = () => {
                   {statusMessage}
                 </div>
               )}
-              <button type="submit" className="submit-btn">
+              <button type="submit" className="submit-btn-contact">
                 Envoyer
                 <img
                   src={sendIcon}

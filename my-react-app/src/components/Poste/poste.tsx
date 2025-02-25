@@ -91,20 +91,6 @@ const Poste = () => {
     });
   };
 
-  const [unit, setUnit] = useState({
-    Administration: false,
-    Finance: false,
-    Comptabilite: false,
-    Analyse: false,
-  });
-
-  const handleUnitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUnit({
-      ...unit,
-      [e.target.name]: e.target.checked,
-    });
-  };
-
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   console.log(setIsDrawerOpen);
 
@@ -279,19 +265,6 @@ const Poste = () => {
                     />
                     <label htmlFor="ninePlus">9+ ans</label>
                   </div>
-
-                  <h3 className="filter-type">Unité</h3>
-                  {Object.entries(unit).map(([key, value]) => (
-                    <div className="filter-option" key={key}>
-                      <input
-                        type="checkbox"
-                        name={key}
-                        checked={value}
-                        onChange={handleUnitChange}
-                      />
-                      <label htmlFor={key}>{key}</label>
-                    </div>
-                  ))}
                 </div>
               )}
             </div>
@@ -302,6 +275,9 @@ const Poste = () => {
               onChange={handleUniteChange}
               // style={{ backgroundImage: `url(${arrowDown})` }}
             >
+              <option value="Administration">
+                Tous les unités d'affectations
+              </option>
               <option value="Administration">Administration</option>
               <option value="Finance">Finance</option>
               <option value="Comptabilité">Comptabilité</option>
@@ -380,7 +356,7 @@ const Poste = () => {
                 </div>
               ))}
 
-              <h3 className="filter-type">Unité</h3>
+              {/* <h3 className="filter-type">Unité</h3>
               {Object.entries(unit).map(([key, value]) => (
                 <div className="filter-option" key={key}>
                   <input
@@ -391,12 +367,17 @@ const Poste = () => {
                   />
                   <label htmlFor={key}>{key}</label>
                 </div>
-              ))}
+              ))} */}
             </div>
 
             {/* Job Cards Section */}
             <span className="job-cards-container">
-              <h2 className="post-num">{postsNum} Postes Disponible</h2>
+              {postsNum == 1 && (
+                <h2 className="post-num">{postsNum} Poste Disponible</h2>
+              )}
+              {postsNum > 1 && (
+                <h2 className="post-num">{postsNum} Postes Disponibles</h2>
+              )}
               <div className="job-cardss">
                 {jobs.map((job) => (
                   <JobCard job={job} key={job.id} />

@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 16px;
 }
 
 .contact-image-container .text-container {
@@ -167,7 +168,7 @@
   outline: none;
 }
 
-.submit-btn {
+.submit-btn-contact {
   background-color: var(--blue);
   color: white;
   padding: 0.75rem 1.5rem;
@@ -183,7 +184,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.submit-btn:hover {
+.submit-btn-contact:hover {
   background-color: white;
   color: var(--blue);
   border: 1px solid var(--blue);
@@ -195,13 +196,17 @@
   border-radius: 0;
 }
 
-.submit-btn:active {
+.submit-btn-contact:active {
   transform: translateY(0);
 }
 
 .background-image-contact h1 {
   color: white;
   font-size: 45px;
+}
+
+.background-image-contact{
+  margin-top: 16px;
 }
 
 .back,
@@ -401,9 +406,11 @@ background: rgba(217, 217, 217, 0.50);
     flex-direction: column;
     padding: 10px;
   }
+
   .contact-image-container {
-      display: none;
-    }
+    display: none;
+    margin-top: 4px;
+  }
 
   .contact-image-container.mobile {
     display: block;
@@ -434,6 +441,7 @@ background: rgba(217, 217, 217, 0.50);
     height: 200px;
     background-size: cover;
     border-radius: 0;
+    margin-top: 4px;
   }
 
   .background-image-contact h1 {
@@ -445,6 +453,20 @@ background: rgba(217, 217, 217, 0.50);
     max-width: 100%;
     margin: 30px;
     margin-top: 10px;
+  }
+  .contact-card h2 {
+    font-size: 20px;
+  }
+
+  .submit-btn-contact {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  .submit-btn-contact .social-icon{
+    height: 24px;
+    width: 24px;
+    min-width: 24px;
   }
 }
 

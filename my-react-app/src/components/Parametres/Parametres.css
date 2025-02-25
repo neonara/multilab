@@ -223,6 +223,8 @@
 
   .banner-image-param {
     height: 300px;
+    text-align: center;
+    margin-top: 4px;
   }
 
   .banner-image-param h1 {

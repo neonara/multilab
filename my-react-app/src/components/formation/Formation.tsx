@@ -107,9 +107,9 @@ const Formation = () => {
               <h3>Formations sur mesure</h3>
               <p>
                 Proposer des formations ajustées aux exigences spécifiques, aux
-                niveaux de compétence et aux rythmes d'apprentissage de chaque
-                participant, favorisant une montée en compétences progressive et
-                efficace.
+                niveaux de compétence <br className="et-back-to-line" />
+                et aux rythmes d'apprentissage de chaque participant, favorisant
+                une montée en compétences progressive et efficace.
               </p>
             </div>
           </div>
@@ -135,7 +135,7 @@ const Formation = () => {
           <h2 className="custom-formation-heading">
             Vous ne trouvez pas la formation dont vous avez besoin ?
           </h2>
-          <div className="link">
+          <div className="link link2">
             <Link to="/Contact">
               <button className="custom-formation-button">
                 Demander une formation personnalisée

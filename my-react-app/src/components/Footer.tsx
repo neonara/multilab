@@ -13,7 +13,11 @@ function Footer() {
       <div className="container-f">
         <div className="firstone">
           <img src={logo} alt="Multilab Logo" className="footer-logo" />
-          <p>Laboratoire d'analyse agroalimentaire et environnement.</p>
+          <p>
+            Laboratoire d'analyse agroalimentaire{" "}
+            <br className="et-back-to-line2" />
+            et environnement.
+          </p>
           <h5 className="text">Nous sommes ouverts :</h5>
           <p>
             Du lundi au vendredi de 08h00 à 17h00{" "}
@@ -72,13 +76,22 @@ function Footer() {
               <FiPhoneCall className="social-icon" /> (+216) 71 941 436 / 22 344
               976
             </p>
-            <p>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 5,
+              }}
+            >
               <IoLocationOutline
                 className="social-icon"
                 style={{ fontSize: "26px" }}
               />{" "}
-              Rue de l’argent, Zone industrielle el bosten, Soukra - Ariana
-            </p>
+              <p>
+                Rue de l’argent, Zone industrielle el bosten, Soukra - Ariana
+              </p>
+            </div>
+
             <p>
               <MdOutlineMail className="social-icon" /> multilab@planet.tn
             </p>

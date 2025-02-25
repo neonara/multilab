@@ -40,7 +40,7 @@ const analysesData: {
   };
 } = {
   Analysesphysicochimiquesviandesetderives: {
-    title: "Analyses physicochimiques des viandes et derives",
+    title: "Analyses physicochimiques des viandes et dérivés",
   },
   Analysesphysicochimiqueshuilesproduitsgras: {
     title: "Analyses physicochimiques huiles et produits gras",
@@ -241,11 +241,17 @@ const AnalyseItem: React.FC = () => {
                         key={index}
                         style={{
                           display: "flex",
-                          alignItems: "center",
+                          alignItems: "start",
                           gap: 5,
                         }}
                       >
-                        <MdOutlineCheckBox style={{ color: "#00A0D8" }} />{" "}
+                        <MdOutlineCheckBox
+                          style={{
+                            color: "#00A0D8",
+                            minWidth: "24px",
+                            marginTop: "4px",
+                          }}
+                        />{" "}
                         {element}
                       </li>
                     ))}

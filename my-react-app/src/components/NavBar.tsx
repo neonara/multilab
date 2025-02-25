@@ -55,7 +55,7 @@ function NavBar() {
               className="d-inline-block align-center"
             />
           </a>
-          <div className="d-flex">
+          <div className="d-flex gap-2">
             <button
               className="search-btn-mobile"
               onClick={() => setIsSearchOpen(true)}
@@ -109,7 +109,7 @@ function NavBar() {
                       {t("Assistance et conseil")}
                     </MDBDropdownItem>
                     <MDBDropdownItem link href="/formation">
-                      {t("Formations")}
+                      {t("Formation")}
                     </MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
@@ -257,7 +257,10 @@ function NavBar() {
             </div>
           </div>
 
-          <a href="/login" onClick={toggleMobileMenu}>
+          <a
+            href="https://multilab-tunisia.com.tn/MULTILAB/login_view"
+            onClick={toggleMobileMenu}
+          >
             {t("Accès client")}
           </a>
           <a href="/contact" onClick={toggleMobileMenu}>
